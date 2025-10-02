@@ -34,6 +34,17 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Enhanced typography for better contrast and readability */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
 /* Dark mode styles */
 .dark body {
   background: #0a0a0a;

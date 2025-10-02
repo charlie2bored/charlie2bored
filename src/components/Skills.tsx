@@ -45,6 +45,9 @@ export default function Skills() {
           <p className={`text-lg max-w-2xl mx-auto montserrat ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
             Technologies and tools I use to bring ideas to life
           </p>
+          <p className={`text-sm max-w-2xl mx-auto montserrat mt-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+            Skill proficiency based on years of experience and project complexity
+          </p>
         </motion.div>
 
         {/* Skills Grid */}

@@ -60,23 +60,44 @@ export default function Projects() {
                 }}
               >
                 {/* Project Background/Image Area */}
-                <div className={`h-64 ${isDark ? 'bg-gradient-to-br from-gray-700 to-gray-600' : 'bg-gradient-to-br from-gray-50 to-gray-100'} relative overflow-hidden`}>
+                <div className={`h-64 ${isDark ? 'bg-gradient-to-br from-gray-700 to-gray-600' : 'bg-gradient-to-br from-gray-50 to-gray-100'} relative overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
                   {/* Project Number */}
                   <div className="absolute top-6 left-6">
-                    <span className={`text-6xl font-bold junge ${isDark ? 'text-gray-600' : 'text-gray-300'} opacity-50`}>
+                    <span className={`text-6xl font-bold junge ${isDark ? 'text-gray-600' : 'text-gray-300'} opacity-30 group-hover:opacity-60 transition-opacity duration-300`}>
                       {(index + 1).toString().padStart(2, '0')}
                     </span>
                   </div>
 
                   {/* Project Category Badge */}
                   <div className="absolute top-6 right-6">
-                    <span className="px-3 py-1 bg-yellow-400 text-black text-sm font-semibold rounded-full montserrat">
+                    <span className="px-3 py-1 bg-yellow-400 text-black text-sm font-semibold rounded-full montserrat shadow-lg">
                       {project.category}
                     </span>
                   </div>
 
                   {/* Decorative Elements */}
                   <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400"></div>
+
+                  {/* Subtle pattern overlay */}
+                  <div className={`absolute inset-0 opacity-5 ${isDark ? 'bg-white' : 'bg-black'}`}>
+                    <div className="w-full h-full bg-gradient-to-br from-transparent via-current to-transparent"></div>
+                  </div>
+
+                  {/* Interactive hover elements */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ opacity: 0 }}
+                  />
+
+                  {/* Project status indicators */}
+                  <div className="absolute bottom-4 right-4 flex space-x-2">
+                    {project.liveUrl && (
+                      <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    )}
+                    {project.githubUrl && (
+                      <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Project Content */}
@@ -101,29 +122,35 @@ export default function Projects() {
                       </p>
 
                       {/* Key Outcome */}
-                      <div className="p-4 rounded-lg bg-yellow-50 dark:bg-gray-800 border-l-4 border-yellow-400">
-                        <p className="text-yellow-700 dark:text-yellow-300 font-medium montserrat italic">
+                      <motion.div
+                        className="p-4 rounded-lg bg-yellow-50 dark:bg-gray-800 border-l-4 border-yellow-400 relative overflow-hidden"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="absolute top-0 right-0 w-8 h-8 bg-yellow-400/20 rounded-full -translate-y-2 translate-x-2"></div>
+                        <p className="text-yellow-700 dark:text-yellow-300 font-semibold montserrat italic relative z-10">
                           {project.outcome}
                         </p>
-                      </div>
+                      </motion.div>
 
                       {/* Technologies */}
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, techIndex) => (
-                          <motion.span
-                            key={tech}
-                            className={`px-3 py-2 text-sm rounded-full montserrat transition-all duration-300 ${isDark ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.3, delay: techIndex * 0.1 }}
-                            viewport={{ once: true }}
-                            whileHover={{
-                              scale: 1.1,
-                              backgroundColor: isDark ? "#374151" : "#f3f4f6"
-                            }}
-                          >
-                            {tech}
-                          </motion.span>
+                        <motion.span
+                          key={tech}
+                          className={`px-3 py-2 text-sm rounded-full montserrat transition-all duration-300 font-medium border ${isDark ? 'bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600 hover:border-yellow-400' : 'bg-gray-100 border-gray-200 text-gray-700 hover:bg-gray-200 hover:border-yellow-400'}`}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: techIndex * 0.1 }}
+                          viewport={{ once: true }}
+                          whileHover={{
+                            scale: 1.1,
+                            y: -2,
+                            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
+                          }}
+                        >
+                          {tech}
+                        </motion.span>
                         ))}
                       </div>
                     </div>

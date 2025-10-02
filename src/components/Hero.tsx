@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowDown, Menu, X, Sun, Moon } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown, Menu, X, Sun, Moon, Home, User, Briefcase, Settings, Send } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio-data';
 import { useDarkMode } from '@/components/DarkModeProvider';
 import { useEffect, useState } from 'react';
@@ -136,37 +136,31 @@ export default function Hero() {
             isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
           } md:translate-x-0`}
         >
-          <nav className="space-y-2">
+          <nav className="flex flex-col items-center space-y-4">
             {[
-              { name: 'Home', href: '#home' },
-              { name: 'About', href: '#about' },
-              { name: 'Work', href: '#projects' },
-              { name: 'Skills', href: '#skills' },
-              { name: 'Contact', href: '#contact' }
+              { icon: Home, href: '#home', label: 'Home' },
+              { icon: User, href: '#about', label: 'About' },
+              { icon: Briefcase, href: '#projects', label: 'Work' },
+              { icon: Settings, href: '#skills', label: 'Skills' },
+              { icon: Send, href: '#contact', label: 'Contact' }
             ].map((item, index) => (
               <motion.button
-                key={item.name}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
+                key={item.label}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onClick={() => {
                   scrollToSection(item.href);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`relative w-full text-left py-3 px-4 font-mono text-sm transition-all duration-300 ease-out group overflow-hidden focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded ${
-                  index % 2 === 0
-                    ? `${isDark ? 'text-white hover:text-yellow-400' : 'text-black hover:text-yellow-600'}`
-                    : `${isDark ? 'text-gray-300 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`
+                className={`p-3 rounded-lg transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
+                  isDark ? 'hover:bg-gray-800 text-gray-300 hover:text-yellow-400' : 'hover:bg-gray-100 text-gray-600 hover:text-yellow-600'
                 }`}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                aria-label={`Navigate to ${item.name} section`}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={`Navigate to ${item.label} section`}
               >
-                <span className="relative z-10">{item.name}</span>
-                <motion.div
-                  className={`absolute inset-0 ${isDark ? 'bg-gray-800/50' : 'bg-gray-100/50'} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left`}
-                  initial={{ scaleX: 0 }}
-                />
+                <item.icon size={20} />
               </motion.button>
             ))}
           </nav>
