@@ -43,50 +43,50 @@ export default function Navbar() {
       name: 'Home',
       href: '#home',
       index: '00',
-      bgColor: 'bg-[#DFDFDF]',
-      textColor: 'text-[#111111]',
-      indexColor: 'text-[#111111]/60',
-      shadowColor: 'shadow-[#111111]/15'
+      bgColor: 'bg-[var(--brand-light)]',
+      textColor: 'text-[var(--brand-dark)]',
+      indexColor: 'text-[var(--brand-dark)]/60',
+      shadowColor: 'shadow-[var(--brand-dark)]/15'
     },
     {
       id: 'about',
       name: 'About',
       href: '#about',
       index: '01',
-      bgColor: 'bg-[#BE8400]',
+      bgColor: 'bg-[var(--brand-gold)]',
       textColor: 'text-white',
       indexColor: 'text-white/80',
-      shadowColor: 'shadow-[#BE8400]/25'
+      shadowColor: 'shadow-[var(--brand-gold)]/25'
     },
     {
       id: 'skills',
       name: 'Skills',
       href: '#skills',
       index: '02',
-      bgColor: 'bg-[#111111]',
+      bgColor: 'bg-[var(--brand-dark)]',
       textColor: 'text-white',
       indexColor: 'text-white/80',
-      shadowColor: 'shadow-[#111111]/30'
+      shadowColor: 'shadow-[var(--brand-dark)]/30'
     },
     {
       id: 'projects',
       name: 'Projects',
       href: '#projects',
       index: '03',
-      bgColor: 'bg-[#DFDFDF]',
-      textColor: 'text-[#111111]',
-      indexColor: 'text-[#111111]/60',
-      shadowColor: 'shadow-[#111111]/15'
+      bgColor: 'bg-[var(--brand-light)]',
+      textColor: 'text-[var(--brand-dark)]',
+      indexColor: 'text-[var(--brand-dark)]/60',
+      shadowColor: 'shadow-[var(--brand-dark)]/15'
     },
     {
       id: 'contact',
       name: 'Contact',
       href: '#contact',
       index: '04',
-      bgColor: 'bg-[#BE8400]',
+      bgColor: 'bg-[var(--brand-gold)]',
       textColor: 'text-white',
       indexColor: 'text-white/80',
-      shadowColor: 'shadow-[#BE8400]/25'
+      shadowColor: 'shadow-[var(--brand-gold)]/25'
     }
   ];
 
@@ -129,10 +129,10 @@ export default function Navbar() {
           <div className="fixed left-0 top-0 h-full w-56 bg-white shadow-2xl z-50 overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
-                <span className="text-xl font-bold text-[#111111]">Navigation</span>
+                <span className="text-xl font-bold text-[var(--brand-dark)]">Navigation</span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-8 h-8 flex items-center justify-center text-[#111111] hover:bg-[#DFDFDF] rounded-full transition-colors duration-200"
+                  className="w-8 h-8 flex items-center justify-center text-[var(--brand-dark)] hover:bg-[var(--brand-light)] rounded-full transition-colors duration-200"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -173,7 +173,7 @@ export default function Navbar() {
       <div className="sm:hidden fixed top-4 left-4 z-50">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-[#111111] hover:bg-[#DFDFDF] transition-colors duration-200"
+          className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-[var(--brand-dark)] hover:bg-[var(--brand-light)] transition-colors duration-200"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
