@@ -28,7 +28,9 @@ export default function Skills() {
 
   return (
     <section id="skills" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Content wrapper with left margin to account for sticky sidebar */}
+      <div className="ml-80 md:ml-80 sm:ml-0 sm:px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -100,6 +102,7 @@ export default function Skills() {
             Continuously learning and expanding my skill set to stay current with industry trends
           </p>
         </motion.div>
+        </div>
       </div>
     </section>
   );
