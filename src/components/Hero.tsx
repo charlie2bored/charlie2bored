@@ -6,11 +6,6 @@ import { portfolioData } from '@/data/portfolio-data';
 import { useDarkMode } from '@/components/DarkModeProvider';
 import { useEffect, useState } from 'react';
 
-// Core skills to display in sidebar
-const coreSkills = [
-  "Next.js", "Tailwind CSS", "TypeScript", "React",
-  "Node.js", "Python", "Figma", "Git"
-];
 
 export default function Hero() {
   const { personalInfo } = portfolioData;
@@ -116,20 +111,9 @@ export default function Hero() {
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </motion.button>
 
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className={`fixed inset-0 ${isDark ? 'bg-black/50' : 'bg-black/30'} z-40 md:hidden`}
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-        )}
-
         {/* Stacked Block Navigation Sidebar */}
         <div className="hidden md:flex fixed left-0 top-0 h-full w-64 z-50 justify-center">
-          <nav className="flex flex-col h-full py-8">
+          <nav className="flex flex-col h-full py-8 space-y-3">
             {[
               { id: 'home', name: 'Home', href: '#home', index: '00', bgColor: 'bg-[var(--brand-light)]', textColor: 'text-[var(--brand-dark)]', indexColor: 'text-[var(--brand-dark)]/60' },
               { id: 'about', name: 'About', href: '#about', index: '01', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-white', indexColor: 'text-white/80' },
@@ -164,28 +148,82 @@ export default function Hero() {
           </nav>
         </div>
 
-          {/* Skills Grid */}
+        {/* Mobile Navigation Toggle */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className={`fixed top-6 left-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-colors duration-200`}
+        >
+          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </motion.button>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={`fixed inset-0 ${isDark ? 'bg-black/50' : 'bg-black/30'} z-40 md:hidden`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            className={`fixed left-0 top-0 h-full w-64 ${isDark ? 'bg-gray-900/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} z-50 md:hidden`}
           >
-            <h3 className="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider montserrat">Core Skills</h3>
-            <div className="grid grid-cols-2 gap-2">
-              {coreSkills.map((skill, index) => (
-                <motion.div
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`${isDark ? 'bg-gray-800 border-gray-600 text-gray-300' : 'bg-gray-100 border-gray-200 text-gray-700'} px-2 py-1 rounded text-xs text-center montserrat`}
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-xl font-bold text-[var(--brand-dark)]">Navigation</span>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-8 h-8 flex items-center justify-center text-[var(--brand-dark)] hover:bg-[var(--brand-light)] rounded-full transition-colors duration-200"
                 >
-                  {skill}
-                </motion.div>
-              ))}
+                  <X size={20} />
+                </button>
+              </div>
+
+              <nav className="space-y-3">
+                {[
+                  { id: 'home', name: 'Home', href: '#home', index: '00', bgColor: 'bg-[var(--brand-light)]', textColor: 'text-[var(--brand-dark)]', indexColor: 'text-[var(--brand-dark)]/60' },
+                  { id: 'about', name: 'About', href: '#about', index: '01', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-white', indexColor: 'text-white/80' },
+                  { id: 'skills', name: 'Skills', href: '#skills', index: '02', bgColor: 'bg-[var(--brand-dark)]', textColor: 'text-white', indexColor: 'text-white/80' },
+                  { id: 'projects', name: 'Projects', href: '#projects', index: '03', bgColor: 'bg-[var(--brand-light)]', textColor: 'text-[var(--brand-dark)]', indexColor: 'text-[var(--brand-dark)]/60' },
+                  { id: 'contact', name: 'Contact', href: '#contact', index: '04', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-white', indexColor: 'text-white/80' }
+                ].map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    className={`
+                      ${item.bgColor} ${item.textColor}
+                      block w-full p-4 rounded-none
+                      text-xl font-bold transition-all duration-200
+                      hover:translate-x-2 active:scale-[0.98] relative
+                    `}
+                    onClick={() => {
+                      scrollToSection(item.href);
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <span className={`text-sm ${item.indexColor} absolute top-2 left-2`}>
+                      {item.index}
+                    </span>
+                    <span className="text-xl font-bold leading-tight mt-6 block">
+                      {item.name}
+                    </span>
+                  </a>
+                ))}
+              </nav>
             </div>
           </motion.div>
+        )}
+
 
           {/* Social Links in Sidebar */}
           <motion.div
