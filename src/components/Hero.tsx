@@ -12,7 +12,7 @@ const coreSkills = [
   "Node.js", "Python", "Figma", "Git"
 ];
 
-export default function Hero() {
+export function Hero() {
   const { personalInfo } = portfolioData;
   const { scrollYProgress } = useScroll();
   const { isDark, toggleDarkMode } = useDarkMode();
