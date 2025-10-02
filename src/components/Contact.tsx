@@ -13,7 +13,7 @@ export default function Contact() {
   return (
     <section id="contact" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
-      <div className="lg:ml-64 sm:px-4">
+      <div className="sm:ml-64 px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

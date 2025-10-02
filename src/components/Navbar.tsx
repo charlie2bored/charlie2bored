@@ -92,8 +92,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Fixed Navigation Sidebar - Hidden on mobile, visible on lg+ screens */}
-      <div className="hidden lg:flex fixed left-0 top-0 h-full w-64 z-50 justify-center">
+      {/* Fixed Navigation Sidebar - Hidden on mobile, visible on sm+ screens */}
+      <div className="hidden sm:flex fixed left-0 top-0 h-full w-64 z-50 justify-center">
         <nav className="flex flex-col h-full py-8">
           {navItems.map((item) => (
             <a
@@ -125,7 +125,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsMobileMenuOpen(false)}>
+        <div className="sm:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsMobileMenuOpen(false)}>
           <div className="fixed left-0 top-0 h-full w-56 bg-white shadow-2xl z-50 overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
@@ -169,8 +169,8 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Mobile Navigation Toggle - Only show on mobile/tablet */}
-      <div className="lg:hidden fixed top-4 left-4 z-50">
+      {/* Mobile Navigation Toggle - Only show on mobile */}
+      <div className="sm:hidden fixed top-4 left-4 z-50">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-[#111111] hover:bg-[#DFDFDF] transition-colors duration-200"
