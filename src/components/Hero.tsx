@@ -1,5 +1,19 @@
 'use client';
 
+/**
+ * Hero Component - Main landing section with animated introduction
+ *
+ * Features:
+ * - Animated loading screen with spinning loader
+ * - Stacked block navigation sidebar
+ * - Mobile-responsive hamburger menu
+ * - Smooth scroll navigation between sections
+ * - Social media links integration
+ * - Dark mode support
+ * - Reading progress indicator
+ *
+ * @returns JSX.Element
+ */
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowDown, Menu, X, Sun, Moon } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio-data';
@@ -14,10 +28,10 @@ export default function Hero() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Simulate loading time for opening animation
+    // Reduced loading time for better UX
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -33,6 +47,21 @@ export default function Hero() {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  // Calculate reading progress for better UX feedback
+  const [readingProgress, setReadingProgress] = useState(0);
+
+  useEffect(() => {
+    const updateReadingProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      setReadingProgress(Math.min(scrollPercent, 100));
+    };
+
+    window.addEventListener('scroll', updateReadingProgress);
+    return () => window.removeEventListener('scroll', updateReadingProgress);
+  }, []);
 
   if (isLoading) {
     return (
@@ -107,8 +136,10 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1 }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className={`fixed top-6 left-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-colors duration-200`}
+          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMobileMenuOpen}
         >
-          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          {isMobileMenuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
         </motion.button>
 
         {/* Stacked Block Navigation Sidebar */}
@@ -130,12 +161,14 @@ export default function Hero() {
                   flex flex-col justify-start items-start
                   p-6 transition-all duration-300
                   hover:translate-x-2 hover:shadow-xl hover:scale-[1.02]
-                  cursor-pointer relative
+                  cursor-pointer relative focus:outline-none focus:ring-2 focus:ring-yellow-400
                 `}
                 onClick={() => {
                   scrollToSection(item.href);
                   setIsMobileMenuOpen(false);
                 }}
+                aria-label={`Navigate to ${item.name} section`}
+                tabIndex={0}
               >
                 <span className={`text-sm font-medium ${item.indexColor} tracking-wide absolute top-4 left-4`}>
                   {item.index}
@@ -395,6 +428,25 @@ export default function Hero() {
               ↓
             </motion.span>
           </motion.button>
+        </motion.div>
+
+        {/* Scroll Progress Indicator */}
+        <motion.div
+          className="fixed bottom-4 left-4 z-40"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <div className={`w-32 h-1 ${isDark ? 'bg-gray-700' : 'bg-gray-200'} rounded-full overflow-hidden`}>
+            <motion.div
+              className="h-full bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"
+              style={{ width: `${readingProgress}%` }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            />
+          </div>
+          <p className={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+            {Math.round(readingProgress)}% complete
+          </p>
         </motion.div>
       </div>
     </section>
