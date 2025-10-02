@@ -6,7 +6,8 @@ import { useDarkMode } from '@/components/DarkModeProvider';
 
 export default function Skills() {
   const { skills } = portfolioData;
-  const { isDark } = useDarkMode();
+  const darkModeContext = useDarkMode();
+  const { isDark } = darkModeContext || { isDark: false };
 
   // Group skills by category
   const skillsByCategory = skills.reduce((acc, skill) => {

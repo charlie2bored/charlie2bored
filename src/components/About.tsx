@@ -6,7 +6,8 @@ import { useDarkMode } from '@/components/DarkModeProvider';
 
 export default function About() {
   const { personalInfo, experiences, education } = portfolioData;
-  const { isDark } = useDarkMode();
+  const darkModeContext = useDarkMode();
+  const { isDark } = darkModeContext || { isDark: false };
 
   return (
     <section id="about" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>

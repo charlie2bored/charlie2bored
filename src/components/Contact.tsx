@@ -7,7 +7,8 @@ import { useDarkMode } from '@/components/DarkModeProvider';
 
 export default function Contact() {
   const { personalInfo } = portfolioData;
-  const { isDark } = useDarkMode();
+  const darkModeContext = useDarkMode();
+  const { isDark } = darkModeContext || { isDark: false };
 
   return (
     <section id="contact" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>

@@ -7,7 +7,8 @@ import { useDarkMode } from '@/components/DarkModeProvider';
 
 export default function Projects() {
   const { projects } = portfolioData;
-  const { isDark } = useDarkMode();
+  const darkModeContext = useDarkMode();
+  const { isDark } = darkModeContext || { isDark: false };
 
   const containerVariants: Variants = {
     hidden: {},
