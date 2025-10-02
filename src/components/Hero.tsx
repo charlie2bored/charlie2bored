@@ -126,10 +126,10 @@ export default function Hero() {
                 href={item.href}
                 className={`
                   ${item.bgColor} ${item.textColor}
-                  w-full h-32 rounded-none
+                  w-full h-32 rounded-xl
                   flex flex-col justify-start items-start
                   p-6 transition-all duration-300
-                  hover:translate-x-2 hover:shadow-lg
+                  hover:translate-x-2 hover:shadow-xl hover:scale-[1.02]
                   cursor-pointer relative
                 `}
                 onClick={() => {
@@ -176,7 +176,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            className={`fixed left-0 top-0 h-full w-64 ${isDark ? 'bg-gray-900/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} z-50 md:hidden`}
+            className={`fixed left-0 top-0 h-full w-64 ${isDark ? 'bg-gray-900/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} z-50 md:hidden rounded-r-3xl`}
           >
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
@@ -202,9 +202,9 @@ export default function Hero() {
                     href={item.href}
                     className={`
                       ${item.bgColor} ${item.textColor}
-                      block w-full p-4 rounded-none
+                      block w-full p-4 rounded-xl
                       text-xl font-bold transition-all duration-200
-                      hover:translate-x-2 active:scale-[0.98] relative
+                      hover:translate-x-2 hover:scale-[1.02] active:scale-[0.98] relative
                     `}
                     onClick={() => {
                       scrollToSection(item.href);
@@ -316,7 +316,7 @@ export default function Hero() {
               >
                   <motion.button
                     onClick={() => scrollToSection('#projects')}
-                    className={`relative px-6 sm:px-8 py-3 sm:py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
+                    className={`relative px-6 sm:px-8 py-3 sm:py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-xl ${
                       isDark
                         ? 'bg-white text-black border-white hover:border-yellow-400 hover:bg-gray-100'
                         : 'bg-black text-white border-black hover:border-yellow-400 hover:bg-gray-900'
@@ -341,7 +341,7 @@ export default function Hero() {
                   <motion.a
                     href="/resume.pdf"
                     download
-                    className={`relative px-6 sm:px-8 py-3 sm:py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
+                    className={`relative px-6 sm:px-8 py-3 sm:py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-xl ${
                       isDark
                         ? 'bg-gray-800 text-white border-gray-600 hover:border-yellow-400 hover:bg-gray-700'
                         : 'bg-white text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50'
