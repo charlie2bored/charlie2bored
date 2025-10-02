@@ -56,51 +56,26 @@ export const portfolioData = {
     {
       id: 1,
       title: "Modern E-Commerce Platform",
-      description: "A sleek full-stack e-commerce solution with seamless user experience and robust functionality.",
-      outcome: "Boosted conversion rate by 27% through optimized UX and streamlined checkout flow",
-      technologies: ["Next.js", "TypeScript", "Stripe", "MongoDB"],
-      category: "Web Development",
-      githubUrl: "https://github.com/charlie2bored/ecommerce-platform",
-      liveUrl: "https://ecommerce-charlie.vercel.app"
+      description: "Rebuilding a full-stack retail solution to handle peak traffic, focusing on speed and intuitive UX across all devices.",
+      outcome: "27% Increase in mobile conversion rate",
+      imageUrl: "https://placehold.co/600x400/1C504A/ffffff?text=E-COMMERCE+PLATFORM",
+      category: "Web Development"
     },
     {
       id: 2,
       title: "Data Visualization Suite",
-      description: "Interactive dashboard for complex data visualization with real-time analytics.",
-      outcome: "Reduced data analysis time by 60% for 200+ users through intuitive filtering",
-      technologies: ["React", "D3.js", "Python", "FastAPI"],
-      category: "Data Science",
-      githubUrl: "https://github.com/charlie2bored/data-dashboard",
-      liveUrl: "https://data-viz-charlie.vercel.app"
+      description: "Interactive internal dashboard for complex data reporting, reducing analysis time for 200+ users via intuitive filtering.",
+      outcome: "60% Reduction in monthly data analysis time",
+      imageUrl: "https://placehold.co/600x400/3A3D51/ffffff?text=DATA+DASHBOARD",
+      category: "Data Science"
     },
     {
       id: 3,
       title: "Portfolio Design System",
-      description: "Comprehensive design system for modern portfolio websites with reusable components.",
-      outcome: "Standardized design language across 15+ projects, reducing design time by 40%",
-      technologies: ["Figma", "CSS", "JavaScript"],
-      category: "Design",
-      githubUrl: "https://github.com/charlie2bored/portfolio-design"
-    },
-    {
-      id: 4,
-      title: "AI-Powered Content Generator",
-      description: "Machine learning platform that generates high-quality content and marketing copy automatically.",
-      outcome: "Increased content production by 300% while maintaining 95% accuracy rate",
-      technologies: ["Python", "TensorFlow", "React", "Node.js"],
-      category: "AI/ML",
-      githubUrl: "https://github.com/charlie2bored/ai-content-generator",
-      liveUrl: "https://ai-content-charlie.vercel.app"
-    },
-    {
-      id: 5,
-      title: "Sustainable Fashion Marketplace",
-      description: "E-commerce platform connecting sustainable fashion brands with conscious consumers globally.",
-      outcome: "Connected 50+ sustainable brands with 10,000+ conscious consumers in first year",
-      technologies: ["Next.js", "PostgreSQL", "Stripe", "Vercel"],
-      category: "E-Commerce",
-      githubUrl: "https://github.com/charlie2bored/sustainable-fashion",
-      liveUrl: "https://sustainable-fashion.vercel.app"
+      description: "Comprehensive design language applied across all personal and client projects, ensuring component reusability and brand cohesion.",
+      outcome: "40% Reduction in project design and frontend setup time",
+      imageUrl: "https://placehold.co/600x400/9C543A/ffffff?text=DESIGN+SYSTEM+MOCKUP",
+      category: "Design"
     }
   ],
 
