@@ -14,7 +14,7 @@ export default function Projects() {
   return (
     <section id="projects" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
-      <div className="ml-80 md:ml-80 sm:ml-0 sm:px-4">
+      <div className="lg:ml-80 sm:px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <motion.div

@@ -223,7 +223,7 @@ export default function Hero() {
         {/* Main Content Area */}
         <motion.div
           style={{ y, opacity }}
-          className="flex-1 flex items-center justify-center ml-80 md:ml-80 sm:ml-0 sm:px-4"
+          className="flex-1 flex items-center justify-center lg:ml-80 sm:px-4"
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
             <motion.div

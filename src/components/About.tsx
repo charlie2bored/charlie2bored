@@ -11,7 +11,7 @@ export default function About() {
 
   return (
     <section id="about" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      <div className="ml-80 md:ml-80 sm:ml-0 sm:px-4">
+      <div className="lg:ml-80 sm:px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
