@@ -14,7 +14,6 @@ const coreSkills = [
 
 export default function Hero() {
   const { personalInfo } = portfolioData;
-  const { scrollYProgress } = useScroll();
   const { isDark, toggleDarkMode } = useDarkMode();
   const [isLoading, setIsLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,7 +34,8 @@ export default function Hero() {
     }
   };
 
-  // Transform values for animations
+  // Only use scroll hooks after component mounts to avoid SSR issues
+  const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
