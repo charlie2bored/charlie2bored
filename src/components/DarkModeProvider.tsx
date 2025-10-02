@@ -42,7 +42,7 @@ export function DarkModeProvider({ children }: { children: React.ReactNode }) {
     setIsDark(!isDark);
   };
 
-  // Prevent hydration mismatch
+  // Prevent hydration mismatch - return children during SSR
   if (!mounted) {
     return <>{children}</>;
   }

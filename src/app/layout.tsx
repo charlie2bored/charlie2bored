@@ -1,9 +1,7 @@
-'use client';
-
 import type { Metadata } from "next";
 import { Junge, Montserrat } from "next/font/google";
 import "./globals.css";
-import { DarkModeProvider } from "@/components/DarkModeProvider";
+import { ClientWrapper } from "@/components/ClientWrapper";
 
 const junge = Junge({
   variable: "--font-junge",
@@ -62,9 +60,9 @@ export default function RootLayout({
       <body
         className={`${junge.variable} ${montserrat.variable} antialiased`}
       >
-        <DarkModeProvider>
+        <ClientWrapper>
           {children}
-        </DarkModeProvider>
+        </ClientWrapper>
       </body>
     </html>
   );
