@@ -1,91 +1,155 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' }
+    {
+      id: 'home',
+      name: 'Home',
+      href: '#home',
+      index: '00',
+      bgColor: 'bg-[#DFDFDF]',
+      textColor: 'text-[#111111]',
+      indexColor: 'text-[#111111]/70'
+    },
+    {
+      id: 'about',
+      name: 'About',
+      href: '#about',
+      index: '01',
+      bgColor: 'bg-[#BE8400]',
+      textColor: 'text-white',
+      indexColor: 'text-white/70'
+    },
+    {
+      id: 'skills',
+      name: 'Skills',
+      href: '#skills',
+      index: '02',
+      bgColor: 'bg-[#111111]',
+      textColor: 'text-white',
+      indexColor: 'text-white/70'
+    },
+    {
+      id: 'projects',
+      name: 'Projects',
+      href: '#projects',
+      index: '03',
+      bgColor: 'bg-[#DFDFDF]',
+      textColor: 'text-[#111111]',
+      indexColor: 'text-[#111111]/70'
+    },
+    {
+      id: 'contact',
+      name: 'Contact',
+      href: '#contact',
+      index: '04',
+      bgColor: 'bg-[#BE8400]',
+      textColor: 'text-white',
+      indexColor: 'text-white/70'
+    }
   ];
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/90 backdrop-blur-sm shadow-sm border-b border-gray-100'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <span className="text-xl font-medium text-gray-800 tracking-tight">
-              CB
-            </span>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-600 hover:text-gray-800 px-3 py-2 text-sm font-normal transition-colors duration-200 relative group"
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-800 transition-all duration-300 group-hover:w-full" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-800 hover:bg-gray-50 focus:outline-none transition-colors duration-200"
+    <>
+      {/* Fixed Navigation Sidebar */}
+      <div className="fixed left-0 top-0 h-full w-80 z-50 flex items-center justify-center">
+        <nav className="flex flex-col space-y-4 p-8">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={item.href}
+              className={`
+                ${item.bgColor} ${item.textColor}
+                w-48 h-48 rounded-3xl
+                flex flex-col justify-end items-start
+                p-6 transition-all duration-300
+                hover:scale-105 hover:shadow-2xl
+                group cursor-pointer relative
+                overflow-hidden
+              `}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              {/* Background pattern/decoration */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-current opacity-20"></div>
+                <div className="absolute bottom-4 left-4 w-4 h-4 rounded-full bg-current opacity-20"></div>
+              </div>
+
+              {/* Index number */}
+              <span className={`text-sm font-medium mb-2 ${item.indexColor} tracking-wide`}>
+                {item.index}
+              </span>
+
+              {/* Link text */}
+              <span className="text-2xl font-bold leading-tight group-hover:translate-x-1 transition-transform duration-300">
+                {item.name}
+              </span>
+
+              {/* Hover indicator */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-current opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="fixed left-0 top-0 h-full w-64 bg-white shadow-2xl z-50 overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-xl font-bold text-[#111111]">Navigation</span>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-8 h-8 flex items-center justify-center text-[#111111] hover:bg-[#DFDFDF] rounded-full transition-colors duration-200"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <nav className="space-y-3">
+                {navItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    className={`
+                      ${item.bgColor} ${item.textColor}
+                      block w-full p-4 rounded-xl
+                      text-lg font-semibold transition-all duration-200
+                      hover:scale-[1.02] active:scale-[0.98]
+                    `}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <span className={`text-sm ${item.indexColor} block mb-1`}>
+                      {item.index}
+                    </span>
+                    {item.name}
+                  </a>
+                ))}
+              </nav>
+            </div>
           </div>
         </div>
+      )}
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-100">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-600 hover:text-gray-800 block px-3 py-2 text-base font-normal transition-colors duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
+      {/* Mobile Navigation Toggle */}
+      <div className="md:hidden fixed top-4 left-4 z-50">
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-[#111111] hover:bg-[#DFDFDF] transition-colors duration-200"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
-    </nav>
+    </>
   );
 }
