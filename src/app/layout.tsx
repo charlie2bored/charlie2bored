@@ -1,6 +1,9 @@
+'use client';
+
 import type { Metadata } from "next";
 import { Junge, Montserrat } from "next/font/google";
 import "./globals.css";
+import { DarkModeProvider } from "@/components/DarkModeProvider";
 
 const junge = Junge({
   variable: "--font-junge",
@@ -25,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -59,7 +62,9 @@ export default function RootLayout({
       <body
         className={`${junge.variable} ${montserrat.variable} antialiased`}
       >
-        {children}
+        <DarkModeProvider>
+          {children}
+        </DarkModeProvider>
       </body>
     </html>
   );

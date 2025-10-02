@@ -1,8 +1,9 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowDown, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown, Menu, X, Sun, Moon } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio-data';
+import { useDarkMode } from '@/components/DarkModeProvider';
 import { useEffect, useState } from 'react';
 
 // Core skills to display in sidebar
@@ -14,6 +15,7 @@ const coreSkills = [
 export default function Hero() {
   const { personalInfo } = portfolioData;
   const { scrollYProgress } = useScroll();
+  const { isDark, toggleDarkMode } = useDarkMode();
   const [isLoading, setIsLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -39,7 +41,7 @@ export default function Hero() {
 
   if (isLoading) {
     return (
-      <section className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden">
+      <section className={`min-h-screen ${isDark ? 'bg-black' : 'bg-white'} flex items-center justify-center relative overflow-hidden`}>
         <div className="text-center">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -50,7 +52,7 @@ export default function Hero() {
             {/* Loading animation similar to raggededge.com */}
             <motion.div className="relative">
               <motion.div
-                className="w-32 h-32 border-4 border-white/20 rounded-full"
+                className={`w-32 h-32 border-4 ${isDark ? 'border-white/20' : 'border-black/20'} rounded-full`}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               >
@@ -67,7 +69,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <p className="text-white text-lg montserrat tracking-wider">Loading Experience</p>
+              <p className={`${isDark ? 'text-white' : 'text-black'} text-lg montserrat tracking-wider`}>Loading Experience</p>
             </motion.div>
           </motion.div>
         </div>
@@ -76,15 +78,26 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="min-h-screen bg-white relative overflow-hidden">
+    <section id="home" className={`min-h-screen ${isDark ? 'bg-black' : 'bg-white'} relative overflow-hidden transition-colors duration-300`}>
       <div className="flex h-screen">
+        {/* Dark Mode Toggle */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          onClick={toggleDarkMode}
+          className={`fixed top-6 right-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-yellow-400' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200`}
+        >
+          {isDark ? <Sun size={20} /> : <Moon size={20} />}
+        </motion.button>
+
         {/* Mobile Menu Toggle */}
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="fixed top-6 left-6 z-[60] p-2 bg-white border border-gray-200 rounded-lg md:hidden hover:bg-gray-50 transition-colors duration-200"
+          className={`fixed top-6 left-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-colors duration-200`}
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </motion.button>
@@ -95,7 +108,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/30 z-40 md:hidden"
+            className={`fixed inset-0 ${isDark ? 'bg-black/50' : 'bg-black/30'} z-40 md:hidden`}
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
@@ -105,7 +118,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className={`fixed left-0 top-0 h-screen w-80 bg-white border-r border-gray-100 z-50 flex flex-col justify-center pl-12 transition-transform duration-300 ${
+          className={`fixed left-0 top-0 h-screen w-80 ${isDark ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-100'} z-50 flex flex-col justify-center pl-12 transition-all duration-300 ${
             isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
           } md:translate-x-0`}
         >
@@ -126,8 +139,10 @@ export default function Hero() {
                   scrollToSection(item.href);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`w-full text-left py-3 px-4 font-mono text-sm transition-all duration-300 ease-out hover:bg-gray-50 group ${
-                  index % 2 === 0 ? 'text-black group-hover:text-yellow-600' : 'text-gray-600 group-hover:text-yellow-600'
+                className={`w-full text-left py-3 px-4 font-mono text-sm transition-all duration-300 ease-out hover:${isDark ? 'bg-gray-800' : 'bg-gray-50'} group ${
+                  index % 2 === 0
+                    ? `${isDark ? 'text-white' : 'text-black'} group-hover:text-yellow-400`
+                    : `${isDark ? 'text-gray-300' : 'text-gray-600'} group-hover:text-yellow-400`
                 }`}
               >
                 {item.name}
@@ -150,7 +165,7 @@ export default function Hero() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="bg-gray-100 border border-gray-200 text-gray-700 px-2 py-1 rounded text-xs text-center montserrat"
+                  className={`${isDark ? 'bg-gray-800 border-gray-600 text-gray-300' : 'bg-gray-100 border-gray-200 text-gray-700'} px-2 py-1 rounded text-xs text-center montserrat`}
                 >
                   {skill}
                 </motion.div>
@@ -169,23 +184,23 @@ export default function Hero() {
               href={personalInfo.socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 border border-gray-200 hover:border-yellow-400 transition-all duration-300"
+              className={`p-2 border ${isDark ? 'border-gray-600 hover:border-yellow-400' : 'border-gray-200 hover:border-yellow-400'} ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-50'} transition-all duration-300`}
             >
-              <Github size={18} className="text-gray-600 hover:text-yellow-600" />
+              <Github size={18} className={`${isDark ? 'text-gray-400 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`} />
             </a>
             <a
               href={personalInfo.socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 border border-gray-200 hover:border-yellow-400 transition-all duration-300"
+              className={`p-2 border ${isDark ? 'border-gray-600 hover:border-yellow-400' : 'border-gray-200 hover:border-yellow-400'} ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-50'} transition-all duration-300`}
             >
-              <Linkedin size={18} className="text-gray-600 hover:text-yellow-600" />
+              <Linkedin size={18} className={`${isDark ? 'text-gray-400 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`} />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="p-2 border border-gray-200 hover:border-yellow-400 transition-all duration-300"
+              className={`p-2 border ${isDark ? 'border-gray-600 hover:border-yellow-400' : 'border-gray-200 hover:border-yellow-400'} ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-50'} transition-all duration-300`}
             >
-              <Mail size={18} className="text-gray-600 hover:text-yellow-600" />
+              <Mail size={18} className={`${isDark ? 'text-gray-400 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`} />
             </a>
           </motion.div>
         </motion.div>
@@ -204,7 +219,7 @@ export default function Hero() {
             >
               {/* Large Name Display */}
               <motion.div className="relative">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black tracking-tight leading-none mb-4 junge">
+                <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold ${isDark ? 'text-white' : 'text-black'} tracking-tight leading-none mb-4 junge`}>
                   {personalInfo.name.split(' ')[0]}
                 </h1>
                 <motion.div
@@ -222,10 +237,10 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="space-y-6"
               >
-                <h2 className="text-xl md:text-2xl font-light text-gray-800 tracking-wide junge">
+                <h2 className={`text-xl md:text-2xl font-light ${isDark ? 'text-gray-200' : 'text-gray-800'} tracking-wide junge`}>
                   {personalInfo.title}
                 </h2>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto montserrat">
+                <p className={`text-base md:text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'} leading-relaxed max-w-2xl mx-auto montserrat`}>
                   {personalInfo.bio}
                 </p>
               </motion.div>
@@ -239,7 +254,11 @@ export default function Hero() {
               >
                 <motion.button
                   onClick={() => scrollToSection('#projects')}
-                  className="bg-black text-white px-8 py-4 font-medium border-2 border-black hover:border-yellow-400 transition-all duration-300 flex items-center space-x-2"
+                  className={`px-8 py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 ${
+                    isDark
+                      ? 'bg-white text-black border-white hover:border-yellow-400 hover:bg-gray-100'
+                      : 'bg-black text-white border-black hover:border-yellow-400 hover:bg-gray-900'
+                  }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -255,7 +274,11 @@ export default function Hero() {
                 <motion.a
                   href="/resume.pdf"
                   download
-                  className="bg-white text-black px-8 py-4 font-medium border-2 border-gray-300 hover:border-yellow-400 hover:bg-gray-50 transition-all duration-300 flex items-center space-x-2"
+                  className={`px-8 py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 ${
+                    isDark
+                      ? 'bg-gray-800 text-white border-gray-600 hover:border-yellow-400 hover:bg-gray-700'
+                      : 'bg-white text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50'
+                  }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, x: 20 }}
@@ -276,9 +299,9 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
         >
-          <div className="flex items-center space-x-4 text-sm text-gray-500 montserrat">
+          <div className={`flex items-center space-x-4 text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
             <span>Scroll to explore</span>
-            <div className="w-16 h-px bg-gray-300"></div>
+            <div className={`w-16 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
             <span className="font-mono">↓</span>
           </div>
         </motion.div>

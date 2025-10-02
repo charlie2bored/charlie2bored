@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio-data';
+import { useDarkMode } from '@/components/DarkModeProvider';
 
 export default function Skills() {
   const { skills } = portfolioData;
+  const { isDark } = useDarkMode();
 
   // Group skills by category
   const skillsByCategory = skills.reduce((acc, skill) => {
@@ -24,7 +26,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-20 bg-white">
+    <section id="skills" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -34,10 +36,10 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 junge">
+          <h2 className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-white' : 'text-black'}`}>
             Skills & Technologies
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto montserrat">
+          <p className={`text-lg max-w-2xl mx-auto montserrat ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
             Technologies and tools I use to bring ideas to life
           </p>
         </motion.div>
@@ -51,9 +53,9 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="bg-white rounded-xl p-6 shadow-sm border border-gray-100"
+              className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'} rounded-xl p-6 shadow-sm`}
             >
-              <h3 className="text-xl font-semibold text-black mb-6 junge">
+              <h3 className={`text-xl font-semibold mb-6 junge ${isDark ? 'text-white' : 'text-black'}`}>
                 {categoryLabels[category as keyof typeof categoryLabels]}
               </h3>
 
@@ -61,15 +63,15 @@ export default function Skills() {
                 {categorySkills.map((skill) => (
                   <div key={skill.name}>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700 montserrat">
+                      <span className={`text-sm font-medium montserrat ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                         {skill.name}
                       </span>
-                      <span className="text-sm text-gray-500 montserrat">
+                      <span className={`text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                         {skill.level}%
                       </span>
                     </div>
 
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className={`w-full ${isDark ? 'bg-gray-700' : 'bg-gray-200'} rounded-full h-2`}>
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
@@ -93,7 +95,7 @@ export default function Skills() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <p className="text-gray-600 montserrat">
+          <p className={`montserrat ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
             Continuously learning and expanding my skill set to stay current with industry trends
           </p>
         </motion.div>
