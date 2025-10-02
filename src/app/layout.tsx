@@ -20,12 +20,12 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Charlie Bored - Creative Developer & Designer | Portfolio",
-  description: "Portfolio of Charlie Bored, a passionate creative developer and designer specializing in React, Next.js, TypeScript, and modern web technologies. View my projects and get in touch.",
-  keywords: ["Charlie Bored", "Creative Developer", "Web Designer", "React Developer", "Next.js", "TypeScript", "Portfolio", "Web Development", "UI/UX Design"],
-  authors: [{ name: "Charlie Bored" }],
-  creator: "Charlie Bored",
-  publisher: "Charlie Bored",
+  title: "Charlie \"2bored\" Vargas - Multidisciplinary Designer | Portfolio",
+  description: "Portfolio of Charlie \"2bored\" Vargas, a multidisciplinary designer specializing in UI/UX design, business operations, and data analytics. Currently studying Social Entrepreneurship at Northeastern University.",
+  keywords: ["Charlie Vargas", "2bored", "Multidisciplinary Designer", "UI/UX Designer", "Business Operations", "Data Analytics", "Social Entrepreneurship", "Portfolio", "New York Designer"],
+  authors: [{ name: "Charlie \"2bored\" Vargas" }],
+  creator: "Charlie \"2bored\" Vargas",
+  publisher: "Charlie \"2bored\" Vargas",
   formatDetection: {
     email: false,
     address: false,
@@ -93,24 +93,24 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": "Charlie Bored",
+              "name": "Charlie \"2bored\" Vargas",
               "url": "https://charlie2bored.vercel.app",
               "sameAs": [
                 "https://github.com/charlie2bored",
                 "https://linkedin.com/in/charlie2bored",
                 "https://twitter.com/charlie2bored"
               ],
-              "jobTitle": "Creative Developer & Designer",
-              "description": "I create digital experiences that blend beautiful design with technical excellence. Passionate about clean code, intuitive interfaces, and solving complex problems with elegant solutions.",
+              "jobTitle": "Multidisciplinary Designer",
+              "description": "Multidisciplinary designer specializing in UI/UX design, business operations, and data analytics. Currently pursuing a degree in Social Entrepreneurship at Northeastern University in New York.",
               "knowsAbout": [
-                "Web Development",
-                "React",
-                "Next.js",
-                "TypeScript",
-                "Tailwind CSS",
-                "Node.js",
-                "Python",
-                "UI/UX Design"
+                "UI/UX Design",
+                "Business Operations",
+                "Data Analytics",
+                "Social Entrepreneurship",
+                "Design Systems",
+                "User Experience",
+                "Visual Design",
+                "Product Design"
               ]
             })
           }}

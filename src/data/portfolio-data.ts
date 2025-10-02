@@ -26,11 +26,11 @@ export interface Experience {
 
 export const portfolioData = {
   personalInfo: {
-    name: "Charlie Bored",
-    title: "Creative Developer & Designer",
-    email: "charlie@example.com",
+    name: "Charlie \"2bored\" Vargas",
+    title: "Multidisciplinary Designer",
+    email: "iamcharlesvargas@gmail.com",
     phone: "+1 (555) 123-4567",
-    location: "San Francisco, CA",
+    location: "New York, NY",
     bio: "I create digital experiences that blend beautiful design with technical excellence. Passionate about clean code, intuitive interfaces, and solving complex problems with elegant solutions.",
     socialLinks: {
       github: "https://github.com/charlie2bored",
@@ -89,35 +89,35 @@ export const portfolioData = {
 
   experiences: [
     {
-      company: "Tech Innovations Inc.",
-      position: "Senior Frontend Developer",
-      period: "2022 - Present",
+      company: "Rossitech",
+      position: "UI / UX Designer",
+      period: "2025",
       description: [
-        "Lead development of responsive web applications using modern frameworks",
-        "Implement design systems and maintain code quality standards",
-        "Mentor junior developers and conduct code reviews"
+        "Designed user interfaces for web applications, focusing on intuitive and engaging UX",
+        "Developed wireframes, prototypes, and design systems for functionality and aesthetic appeal",
+        "Collaborated with separate divisions to ensure design productivity and successful design solutions"
       ],
-      technologies: ["React", "Next.js", "TypeScript", "Tailwind"]
+      technologies: ["Figma", "Adobe Creative Suite", "Prototyping Tools", "UI/UX Design"]
     },
     {
-      company: "Creative Studio",
-      position: "UI/UX Designer & Developer",
-      period: "2020 - 2022",
+      company: "Apple Montessori Schools",
+      position: "Business Operations + Data Analytics Intern",
+      period: "2023 - Present",
       description: [
-        "Designed and implemented user interfaces for various clients",
-        "Collaborated with cross-functional teams on product development",
-        "Created interactive prototypes and design systems"
+        "Assisted in operational processes, including enrollment management, data analytics and visualization",
+        "Supported daily administrative tasks, such as contributing to efficient school management and future progression",
+        "Analyzed operational data to identify areas for improvement, school expansion and presenting them to the CEO"
       ],
-      technologies: ["Figma", "React", "CSS", "JavaScript"]
+      technologies: ["Data Analysis", "Business Operations", "Microsoft Office Suite", "Data Visualization"]
     }
   ],
 
   education: [
     {
-      institution: "Stanford University",
-      degree: "Bachelor of Science in Computer Science",
-      period: "2016 - 2020",
-      description: "Focus on human-computer interaction and web technologies"
+      institution: "Northeastern University",
+      degree: "Bachelor of Social Entrepreneurship",
+      period: "2024 - Present",
+      description: "Core Courses: Marketing, Accounting, Visual Merchandizing, Legal Environment of Business"
     }
   ]
 };

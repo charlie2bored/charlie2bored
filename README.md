@@ -1,6 +1,6 @@
-# Charlie Bored - Creative Developer Portfolio
+# Charlie "2bored" Vargas - Multidisciplinary Designer Portfolio
 
-A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features a unique stacked block navigation design inspired by therawmaterials.com.
+A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features a unique stacked block navigation design inspired by therawmaterials.com, showcasing expertise in UI/UX design, business operations, and data analytics.
 
 ## ✨ Features
 
@@ -172,4 +172,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Built with ❤️ by Charlie Bored**
+**Built with ❤️ by Charlie "2bored" Vargas**
