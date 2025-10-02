@@ -69,3 +69,38 @@ body {
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #6a6a6a;
 }
+
+/* Focus styles for better accessibility */
+*:focus {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+.dark *:focus {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+}
+
+/* Button focus styles */
+button:focus,
+a:focus {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+.dark button:focus,
+.dark a:focus {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

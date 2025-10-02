@@ -99,7 +99,8 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
           onClick={toggleDarkMode}
-          className={`fixed top-6 right-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-yellow-400' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200`}
+          className={`fixed top-6 right-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-yellow-400' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400`}
+          aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         >
           {isDark ? <Sun size={20} /> : <Moon size={20} />}
         </motion.button>
@@ -152,13 +153,14 @@ export default function Hero() {
                   scrollToSection(item.href);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`relative w-full text-left py-3 px-4 font-mono text-sm transition-all duration-300 ease-out group overflow-hidden ${
+                className={`relative w-full text-left py-3 px-4 font-mono text-sm transition-all duration-300 ease-out group overflow-hidden focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded ${
                   index % 2 === 0
                     ? `${isDark ? 'text-white hover:text-yellow-400' : 'text-black hover:text-yellow-600'}`
                     : `${isDark ? 'text-gray-300 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                aria-label={`Navigate to ${item.name} section`}
               >
                 <span className="relative z-10">{item.name}</span>
                 <motion.div
@@ -227,14 +229,14 @@ export default function Hero() {
         {/* Main Content Area */}
         <motion.div
           style={{ y, opacity }}
-          className="flex-1 flex items-center justify-center ml-80"
+          className="flex-1 flex items-center justify-center ml-80 md:ml-80 sm:ml-0 sm:px-4"
         >
-          <div className="max-w-4xl mx-auto px-8 text-center">
+          <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="space-y-8"
+              className="space-y-6 sm:space-y-8"
             >
               {/* Large Name Display */}
               <motion.div className="relative">
@@ -284,13 +286,14 @@ export default function Hero() {
               >
                   <motion.button
                     onClick={() => scrollToSection('#projects')}
-                    className={`relative px-8 py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group ${
+                    className={`relative px-6 sm:px-8 py-3 sm:py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
                       isDark
                         ? 'bg-white text-black border-white hover:border-yellow-400 hover:bg-gray-100'
                         : 'bg-black text-white border-black hover:border-yellow-400 hover:bg-gray-900'
                     }`}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
+                    aria-label="View my work and projects"
                   >
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -308,7 +311,7 @@ export default function Hero() {
                   <motion.a
                     href="/resume.pdf"
                     download
-                    className={`relative px-8 py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group ${
+                    className={`relative px-6 sm:px-8 py-3 sm:py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
                       isDark
                         ? 'bg-gray-800 text-white border-gray-600 hover:border-yellow-400 hover:bg-gray-700'
                         : 'bg-white text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50'
@@ -318,6 +321,7 @@ export default function Hero() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
+                    aria-label="Download my resume (PDF)"
                   >
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -331,14 +335,16 @@ export default function Hero() {
 
         {/* Enhanced Scroll Progress Indicator */}
         <motion.div
-          className="fixed bottom-8 right-8 z-40"
+          className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 z-40"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.5 }}
         >
-          <motion.div
-            className={`flex items-center space-x-4 text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'}`}
+          <motion.button
+            className={`flex items-center space-x-4 text-xs sm:text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'} focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded p-2`}
             whileHover={{ scale: 1.05 }}
+            onClick={() => scrollToSection('#about')}
+            aria-label="Scroll to About section"
           >
             <motion.span
               animate={{ opacity: [0.5, 1, 0.5] }}
@@ -347,7 +353,7 @@ export default function Hero() {
               Scroll to explore
             </motion.span>
             <motion.div
-              className={`w-16 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}
+              className={`w-12 sm:w-16 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}
               animate={{ scaleX: [0, 1, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -358,7 +364,7 @@ export default function Hero() {
             >
               ↓
             </motion.span>
-          </motion.div>
+          </motion.button>
         </motion.div>
       </div>
     </section>
