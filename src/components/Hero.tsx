@@ -49,7 +49,7 @@ export default function Hero() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="space-y-8"
           >
-            {/* Loading animation similar to raggededge.com */}
+            {/* Enhanced loading animation */}
             <motion.div className="relative">
               <motion.div
                 className={`w-32 h-32 border-4 ${isDark ? 'border-white/20' : 'border-black/20'} rounded-full`}
@@ -57,11 +57,24 @@ export default function Hero() {
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               >
                 <motion.div
-                  className="absolute top-0 left-1/2 w-1 h-8 bg-yellow-400 transform -translate-x-1/2"
-                  animate={{ scaleY: [1, 0.5, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
+                  className="absolute top-0 left-1/2 w-1 h-8 bg-yellow-400 transform -translate-x-1/2 origin-bottom"
+                  animate={{
+                    scaleY: [1, 0.3, 1],
+                    opacity: [1, 0.5, 1]
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                 />
               </motion.div>
+              {/* Additional rotating elements */}
+              <motion.div
+                className={`absolute inset-0 w-32 h-32 border-2 ${isDark ? 'border-yellow-400/30' : 'border-yellow-400/30'} rounded-full`}
+                animate={{ rotate: -360 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              />
             </motion.div>
 
             <motion.div
@@ -113,12 +126,12 @@ export default function Hero() {
           />
         )}
 
-        {/* Sticky Left Navigation Sidebar - Responsive */}
+        {/* Sticky Left Navigation Sidebar - Enhanced Responsive */}
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className={`fixed left-0 top-0 h-screen w-80 ${isDark ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-100'} z-50 flex flex-col justify-center pl-12 transition-all duration-300 ${
+          className={`fixed left-0 top-0 h-screen w-80 ${isDark ? 'bg-gray-900/95 backdrop-blur-sm border-gray-700' : 'bg-white/95 backdrop-blur-sm border-gray-100'} z-50 flex flex-col justify-center pl-12 transition-all duration-500 ease-out ${
             isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
           } md:translate-x-0`}
         >
@@ -139,13 +152,19 @@ export default function Hero() {
                   scrollToSection(item.href);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`w-full text-left py-3 px-4 font-mono text-sm transition-all duration-300 ease-out hover:${isDark ? 'bg-gray-800' : 'bg-gray-50'} group ${
+                className={`relative w-full text-left py-3 px-4 font-mono text-sm transition-all duration-300 ease-out group overflow-hidden ${
                   index % 2 === 0
-                    ? `${isDark ? 'text-white' : 'text-black'} group-hover:text-yellow-400`
-                    : `${isDark ? 'text-gray-300' : 'text-gray-600'} group-hover:text-yellow-400`
+                    ? `${isDark ? 'text-white hover:text-yellow-400' : 'text-black hover:text-yellow-600'}`
+                    : `${isDark ? 'text-gray-300 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`
                 }`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                {item.name}
+                <span className="relative z-10">{item.name}</span>
+                <motion.div
+                  className={`absolute inset-0 ${isDark ? 'bg-gray-800/50' : 'bg-gray-100/50'} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left`}
+                  initial={{ scaleX: 0 }}
+                />
               </motion.button>
             ))}
           </nav>
@@ -219,14 +238,25 @@ export default function Hero() {
             >
               {/* Large Name Display */}
               <motion.div className="relative">
-                <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold ${isDark ? 'text-white' : 'text-black'} tracking-tight leading-none mb-4 junge`}>
+                <motion.h1
+                  className={`text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none mb-4 junge cursor-pointer select-none ${
+                    isDark ? 'text-white' : 'text-black'
+                  }`}
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
+                  style={{
+                    textShadow: isDark ? '0 0 20px rgba(255, 255, 255, 0.1)' : '0 0 20px rgba(0, 0, 0, 0.1)'
+                  }}
+                >
                   {personalInfo.name.split(' ')[0]}
-                </h1>
+                </motion.h1>
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  className="h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto w-32"
+                  transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                  className="h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto w-32 rounded-full"
                 />
               </motion.div>
 
@@ -252,58 +282,83 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               >
-                <motion.button
-                  onClick={() => scrollToSection('#projects')}
-                  className={`px-8 py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 ${
-                    isDark
-                      ? 'bg-white text-black border-white hover:border-yellow-400 hover:bg-gray-100'
-                      : 'bg-black text-white border-black hover:border-yellow-400 hover:bg-gray-900'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span>View My Work</span>
-                  <motion.div
-                    animate={{ y: [0, 4, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                  <motion.button
+                    onClick={() => scrollToSection('#projects')}
+                    className={`relative px-8 py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group ${
+                      isDark
+                        ? 'bg-white text-black border-white hover:border-yellow-400 hover:bg-gray-100'
+                        : 'bg-black text-white border-black hover:border-yellow-400 hover:bg-gray-900'
+                    }`}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <ArrowDown size={18} />
-                  </motion.div>
-                </motion.button>
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                    <span className="relative z-10">View My Work</span>
+                    <motion.div
+                      className="relative z-10"
+                      animate={{ y: [0, 4, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowDown size={18} />
+                    </motion.div>
+                  </motion.button>
 
-                <motion.a
-                  href="/resume.pdf"
-                  download
-                  className={`px-8 py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 ${
-                    isDark
-                      ? 'bg-gray-800 text-white border-gray-600 hover:border-yellow-400 hover:bg-gray-700'
-                      : 'bg-white text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                >
-                  <span>Download Resume</span>
-                </motion.a>
+                  <motion.a
+                    href="/resume.pdf"
+                    download
+                    className={`relative px-8 py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group ${
+                      isDark
+                        ? 'bg-gray-800 text-white border-gray-600 hover:border-yellow-400 hover:bg-gray-700'
+                        : 'bg-white text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50'
+                    }`}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                    <span className="relative z-10">Download Resume</span>
+                  </motion.a>
               </motion.div>
             </motion.div>
           </div>
         </motion.div>
 
-        {/* Scroll Progress Indicator */}
+        {/* Enhanced Scroll Progress Indicator */}
         <motion.div
           className="fixed bottom-8 right-8 z-40"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.5 }}
         >
-          <div className={`flex items-center space-x-4 text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-            <span>Scroll to explore</span>
-            <div className={`w-16 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
-            <span className="font-mono">↓</span>
-          </div>
+          <motion.div
+            className={`flex items-center space-x-4 text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'}`}
+            whileHover={{ scale: 1.05 }}
+          >
+            <motion.span
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              Scroll to explore
+            </motion.span>
+            <motion.div
+              className={`w-16 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}
+              animate={{ scaleX: [0, 1, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.span
+              className="font-mono"
+              animate={{ y: [0, -2, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              ↓
+            </motion.span>
+          </motion.div>
         </motion.div>
       </div>
     </section>
