@@ -24,7 +24,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -34,10 +34,10 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 junge">
             Skills & Technologies
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto montserrat">
             Technologies and tools I use to bring ideas to life
           </p>
         </motion.div>
@@ -51,9 +51,9 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="bg-white rounded-xl p-6 shadow-md"
+              className="bg-white rounded-xl p-6 shadow-sm border border-gray-100"
             >
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+              <h3 className="text-xl font-semibold text-black mb-6 junge">
                 {categoryLabels[category as keyof typeof categoryLabels]}
               </h3>
 
@@ -61,21 +61,21 @@ export default function Skills() {
                 {categorySkills.map((skill) => (
                   <div key={skill.name}>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-gray-700 montserrat">
                         {skill.name}
                       </span>
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-gray-500 montserrat">
                         {skill.level}%
                       </span>
                     </div>
-                    
+
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                        className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600"
+                        className="h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600"
                       />
                     </div>
                   </div>
@@ -93,7 +93,7 @@ export default function Skills() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <p className="text-gray-600">
+          <p className="text-gray-600 montserrat">
             Continuously learning and expanding my skill set to stay current with industry trends
           </p>
         </motion.div>

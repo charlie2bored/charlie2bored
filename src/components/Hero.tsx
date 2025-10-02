@@ -1,11 +1,30 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Github, Linkedin, Mail, ArrowDown, Menu, X } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio-data';
+import { useEffect, useState } from 'react';
+
+// Core skills to display in sidebar
+const coreSkills = [
+  "Next.js", "Tailwind CSS", "TypeScript", "React",
+  "Node.js", "Python", "Figma", "Git"
+];
 
 export default function Hero() {
   const { personalInfo } = portfolioData;
+  const { scrollYProgress } = useScroll();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading time for opening animation
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId.replace('#', ''));
@@ -14,136 +33,253 @@ export default function Hero() {
     }
   };
 
-  return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex">
-          {/* Left Navigation Sidebar */}
+  // Transform values for animations
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  if (isLoading) {
+    return (
+      <section className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden">
+        <div className="text-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="hidden lg:block w-64 pr-16"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="space-y-8"
           >
-            <nav className="space-y-1">
-              {[
-                { name: 'Home', color: 'bg-white border border-black/20' },
-                { name: 'About', color: 'bg-yellow-400' },
-                { name: 'Work', color: 'bg-black text-white' },
-                { name: 'Skills', color: 'bg-amber-600' },
-                { name: 'Projects', color: 'bg-pink-500' },
-                { name: 'Contact', color: 'bg-green-500' }
-              ].map((item, index) => (
-                <motion.a
-                  key={item.name}
-                  href={`#${item.name.toLowerCase()}`}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`${item.color} px-4 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 block`}
+            {/* Loading animation similar to raggededge.com */}
+            <motion.div className="relative">
+              <motion.div
+                className="w-32 h-32 border-4 border-white/20 rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              >
+                <motion.div
+                  className="absolute top-0 left-1/2 w-1 h-8 bg-yellow-400 transform -translate-x-1/2"
+                  animate={{ scaleY: [1, 0.5, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                />
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <p className="text-white text-lg montserrat tracking-wider">Loading Experience</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id="home" className="min-h-screen bg-white relative overflow-hidden">
+      <div className="flex h-screen">
+        {/* Mobile Menu Toggle */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="fixed top-6 left-6 z-[60] p-2 bg-white border border-gray-200 rounded-lg md:hidden hover:bg-gray-50 transition-colors duration-200"
+        >
+          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </motion.button>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/30 z-40 md:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+
+        {/* Sticky Left Navigation Sidebar - Responsive */}
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className={`fixed left-0 top-0 h-screen w-80 bg-white border-r border-gray-100 z-50 flex flex-col justify-center pl-12 transition-transform duration-300 ${
+            isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          } md:translate-x-0`}
+        >
+          <nav className="space-y-2">
+            {[
+              { name: 'Home', href: '#home' },
+              { name: 'About', href: '#about' },
+              { name: 'Work', href: '#projects' },
+              { name: 'Skills', href: '#skills' },
+              { name: 'Contact', href: '#contact' }
+            ].map((item, index) => (
+              <motion.button
+                key={item.name}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                onClick={() => {
+                  scrollToSection(item.href);
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`w-full text-left py-3 px-4 font-mono text-sm transition-all duration-300 ease-out hover:bg-gray-50 group ${
+                  index % 2 === 0 ? 'text-black group-hover:text-yellow-600' : 'text-gray-600 group-hover:text-yellow-600'
+                }`}
+              >
+                {item.name}
+              </motion.button>
+            ))}
+          </nav>
+
+          {/* Skills Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-8"
+          >
+            <h3 className="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider montserrat">Core Skills</h3>
+            <div className="grid grid-cols-2 gap-2">
+              {coreSkills.map((skill, index) => (
+                <motion.div
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="bg-gray-100 border border-gray-200 text-gray-700 px-2 py-1 rounded text-xs text-center montserrat"
                 >
-                  {item.name}
-                </motion.a>
+                  {skill}
+                </motion.div>
               ))}
-            </nav>
+            </div>
           </motion.div>
 
-          {/* Main Content */}
-          <div className="flex-1 text-center relative">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="space-y-12"
+          {/* Social Links in Sidebar */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="absolute bottom-12 left-12 flex space-x-4"
+          >
+            <a
+              href={personalInfo.socialLinks.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 border border-gray-200 hover:border-yellow-400 transition-all duration-300"
             >
-              {/* Large Name Display - Like the "RAW" in the image */}
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                className="relative"
-              >
-                <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-black text-black tracking-tighter leading-none">
+              <Github size={18} className="text-gray-600 hover:text-yellow-600" />
+            </a>
+            <a
+              href={personalInfo.socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 border border-gray-200 hover:border-yellow-400 transition-all duration-300"
+            >
+              <Linkedin size={18} className="text-gray-600 hover:text-yellow-600" />
+            </a>
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className="p-2 border border-gray-200 hover:border-yellow-400 transition-all duration-300"
+            >
+              <Mail size={18} className="text-gray-600 hover:text-yellow-600" />
+            </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Main Content Area */}
+        <motion.div
+          style={{ y, opacity }}
+          className="flex-1 flex items-center justify-center ml-80"
+        >
+          <div className="max-w-4xl mx-auto px-8 text-center">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="space-y-8"
+            >
+              {/* Large Name Display */}
+              <motion.div className="relative">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black tracking-tight leading-none mb-4 junge">
                   {personalInfo.name.split(' ')[0]}
                 </h1>
-                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  className="h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto w-32"
+                />
               </motion.div>
 
-              {/* Subtitle */}
+              {/* Title and Description */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="space-y-4"
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="space-y-6"
               >
-                <p className="text-2xl md:text-3xl font-light text-gray-800 tracking-wide">
+                <h2 className="text-xl md:text-2xl font-light text-gray-800 tracking-wide junge">
                   {personalInfo.title}
-                </p>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                </h2>
+                <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto montserrat">
                   {personalInfo.bio}
                 </p>
-              </motion.div>
-
-              {/* Social Links with Gold Accents */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex justify-center space-x-8"
-              >
-                <a
-                  href={personalInfo.socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-4 border-2 border-gray-200 hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 group"
-                >
-                  <Github size={24} className="text-gray-700 group-hover:text-yellow-600" />
-                </a>
-                <a
-                  href={personalInfo.socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-4 border-2 border-gray-200 hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 group"
-                >
-                  <Linkedin size={24} className="text-gray-700 group-hover:text-yellow-600" />
-                </a>
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  className="p-4 border-2 border-gray-200 hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 group"
-                >
-                  <Mail size={24} className="text-gray-700 group-hover:text-yellow-600" />
-                </a>
               </motion.div>
 
               {/* Call to Action */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               >
-                <button
+                <motion.button
                   onClick={() => scrollToSection('#projects')}
-                  className="bg-black text-white px-8 py-4 font-medium hover:bg-gray-800 transition-all duration-300 flex items-center space-x-2 mx-auto border-2 border-black hover:border-yellow-400"
+                  className="bg-black text-white px-8 py-4 font-medium border-2 border-black hover:border-yellow-400 transition-all duration-300 flex items-center space-x-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <span>View My Work</span>
-                  <ArrowDown size={20} />
-                </button>
+                  <motion.div
+                    animate={{ y: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ArrowDown size={18} />
+                  </motion.div>
+                </motion.button>
+
+                <motion.a
+                  href="/resume.pdf"
+                  download
+                  className="bg-white text-black px-8 py-4 font-medium border-2 border-gray-300 hover:border-yellow-400 hover:bg-gray-50 transition-all duration-300 flex items-center space-x-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                >
+                  <span>Download Resume</span>
+                </motion.a>
               </motion.div>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Progress indicator */}
+        {/* Scroll Progress Indicator */}
         <motion.div
+          className="fixed bottom-8 right-8 z-40"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-8 right-8 hidden lg:block"
         >
-          <div className="flex items-center space-x-4 text-sm text-gray-500">
-            <span>You are now entering section</span>
+          <div className="flex items-center space-x-4 text-sm text-gray-500 montserrat">
+            <span>Scroll to explore</span>
             <div className="w-16 h-px bg-gray-300"></div>
-            <span className="font-mono">01/07</span>
+            <span className="font-mono">↓</span>
           </div>
         </motion.div>
       </div>

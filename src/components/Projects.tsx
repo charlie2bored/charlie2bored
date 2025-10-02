@@ -39,10 +39,10 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 junge">
             Featured Projects
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto montserrat">
             A collection of my recent work showcasing different skills and technologies
           </p>
         </motion.div>
@@ -59,10 +59,10 @@ export default function Projects() {
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+              className="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-yellow-200 transition-all duration-300 ease-out overflow-hidden group"
             >
               {/* Project Image Placeholder */}
-              <div className="h-48 bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+              <div className="h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
                 <div className="text-4xl font-bold text-gray-400 opacity-50">
                   {index + 1}
                 </div>
@@ -70,18 +70,23 @@ export default function Projects() {
 
               <div className="p-6">
                 {/* Project Category */}
-                <span className="text-sm font-medium text-blue-600 mb-2 block">
+                <span className="text-sm font-medium text-yellow-600 mb-2 block montserrat">
                   {project.category}
                 </span>
 
                 {/* Project Title */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
+                <h3 className="text-xl font-semibold text-black mb-3 group-hover:text-yellow-600 transition-colors duration-200 junge">
                   {project.title}
                 </h3>
 
                 {/* Project Description */}
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-gray-600 mb-2 line-clamp-2 montserrat">
                   {project.description}
+                </p>
+
+                {/* Key Outcome */}
+                <p className="text-sm text-yellow-600 font-medium mb-4 montserrat italic">
+                  {project.outcome}
                 </p>
 
                 {/* Technologies */}
@@ -89,7 +94,7 @@ export default function Projects() {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                      className="px-3 py-1 bg-gray-100 border border-gray-200 text-gray-700 text-sm rounded-full montserrat"
                     >
                       {tech}
                     </span>
@@ -103,7 +108,7 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                      className="flex items-center text-gray-600 hover:text-yellow-600 transition-colors duration-200 montserrat"
                     >
                       <Github size={18} className="mr-1" />
                       Code
@@ -114,14 +119,14 @@ export default function Projects() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                      className="flex items-center text-gray-600 hover:text-yellow-600 transition-colors duration-200 montserrat"
                     >
                       <ExternalLink size={18} className="mr-1" />
                       Live Demo
                     </a>
                   )}
                   {!project.liveUrl && !project.githubUrl && (
-                    <span className="flex items-center text-gray-400">
+                    <span className="flex items-center text-gray-400 montserrat">
                       <Eye size={18} className="mr-1" />
                       View Details
                     </span>
@@ -141,10 +146,10 @@ export default function Projects() {
           className="text-center mt-12"
         >
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/charlie2bored"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50 transition-colors duration-200"
+            className="inline-flex items-center px-6 py-3 border-2 border-gray-200 text-gray-700 rounded-full hover:bg-gray-50 hover:border-yellow-400 transition-colors duration-200 montserrat"
           >
             <Github size={20} className="mr-2" />
             View All Projects on GitHub

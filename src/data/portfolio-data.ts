@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   description: string;
   technologies: string[];
+  outcome: string;
   imageUrl?: string;
   githubUrl?: string;
   liveUrl?: string;
@@ -56,6 +57,7 @@ export const portfolioData = {
       id: 1,
       title: "Modern E-Commerce Platform",
       description: "A sleek full-stack e-commerce solution with seamless user experience and robust functionality.",
+      outcome: "Boosted conversion rate by 27% through optimized UX and streamlined checkout flow",
       technologies: ["Next.js", "TypeScript", "Stripe", "MongoDB"],
       category: "Web Development",
       githubUrl: "https://github.com/charlie2bored/ecommerce-platform",
@@ -65,6 +67,7 @@ export const portfolioData = {
       id: 2,
       title: "Data Visualization Suite",
       description: "Interactive dashboard for complex data visualization with real-time analytics.",
+      outcome: "Reduced data analysis time by 60% for 200+ users through intuitive filtering",
       technologies: ["React", "D3.js", "Python", "FastAPI"],
       category: "Data Science",
       githubUrl: "https://github.com/charlie2bored/data-dashboard",
@@ -74,6 +77,7 @@ export const portfolioData = {
       id: 3,
       title: "Portfolio Design System",
       description: "Comprehensive design system for modern portfolio websites with reusable components.",
+      outcome: "Standardized design language across 15+ projects, reducing design time by 40%",
       technologies: ["Figma", "CSS", "JavaScript"],
       category: "Design",
       githubUrl: "https://github.com/charlie2bored/portfolio-design"

@@ -1,4 +1,3 @@
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Skills from '@/components/Skills';
@@ -7,20 +6,21 @@ import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Navbar />
+    <main className="min-h-screen bg-white">
       <Hero />
       <About />
       <Skills />
       <Projects />
       <Contact />
-      
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; {new Date().getFullYear()} Portfolio. Built with Next.js and Tailwind CSS.</p>
-        </div>
-      </footer>
     </main>
   );
 }
+
+// Add alternating background sections
+const sections = [
+  { component: Hero, bg: 'bg-white' },
+  { component: About, bg: 'bg-gray-50' },
+  { component: Skills, bg: 'bg-white' },
+  { component: Projects, bg: 'bg-gray-50' },
+  { component: Contact, bg: 'bg-white' }
+];
