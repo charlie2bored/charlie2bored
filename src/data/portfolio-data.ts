@@ -59,6 +59,9 @@ export const portfolioData = {
       description: "Rebuilding a full-stack retail solution to handle peak traffic, focusing on speed and intuitive UX across all devices.",
       outcome: "27% Increase in mobile conversion rate",
       imageUrl: "https://placehold.co/600x400/1C504A/ffffff?text=E-COMMERCE+PLATFORM",
+      githubUrl: "https://github.com/charlie2bored/ecommerce-platform",
+      liveUrl: "https://ecommerce-demo.charlie2bored.dev",
+      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe", "PostgreSQL"],
       category: "Web Development"
     },
     {
@@ -67,6 +70,8 @@ export const portfolioData = {
       description: "Interactive internal dashboard for complex data reporting, reducing analysis time for 200+ users via intuitive filtering.",
       outcome: "60% Reduction in monthly data analysis time",
       imageUrl: "https://placehold.co/600x400/3A3D51/ffffff?text=DATA+DASHBOARD",
+      githubUrl: "https://github.com/charlie2bored/data-viz-suite",
+      technologies: ["React", "D3.js", "Python", "FastAPI", "PostgreSQL", "Docker"],
       category: "Data Science"
     },
     {
@@ -75,6 +80,9 @@ export const portfolioData = {
       description: "Comprehensive design language applied across all personal and client projects, ensuring component reusability and brand cohesion.",
       outcome: "40% Reduction in project design and frontend setup time",
       imageUrl: "https://placehold.co/600x400/9C543A/ffffff?text=DESIGN+SYSTEM+MOCKUP",
+      githubUrl: "https://github.com/charlie2bored/design-system",
+      liveUrl: "https://design-system.charlie2bored.dev",
+      technologies: ["Figma", "React", "TypeScript", "Storybook", "CSS-in-JS", "Design Tokens"],
       category: "Design"
     }
   ],
