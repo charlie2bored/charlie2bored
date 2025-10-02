@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowDown, Menu, X, Sun, Moon, Home, User, Briefcase, Settings, Send } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown, Menu, X, Sun, Moon } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio-data';
 import { useDarkMode } from '@/components/DarkModeProvider';
 import { useEffect, useState } from 'react';
@@ -127,43 +127,42 @@ export default function Hero() {
           />
         )}
 
-        {/* Sticky Left Navigation Sidebar - Enhanced Responsive */}
-        <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className={`fixed left-0 top-0 h-screen w-80 ${isDark ? 'bg-gray-900/95 backdrop-blur-sm border-gray-700' : 'bg-white/95 backdrop-blur-sm border-gray-100'} z-50 flex flex-col justify-center pl-12 transition-all duration-500 ease-out ${
-            isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          } md:translate-x-0`}
-        >
-          <nav className="flex flex-col items-center space-y-4">
+        {/* Stacked Block Navigation Sidebar */}
+        <div className="hidden md:flex fixed left-0 top-0 h-full w-64 z-50 justify-center">
+          <nav className="flex flex-col h-full py-8">
             {[
-              { icon: Home, href: '#home', label: 'Home' },
-              { icon: User, href: '#about', label: 'About' },
-              { icon: Briefcase, href: '#projects', label: 'Work' },
-              { icon: Settings, href: '#skills', label: 'Skills' },
-              { icon: Send, href: '#contact', label: 'Contact' }
-            ].map((item, index) => (
-              <motion.button
-                key={item.label}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+              { id: 'home', name: 'Home', href: '#home', index: '00', bgColor: 'bg-[var(--brand-light)]', textColor: 'text-[var(--brand-dark)]', indexColor: 'text-[var(--brand-dark)]/60' },
+              { id: 'about', name: 'About', href: '#about', index: '01', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-white', indexColor: 'text-white/80' },
+              { id: 'skills', name: 'Skills', href: '#skills', index: '02', bgColor: 'bg-[var(--brand-dark)]', textColor: 'text-white', indexColor: 'text-white/80' },
+              { id: 'projects', name: 'Projects', href: '#projects', index: '03', bgColor: 'bg-[var(--brand-light)]', textColor: 'text-[var(--brand-dark)]', indexColor: 'text-[var(--brand-dark)]/60' },
+              { id: 'contact', name: 'Contact', href: '#contact', index: '04', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-white', indexColor: 'text-white/80' }
+            ].map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className={`
+                  ${item.bgColor} ${item.textColor}
+                  w-full h-32 rounded-none
+                  flex flex-col justify-start items-start
+                  p-6 transition-all duration-300
+                  hover:translate-x-2 hover:shadow-lg
+                  cursor-pointer relative
+                `}
                 onClick={() => {
                   scrollToSection(item.href);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`p-3 rounded-lg transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
-                  isDark ? 'hover:bg-gray-800 text-gray-300 hover:text-yellow-400' : 'hover:bg-gray-100 text-gray-600 hover:text-yellow-600'
-                }`}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={`Navigate to ${item.label} section`}
               >
-                <item.icon size={20} />
-              </motion.button>
+                <span className={`text-sm font-medium ${item.indexColor} tracking-wide absolute top-4 left-4`}>
+                  {item.index}
+                </span>
+                <span className="text-2xl font-bold leading-tight mt-8">
+                  {item.name}
+                </span>
+              </a>
             ))}
           </nav>
+        </div>
 
           {/* Skills Grid */}
           <motion.div
@@ -218,7 +217,6 @@ export default function Hero() {
               <Mail size={18} className={`${isDark ? 'text-gray-400 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`} />
             </a>
           </motion.div>
-        </motion.div>
 
         {/* Main Content Area */}
         <motion.div
