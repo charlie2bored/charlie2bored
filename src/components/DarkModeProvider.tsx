@@ -62,7 +62,7 @@ export function useDarkMode() {
       return { isDark: false, toggleDarkMode: () => {} };
     }
     return context;
-  } catch (error) {
+  } catch {
     // Fallback for any context errors
     return { isDark: false, toggleDarkMode: () => {} };
   }
