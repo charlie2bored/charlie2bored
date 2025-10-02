@@ -81,6 +81,26 @@ export const portfolioData = {
       technologies: ["Figma", "CSS", "JavaScript"],
       category: "Design",
       githubUrl: "https://github.com/charlie2bored/portfolio-design"
+    },
+    {
+      id: 4,
+      title: "AI-Powered Content Generator",
+      description: "Machine learning platform that generates high-quality content and marketing copy automatically.",
+      outcome: "Increased content production by 300% while maintaining 95% accuracy rate",
+      technologies: ["Python", "TensorFlow", "React", "Node.js"],
+      category: "AI/ML",
+      githubUrl: "https://github.com/charlie2bored/ai-content-generator",
+      liveUrl: "https://ai-content-charlie.vercel.app"
+    },
+    {
+      id: 5,
+      title: "Sustainable Fashion Marketplace",
+      description: "E-commerce platform connecting sustainable fashion brands with conscious consumers globally.",
+      outcome: "Connected 50+ sustainable brands with 10,000+ conscious consumers in first year",
+      technologies: ["Next.js", "PostgreSQL", "Stripe", "Vercel"],
+      category: "E-Commerce",
+      githubUrl: "https://github.com/charlie2bored/sustainable-fashion",
+      liveUrl: "https://sustainable-fashion.vercel.app"
     }
   ],
 
