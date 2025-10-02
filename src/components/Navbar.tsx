@@ -45,8 +45,8 @@ export default function Navbar() {
       index: '00',
       bgColor: 'bg-[#DFDFDF]',
       textColor: 'text-[#111111]',
-      indexColor: 'text-[#111111]/70',
-      shadowColor: 'shadow-[#111111]/20'
+      indexColor: 'text-[#111111]/60',
+      shadowColor: 'shadow-[#111111]/15'
     },
     {
       id: 'about',
@@ -55,18 +55,18 @@ export default function Navbar() {
       index: '01',
       bgColor: 'bg-[#BE8400]',
       textColor: 'text-white',
-      indexColor: 'text-white/70',
-      shadowColor: 'shadow-[#BE8400]/30'
+      indexColor: 'text-white/80',
+      shadowColor: 'shadow-[#BE8400]/25'
     },
     {
       id: 'skills',
       name: 'Skills',
       href: '#skills',
       index: '02',
-      bgColor: 'bg-[#222222]',
+      bgColor: 'bg-[#111111]',
       textColor: 'text-white',
-      indexColor: 'text-white/70',
-      shadowColor: 'shadow-[#222222]/40'
+      indexColor: 'text-white/80',
+      shadowColor: 'shadow-[#111111]/30'
     },
     {
       id: 'projects',
@@ -75,8 +75,8 @@ export default function Navbar() {
       index: '03',
       bgColor: 'bg-[#DFDFDF]',
       textColor: 'text-[#111111]',
-      indexColor: 'text-[#111111]/70',
-      shadowColor: 'shadow-[#111111]/20'
+      indexColor: 'text-[#111111]/60',
+      shadowColor: 'shadow-[#111111]/15'
     },
     {
       id: 'contact',
@@ -85,49 +85,39 @@ export default function Navbar() {
       index: '04',
       bgColor: 'bg-[#BE8400]',
       textColor: 'text-white',
-      indexColor: 'text-white/70',
-      shadowColor: 'shadow-[#BE8400]/30'
+      indexColor: 'text-white/80',
+      shadowColor: 'shadow-[#BE8400]/25'
     }
   ];
 
   return (
     <>
       {/* Fixed Navigation Sidebar - Hidden on mobile, visible on lg+ screens */}
-      <div className="hidden lg:flex fixed left-0 top-0 h-full w-80 z-50 items-center justify-center">
-        <nav className="flex flex-col space-y-4 p-8">
+      <div className="hidden lg:flex fixed left-0 top-0 h-full w-64 z-50 justify-center">
+        <nav className="flex flex-col h-full py-8">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={item.href}
               className={`
                 ${item.bgColor} ${item.textColor}
-                w-48 h-48 rounded-3xl
-                flex flex-col justify-end items-start
+                w-full h-32 rounded-none
+                flex flex-col justify-start items-start
                 p-6 transition-all duration-300
-                hover:scale-105 hover:shadow-2xl ${item.shadowColor}
-                group cursor-pointer relative
-                overflow-hidden
-                ${activeSection === item.id ? 'ring-2 ring-white/30 ring-offset-2 ring-offset-transparent' : ''}
+                hover:translate-x-2 hover:shadow-lg ${item.shadowColor}
+                cursor-pointer relative
+                ${activeSection === item.id ? 'ring-2 ring-white/40 ring-inset' : ''}
               `}
             >
-              {/* Background pattern/decoration */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-current opacity-20"></div>
-                <div className="absolute bottom-4 left-4 w-4 h-4 rounded-full bg-current opacity-20"></div>
-              </div>
-
-              {/* Index number */}
-              <span className={`text-sm font-medium mb-2 ${item.indexColor} tracking-wide`}>
+              {/* Index number - Top left */}
+              <span className={`text-sm font-medium ${item.indexColor} tracking-wide absolute top-4 left-4`}>
                 {item.index}
               </span>
 
-              {/* Link text */}
-              <span className="text-2xl font-bold leading-tight group-hover:translate-x-1 transition-transform duration-300">
+              {/* Link text - Center left */}
+              <span className="text-2xl font-bold leading-tight mt-8">
                 {item.name}
               </span>
-
-              {/* Hover indicator */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-current opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
           ))}
         </nav>
@@ -136,7 +126,7 @@ export default function Navbar() {
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsMobileMenuOpen(false)}>
-          <div className="fixed left-0 top-0 h-full w-64 bg-white shadow-2xl z-50 overflow-y-auto">
+          <div className="fixed left-0 top-0 h-full w-56 bg-white shadow-2xl z-50 overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
                 <span className="text-xl font-bold text-[#111111]">Navigation</span>
@@ -157,18 +147,20 @@ export default function Navbar() {
                     href={item.href}
                     className={`
                       ${item.bgColor} ${item.textColor}
-                      block w-full p-4 rounded-xl
-                      text-lg font-semibold transition-all duration-200
-                      hover:scale-[1.02] active:scale-[0.98]
+                      block w-full p-4 rounded-none
+                      text-xl font-bold transition-all duration-200
+                      hover:translate-x-2 active:scale-[0.98] relative
                     `}
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    <span className={`text-sm ${item.indexColor} block mb-1`}>
+                    <span className={`text-sm ${item.indexColor} absolute top-2 left-2`}>
                       {item.index}
                     </span>
-                    {item.name}
+                    <span className="text-xl font-bold leading-tight mt-6 block">
+                      {item.name}
+                    </span>
                   </a>
                 ))}
               </nav>
