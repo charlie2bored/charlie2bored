@@ -15,7 +15,7 @@
  * @returns JSX.Element
  */
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowDown, Menu, X, Sun, Moon } from 'lucide-react';
+import { ArrowDown, Menu, X, Sun, Moon } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio-data';
 import { useDarkMode } from '@/components/DarkModeProvider';
 import { useEffect, useState } from 'react';
@@ -129,7 +129,7 @@ export default function Hero() {
           {isDark ? <Sun size={20} /> : <Moon size={20} />}
         </motion.button>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Menu Toggle - Mobile First */}
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -144,7 +144,7 @@ export default function Hero() {
 
         {/* Stacked Block Navigation Sidebar */}
         <div className="hidden md:flex fixed left-0 top-0 h-full w-64 z-50 justify-center">
-          <nav className="flex flex-col h-full py-8 space-y-3">
+          <nav className="flex flex-col h-full py-8 justify-between">
             {[
               { id: 'home', name: 'Home', href: '#home', index: '00', bgColor: 'bg-[var(--brand-light)]', textColor: 'text-[var(--brand-dark)]', indexColor: 'text-[var(--brand-dark)]/60' },
               { id: 'about', name: 'About', href: '#about', index: '01', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-white', indexColor: 'text-white/80' },
@@ -258,36 +258,6 @@ export default function Hero() {
         )}
 
 
-          {/* Social Links in Sidebar */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="absolute bottom-12 left-12 flex space-x-4"
-          >
-            <a
-              href={personalInfo.socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`p-2 border ${isDark ? 'border-gray-600 hover:border-yellow-400' : 'border-gray-200 hover:border-yellow-400'} ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-50'} transition-all duration-300`}
-            >
-              <Github size={18} className={`${isDark ? 'text-gray-400 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`} />
-            </a>
-            <a
-              href={personalInfo.socialLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`p-2 border ${isDark ? 'border-gray-600 hover:border-yellow-400' : 'border-gray-200 hover:border-yellow-400'} ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-50'} transition-all duration-300`}
-            >
-              <Linkedin size={18} className={`${isDark ? 'text-gray-400 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`} />
-            </a>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className={`p-2 border ${isDark ? 'border-gray-600 hover:border-yellow-400' : 'border-gray-200 hover:border-yellow-400'} ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-50'} transition-all duration-300`}
-            >
-              <Mail size={18} className={`${isDark ? 'text-gray-400 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'}`} />
-            </a>
-          </motion.div>
 
         {/* Main Content Area */}
         <motion.div
