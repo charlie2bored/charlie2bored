@@ -25,16 +25,16 @@ export interface Experience {
 
 export const portfolioData = {
   personalInfo: {
-    name: "Your Name",
-    title: "Web Developer & Designer",
-    email: "your.email@example.com",
+    name: "Charlie Bored",
+    title: "Creative Developer & Designer",
+    email: "charlie@example.com",
     phone: "+1 (555) 123-4567",
-    location: "City, Country",
-    bio: "Passionate developer with expertise in modern web technologies. I create beautiful, functional websites and applications that deliver exceptional user experiences.",
+    location: "San Francisco, CA",
+    bio: "I create digital experiences that blend beautiful design with technical excellence. Passionate about clean code, intuitive interfaces, and solving complex problems with elegant solutions.",
     socialLinks: {
-      github: "https://github.com/yourusername",
-      linkedin: "https://linkedin.com/in/yourusername",
-      twitter: "https://twitter.com/yourusername"
+      github: "https://github.com/charlie2bored",
+      linkedin: "https://linkedin.com/in/charlie2bored",
+      twitter: "https://twitter.com/charlie2bored"
     }
   },
 
@@ -54,72 +54,63 @@ export const portfolioData = {
   projects: [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with user authentication, payment processing, and admin dashboard.",
+      title: "Modern E-Commerce Platform",
+      description: "A sleek full-stack e-commerce solution with seamless user experience and robust functionality.",
       technologies: ["Next.js", "TypeScript", "Stripe", "MongoDB"],
       category: "Web Development",
-      githubUrl: "https://github.com/yourusername/ecommerce-platform",
-      liveUrl: "https://your-ecommerce.vercel.app"
+      githubUrl: "https://github.com/charlie2bored/ecommerce-platform",
+      liveUrl: "https://ecommerce-charlie.vercel.app"
     },
     {
       id: 2,
-      title: "Data Visualization Dashboard",
-      description: "Interactive dashboard for visualizing complex datasets with real-time updates and filtering capabilities.",
+      title: "Data Visualization Suite",
+      description: "Interactive dashboard for complex data visualization with real-time analytics.",
       technologies: ["React", "D3.js", "Python", "FastAPI"],
       category: "Data Science",
-      githubUrl: "https://github.com/yourusername/data-dashboard",
-      liveUrl: "https://your-dashboard.vercel.app"
+      githubUrl: "https://github.com/charlie2bored/data-dashboard",
+      liveUrl: "https://data-viz-charlie.vercel.app"
     },
     {
       id: 3,
-      title: "Portfolio Website Design",
-      description: "Modern portfolio design with smooth animations and responsive layout for creative professionals.",
+      title: "Portfolio Design System",
+      description: "Comprehensive design system for modern portfolio websites with reusable components.",
       technologies: ["Figma", "CSS", "JavaScript"],
       category: "Design",
-      githubUrl: "https://github.com/yourusername/portfolio-design"
-    },
-    {
-      id: 4,
-      title: "Marketing Analytics Tool",
-      description: "Tool for tracking and analyzing marketing campaign performance across multiple channels.",
-      technologies: ["Next.js", "Chart.js", "Google Analytics API"],
-      category: "Marketing",
-      githubUrl: "https://github.com/yourusername/marketing-analytics",
-      liveUrl: "https://marketing-tool.vercel.app"
+      githubUrl: "https://github.com/charlie2bored/portfolio-design"
     }
   ],
 
   experiences: [
     {
-      company: "Tech Company Inc.",
-      position: "Frontend Developer",
+      company: "Tech Innovations Inc.",
+      position: "Senior Frontend Developer",
       period: "2022 - Present",
       description: [
-        "Developed responsive web applications using React and Next.js",
-        "Implemented modern UI/UX designs with Tailwind CSS",
-        "Collaborated with backend team on API integration"
+        "Lead development of responsive web applications using modern frameworks",
+        "Implement design systems and maintain code quality standards",
+        "Mentor junior developers and conduct code reviews"
       ],
       technologies: ["React", "Next.js", "TypeScript", "Tailwind"]
     },
     {
-      company: "Data Analytics Firm",
-      position: "Data Analyst Intern",
-      period: "2021 - 2022",
+      company: "Creative Studio",
+      position: "UI/UX Designer & Developer",
+      period: "2020 - 2022",
       description: [
-        "Analyzed large datasets to extract actionable insights",
-        "Created data visualizations and reports for stakeholders",
-        "Automated data processing workflows using Python"
+        "Designed and implemented user interfaces for various clients",
+        "Collaborated with cross-functional teams on product development",
+        "Created interactive prototypes and design systems"
       ],
-      technologies: ["Python", "SQL", "Tableau", "Excel"]
+      technologies: ["Figma", "React", "CSS", "JavaScript"]
     }
   ],
 
   education: [
     {
-      institution: "University of Technology",
+      institution: "Stanford University",
       degree: "Bachelor of Science in Computer Science",
-      period: "2018 - 2022",
-      description: "Specialized in web development and data science"
+      period: "2016 - 2020",
+      description: "Focus on human-computer interaction and web technologies"
     }
   ]
 };

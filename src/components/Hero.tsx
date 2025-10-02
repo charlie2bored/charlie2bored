@@ -15,12 +15,12 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Background elements for visual interest */}
+        {/* Subtle background elements */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-100 rounded-full opacity-20 blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-100 rounded-full opacity-20 blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gray-100 rounded-full opacity-30 blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gray-200 rounded-full opacity-20 blur-3xl animate-pulse delay-1000" />
         </div>
 
         <motion.div
@@ -34,7 +34,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight"
+            className="text-4xl md:text-6xl font-light text-gray-800 tracking-tight"
           >
             {personalInfo.name}
           </motion.h1>
@@ -68,7 +68,7 @@ export default function Hero() {
               href={personalInfo.socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 text-gray-600 hover:text-gray-900 transition-colors duration-200 hover:scale-110"
+              className="p-3 text-gray-500 hover:text-gray-700 transition-colors duration-200 hover:scale-105"
             >
               <Github size={24} />
             </a>
@@ -76,13 +76,13 @@ export default function Hero() {
               href={personalInfo.socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 text-gray-600 hover:text-gray-900 transition-colors duration-200 hover:scale-110"
+              className="p-3 text-gray-500 hover:text-gray-700 transition-colors duration-200 hover:scale-105"
             >
               <Linkedin size={24} />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="p-3 text-gray-600 hover:text-gray-900 transition-colors duration-200 hover:scale-110"
+              className="p-3 text-gray-500 hover:text-gray-700 transition-colors duration-200 hover:scale-105"
             >
               <Mail size={24} />
             </a>
@@ -97,10 +97,10 @@ export default function Hero() {
           >
             <button
               onClick={() => scrollToSection('#projects')}
-              className="bg-gray-900 text-white px-8 py-4 rounded-full font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center space-x-2 mx-auto"
+              className="bg-gray-700 text-white px-8 py-3 rounded-full font-normal hover:bg-gray-600 transition-colors duration-200 flex items-center space-x-2 mx-auto"
             >
               <span>View My Work</span>
-              <ArrowDown size={20} />
+              <ArrowDown size={18} />
             </button>
           </motion.div>
         </motion.div>
