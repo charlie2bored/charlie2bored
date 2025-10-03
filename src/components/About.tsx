@@ -176,7 +176,7 @@ export default function About() {
                 PDF • Updated December 2024
               </p>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
