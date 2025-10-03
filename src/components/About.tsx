@@ -147,7 +147,6 @@ export default function About() {
             </motion.div>
           </div>
 
-
           {/* Download Resume Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -176,7 +175,6 @@ export default function About() {
                 PDF • Updated December 2024
               </p>
             </motion.div>
-          </div>
         </div>
       </div>
     </section>
