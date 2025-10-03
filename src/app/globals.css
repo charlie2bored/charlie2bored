@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #333333;
+  --background: #101010;
   --foreground: #171717;
   --brand-light: #DFDFDF;
   --brand-gold: #BE8400;
-  --brand-dark: #101010;
+  --brand-dark: #333333;
 }
 
 @theme inline {
@@ -30,7 +30,7 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, var(--background) 0%, #2a2a2a 100%);
+  background: linear-gradient(135deg, var(--background) 0%, #1a1a1a 100%);
   color: var(--foreground);
   font-family: var(--font-montserrat), sans-serif;
   overflow-x: hidden;
@@ -38,7 +38,7 @@ body {
 }
 
 .dark body {
-  background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, #101010 0%, #0a0a0a 100%);
   color: #ffffff;
 }
 
@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #333333;
+  background: #101010;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -123,3 +123,111 @@ h1, h2, h3, h4, h5, h6 {
     transform: none !important;
   }
 }
+
+/* Custom reveal animations - unique and distinctive */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100px) rotate(-5deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(10px) rotate(2deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceInFromTop {
+  0% {
+    transform: translateY(-200px) scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(20px) scale(1.05);
+    opacity: 0.8;
+  }
+  70% {
+    transform: translateY(-10px) scale(0.95);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInWithScale {
+  0% {
+    transform: scale(0.8) rotate(180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(90deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes elasticSlideUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-20px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes typewriterEffect {
+  0% { width: 0; }
+  50% { width: 100%; }
+  100% { width: 100%; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+/* Apply unique animations to elements */
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-bounce-in-top {
+  animation: bounceInFromTop 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-fade-scale {
+  animation: fadeInWithScale 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-elastic-slide {
+  animation: elasticSlideUp 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-pulse-glow:hover {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }

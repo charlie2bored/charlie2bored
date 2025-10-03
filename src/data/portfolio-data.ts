@@ -29,7 +29,7 @@ export const portfolioData = {
     name: "Charlie \"2bored\" Vargas",
     title: "Multidisciplinary Designer",
     email: "iamcharlesvargas@gmail.com",
-    phone: "+1 (555) 123-4567",
+    phone: "+1 (908) 510-5281",
     location: "New York, NY",
     bio: "I create digital experiences that blend beautiful design with technical excellence. Passionate about clean code, intuitive interfaces, and solving complex problems with elegant solutions.",
     socialLinks: {
@@ -55,35 +55,33 @@ export const portfolioData = {
   projects: [
     {
       id: 1,
-      title: "Modern E-Commerce Platform",
-      description: "Rebuilding a full-stack retail solution to handle peak traffic, focusing on speed and intuitive UX across all devices.",
-      outcome: "27% Increase in mobile conversion rate",
-      imageUrl: "https://placehold.co/600x400/1C504A/ffffff?text=E-COMMERCE+PLATFORM",
-      githubUrl: "https://github.com/charlie2bored/ecommerce-platform",
-      liveUrl: "https://ecommerce-demo.charlie2bored.dev",
-      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe", "PostgreSQL"],
-      category: "Web Development"
+      title: "Portfolio for Bea Huppert",
+      description: "Designed and developed a sophisticated portfolio website for acclaimed actress Bea Huppert, featuring an elegant dark theme with smooth animations and a focus on showcasing her extensive filmography and awards.",
+      outcome: "Enhanced online presence and streamlined audition submissions",
+      imageUrl: "https://placehold.co/600x400/1C504A/ffffff?text=BEA+HUPPERT+PORTFOLIO",
+      caseStudyUrl: "/case-studies/bea-huppert",
+      technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "Sanity CMS", "Vercel"],
+      category: "Portfolio Design"
     },
     {
       id: 2,
-      title: "Data Visualization Suite",
-      description: "Interactive internal dashboard for complex data reporting, reducing analysis time for 200+ users via intuitive filtering.",
-      outcome: "60% Reduction in monthly data analysis time",
-      imageUrl: "https://placehold.co/600x400/3A3D51/ffffff?text=DATA+DASHBOARD",
-      githubUrl: "https://github.com/charlie2bored/data-viz-suite",
-      technologies: ["React", "D3.js", "Python", "FastAPI", "PostgreSQL", "Docker"],
-      category: "Data Science"
+      title: "Bath and Body Works Seasonal Revamp",
+      description: "Led the complete redesign of Bath & Body Works seasonal product pages, implementing a mobile-first approach with improved product discovery and streamlined checkout process.",
+      outcome: "35% increase in mobile conversion rates and improved user engagement",
+      imageUrl: "https://placehold.co/600x400/E91E63/ffffff?text=BBW+SEASONAL",
+      caseStudyUrl: "/case-studies/bath-body-works",
+      technologies: ["React", "TypeScript", "Styled Components", "Adobe Analytics", "A/B Testing"],
+      category: "E-commerce Design"
     },
     {
       id: 3,
-      title: "Portfolio Design System",
-      description: "Comprehensive design language applied across all personal and client projects, ensuring component reusability and brand cohesion.",
-      outcome: "40% Reduction in project design and frontend setup time",
-      imageUrl: "https://placehold.co/600x400/9C543A/ffffff?text=DESIGN+SYSTEM+MOCKUP",
-      githubUrl: "https://github.com/charlie2bored/design-system",
-      liveUrl: "https://design-system.charlie2bored.dev",
-      technologies: ["Figma", "React", "TypeScript", "Storybook", "CSS-in-JS", "Design Tokens"],
-      category: "Design"
+      title: "KnectMe",
+      description: "Co-founded and designed KnectMe, a social platform connecting professionals through shared interests and career goals, featuring real-time messaging and AI-powered matching algorithms.",
+      outcome: "Successfully launched MVP with 10,000+ early adopters",
+      imageUrl: "https://placehold.co/600x400/2196F3/ffffff?text=KNECTME",
+      caseStudyUrl: "/case-studies/knectme",
+      technologies: ["React Native", "Node.js", "MongoDB", "Socket.io", "AWS", "Machine Learning"],
+      category: "Social Platform"
     }
   ],
 

@@ -151,17 +151,18 @@ export default function Hero() {
               { id: 'skills', name: 'Skills', href: '#skills', index: '02', bgColor: 'bg-[var(--brand-dark)]', textColor: 'text-white', indexColor: 'text-white/80' },
               { id: 'projects', name: 'Projects', href: '#projects', index: '03', bgColor: 'bg-[var(--brand-light)]', textColor: 'text-[var(--brand-dark)]', indexColor: 'text-[var(--brand-dark)]/60' },
               { id: 'contact', name: 'Contact', href: '#contact', index: '04', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-white', indexColor: 'text-white/80' }
-            ].map((item) => (
+            ].map((item, index) => (
               <a
                 key={item.id}
                 href={item.href}
                 className={`
                   ${item.bgColor} ${item.textColor}
-                  w-full h-32 rounded-xl
+                  w-full h-40 rounded-2xl
                   flex flex-col justify-start items-start
-                  p-6 transition-all duration-300
-                  hover:translate-x-2 hover:shadow-xl hover:scale-[1.02]
+                  p-8 transition-all duration-300
+                  hover:translate-x-2 hover:shadow-2xl hover:scale-[1.02]
                   cursor-pointer relative focus:outline-none focus:ring-2 focus:ring-yellow-400
+                  animate-slide-in-left animate-delay-${(index + 1) * 100}
                 `}
                 onClick={() => {
                   scrollToSection(item.href);
@@ -170,10 +171,10 @@ export default function Hero() {
                 aria-label={`Navigate to ${item.name} section`}
                 tabIndex={0}
               >
-                <span className={`text-sm font-medium ${item.indexColor} tracking-wide absolute top-4 left-4`}>
+                <span className={`text-base font-semibold ${item.indexColor} tracking-wider absolute top-6 left-6`}>
                   {item.index}
                 </span>
-                <span className="text-2xl font-bold leading-tight mt-8">
+                <span className="text-3xl font-bold leading-tight mt-12">
                   {item.name}
                 </span>
               </a>
@@ -235,8 +236,8 @@ export default function Hero() {
                     href={item.href}
                     className={`
                       ${item.bgColor} ${item.textColor}
-                      block w-full p-4 rounded-xl
-                      text-xl font-bold transition-all duration-200
+                      block w-full p-6 rounded-2xl
+                      text-2xl font-bold transition-all duration-200
                       hover:translate-x-2 hover:scale-[1.02] active:scale-[0.98] relative
                     `}
                     onClick={() => {
@@ -244,10 +245,10 @@ export default function Hero() {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    <span className={`text-sm ${item.indexColor} absolute top-2 left-2`}>
+                    <span className={`text-base ${item.indexColor} absolute top-4 left-4`}>
                       {item.index}
                     </span>
-                    <span className="text-xl font-bold leading-tight mt-6 block">
+                    <span className="text-2xl font-bold leading-tight mt-10 block">
                       {item.name}
                     </span>
                   </a>
@@ -269,7 +270,7 @@ export default function Hero() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="space-y-8 sm:space-y-12"
+              className="space-y-8 sm:space-y-12 animate-bounce-in-top"
             >
               {/* Large Name Display */}
               <motion.div className="relative">
