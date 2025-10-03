@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #101010;
-  --foreground: #171717;
-  --brand-light: #DFDFDF;
-  --brand-gold: #BE8400;
-  --brand-dark: #333333;
+  --background: #0f0f0f;
+  --foreground: #1a1a1a;
+  --brand-light: #e8e8e8;
+  --brand-gold: #d4940a;
+  --brand-dark: #2a2a2a;
+  --off-white: #f5f5f5;
+  --off-white-text: #f0f0f0;
 }
 
 @theme inline {
@@ -61,40 +63,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f0f0f0;
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #101010;
+  background: #0f0f0f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #d0d0d0;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: #b8b8b8;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #555555;
+  background: #444444;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #777777;
+  background: #666666;
 }
 
 /* Enhanced focus styles for better accessibility */
 *:focus-visible {
-  outline: 3px solid #f59e0b;
+  outline: 3px solid #d4940a;
   outline-offset: 2px;
   border-radius: 4px;
   transition: outline 0.2s ease-in-out;
 }
 
 .dark *:focus-visible {
-  outline: 3px solid #fbbf24;
+  outline: 3px solid #e6a617;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -124,110 +126,228 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Custom reveal animations - unique and distinctive */
-@keyframes slideInFromLeft {
+/* Ultra-unique reveal animations - never seen before */
+@keyframes quantumShift {
   0% {
-    transform: translateX(-100px) rotate(-5deg);
+    transform: translateX(-200px) translateY(-100px) rotate(-180deg) scale(0.1);
     opacity: 0;
+    filter: blur(20px) hue-rotate(180deg);
+  }
+  25% {
+    transform: translateX(50px) translateY(-50px) rotate(-90deg) scale(0.3);
+    opacity: 0.3;
+    filter: blur(15px) hue-rotate(90deg);
   }
   50% {
-    transform: translateX(10px) rotate(2deg);
-    opacity: 0.7;
+    transform: translateX(-20px) translateY(20px) rotate(-45deg) scale(0.7);
+    opacity: 0.6;
+    filter: blur(10px) hue-rotate(0deg);
+  }
+  75% {
+    transform: translateX(10px) translateY(-10px) rotate(-15deg) scale(0.9);
+    opacity: 0.8;
+    filter: blur(5px) hue-rotate(-45deg);
   }
   100% {
-    transform: translateX(0) rotate(0deg);
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
     opacity: 1;
+    filter: blur(0px) hue-rotate(0deg);
   }
 }
 
-@keyframes bounceInFromTop {
+@keyframes fractalBloom {
   0% {
-    transform: translateY(-200px) scale(0.3);
+    transform: scale(0) rotate(0deg);
     opacity: 0;
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  }
+  25% {
+    transform: scale(0.2) rotate(90deg);
+    opacity: 0.4;
+    clip-path: polygon(20% 20%, 80% 20%, 80% 80%, 20% 80%);
   }
   50% {
-    transform: translateY(20px) scale(1.05);
+    transform: scale(0.6) rotate(180deg);
+    opacity: 0.7;
+    clip-path: polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%);
+  }
+  75% {
+    transform: scale(0.8) rotate(270deg);
+    opacity: 0.9;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+@keyframes dimensionalWarp {
+  0% {
+    transform: perspective(1000px) rotateX(90deg) rotateY(90deg) translateZ(-500px);
+    opacity: 0;
+  }
+  33% {
+    transform: perspective(1000px) rotateX(45deg) rotateY(45deg) translateZ(-200px);
+    opacity: 0.5;
+  }
+  66% {
+    transform: perspective(1000px) rotateX(15deg) rotateY(15deg) translateZ(-50px);
     opacity: 0.8;
   }
-  70% {
-    transform: translateY(-10px) scale(0.95);
-    opacity: 0.9;
-  }
   100% {
-    transform: translateY(0) scale(1);
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px);
     opacity: 1;
   }
 }
 
-@keyframes fadeInWithScale {
+@keyframes particleAssembly {
   0% {
-    transform: scale(0.8) rotate(180deg);
+    transform: translateX(var(--random-x, -100px)) translateY(var(--random-y, -100px)) scale(0);
     opacity: 0;
+    border-radius: 50%;
   }
-  50% {
-    transform: scale(1.1) rotate(90deg);
+  30% {
+    transform: translateX(calc(var(--random-x, -100px) * 0.7)) translateY(calc(var(--random-y, -100px) * 0.7)) scale(0.3);
     opacity: 0.6;
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes elasticSlideUp {
-  0% {
-    transform: translateY(100px);
-    opacity: 0;
+    border-radius: 30%;
   }
   60% {
-    transform: translateY(-20px);
+    transform: translateX(calc(var(--random-x, -100px) * 0.3)) translateY(calc(var(--random-y, -100px) * 0.3)) scale(0.7);
     opacity: 0.8;
+    border-radius: 15%;
   }
   100% {
-    transform: translateY(0);
+    transform: translateX(0) translateY(0) scale(1);
     opacity: 1;
+    border-radius: 0%;
   }
 }
 
-@keyframes typewriterEffect {
-  0% { width: 0; }
-  50% { width: 100%; }
-  100% { width: 100%; }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+@keyframes molecularBond {
+  0% {
+    transform: scale(0.1) rotate(0deg);
+    opacity: 0;
+    background: radial-gradient(circle at 20% 20%, transparent 50%, currentColor 51%);
+  }
+  25% {
+    transform: scale(0.3) rotate(90deg);
+    opacity: 0.4;
+    background: radial-gradient(circle at 30% 30%, currentColor 40%, transparent 41%);
   }
   50% {
-    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    transform: scale(0.6) rotate(180deg);
+    opacity: 0.7;
+    background: radial-gradient(circle at 40% 40%, currentColor 30%, transparent 31%);
+  }
+  75% {
+    transform: scale(0.8) rotate(270deg);
+    opacity: 0.9;
+    background: radial-gradient(circle at 45% 45%, currentColor 20%, transparent 21%);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+    background: radial-gradient(circle at 50% 50%, currentColor 10%, transparent 11%);
   }
 }
 
-/* Apply unique animations to elements */
-.animate-slide-in-left {
-  animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+@keyframes neuralNetwork {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+    box-shadow: inset 0 0 0 2px currentColor;
+  }
+  20% {
+    transform: scale(0.2) rotate(72deg);
+    opacity: 0.3;
+    box-shadow: inset 0 0 0 4px currentColor, 0 0 20px currentColor;
+  }
+  40% {
+    transform: scale(0.4) rotate(144deg);
+    opacity: 0.5;
+    box-shadow: inset 0 0 0 6px currentColor, 0 0 40px currentColor;
+  }
+  60% {
+    transform: scale(0.6) rotate(216deg);
+    opacity: 0.7;
+    box-shadow: inset 0 0 0 8px currentColor, 0 0 60px currentColor;
+  }
+  80% {
+    transform: scale(0.8) rotate(288deg);
+    opacity: 0.9;
+    box-shadow: inset 0 0 0 10px currentColor, 0 0 80px currentColor;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+    box-shadow: inset 0 0 0 12px currentColor, 0 0 100px currentColor;
+  }
 }
 
-.animate-bounce-in-top {
-  animation: bounceInFromTop 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+@keyframes cosmicRipple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0.7;
+    border: 3px solid currentColor;
+    border-radius: 50%;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+    border: 5px solid currentColor;
+    border-radius: 50%;
+  }
 }
 
-.animate-fade-scale {
-  animation: fadeInWithScale 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+/* Apply ultra-unique animations to elements */
+.animate-quantum-shift {
+  animation: quantumShift 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-.animate-elastic-slide {
-  animation: elasticSlideUp 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+.animate-fractal-bloom {
+  animation: fractalBloom 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-dimensional-warp {
+  animation: dimensionalWarp 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-particle-assembly {
+  animation: particleAssembly 1.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  --random-x: calc(var(--random-x, 0) * 1px);
+  --random-y: calc(var(--random-y, 0) * 1px);
+}
+
+.animate-molecular-bond {
+  animation: molecularBond 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-neural-network {
+  animation: neuralNetwork 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-cosmic-ripple {
+  animation: cosmicRipple 0.8s ease-out forwards;
 }
 
 .animate-pulse-glow:hover {
-  animation: pulseGlow 2s ease-in-out infinite;
+  animation: neuralNetwork 3s ease-in-out infinite;
 }
 
-/* Stagger animation delays */
+/* Stagger animation delays with unique timing */
 .animate-delay-100 { animation-delay: 0.1s; }
 .animate-delay-200 { animation-delay: 0.2s; }
 .animate-delay-300 { animation-delay: 0.3s; }
 .animate-delay-400 { animation-delay: 0.4s; }
 .animate-delay-500 { animation-delay: 0.5s; }
+.animate-delay-600 { animation-delay: 0.6s; }
+.animate-delay-700 { animation-delay: 0.7s; }
+.animate-delay-800 { animation-delay: 0.8s; }

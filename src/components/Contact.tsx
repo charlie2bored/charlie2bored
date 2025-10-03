@@ -14,14 +14,14 @@ export default function Contact() {
     <section id="contact" className={`py-20 bg-[var(--background)]`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
       <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 animate-quantum-shift"
         >
           <h2 className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-white' : 'text-black'}`}>
             Get In Touch
@@ -31,78 +31,49 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-center">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="text-center animate-dimensional-warp animate-delay-100"
           >
             <h3 className={`text-2xl font-semibold mb-6 junge ${isDark ? 'text-white' : 'text-black'}`}>Contact Information</h3>
 
             <div className="space-y-6">
-              <div className="flex items-center">
+              <div className="flex items-center justify-center">
                 <div className={`w-12 h-12 ${isDark ? 'bg-gray-800 border-gray-600' : 'bg-gray-100 border-gray-200'} rounded-full flex items-center justify-center mr-4`}>
                   <Mail className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`} size={20} />
                 </div>
-                <div>
+                <div className="text-center">
                   <p className={`text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Email</p>
                   <p className={`font-medium montserrat ${isDark ? 'text-white' : 'text-black'}`}>{personalInfo.email}</p>
                 </div>
               </div>
 
-              <div className="flex items-center">
+              <div className="flex items-center justify-center">
                 <div className={`w-12 h-12 ${isDark ? 'bg-gray-800 border-gray-600' : 'bg-gray-100 border-gray-200'} rounded-full flex items-center justify-center mr-4`}>
                   <Phone className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`} size={20} />
                 </div>
-                <div>
+                <div className="text-center">
                   <p className={`text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Phone</p>
                   <p className={`font-medium montserrat ${isDark ? 'text-white' : 'text-black'}`}>{personalInfo.phone}</p>
                 </div>
               </div>
 
-              <div className="flex items-center">
+              <div className="flex items-center justify-center">
                 <div className={`w-12 h-12 ${isDark ? 'bg-gray-800 border-gray-600' : 'bg-gray-100 border-gray-200'} rounded-full flex items-center justify-center mr-4`}>
                   <MapPin className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`} size={20} />
                 </div>
-                <div>
+                <div className="text-center">
                   <p className={`text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Location</p>
                   <p className={`font-medium montserrat ${isDark ? 'text-white' : 'text-black'}`}>{personalInfo.location}</p>
                 </div>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="mt-8">
-              <h4 className={`text-lg font-semibold mb-4 junge ${isDark ? 'text-white' : 'text-black'}`}>Follow Me</h4>
-              <div className="flex space-x-4">
-                <a
-                  href={personalInfo.socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`p-3 border rounded-full transition-colors duration-200 montserrat ${isDark ? 'bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-yellow-400' : 'bg-gray-100 border-gray-200 text-gray-600 hover:bg-yellow-50 hover:border-yellow-400'}`}
-                >
-                  <span className="text-sm">GitHub</span>
-                </a>
-                <a
-                  href={personalInfo.socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`p-3 border rounded-full transition-colors duration-200 montserrat ${isDark ? 'bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-yellow-400' : 'bg-gray-100 border-gray-200 text-gray-600 hover:bg-yellow-50 hover:border-yellow-400'}`}
-                >
-                  <span className="text-sm">LinkedIn</span>
-                </a>
-                <a
-                  href={personalInfo.socialLinks.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`p-3 border rounded-full transition-colors duration-200 montserrat ${isDark ? 'bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-yellow-400' : 'bg-gray-100 border-gray-200 text-gray-600 hover:bg-yellow-50 hover:border-yellow-400'}`}
-                >
-                  <span className="text-sm">Twitter</span>
-                </a>
-              </div>
-            </div>
           </motion.div>
 
           {/* Contact Form */}
@@ -111,12 +82,13 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="text-center animate-particle-assembly animate-delay-200"
           >
             <h3 className={`text-2xl font-semibold mb-6 junge ${isDark ? 'text-white' : 'text-black'}`}>Send a Message</h3>
 
-            <form className="space-y-6">
+            <form className="space-y-6 max-w-2xl mx-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
+                <div className="text-center">
                   <label htmlFor="name" className={`block text-sm font-medium mb-2 montserrat ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                     Name
                   </label>
@@ -128,7 +100,7 @@ export default function Contact() {
                     placeholder="Your name"
                   />
                 </div>
-                <div>
+                <div className="text-center">
                   <label htmlFor="email" className={`block text-sm font-medium mb-2 montserrat ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                     Email
                   </label>
@@ -142,7 +114,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div>
+              <div className="text-center">
                 <label htmlFor="subject" className={`block text-sm font-medium mb-2 montserrat ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                   Subject
                 </label>
@@ -155,7 +127,7 @@ export default function Contact() {
                 />
               </div>
 
-              <div>
+              <div className="text-center">
                 <label htmlFor="message" className={`block text-sm font-medium mb-2 montserrat ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                   Message
                 </label>

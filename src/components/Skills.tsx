@@ -30,14 +30,14 @@ export default function Skills() {
     <section id="skills" className={`py-20 bg-[var(--background)]`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
       <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 animate-particle-assembly"
         >
           <h2 className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-white' : 'text-black'}`}>
             Skills & Technologies
@@ -51,7 +51,7 @@ export default function Skills() {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
           {Object.entries(skillsByCategory).map(([category, categorySkills], categoryIndex) => (
             <motion.div
               key={category}
@@ -59,16 +59,20 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'} rounded-xl p-6 shadow-sm`}
+              className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'} rounded-xl p-6 shadow-sm text-center animate-neural-network`}
+              style={{
+                '--random-x': Math.random() * 200 - 100,
+                '--random-y': Math.random() * 200 - 100
+              } as React.CSSProperties}
             >
               <h3 className={`text-xl font-semibold mb-6 junge ${isDark ? 'text-white' : 'text-black'}`}>
                 {categoryLabels[category as keyof typeof categoryLabels]}
               </h3>
 
-              <div className="space-y-4">
+              <div className="space-y-4 text-center">
                 {categorySkills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between items-center mb-2">
+                  <div key={skill.name} className="text-center">
+                    <div className="flex justify-center items-center mb-2 gap-4">
                       <span className={`text-sm font-medium montserrat ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                         {skill.name}
                       </span>
@@ -99,7 +103,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-12"
+          className="mt-12 text-center animate-cosmic-ripple animate-delay-400"
         >
           <p className={`montserrat ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
             Continuously learning and expanding my skill set to stay current with industry trends

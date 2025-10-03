@@ -14,14 +14,14 @@ export default function Projects() {
     <section id="projects" className={`py-20 bg-[var(--background)]`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
       <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto text-center">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-16 animate-quantum-shift"
           >
             <motion.h2
               className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-white' : 'text-black'}`}
@@ -44,7 +44,7 @@ export default function Projects() {
           </motion.div>
 
           {/* Projects List - Uniform sizing and centered */}
-          <div className="space-y-16">
+          <div className="space-y-16 text-center">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -52,7 +52,12 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className={`relative max-w-5xl mx-auto ${isDark ? 'bg-gray-800/90 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} rounded-3xl shadow-2xl border ${isDark ? 'border-gray-700/50' : 'border-gray-200/50'} overflow-hidden group cursor-pointer`}
+                className={`relative max-w-5xl mx-auto text-center ${isDark ? 'bg-gray-800/90 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} rounded-3xl shadow-2xl border ${isDark ? 'border-gray-700/50' : 'border-gray-200/50'} overflow-hidden group cursor-pointer animate-fractal-bloom`}
+                style={{
+                  animationDelay: `${index * 0.2}s`,
+                  '--random-x': Math.random() * 100 - 50,
+                  '--random-y': Math.random() * 100 - 50
+                } as React.CSSProperties}
                 whileHover={{
                   scale: 1.02,
                   transition: { duration: 0.3, ease: "easeOut" }
@@ -91,8 +96,8 @@ export default function Projects() {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-8 md:p-12">
-                  <div className="max-w-4xl mx-auto text-center">
+                <div className="p-8 md:p-12 text-center">
+                  <div className="max-w-4xl mx-auto">
                     {/* Project Title - Centered */}
                     <motion.h3
                       className={`text-2xl md:text-3xl font-bold junge ${isDark ? 'text-white' : 'text-black'} group-hover:text-yellow-600 transition-colors duration-300 mb-6`}

@@ -65,7 +65,7 @@ export default function Hero() {
 
   if (isLoading) {
     return (
-      <section className={`min-h-screen bg-[var(--background)] flex items-center justify-center relative overflow-hidden`}>
+      <section className={`min-h-screen bg-[var(--off-white-text)] flex items-center justify-center relative overflow-hidden`}>
         <div className="text-center">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -115,7 +115,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className={`min-h-screen bg-[var(--background)] relative overflow-hidden transition-colors duration-300`} aria-label="Portfolio homepage with introduction and navigation">
+    <section id="home" className={`min-h-screen bg-[var(--off-white-text)] relative overflow-hidden transition-colors duration-300`} aria-label="Portfolio homepage with introduction and navigation">
       <div className="flex h-screen">
         {/* Dark Mode Toggle */}
         <motion.button
@@ -123,7 +123,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
           onClick={toggleDarkMode}
-          className={`fixed top-6 right-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-yellow-400' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400`}
+          className={`fixed top-6 right-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-yellow-400' : 'bg-[var(--off-white)] text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400`}
           aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         >
           {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -135,7 +135,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`fixed top-6 left-6 z-[60] p-3 min-h-[44px] min-w-[44px] ${isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-xl md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200 active:scale-95`}
+          className={`fixed top-6 left-6 z-[60] p-3 min-h-[44px] min-w-[44px] ${isDark ? 'bg-gray-800 text-white' : 'bg-[var(--off-white)] text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-xl md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200 active:scale-95`}
           aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMobileMenuOpen}
         >
@@ -188,7 +188,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`fixed top-6 left-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-colors duration-200`}
+          className={`fixed top-6 left-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-white' : 'bg-[var(--off-white)] text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-colors duration-200`}
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </motion.button>
@@ -322,7 +322,7 @@ export default function Hero() {
                     onClick={() => scrollToSection('#projects')}
                     className={`relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-lg border-2 transition-all duration-300 flex items-center space-x-3 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-2xl hover:shadow-xl active:scale-95 transform hover:-translate-y-1 ${
                       isDark
-                        ? 'bg-white text-black border-white hover:border-yellow-400 hover:bg-gray-50 hover:shadow-white/20'
+                        ? 'bg-[var(--off-white)] text-black border-[var(--off-white)] hover:border-yellow-400 hover:bg-gray-50 hover:shadow-gray-900/10'
                         : 'bg-[var(--brand-dark)] text-white border-[var(--brand-dark)] hover:border-yellow-400 hover:bg-[#1a1a1a] hover:shadow-black/30'
                     }`}
                     whileHover={{ scale: 1.05, y: -2 }}
@@ -348,7 +348,7 @@ export default function Hero() {
                     className={`relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-lg border-2 transition-all duration-300 flex items-center space-x-3 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-2xl hover:shadow-xl active:scale-95 transform hover:-translate-y-1 ${
                       isDark
                         ? 'bg-gray-800 text-white border-gray-600 hover:border-yellow-400 hover:bg-gray-700 hover:shadow-gray-800/30'
-                        : 'bg-white text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50 hover:shadow-gray-900/20'
+                        : 'bg-[var(--off-white)] text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50 hover:shadow-gray-900/10'
                     }`}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
