@@ -175,7 +175,7 @@ export default function About() {
               <p className={`text-sm mt-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 PDF • Updated December 2024
               </p>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
