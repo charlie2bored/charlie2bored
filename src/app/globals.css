@@ -6,8 +6,16 @@
   --brand-light: #e8e8e8;
   --brand-gold: #d4940a;
   --brand-dark: #2a2a2a;
-  --off-white: #f5f5f5;
-  --off-white-text: #f0f0f0;
+  --off-white: #f8f9fa;
+  --off-white-text: #f8f9fa;
+  --text-primary-light: #1a1a1a;
+  --text-primary-dark: #ffffff;
+  --text-secondary-light: #495057;
+  --text-secondary-dark: #e9ecef;
+  --text-muted-light: #6c757d;
+  --text-muted-dark: #adb5bd;
+  --border-light: #dee2e6;
+  --border-dark: #495057;
 }
 
 @theme inline {
@@ -32,16 +40,16 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, var(--background) 0%, #1a1a1a 100%);
-  color: var(--foreground);
+  background: linear-gradient(135deg, var(--off-white) 0%, #f1f3f4 100%);
+  color: var(--text-primary-light);
   font-family: var(--font-montserrat), sans-serif;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark body {
-  background: linear-gradient(135deg, #101010 0%, #0a0a0a 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: var(--text-primary-dark);
 }
 
 /* Enhanced typography for better contrast and readability */
@@ -63,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f0f0f0;
+  background: var(--off-white);
 }
 
 .dark ::-webkit-scrollbar-track {
@@ -71,32 +79,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d0d0d0;
+  background: var(--text-muted-light);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b8b8b8;
+  background: var(--text-secondary-light);
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #444444;
+  background: var(--text-muted-dark);
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #666666;
+  background: var(--text-secondary-dark);
 }
 
 /* Enhanced focus styles for better accessibility */
 *:focus-visible {
-  outline: 3px solid #d4940a;
+  outline: 3px solid var(--brand-gold);
   outline-offset: 2px;
   border-radius: 4px;
   transition: outline 0.2s ease-in-out;
 }
 
 .dark *:focus-visible {
-  outline: 3px solid #e6a617;
+  outline: 3px solid var(--brand-gold);
   outline-offset: 2px;
   border-radius: 4px;
 }

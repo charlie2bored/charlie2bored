@@ -39,13 +39,13 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="mb-16 animate-particle-assembly"
         >
-          <h2 className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-white' : 'text-black'}`}>
+          <h2 className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>
             Skills & Technologies
           </h2>
-          <p className={`text-lg max-w-2xl mx-auto montserrat ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+          <p className={`text-lg max-w-2xl mx-auto montserrat ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`}>
             Technologies and tools I use to bring ideas to life
           </p>
-          <p className={`text-sm max-w-2xl mx-auto montserrat mt-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+          <p className={`text-sm max-w-2xl mx-auto montserrat mt-2 ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>
             Skill proficiency based on years of experience and project complexity
           </p>
         </motion.div>
@@ -59,13 +59,13 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'} rounded-xl p-6 shadow-sm text-center animate-neural-network`}
+              className={`${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-white border-gray-100'} rounded-xl p-6 shadow-sm text-center animate-neural-network`}
               style={{
                 '--random-x': Math.random() * 200 - 100,
                 '--random-y': Math.random() * 200 - 100
               } as React.CSSProperties}
             >
-              <h3 className={`text-xl font-semibold mb-6 junge ${isDark ? 'text-white' : 'text-black'}`}>
+              <h3 className={`text-xl font-semibold mb-6 junge ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>
                 {categoryLabels[category as keyof typeof categoryLabels]}
               </h3>
 
@@ -73,21 +73,21 @@ export default function Skills() {
                 {categorySkills.map((skill) => (
                   <div key={skill.name} className="text-center">
                     <div className="flex justify-center items-center mb-2 gap-4">
-                      <span className={`text-sm font-medium montserrat ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <span className={`text-sm font-medium montserrat ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`}>
                         {skill.name}
                       </span>
-                      <span className={`text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                      <span className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>
                         {skill.level}%
                       </span>
                     </div>
 
-                    <div className={`w-full ${isDark ? 'bg-gray-700' : 'bg-gray-200'} rounded-full h-2`}>
+                    <div className={`w-full ${isDark ? 'bg-[var(--text-muted-dark)]' : 'bg-gray-200'} rounded-full h-2`}>
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                        className="h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600"
+                        className="h-2 rounded-full bg-gradient-to-r from-[var(--brand-gold)] to-yellow-600"
                       />
                     </div>
                   </div>
@@ -105,7 +105,7 @@ export default function Skills() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-12 text-center animate-cosmic-ripple animate-delay-400"
         >
-          <p className={`montserrat ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+          <p className={`montserrat ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`}>
             Continuously learning and expanding my skill set to stay current with industry trends
           </p>
         </motion.div>

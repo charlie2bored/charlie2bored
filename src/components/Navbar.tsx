@@ -54,8 +54,8 @@ export default function Navbar() {
       href: '#about',
       index: '01',
       bgColor: 'bg-[var(--brand-gold)]',
-      textColor: 'text-white',
-      indexColor: 'text-white/80',
+      textColor: 'text-[var(--text-primary-dark)]',
+      indexColor: 'text-[var(--text-primary-dark)]/80',
       shadowColor: 'shadow-[var(--brand-gold)]/25'
     },
     {
@@ -64,8 +64,8 @@ export default function Navbar() {
       href: '#skills',
       index: '02',
       bgColor: 'bg-[var(--brand-dark)]',
-      textColor: 'text-white',
-      indexColor: 'text-white/80',
+      textColor: 'text-[var(--text-primary-dark)]',
+      indexColor: 'text-[var(--text-primary-dark)]/80',
       shadowColor: 'shadow-[var(--brand-dark)]/30'
     },
     {
@@ -84,8 +84,8 @@ export default function Navbar() {
       href: '#contact',
       index: '04',
       bgColor: 'bg-[var(--brand-gold)]',
-      textColor: 'text-white',
-      indexColor: 'text-white/80',
+      textColor: 'text-[var(--text-primary-dark)]',
+      indexColor: 'text-[var(--text-primary-dark)]/80',
       shadowColor: 'shadow-[var(--brand-gold)]/25'
     }
   ];

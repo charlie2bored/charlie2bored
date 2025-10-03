@@ -106,7 +106,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <p className={`${isDark ? 'text-white' : 'text-black'} text-lg montserrat tracking-wider`}>Loading Experience</p>
+              <p className={`${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'} text-lg montserrat tracking-wider`}>Loading Experience</p>
             </motion.div>
           </motion.div>
         </div>
@@ -123,7 +123,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
           onClick={toggleDarkMode}
-          className={`fixed top-6 right-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-yellow-400' : 'bg-[var(--off-white)] text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400`}
+          className={`fixed top-6 right-6 z-[60] p-2 ${isDark ? 'bg-[var(--border-dark)] text-[var(--brand-gold)]' : 'bg-[var(--off-white)] text-[var(--text-secondary-light)]'} border ${isDark ? 'border-[var(--border-dark)]' : 'border-[var(--border-light)]'} rounded-lg hover:${isDark ? 'bg-[var(--text-muted-dark)]' : 'bg-gray-50'} transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--brand-gold)]`}
           aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         >
           {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -135,7 +135,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`fixed top-6 left-6 z-[60] p-3 min-h-[44px] min-w-[44px] ${isDark ? 'bg-gray-800 text-white' : 'bg-[var(--off-white)] text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-xl md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200 active:scale-95`}
+          className={`fixed top-6 left-6 z-[60] p-3 min-h-[44px] min-w-[44px] ${isDark ? 'bg-[var(--border-dark)] text-[var(--text-primary-dark)]' : 'bg-[var(--off-white)] text-[var(--text-secondary-light)]'} border ${isDark ? 'border-[var(--border-dark)]' : 'border-[var(--border-light)]'} rounded-xl md:hidden hover:${isDark ? 'bg-[var(--text-muted-dark)]' : 'bg-gray-50'} transition-all duration-200 active:scale-95`}
           aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMobileMenuOpen}
         >
@@ -276,7 +276,7 @@ export default function Hero() {
               <motion.div className="relative">
                 <motion.h1
                   className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-6 junge cursor-pointer select-none ${
-                    isDark ? 'text-white drop-shadow-lg' : 'text-black drop-shadow-sm'
+                    isDark ? 'text-[var(--text-primary-dark)] drop-shadow-lg' : 'text-[var(--text-primary-light)] drop-shadow-sm'
                   }`}
                   whileHover={{
                     scale: 1.05,
@@ -303,10 +303,10 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="space-y-6"
               >
-                <h2 className={`text-xl md:text-2xl font-light ${isDark ? 'text-gray-200' : 'text-gray-800'} tracking-wide junge`}>
+                <h2 className={`text-xl md:text-2xl font-light ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'} tracking-wide junge`}>
                   {personalInfo.title}
                 </h2>
-                <p className={`text-base md:text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'} leading-relaxed max-w-2xl mx-auto montserrat`}>
+                <p className={`text-base md:text-lg ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'} leading-relaxed max-w-2xl mx-auto montserrat`}>
                   {personalInfo.bio}
                 </p>
               </motion.div>
@@ -320,10 +320,10 @@ export default function Hero() {
               >
                   <motion.button
                     onClick={() => scrollToSection('#projects')}
-                    className={`relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-lg border-2 transition-all duration-300 flex items-center space-x-3 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-2xl hover:shadow-xl active:scale-95 transform hover:-translate-y-1 ${
+                    className={`relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-lg border-2 transition-all duration-300 flex items-center space-x-3 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-[var(--brand-gold)] rounded-2xl hover:shadow-xl active:scale-95 transform hover:-translate-y-1 ${
                       isDark
-                        ? 'bg-[var(--off-white)] text-black border-[var(--off-white)] hover:border-yellow-400 hover:bg-gray-50 hover:shadow-gray-900/10'
-                        : 'bg-[var(--brand-dark)] text-white border-[var(--brand-dark)] hover:border-yellow-400 hover:bg-[#1a1a1a] hover:shadow-black/30'
+                        ? 'bg-[var(--off-white)] text-[var(--text-primary-light)] border-[var(--off-white)] hover:border-[var(--brand-gold)] hover:bg-gray-50 hover:shadow-gray-900/10'
+                        : 'bg-[var(--brand-dark)] text-[var(--text-primary-dark)] border-[var(--brand-dark)] hover:border-[var(--brand-gold)] hover:bg-[#1a1a1a] hover:shadow-black/30'
                     }`}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
@@ -345,10 +345,10 @@ export default function Hero() {
                   <motion.a
                     href="/resume.pdf"
                     download
-                    className={`relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-lg border-2 transition-all duration-300 flex items-center space-x-3 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-2xl hover:shadow-xl active:scale-95 transform hover:-translate-y-1 ${
+                    className={`relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-lg border-2 transition-all duration-300 flex items-center space-x-3 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-[var(--brand-gold)] rounded-2xl hover:shadow-xl active:scale-95 transform hover:-translate-y-1 ${
                       isDark
-                        ? 'bg-gray-800 text-white border-gray-600 hover:border-yellow-400 hover:bg-gray-700 hover:shadow-gray-800/30'
-                        : 'bg-[var(--off-white)] text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50 hover:shadow-gray-900/10'
+                        ? 'bg-[var(--border-dark)] text-[var(--text-primary-dark)] border-[var(--border-dark)] hover:border-[var(--brand-gold)] hover:bg-[var(--text-muted-dark)] hover:shadow-gray-800/30'
+                        : 'bg-[var(--off-white)] text-[var(--text-primary-light)] border-[var(--border-light)] hover:border-[var(--brand-gold)] hover:bg-gray-50 hover:shadow-gray-900/10'
                     }`}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
@@ -375,7 +375,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 1.5 }}
         >
           <motion.button
-            className={`flex items-center space-x-4 text-xs sm:text-sm montserrat ${isDark ? 'text-gray-400' : 'text-gray-500'} focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded p-2`}
+            className={`flex items-center space-x-4 text-xs sm:text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'} focus:outline-none focus:ring-2 focus:ring-[var(--brand-gold)] rounded p-2`}
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection('#about')}
             aria-label="Scroll to About section"
@@ -415,7 +415,7 @@ export default function Hero() {
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
             />
           </div>
-          <p className={`text-xs mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+          <p className={`text-xs mt-1 ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>
             {Math.round(readingProgress)}% complete
           </p>
         </motion.div>

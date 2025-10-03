@@ -24,7 +24,7 @@ export default function Projects() {
             className="mb-16 animate-quantum-shift"
           >
             <motion.h2
-              className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-white' : 'text-black'}`}
+              className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -33,7 +33,7 @@ export default function Projects() {
               Featured Projects
             </motion.h2>
             <motion.p
-              className={`text-lg max-w-2xl montserrat ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
+              className={`text-lg max-w-2xl montserrat ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -52,7 +52,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className={`relative max-w-5xl mx-auto text-center ${isDark ? 'bg-gray-800/90 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} rounded-3xl shadow-2xl border ${isDark ? 'border-gray-700/50' : 'border-gray-200/50'} overflow-hidden group cursor-pointer animate-fractal-bloom`}
+                className={`relative max-w-5xl mx-auto text-center ${isDark ? 'bg-[var(--border-dark)]/90 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} rounded-3xl shadow-2xl border ${isDark ? 'border-[var(--border-dark)]/50' : 'border-[var(--border-light)]/50'} overflow-hidden group cursor-pointer animate-fractal-bloom`}
                 style={{
                   animationDelay: `${index * 0.2}s`,
                   '--random-x': Math.random() * 100 - 50,
@@ -64,10 +64,10 @@ export default function Projects() {
                 }}
               >
                 {/* Project Background/Image Area */}
-                <div className={`h-64 ${isDark ? 'bg-gradient-to-br from-gray-700 to-gray-600' : 'bg-gradient-to-br from-gray-50 to-gray-100'} relative overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
+                <div className={`h-64 ${isDark ? 'bg-gradient-to-br from-[var(--border-dark)] to-[var(--text-muted-dark)]' : 'bg-gradient-to-br from-gray-50 to-gray-100'} relative overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
                   {/* Project Number */}
                   <div className="absolute top-6 left-6">
-                    <span className={`text-6xl font-bold junge ${isDark ? 'text-gray-600' : 'text-gray-300'} opacity-30 group-hover:opacity-60 transition-opacity duration-300`}>
+                    <span className={`text-6xl font-bold junge ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-gray-300'} opacity-30 group-hover:opacity-60 transition-opacity duration-300`}>
                       {(index + 1).toString().padStart(2, '0')}
                     </span>
                   </div>
@@ -100,7 +100,7 @@ export default function Projects() {
                   <div className="max-w-4xl mx-auto">
                     {/* Project Title - Centered */}
                     <motion.h3
-                      className={`text-2xl md:text-3xl font-bold junge ${isDark ? 'text-white' : 'text-black'} group-hover:text-yellow-600 transition-colors duration-300 mb-6`}
+                      className={`text-2xl md:text-3xl font-bold junge ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'} group-hover:text-[var(--brand-gold)] transition-colors duration-300 mb-6`}
                       whileHover={{
                         x: 8,
                         transition: { duration: 0.2 }
@@ -110,18 +110,18 @@ export default function Projects() {
                     </motion.h3>
 
                     {/* Project Description - Centered */}
-                    <p className={`text-lg montserrat leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
+                    <p className={`text-lg montserrat leading-relaxed ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'} mb-6`}>
                       {project.description}
                     </p>
 
                     {/* Key Outcome - Centered */}
                     <motion.div
-                      className="p-6 rounded-xl bg-yellow-50 dark:bg-gray-800 border-l-4 border-yellow-400 relative overflow-hidden mx-auto max-w-md mb-8"
+                      className={`p-6 rounded-xl ${isDark ? 'bg-[var(--border-dark)]' : 'bg-yellow-50'} border-l-4 border-[var(--brand-gold)] relative overflow-hidden mx-auto max-w-md mb-8`}
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="absolute top-0 right-0 w-8 h-8 bg-yellow-400/20 rounded-full -translate-y-2 translate-x-2"></div>
-                      <p className="text-yellow-700 dark:text-yellow-300 font-semibold montserrat italic relative z-10">
+                      <div className="absolute top-0 right-0 w-8 h-8 bg-[var(--brand-gold)]/20 rounded-full -translate-y-2 translate-x-2"></div>
+                      <p className={`${isDark ? 'text-[var(--brand-gold)]' : 'text-yellow-700'} font-semibold montserrat italic relative z-10`}>
                         {project.outcome}
                       </p>
                     </motion.div>
@@ -131,7 +131,7 @@ export default function Projects() {
                       {project.technologies.map((tech, techIndex) => (
                       <motion.span
                         key={tech}
-                        className={`px-4 py-2 text-sm rounded-full montserrat transition-all duration-300 font-medium border ${isDark ? 'bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600 hover:border-yellow-400' : 'bg-gray-100 border-gray-200 text-gray-700 hover:bg-gray-200 hover:border-yellow-400'}`}
+                        className={`px-4 py-2 text-sm rounded-full montserrat transition-all duration-300 font-medium border ${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)] text-[var(--text-secondary-dark)] hover:bg-[var(--text-muted-dark)] hover:border-[var(--brand-gold)]' : 'bg-gray-100 border-[var(--border-light)] text-[var(--text-secondary-light)] hover:bg-gray-200 hover:border-[var(--brand-gold)]'}`}
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: techIndex * 0.1 }}
@@ -151,7 +151,7 @@ export default function Projects() {
                     {project.caseStudyUrl && (
                       <motion.a
                         href={project.caseStudyUrl}
-                        className={`group relative inline-flex items-center px-8 py-4 border-2 rounded-xl transition-all duration-300 montserrat overflow-hidden ${isDark ? 'border-gray-600 text-gray-300 hover:border-yellow-400 hover:text-yellow-400' : 'border-gray-200 text-gray-700 hover:border-yellow-400 hover:text-yellow-600'}`}
+                        className={`group relative inline-flex items-center px-8 py-4 border-2 rounded-xl transition-all duration-300 montserrat overflow-hidden ${isDark ? 'border-[var(--border-dark)] text-[var(--text-secondary-dark)] hover:border-[var(--brand-gold)] hover:text-[var(--brand-gold)]' : 'border-[var(--border-light)] text-[var(--text-secondary-light)] hover:border-[var(--brand-gold)] hover:text-yellow-600'}`}
                         whileHover={{
                           scale: 1.05,
                           y: -2,
