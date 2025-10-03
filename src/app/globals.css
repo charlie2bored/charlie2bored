@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #333333;
   --foreground: #171717;
   --brand-light: #DFDFDF;
   --brand-gold: #BE8400;
-  --brand-dark: #111111;
+  --brand-dark: #101010;
 }
 
 @theme inline {
@@ -30,11 +30,16 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(135deg, var(--background) 0%, #2a2a2a 100%);
   color: var(--foreground);
   font-family: var(--font-montserrat), sans-serif;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
+  color: #ffffff;
 }
 
 /* Enhanced typography for better contrast and readability */
@@ -48,11 +53,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
 }
 
-/* Dark mode styles */
-.dark body {
-  background: #0a0a0a;
-  color: #ffffff;
-}
+/* Dark mode styles - now handled by gradient above */
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -64,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #333333;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -77,38 +78,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #4a4a4a;
+  background: #555555;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #6a6a6a;
+  background: #777777;
 }
 
-/* Focus styles for better accessibility */
-*:focus {
-  outline: 2px solid #f59e0b;
+/* Enhanced focus styles for better accessibility */
+*:focus-visible {
+  outline: 3px solid #f59e0b;
   outline-offset: 2px;
+  border-radius: 4px;
+  transition: outline 0.2s ease-in-out;
 }
 
-.dark *:focus {
-  outline: 2px solid #fbbf24;
+.dark *:focus-visible {
+  outline: 3px solid #fbbf24;
   outline-offset: 2px;
+  border-radius: 4px;
 }
 
-/* Button focus styles */
-button:focus,
-a:focus {
-  outline: 2px solid #f59e0b;
-  outline-offset: 2px;
+/* Remove default outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
 }
 
-.dark button:focus,
-.dark a:focus {
-  outline: 2px solid #fbbf24;
-  outline-offset: 2px;
-}
+/* Button focus styles - now handled by focus-visible above */
 
-/* Reduced motion preferences */
+/* Enhanced reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -116,5 +114,12 @@ a:focus {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable parallax and transform animations */
+  .parallax-element,
+  [style*="transform"] {
+    transform: none !important;
   }
 }

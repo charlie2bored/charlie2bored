@@ -10,8 +10,8 @@ export default function About() {
   const { isDark } = darkModeContext || { isDark: false };
 
   return (
-    <section id="about" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      <div className="sm:ml-64 px-4">
+    <section id="about" className={`py-20 bg-[var(--background)]`}>
+      <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
@@ -21,15 +21,15 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-white' : 'text-black'}`}>
+            <h2 className={`text-3xl md:text-4xl font-bold mb-4 junge ${isDark ? 'text-white' : 'text-gray-900'}`}>
               About Me
             </h2>
-            <p className={`text-lg max-w-2xl mx-auto montserrat ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className={`text-lg max-w-2xl mx-auto montserrat ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
               Get to know more about my background, experience, and passion for technology
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Personal Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}

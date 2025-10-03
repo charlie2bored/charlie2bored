@@ -12,10 +12,10 @@ export default function Projects() {
 
 
   return (
-    <section id="projects" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <section id="projects" className={`py-20 bg-[var(--background)]`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
-      <div className="sm:ml-64 px-4">
-        <div className="max-w-6xl mx-auto">
+      <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
+        <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className={`relative ${index % 2 === 0 ? 'ml-0' : 'ml-16'} ${isDark ? 'bg-gray-800' : 'bg-white'} rounded-2xl shadow-lg overflow-hidden group cursor-pointer`}
+                className={`relative ${index % 2 === 0 ? 'ml-0' : 'ml-16'} ${isDark ? 'bg-gray-800/90 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} rounded-3xl shadow-2xl border ${isDark ? 'border-gray-700/50' : 'border-gray-200/50'} overflow-hidden group cursor-pointer`}
                 whileHover={{
                   scale: 1.02,
                   transition: { duration: 0.3, ease: "easeOut" }

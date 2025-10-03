@@ -11,9 +11,9 @@ export default function Contact() {
   const { isDark } = darkModeContext || { isDark: false };
 
   return (
-    <section id="contact" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
+    <section id="contact" className={`py-20 bg-[var(--background)]`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
-      <div className="sm:ml-64 px-4">
+      <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -170,7 +170,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className={`w-full py-3 px-6 rounded-lg font-medium border-2 transition-colors duration-200 flex items-center justify-center space-x-2 montserrat ${isDark ? 'bg-white text-black border-white hover:bg-gray-100 hover:border-yellow-400' : 'bg-black text-white border-black hover:bg-gray-900 hover:border-yellow-400'}`}
+                className={`w-full py-3 px-6 rounded-lg font-medium border-2 transition-colors duration-200 flex items-center justify-center space-x-2 montserrat bg-[var(--brand-dark)] text-white border-[var(--brand-dark)] hover:bg-[#1a1a1a] hover:border-yellow-400`}
               >
                 <Send size={20} />
                 <span>Send Message</span>

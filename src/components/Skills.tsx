@@ -27,9 +27,9 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
+    <section id="skills" className={`py-20 bg-[var(--background)]`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
-      <div className="sm:ml-64 px-4">
+      <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

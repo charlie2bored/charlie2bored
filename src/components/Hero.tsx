@@ -28,10 +28,10 @@ export default function Hero() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Reduced loading time for better UX
+    // Enhanced loading experience
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1200);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -65,7 +65,7 @@ export default function Hero() {
 
   if (isLoading) {
     return (
-      <section className={`min-h-screen ${isDark ? 'bg-black' : 'bg-white'} flex items-center justify-center relative overflow-hidden`}>
+      <section className={`min-h-screen bg-[var(--background)] flex items-center justify-center relative overflow-hidden`}>
         <div className="text-center">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -115,7 +115,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className={`min-h-screen ${isDark ? 'bg-black' : 'bg-white'} relative overflow-hidden transition-colors duration-300`}>
+    <section id="home" className={`min-h-screen bg-[var(--background)] relative overflow-hidden transition-colors duration-300`} aria-label="Portfolio homepage with introduction and navigation">
       <div className="flex h-screen">
         {/* Dark Mode Toggle */}
         <motion.button
@@ -135,7 +135,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`fixed top-6 left-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-colors duration-200`}
+          className={`fixed top-6 left-6 z-[60] p-3 min-h-[44px] min-w-[44px] ${isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-xl md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-all duration-200 active:scale-95`}
           aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMobileMenuOpen}
         >
@@ -198,7 +198,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={`fixed inset-0 ${isDark ? 'bg-black/50' : 'bg-black/30'} z-40 md:hidden`}
+            className={`fixed inset-0 bg-black/40 z-40 md:hidden`}
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
@@ -209,7 +209,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            className={`fixed left-0 top-0 h-full w-64 ${isDark ? 'bg-gray-900/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} z-50 md:hidden rounded-r-3xl`}
+            className={`fixed left-0 top-0 h-full w-64 bg-[var(--background)]/95 backdrop-blur-sm z-50 md:hidden rounded-r-3xl`}
           >
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
@@ -262,20 +262,20 @@ export default function Hero() {
         {/* Main Content Area */}
         <motion.div
           style={{ y, opacity }}
-          className="flex-1 flex items-center justify-center sm:ml-64 px-4"
+          className="flex-1 flex items-center justify-center sm:ml-64 md:ml-72 lg:ml-80 px-4"
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="space-y-6 sm:space-y-8"
+              className="space-y-8 sm:space-y-12"
             >
               {/* Large Name Display */}
               <motion.div className="relative">
                 <motion.h1
-                  className={`text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none mb-4 junge cursor-pointer select-none ${
-                    isDark ? 'text-white' : 'text-black'
+                  className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-6 junge cursor-pointer select-none ${
+                    isDark ? 'text-white drop-shadow-lg' : 'text-black drop-shadow-sm'
                   }`}
                   whileHover={{
                     scale: 1.05,
@@ -319,10 +319,10 @@ export default function Hero() {
               >
                   <motion.button
                     onClick={() => scrollToSection('#projects')}
-                    className={`relative px-6 sm:px-8 py-3 sm:py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-xl ${
+                    className={`relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-lg border-2 transition-all duration-300 flex items-center space-x-3 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-2xl hover:shadow-xl active:scale-95 transform hover:-translate-y-1 ${
                       isDark
-                        ? 'bg-white text-black border-white hover:border-yellow-400 hover:bg-gray-100'
-                        : 'bg-black text-white border-black hover:border-yellow-400 hover:bg-gray-900'
+                        ? 'bg-white text-black border-white hover:border-yellow-400 hover:bg-gray-50 hover:shadow-white/20'
+                        : 'bg-[var(--brand-dark)] text-white border-[var(--brand-dark)] hover:border-yellow-400 hover:bg-[#1a1a1a] hover:shadow-black/30'
                     }`}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
@@ -344,10 +344,10 @@ export default function Hero() {
                   <motion.a
                     href="/resume.pdf"
                     download
-                    className={`relative px-6 sm:px-8 py-3 sm:py-4 font-medium border-2 transition-all duration-300 flex items-center space-x-2 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-xl ${
+                    className={`relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-lg border-2 transition-all duration-300 flex items-center space-x-3 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-2xl hover:shadow-xl active:scale-95 transform hover:-translate-y-1 ${
                       isDark
-                        ? 'bg-gray-800 text-white border-gray-600 hover:border-yellow-400 hover:bg-gray-700'
-                        : 'bg-white text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50'
+                        ? 'bg-gray-800 text-white border-gray-600 hover:border-yellow-400 hover:bg-gray-700 hover:shadow-gray-800/30'
+                        : 'bg-white text-black border-gray-300 hover:border-yellow-400 hover:bg-gray-50 hover:shadow-gray-900/20'
                     }`}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
