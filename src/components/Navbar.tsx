@@ -104,9 +104,9 @@ export default function Navbar() {
               href={item.href}
               className={`
                 ${item.bgColor} ${item.textColor}
-                w-full h-32 rounded-none
+                w-full h-24 rounded-none
                 flex flex-col justify-start items-start
-                p-6 transition-all duration-300
+                p-6 transition-all duration-300 mb-4
                 hover:translate-x-2 hover:shadow-lg ${item.shadowColor}
                 cursor-pointer relative
                 ${activeSection === item.id ? 'ring-2 ring-white/40 ring-inset' : ''}

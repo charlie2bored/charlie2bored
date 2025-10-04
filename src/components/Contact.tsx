@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio-data';
 import { useDarkMode } from '@/components/DarkModeProvider';
 
@@ -43,34 +43,19 @@ export default function Contact() {
             <h3 className={`text-2xl font-semibold mb-6 junge ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>Contact Information</h3>
 
             <div className="space-y-6">
-              <div className="flex items-center justify-center">
-                <div className={`w-12 h-12 ${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-[var(--border-light)] border-[var(--border-light)]'} rounded-full flex items-center justify-center mr-4`}>
-                  <Mail className={`${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`} size={20} />
-                </div>
-                <div className="text-center">
-                  <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Email</p>
-                  <p className={`font-medium montserrat ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.email}</p>
-                </div>
+              <div className="text-center">
+                <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Email</p>
+                <p className={`font-medium montserrat text-lg ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.email}</p>
               </div>
 
-              <div className="flex items-center justify-center">
-                <div className={`w-12 h-12 ${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-[var(--border-light)] border-[var(--border-light)]'} rounded-full flex items-center justify-center mr-4`}>
-                  <Phone className={`${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`} size={20} />
-                </div>
-                <div className="text-center">
-                  <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Phone</p>
-                  <p className={`font-medium montserrat ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.phone}</p>
-                </div>
+              <div className="text-center">
+                <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Phone</p>
+                <p className={`font-medium montserrat text-lg ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.phone}</p>
               </div>
 
-              <div className="flex items-center justify-center">
-                <div className={`w-12 h-12 ${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-[var(--border-light)] border-[var(--border-light)]'} rounded-full flex items-center justify-center mr-4`}>
-                  <MapPin className={`${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`} size={20} />
-                </div>
-                <div className="text-center">
-                  <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Location</p>
-                  <p className={`font-medium montserrat ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.location}</p>
-                </div>
+              <div className="text-center">
+                <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Location</p>
+                <p className={`font-medium montserrat text-lg ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.location}</p>
               </div>
             </div>
 

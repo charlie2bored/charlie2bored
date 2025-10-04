@@ -40,45 +40,25 @@ export default function About() {
             >
               <h3 className={`text-2xl font-semibold mb-6 junge ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>Personal Information</h3>
 
-              <div className="space-y-4 text-center">
-                <div className="flex items-center justify-center">
-                  <div className={`w-12 h-12 ${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-[var(--border-light)] border-[var(--border-light)]'} rounded-full flex items-center justify-center mr-4`}>
-                    <span className={`font-semibold ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`}>👤</span>
-                  </div>
-                  <div className="text-center">
-                    <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Name</p>
-                    <p className={`font-medium montserrat ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.name}</p>
-                  </div>
+              <div className="space-y-6 text-center">
+                <div className="text-center">
+                  <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Name</p>
+                  <p className={`font-medium montserrat text-lg ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.name}</p>
                 </div>
 
-                <div className="flex items-center justify-center">
-                  <div className={`w-12 h-12 ${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-[var(--border-light)] border-[var(--border-light)]'} rounded-full flex items-center justify-center mr-4`}>
-                    <span className={`font-semibold ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`}>💼</span>
-                  </div>
-                  <div className="text-center">
-                    <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Title</p>
-                    <p className={`font-medium montserrat ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.title}</p>
-                  </div>
+                <div className="text-center">
+                  <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Title</p>
+                  <p className={`font-medium montserrat text-lg ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.title}</p>
                 </div>
 
-                <div className="flex items-center justify-center">
-                  <div className={`w-12 h-12 ${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-[var(--border-light)] border-[var(--border-light)]'} rounded-full flex items-center justify-center mr-4`}>
-                    <span className={`font-semibold ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`}>📍</span>
-                  </div>
-                  <div className="text-center">
-                    <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Location</p>
-                    <p className={`font-medium montserrat ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.location}</p>
-                  </div>
+                <div className="text-center">
+                  <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Location</p>
+                  <p className={`font-medium montserrat text-lg ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.location}</p>
                 </div>
 
-                <div className="flex items-center justify-center">
-                  <div className={`w-12 h-12 ${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-[var(--border-light)] border-[var(--border-light)]'} rounded-full flex items-center justify-center mr-4`}>
-                    <span className={`font-semibold ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`}>📧</span>
-                  </div>
-                  <div className="text-center">
-                    <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Email</p>
-                    <p className={`font-medium montserrat ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.email}</p>
-                  </div>
+                <div className="text-center">
+                  <p className={`text-sm montserrat ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>Email</p>
+                  <p className={`font-medium montserrat text-lg ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>{personalInfo.email}</p>
                 </div>
               </div>
 
