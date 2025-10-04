@@ -143,7 +143,7 @@ export default function Navbar() {
       {/* Mobile Navigation Menu - Only show on mobile when open */}
       {isMobileMenuOpen && (
         <div className="sm:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsMobileMenuOpen(false)}>
-          <div className={`fixed left-0 top-0 h-full w-56 ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'} shadow-2xl z-50 overflow-y-auto`}>
+          <div className={`fixed left-0 top-0 h-full w-56 ${isDark ? 'bg-[#101010]' : 'bg-white'} shadow-2xl z-50 overflow-y-auto`}>
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
                 <span className="text-xl font-bold text-[var(--brand-dark)]">Navigation</span>

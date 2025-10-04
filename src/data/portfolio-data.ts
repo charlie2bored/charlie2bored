@@ -40,16 +40,13 @@ export const portfolioData = {
   },
 
   skills: [
-    { name: "React", level: 90, category: "frontend" },
-    { name: "Next.js", level: 85, category: "frontend" },
-    { name: "TypeScript", level: 80, category: "frontend" },
-    { name: "Tailwind CSS", level: 95, category: "frontend" },
-    { name: "Node.js", level: 75, category: "backend" },
-    { name: "Python", level: 70, category: "backend" },
-    { name: "Figma", level: 85, category: "design" },
-    { name: "Git", level: 90, category: "tools" },
-    { name: "SQL", level: 75, category: "data" },
-    { name: "Data Analysis", level: 70, category: "data" }
+    { name: "Data Analysis", level: 90, category: "data" },
+    { name: "Business Operations", level: 85, category: "data" },
+    { name: "Microsoft Office Suite", level: 95, category: "tools" },
+    { name: "Data Visualization", level: 80, category: "data" },
+    { name: "Figma", level: 90, category: "design" },
+    { name: "Adobe Creative Suite", level: 85, category: "design" },
+    { name: "Prototyping Tools", level: 80, category: "design" }
   ],
 
   projects: [

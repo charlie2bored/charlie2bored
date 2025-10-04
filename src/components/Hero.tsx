@@ -65,7 +65,7 @@ export default function Hero() {
 
   if (isLoading) {
     return (
-      <section className={`min-h-screen ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'} flex items-center justify-center relative overflow-hidden`}>
+      <section className={`min-h-screen ${isDark ? 'bg-[#101010]' : 'bg-white'} flex items-center justify-center relative overflow-hidden`}>
         <div className="text-center">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -115,7 +115,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className={`min-h-screen ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'} relative overflow-hidden transition-colors duration-300`} aria-label="Portfolio homepage with introduction and navigation">
+    <section id="home" className={`min-h-screen ${isDark ? 'bg-[#101010]' : 'bg-white'} relative overflow-hidden transition-colors duration-300`} aria-label="Portfolio homepage with introduction and navigation">
       <div className="flex h-screen">
         {/* Dark Mode Toggle */}
         <motion.button

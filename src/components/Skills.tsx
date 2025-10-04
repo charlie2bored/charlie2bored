@@ -5,28 +5,21 @@ import { portfolioData } from '@/data/portfolio-data';
 import { useDarkMode } from '@/components/DarkModeProvider';
 import { useState, useEffect, useMemo } from 'react';
 import {
-  Code2,
   Palette,
   GitBranch,
-  BarChart3,
-  Server,
-  type LucideIcon
+  BarChart3
 } from 'lucide-react';
 
 export default function Skills() {
   const { skills } = portfolioData;
   const darkModeContext = useDarkMode();
   const { isDark } = darkModeContext || { isDark: false };
-  const [randomValues, setRandomValues] = useState<{[key: string]: {x: number, y: number}}>({});
-
   // Map skill categories to icons and labels
-  const skillCategories: Record<string, { label: string; icon: LucideIcon; color: string }> = {
-    frontend: { label: 'Frontend Development', icon: Code2, color: 'text-blue-500' },
-    backend: { label: 'Backend Development', icon: Server, color: 'text-green-500' },
-    design: { label: 'Design & UI/UX', icon: Palette, color: 'text-purple-500' },
-    tools: { label: 'Development Tools', icon: GitBranch, color: 'text-orange-500' },
-    data: { label: 'Data & Analytics', icon: BarChart3, color: 'text-red-500' }
-  };
+  const skillCategories = useMemo(() => ({
+    data: { label: 'Data & Analytics', icon: BarChart3, color: 'text-blue-600' },
+    tools: { label: 'Tools & Software', icon: GitBranch, color: 'text-green-600' },
+    design: { label: 'Design & Creative', icon: Palette, color: 'text-purple-600' }
+  }), []);
 
   // Group skills by category
   const skillsByCategory = useMemo(() => {
@@ -37,26 +30,8 @@ export default function Skills() {
     return grouped;
   }, [skills, skillCategories]);
 
-  // Generate random values only on client side to avoid hydration mismatch
-  useEffect(() => {
-    const values: {[key: string]: {x: number, y: number}} = {};
-    Object.keys(skillCategories).forEach(category => {
-      values[category] = {
-        x: Math.random() * 200 - 100,
-        y: Math.random() * 200 - 100
-      };
-    });
-    setRandomValues(values);
-  }, [skillCategories]);
-
-  // Flatten skills for display order
-  const displaySkills = useMemo(() => {
-    const skillOrder = ['frontend', 'backend', 'design', 'tools', 'data'];
-    return skillOrder.flatMap(category => skillsByCategory[category as keyof typeof skillsByCategory] || []);
-  }, [skillsByCategory]);
-
   return (
-    <section id="skills" className={`py-20 ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'}`}>
+    <section id="skills" className={`py-20 ${isDark ? 'bg-[#101010]' : 'bg-white'}`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
       <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -80,45 +55,51 @@ export default function Skills() {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
-          {displaySkills.map((skill, skillIndex) => {
-            const categoryInfo = skillCategories[skill.category as keyof typeof skillCategories];
-            const IconComponent = categoryInfo.icon;
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {Object.entries(skillCategories).map(([categoryKey, categoryInfo], categoryIndex) => {
+            const categorySkills = skillsByCategory[categoryKey];
+            if (!categorySkills || categorySkills.length === 0) return null;
 
             return (
               <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                key={categoryKey}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: skillIndex * 0.1 }}
-                className={`${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-white border-[var(--border-light)]'} rounded-2xl p-6 shadow-sm text-center hover:shadow-lg transition-shadow duration-300`}
-                style={{
-                  '--random-x': randomValues[skill.category as keyof typeof randomValues]?.x || 0,
-                  '--random-y': randomValues[skill.category as keyof typeof randomValues]?.y || 0
-                } as React.CSSProperties}
+                transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+                className={`${isDark ? 'bg-[var(--border-dark)]' : 'bg-white'} rounded-2xl p-8 shadow-sm border ${isDark ? 'border-gray-700' : 'border-gray-100'} hover:shadow-lg transition-all duration-300`}
               >
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-xl ${isDark ? 'bg-gray-800' : 'bg-gray-50'} flex items-center justify-center`}>
-                  <IconComponent className={`w-8 h-8 ${categoryInfo.color}`} />
+                <div className="flex items-center mb-6">
+                  <div className={`w-12 h-12 rounded-xl ${isDark ? 'bg-gray-800' : 'bg-gray-50'} flex items-center justify-center mr-4`}>
+                    <categoryInfo.icon className={`w-6 h-6 ${categoryInfo.color}`} />
+                  </div>
+                  <h3 className={`text-xl font-semibold ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>
+                    {categoryInfo.label}
+                  </h3>
                 </div>
 
-                <h3 className={`font-semibold text-sm ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>
-                  {skill.name}
-                </h3>
-
-                <div className="mt-3">
-                  <div className={`w-full ${isDark ? 'bg-[var(--text-muted-dark)]' : 'bg-[var(--border-light)]'} rounded-full h-1.5`}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-                      className={`h-1.5 rounded-full bg-gradient-to-r ${categoryInfo.color.replace('500', '400')}`}
-                    />
-                  </div>
-                  <span className={`text-xs mt-1 block ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'}`}>
-                    {skill.level}%
-                  </span>
+                <div className="space-y-4">
+                  {categorySkills.map((skill, skillIndex) => (
+                    <div key={skill.name} className="flex items-center justify-between">
+                      <span className={`font-medium ${isDark ? 'text-[var(--text-secondary-dark)]' : 'text-[var(--text-secondary-light)]'}`}>
+                        {skill.name}
+                      </span>
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-24 ${isDark ? 'bg-[var(--text-muted-dark)]' : 'bg-gray-200'} rounded-full h-2`}>
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, ease: "easeOut", delay: skillIndex * 0.1 }}
+                            className={`h-2 rounded-full bg-gradient-to-r ${categoryInfo.color}`}
+                          />
+                        </div>
+                        <span className={`text-sm font-medium ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'} w-8 text-right`}>
+                          {skill.level}%
+                        </span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             );

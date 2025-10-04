@@ -3,19 +3,19 @@
 :root {
   --background: #0f0f0f;
   --foreground: #1a1a1a;
-  --brand-light: #e8e8e8;
+  --brand-light: #f5f5f5;
   --brand-gold: #d4940a;
   --brand-dark: #2a2a2a;
-  --off-white: #f8f9fa;
-  --off-white-text: #f8f9fa;
-  --text-primary-light: #1a1a1a;
+  --off-white: #ffffff;
+  --off-white-text: #ffffff;
+  --text-primary-light: #000000;
   --text-primary-dark: #ffffff;
-  --text-secondary-light: #343a40;
-  --text-secondary-dark: #e9ecef;
-  --text-muted-light: #495057;
-  --text-muted-dark: #adb5bd;
-  --border-light: #dee2e6;
-  --border-dark: #495057;
+  --text-secondary-light: #333333;
+  --text-secondary-dark: #e0e0e0;
+  --text-muted-light: #666666;
+  --text-muted-dark: #999999;
+  --border-light: #e5e5e5;
+  --border-dark: #333333;
 }
 
 @theme inline {
@@ -40,7 +40,7 @@ html {
 }
 
 body {
-  background: var(--off-white);
+  background: #ffffff;
   color: var(--text-primary-light);
   font-family: var(--font-montserrat), sans-serif;
   overflow-x: hidden;

@@ -11,7 +11,7 @@ export default function Contact() {
   const { isDark } = darkModeContext || { isDark: false };
 
   return (
-    <section id="contact" className={`py-20 ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'}`}>
+    <section id="contact" className={`py-20 ${isDark ? 'bg-[#101010]' : 'bg-white'}`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
       <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
