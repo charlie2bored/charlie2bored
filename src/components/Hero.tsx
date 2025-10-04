@@ -18,7 +18,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, Menu, X, Sun, Moon } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio-data';
 import { useDarkMode } from '@/components/DarkModeProvider';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 
 export default function Hero() {
@@ -51,21 +51,21 @@ export default function Hero() {
   // Calculate reading progress for better UX feedback
   const [readingProgress, setReadingProgress] = useState(0);
 
-  useEffect(() => {
-    const updateReadingProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      setReadingProgress(Math.min(scrollPercent, 100));
-    };
+  const updateReadingProgress = useCallback(() => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    setReadingProgress(Math.min(scrollPercent, 100));
+  }, []);
 
+  useEffect(() => {
     window.addEventListener('scroll', updateReadingProgress);
     return () => window.removeEventListener('scroll', updateReadingProgress);
-  }, []);
+  }, [updateReadingProgress]);
 
   if (isLoading) {
     return (
-      <section className={`min-h-screen bg-[var(--off-white-text)] flex items-center justify-center relative overflow-hidden`}>
+      <section className={`min-h-screen ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'} flex items-center justify-center relative overflow-hidden`}>
         <div className="text-center">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -115,7 +115,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className={`min-h-screen bg-[var(--off-white-text)] relative overflow-hidden transition-colors duration-300`} aria-label="Portfolio homepage with introduction and navigation">
+    <section id="home" className={`min-h-screen ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'} relative overflow-hidden transition-colors duration-300`} aria-label="Portfolio homepage with introduction and navigation">
       <div className="flex h-screen">
         {/* Dark Mode Toggle */}
         <motion.button
@@ -188,7 +188,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`fixed top-6 left-6 z-[60] p-2 ${isDark ? 'bg-gray-800 text-white' : 'bg-[var(--off-white)] text-gray-700'} border ${isDark ? 'border-gray-600' : 'border-gray-200'} rounded-lg md:hidden hover:${isDark ? 'bg-gray-700' : 'bg-gray-50'} transition-colors duration-200`}
+          className={`fixed top-6 left-6 z-[60] p-2 ${isDark ? 'bg-[var(--border-dark)] text-[var(--text-primary-dark)]' : 'bg-[var(--off-white)] text-[var(--text-secondary-light)]'} border ${isDark ? 'border-[var(--border-dark)]' : 'border-[var(--border-light)]'} rounded-lg md:hidden hover:${isDark ? 'bg-[var(--text-muted-dark)]' : 'bg-gray-50'} transition-colors duration-200`}
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </motion.button>
@@ -210,14 +210,15 @@ export default function Hero() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            className={`fixed left-0 top-0 h-full w-64 bg-[var(--background)]/95 backdrop-blur-sm z-50 md:hidden rounded-r-3xl`}
+            className={`fixed left-0 top-0 h-full w-64 ${isDark ? 'bg-[var(--border-dark)]' : 'bg-white'}/95 backdrop-blur-sm z-50 md:hidden rounded-r-3xl`}
           >
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
                 <span className="text-xl font-bold text-[var(--brand-dark)]">Navigation</span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-8 h-8 flex items-center justify-center text-[var(--brand-dark)] hover:bg-[var(--brand-light)] rounded-full transition-colors duration-200"
+                  className={`${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--brand-dark)]'} hover:${isDark ? 'bg-[var(--text-muted-dark)]' : 'bg-[var(--brand-light)]'} w-12 h-12 flex items-center justify-center rounded-full transition-colors duration-200`}
+                  aria-label="Close navigation menu"
                 >
                   <X size={20} />
                 </button>
@@ -226,10 +227,10 @@ export default function Hero() {
               <nav className="space-y-3">
                 {[
                   { id: 'home', name: 'Home', href: '#home', index: '00', bgColor: 'bg-[var(--brand-light)]', textColor: 'text-[var(--brand-dark)]', indexColor: 'text-[var(--brand-dark)]/60' },
-                  { id: 'about', name: 'About', href: '#about', index: '01', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-white', indexColor: 'text-white/80' },
-                  { id: 'skills', name: 'Skills', href: '#skills', index: '02', bgColor: 'bg-[var(--brand-dark)]', textColor: 'text-white', indexColor: 'text-white/80' },
+                  { id: 'about', name: 'About', href: '#about', index: '01', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-[var(--text-primary-dark)]', indexColor: 'text-[var(--text-primary-dark)]/80' },
+                  { id: 'skills', name: 'Skills', href: '#skills', index: '02', bgColor: 'bg-[var(--brand-dark)]', textColor: 'text-[var(--text-primary-dark)]', indexColor: 'text-[var(--text-primary-dark)]/80' },
                   { id: 'projects', name: 'Projects', href: '#projects', index: '03', bgColor: 'bg-[var(--brand-light)]', textColor: 'text-[var(--brand-dark)]', indexColor: 'text-[var(--brand-dark)]/60' },
-                  { id: 'contact', name: 'Contact', href: '#contact', index: '04', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-white', indexColor: 'text-white/80' }
+                  { id: 'contact', name: 'Contact', href: '#contact', index: '04', bgColor: 'bg-[var(--brand-gold)]', textColor: 'text-[var(--text-primary-dark)]', indexColor: 'text-[var(--text-primary-dark)]/80' }
                 ].map((item) => (
                   <a
                     key={item.id}

@@ -10,9 +10,9 @@
   --off-white-text: #f8f9fa;
   --text-primary-light: #1a1a1a;
   --text-primary-dark: #ffffff;
-  --text-secondary-light: #495057;
+  --text-secondary-light: #343a40;
   --text-secondary-dark: #e9ecef;
-  --text-muted-light: #6c757d;
+  --text-muted-light: #495057;
   --text-muted-dark: #adb5bd;
   --border-light: #dee2e6;
   --border-dark: #495057;
@@ -47,7 +47,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.dark body {
+.dark {
   background: #101010;
   color: var(--text-primary-dark);
 }

@@ -11,7 +11,7 @@ export default function Contact() {
   const { isDark } = darkModeContext || { isDark: false };
 
   return (
-    <section id="contact" className={`py-20 bg-[var(--background)]`}>
+    <section id="contact" className={`py-20 ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'}`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
       <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -143,6 +143,7 @@ export default function Contact() {
               <button
                 type="submit"
                 className={`w-full py-3 px-6 rounded-lg font-medium border-2 transition-colors duration-200 flex items-center justify-center space-x-2 montserrat bg-[var(--brand-dark)] text-[var(--text-primary-dark)] border-[var(--brand-dark)] hover:bg-[#1a1a1a] hover:border-[var(--brand-gold)]`}
+                aria-label="Send message"
               >
                 <Send size={20} />
                 <span>Send Message</span>

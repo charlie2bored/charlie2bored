@@ -3,20 +3,36 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio-data';
 import { useDarkMode } from '@/components/DarkModeProvider';
+import { useState, useEffect, useMemo } from 'react';
 
 export default function Skills() {
   const { skills } = portfolioData;
   const darkModeContext = useDarkMode();
   const { isDark } = darkModeContext || { isDark: false };
+  const [randomValues, setRandomValues] = useState<{[key: string]: {x: number, y: number}}>({});
 
-  // Group skills by category
-  const skillsByCategory = skills.reduce((acc, skill) => {
-    if (!acc[skill.category]) {
-      acc[skill.category] = [];
-    }
-    acc[skill.category].push(skill);
-    return acc;
-  }, {} as Record<string, typeof skills>);
+  // Group skills by category - memoized to prevent unnecessary recalculations
+  const skillsByCategory = useMemo(() => {
+    return skills.reduce((acc, skill) => {
+      if (!acc[skill.category]) {
+        acc[skill.category] = [];
+      }
+      acc[skill.category].push(skill);
+      return acc;
+    }, {} as Record<string, typeof skills>);
+  }, [skills]);
+
+  // Generate random values only on client side to avoid hydration mismatch
+  useEffect(() => {
+    const values: {[key: string]: {x: number, y: number}} = {};
+    Object.keys(skillsByCategory).forEach(category => {
+      values[category] = {
+        x: Math.random() * 200 - 100,
+        y: Math.random() * 200 - 100
+      };
+    });
+    setRandomValues(values);
+  }, [skillsByCategory]);
 
   const categoryLabels = {
     frontend: 'Frontend',
@@ -27,7 +43,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className={`py-20 bg-[var(--background)]`}>
+    <section id="skills" className={`py-20 ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'}`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
       <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -59,10 +75,10 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className={`${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-white border-gray-100'} rounded-xl p-6 shadow-sm text-center animate-neural-network`}
+              className={`${isDark ? 'bg-[var(--border-dark)] border-[var(--border-dark)]' : 'bg-white border-[var(--border-light)]'} rounded-xl p-6 shadow-sm text-center animate-neural-network`}
               style={{
-                '--random-x': Math.random() * 200 - 100,
-                '--random-y': Math.random() * 200 - 100
+                '--random-x': randomValues[category]?.x || 0,
+                '--random-y': randomValues[category]?.y || 0
               } as React.CSSProperties}
             >
               <h3 className={`text-xl font-semibold mb-6 junge ${isDark ? 'text-[var(--text-primary-dark)]' : 'text-[var(--text-primary-light)]'}`}>
@@ -81,7 +97,7 @@ export default function Skills() {
                       </span>
                     </div>
 
-                    <div className={`w-full ${isDark ? 'bg-[var(--text-muted-dark)]' : 'bg-gray-200'} rounded-full h-2`}>
+                    <div className={`w-full ${isDark ? 'bg-[var(--text-muted-dark)]' : 'bg-[var(--border-light)]'} rounded-full h-2`}>
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}

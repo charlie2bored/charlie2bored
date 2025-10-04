@@ -3,15 +3,28 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio-data';
 import { useDarkMode } from '@/components/DarkModeProvider';
+import { useState, useEffect } from 'react';
 
 export default function Projects() {
   const { projects } = portfolioData;
   const darkModeContext = useDarkMode();
   const { isDark } = darkModeContext || { isDark: false };
+  const [randomValues, setRandomValues] = useState<{[key: number]: {x: number, y: number}}>({});
 
+  // Generate random values only on client side to avoid hydration mismatch
+  useEffect(() => {
+    const values: {[key: number]: {x: number, y: number}} = {};
+    projects.forEach((_, index) => {
+      values[index] = {
+        x: Math.random() * 100 - 50,
+        y: Math.random() * 100 - 50
+      };
+    });
+    setRandomValues(values);
+  }, [projects]);
 
   return (
-    <section id="projects" className={`py-20 bg-[var(--background)]`}>
+    <section id="projects" className={`py-20 ${isDark ? 'bg-[#101010]' : 'bg-[var(--off-white-text)]'}`}>
       {/* Content wrapper with left margin to account for sticky sidebar */}
       <div className="sm:ml-64 md:ml-72 lg:ml-80 px-4">
         <div className="max-w-7xl mx-auto text-center">
@@ -55,8 +68,8 @@ export default function Projects() {
                 className={`relative max-w-5xl mx-auto text-center ${isDark ? 'bg-[var(--border-dark)]/90 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'} rounded-3xl shadow-2xl border ${isDark ? 'border-[var(--border-dark)]/50' : 'border-[var(--border-light)]/50'} overflow-hidden group cursor-pointer animate-fractal-bloom`}
                 style={{
                   animationDelay: `${index * 0.2}s`,
-                  '--random-x': Math.random() * 100 - 50,
-                  '--random-y': Math.random() * 100 - 50
+                  '--random-x': randomValues[index]?.x || 0,
+                  '--random-y': randomValues[index]?.y || 0
                 } as React.CSSProperties}
                 whileHover={{
                   scale: 1.02,
@@ -64,10 +77,10 @@ export default function Projects() {
                 }}
               >
                 {/* Project Background/Image Area */}
-                <div className={`h-64 ${isDark ? 'bg-gradient-to-br from-[var(--border-dark)] to-[var(--text-muted-dark)]' : 'bg-gradient-to-br from-gray-50 to-gray-100'} relative overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
+                <div className={`h-64 ${isDark ? 'bg-gradient-to-br from-[var(--border-dark)] to-[var(--text-muted-dark)]' : 'bg-gradient-to-br from-[var(--off-white)] to-gray-50'} relative overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
                   {/* Project Number */}
                   <div className="absolute top-6 left-6">
-                    <span className={`text-6xl font-bold junge ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-gray-300'} opacity-30 group-hover:opacity-60 transition-opacity duration-300`}>
+                    <span className={`text-6xl font-bold junge ${isDark ? 'text-[var(--text-muted-dark)]' : 'text-[var(--text-muted-light)]'} opacity-30 group-hover:opacity-60 transition-opacity duration-300`}>
                       {(index + 1).toString().padStart(2, '0')}
                     </span>
                   </div>
