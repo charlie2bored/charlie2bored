@@ -6,22 +6,25 @@ import Link from 'next/link';
 const projects = [
   {
     number: '(01)',
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.',
-    tech: ['React', 'Node.js', 'Stripe'],
-    links: { github: '#', demo: '#' }
+    title: 'NYC Distance Based Pricing',
+    description: 'Analyzed MTA ridership data to demonstrate that replacing flat fares ($2.90) with distance-based pricing ($2.00 + $0.24/mile) could increase annual revenue by $277M while reducing costs for 29% of riders.',
+    image: '/projects/nyc-fare-systems.jpg',
+    tech: ['Python', 'SQL', 'Data Analytics', 'Business Operations'],
+    links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' }
   },
   {
     number: '(02)',
     title: 'Task Management App',
     description: 'A collaborative task management application with real-time updates and team collaboration features.',
+    image: '/projects/task-management-app.jpg',
     tech: ['Vue.js', 'Firebase', 'Tailwind CSS'],
-    links: { github: '#', demo: '#' }
+    links: { github: '', demo: '#' }
   },
   {
     number: '(03)',
     title: 'Data Visualization Dashboard',
     description: 'An interactive dashboard for data analysis and visualization with customizable charts and filters.',
+    image: '/projects/data-viz-dashboard.jpg',
     tech: ['D3.js', 'Python', 'Flask'],
     links: { github: '#', demo: '#' }
   }
@@ -52,21 +55,29 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="grid grid-cols-[100px_1fr] gap-16"
+              className="grid grid-cols-[100px_1fr] gap-16 hover:-translate-y-2 transition-transform duration-300 cursor-pointer"
             >
               <div className="text-xl font-medium pt-3" style={{ color: 'var(--text-color)' }}>
                 {project.number}
               </div>
 
               <div>
-                {/* Project Image Placeholder */}
-                <div
-                  className="aspect-video rounded-2xl mb-8 flex items-center justify-center"
-                  style={{ backgroundColor: 'var(--bg-color)', border: '2px solid var(--text-secondary)' }}
-                  role="img"
-                  aria-label={`Preview image for ${project.title} project`}
-                >
-                  <span className="text-6xl" aria-hidden="true">🖼️</span>
+                {/* Project Image */}
+                <div className="aspect-video rounded-2xl mb-8 overflow-hidden border-2" style={{ borderColor: 'var(--text-secondary)' }}>
+                  <img
+                    src={project.image}
+                    alt={`Preview image for ${project.title} project`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to placeholder if image fails to load
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement!.innerHTML = `
+                        <div class="w-full h-full flex items-center justify-center" style="background-color: var(--bg-color); border: 2px solid var(--text-secondary);">
+                          <span class="text-6xl" aria-hidden="true">🖼️</span>
+                        </div>
+                      `;
+                    }}
+                  />
                 </div>
 
                 <h3 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" style={{ color: 'var(--text-color)' }}>
