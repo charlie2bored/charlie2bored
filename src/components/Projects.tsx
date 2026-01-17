@@ -8,13 +8,13 @@ const projects = [
     number: '(01)',
     title: 'NYC Distance Based Pricing',
     description: 'Analyzed MTA ridership data to demonstrate that replacing flat fares ($2.90) with distance-based pricing ($2.00 + $0.24/mile) could increase annual revenue by $277M while reducing costs for 29% of riders.',
-    image: '/projects/nyc-fare-systems.jpg',
+    image: '/Users/charlie/CHARLIE2BORED/charlie2bored/public/nyc-fare-systems.jpg',
     tech: ['Python', 'SQL', 'Data Analytics', 'Business Operations'],
     links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' }
   },
   {
     number: '(02)',
-    title: 'Task Management App',
+    title: 'SpeedReader',
     description: 'A collaborative task management application with real-time updates and team collaboration features.',
     image: '/projects/task-management-app.jpg',
     tech: ['Vue.js', 'Firebase', 'Tailwind CSS'],
