@@ -8,17 +8,17 @@ const projects = [
     number: '(01)',
     title: 'NYC Distance Based Pricing',
     description: 'Analyzed MTA ridership data to demonstrate that replacing flat fares ($2.90) with distance-based pricing ($2.00 + $0.24/mile) could increase annual revenue by $277M while reducing costs for 29% of riders.',
-    image: '/Users/charlie/CHARLIE2BORED/charlie2bored/public/nyc-fare-systems.jpg',
+    image: '/projects/nyc-fare-systems.jpg',
     tech: ['Python', 'SQL', 'Data Analytics', 'Business Operations'],
     links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' }
   },
   {
     number: '(02)',
     title: 'SpeedReader',
-    description: 'A collaborative task management application with real-time updates and team collaboration features.',
-    image: '/projects/task-management-app.jpg',
-    tech: ['Vue.js', 'Firebase', 'Tailwind CSS'],
-    links: { github: '', demo: '#' }
+    description: 'A high-performance web application that utilizes Rapid Serial Visual Presentation (RSVP) and Optimal Recognition Point (ORP) highlighting to enable distraction-free reading at speeds of up to 1000 words per minute.',
+    image: '/projects/speedreader.png',
+    tech: ['React', 'Vite', 'JavaScript', 'HTML', 'CSS'],
+    links: { github: 'https://github.com/charlie2bored/SpeedReader', demo: 'https://speed-reader-weld.vercel.app/' }
   },
   {
     number: '(03)',
