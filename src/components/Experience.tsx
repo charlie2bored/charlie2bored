@@ -34,7 +34,7 @@ const experiences = [
 
 const additionalExperience = [
   {
-    year: 'September 2025 - Present',
+    year: 'February 2026 - Present',
     title: 'Team Toro',
     company: 'NY Redbulls',
     description: [
