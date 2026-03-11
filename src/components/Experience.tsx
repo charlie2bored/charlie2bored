@@ -154,6 +154,51 @@ const Experience = () => {
           ))}
         </div>
 
+        {/* Education Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-[100px] mt-[150px]"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">Education</h2>
+          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+            Academic foundation and continuous learning
+          </p>
+        </motion.div>
+
+        <div className="space-y-[80px]">
+          {education.map((edu, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-[200px_1fr] gap-16"
+            >
+              <div className="text-xl font-medium pt-3" style={{ color: 'var(--text-color)' }}>
+                {edu.year}
+              </div>
+
+              <div>
+                <h3 className="text-3xl font-bold mb-3" style={{ color: 'var(--text-color)' }}>{edu.degree}</h3>
+                <h4 className="text-2xl mb-2" style={{ color: 'var(--text-color)' }}>{edu.institution}</h4>
+                <p className="text-lg mb-4" style={{ color: 'var(--text-secondary)' }}>{edu.location}</p>
+                <ul className="text-lg mb-6 max-w-2xl leading-relaxed space-y-3" style={{ color: 'var(--text-secondary)' }}>
+                  {edu.description.map((bullet, bulletIndex) => (
+                    <li key={bulletIndex} className="flex items-start">
+                      <span className="mr-3 mt-1" style={{ color: 'var(--text-secondary)' }}>•</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
         {/* Additional Experience Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -200,51 +245,6 @@ const Experience = () => {
                     </span>
                   ))}
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Education Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-[100px] mt-[150px]"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-5">Education</h2>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-            Academic foundation and continuous learning
-          </p>
-        </motion.div>
-
-        <div className="space-y-[80px]">
-          {education.map((edu, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-[200px_1fr] gap-16"
-            >
-              <div className="text-xl font-medium pt-3" style={{ color: 'var(--text-color)' }}>
-                {edu.year}
-              </div>
-
-              <div>
-                <h3 className="text-3xl font-bold mb-3" style={{ color: 'var(--text-color)' }}>{edu.degree}</h3>
-                <h4 className="text-2xl mb-2" style={{ color: 'var(--text-color)' }}>{edu.institution}</h4>
-                <p className="text-lg mb-4" style={{ color: 'var(--text-secondary)' }}>{edu.location}</p>
-                <ul className="text-lg mb-6 max-w-2xl leading-relaxed space-y-3" style={{ color: 'var(--text-secondary)' }}>
-                  {edu.description.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="flex items-start">
-                      <span className="mr-3 mt-1" style={{ color: 'var(--text-secondary)' }}>•</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </motion.div>
           ))}
