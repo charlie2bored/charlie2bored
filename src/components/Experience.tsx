@@ -35,6 +35,17 @@ const experiences = [
 const additionalExperience = [
   {
     year: 'September 2025 - Present',
+    title: 'Team Toro',
+    company: 'NY Redbulls',
+    description: [
+      'Engaged with thousands of NY Redbulls supporters during MLS home matches through interactive on-field promotions and fan zone activities.',
+      'Enhanced the matchday atmosphere by leading crowd engagement initiatives and creating memorable experiences for attendees of all ages.',
+      'Represented the NY Redbulls brand with professionalism and enthusiasm, building positive relationships with fans and supporting community outreach efforts.',
+    ],
+    skills: ['Fan Engagement', 'Communication', 'Public Relations']
+  },
+  {
+    year: 'September 2025 - Present',
     title: '"WOO!" Crew',
     company: 'NJ Devils',
     description: [
@@ -75,7 +86,6 @@ const education = [
       'Relevant Coursework: Marketing, Acccounting, Legal Environment of Business, Visual Merchandizing, and more.',
       'Served as Treasurer for the Fashion Organization, efficiently managing fundraising and revenue, and creating informative and engaging digital media.',
     ],
-    gpa: '3.7/4.0'
   },
   {
     year: 'September 2020 - May 2024',
@@ -83,11 +93,9 @@ const education = [
     institution: 'Academy for Performing Arts',
     location: 'Scotch Plains, NJ',
     description: [
-      'Focused on digital design principles, web development fundamentals, and creative software tools.',
-      'Completed projects in UI/UX design, web development, and digital marketing.',
-      'Awarded Dean\'s List for academic excellence.'
+      'Performed in over 8 showcases and mainstage productions, collaborating with guest choreographers to master complex repertoire and refine stage presence, spatial awareness, and ensemble synchronization.',
+      'Completed four years of intensive, conservatory-style training in classical ballet, modern (Graham/Horton), and contemporary techniques, maintaining a rigorous daily rehearsal schedule alongside a full academic load.',
     ],
-    gpa: '3.8/4.0'
   }
 ];
 
@@ -237,9 +245,6 @@ const Experience = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="text-lg" style={{ color: 'var(--text-secondary)' }}>
-                  <strong>GPA:</strong> {edu.gpa}
-                </div>
               </div>
             </motion.div>
           ))}
