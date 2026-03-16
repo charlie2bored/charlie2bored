@@ -34,15 +34,14 @@ const experiences = [
 
 const additionalExperience = [
   {
-    year: 'February 2026 - Present',
+    year: 'February 2026 — Present',
     title: 'Team Toro',
-    company: 'NY Redbulls',
+    company: 'NJ Devils',
     description: [
-      'Engaged with thousands of NY Redbulls supporters during MLS home matches through interactive on-field promotions and fan zone activities.',
-      'Enhanced the matchday atmosphere by leading crowd engagement initiatives and creating memorable experiences for attendees of all ages.',
-      'Represented the NY Redbulls brand with professionalism and enthusiasm, building positive relationships with fans and supporting community outreach efforts.',
+      'Coordinated in-arena activations that kept fans energized between periods, delivering scripted moments and live engagement tailored to each game-day theme.',
+      'Collaborated with operations and creative partners to rehearse and refine movement cues, ensuring every activation stayed on-brand while meeting safety guidelines.'
     ],
-    skills: ['Fan Engagement', 'Communication', 'Public Relations']
+    skills: ['Fan Engagement', 'Event Coordination', 'Team Collaboration']
   },
   {
     year: 'September 2025 - Present',
@@ -93,9 +92,9 @@ const education = [
     institution: 'Academy for Performing Arts',
     location: 'Scotch Plains, NJ',
     description: [
-      'Performed in over 8 showcases and mainstage productions, collaborating with guest choreographers to master complex repertoire and refine stage presence, spatial awareness, and ensemble synchronization.',
       'Completed four years of intensive, conservatory-style training in classical ballet, modern (Graham/Horton), and contemporary techniques, maintaining a rigorous daily rehearsal schedule alongside a full academic load.',
-    ],
+      'Performed in over 10 juried showcases and mainstage productions, collaborating with guest choreographers to learn and perform complex repertoire and refine stage presence, spatial awareness, and ensemble synchronization.'
+    ]
   }
 ];
 
