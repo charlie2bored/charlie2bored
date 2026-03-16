@@ -5,19 +5,19 @@ import { motion } from 'framer-motion';
 const skillCategories = [
   {
     category: 'Data & Analytics',
-    skills: ['Python', 'R', 'SQL', 'Tableau', 'Power BI', 'Excel']
+    skills: ['Python', 'SQL', 'Data Analytics', 'Flask', 'Business Operations']
   },
   {
-    category: 'Web Development',
-    skills: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Node.js', 'HTML/CSS']
+    category: 'Frontend Engineering',
+    skills: ['React', 'Vite', 'JavaScript', 'HTML', 'CSS']
   },
   {
-    category: 'Design & UX',
-    skills: ['Figma', 'Adobe XD', 'Sketch', 'Photoshop', 'Illustrator', 'UI/UX Design']
+    category: 'Visual & Interaction Design',
+    skills: ['D3.js', 'Responsive Layouts', 'Interactive Prototyping', 'Storytelling']
   },
   {
-    category: 'Tools & Technologies',
-    skills: ['Git', 'Docker', 'AWS', 'Firebase', 'MongoDB', 'PostgreSQL']
+    category: 'Collaboration & Deployment',
+    skills: ['Next.js', 'Git', 'Vercel', 'Agile Workflow']
   }
 ];
 
