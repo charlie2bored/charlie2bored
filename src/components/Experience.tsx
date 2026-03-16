@@ -15,7 +15,7 @@ const experiences = [
       'Supported annual tuition and fee pricing analysis, organizing complex rate and policy data across 20+ sites, validating accuracy, and enabling timely updates for open enrollment.',
       'Streamlined the acquisition process, managing 150+ active targets, preliminary and accelerating go/no-go decisions.'
     ],
-    skills: ['PowerBI', 'SQL', 'Excel', 'Python','Tableau','R','PowerPoint','Word']
+    skills: ['PowerBI', 'SQL', 'Excel', 'Python','Tableau','PowerPoint','Word']
   },
   {
     year: 'August 2025 — October 2025',
@@ -28,7 +28,7 @@ const experiences = [
       'Refined prototypes through multiple-round testing, evolving designs to improve user flow, reduce friction, and elevate anticipated conversion rates.',
       'Maintained a disciplined design workflow, applying version control, component libraries, and structured handoffs to streamline development and accelerate delivery timelines.'
     ],
-    skills: ['Figma', 'Framer', 'Sketch', 'Adobe XD', 'Adobe Photoshop', 'Adobe Illustrator', 'Adobe InDesign']
+    skills: ['Figma', 'Framer', 'Sketch', 'Adobe Illustrator']
   },
 ];
 
@@ -82,7 +82,7 @@ const education = [
     institution: 'Northeastern University',
     location: 'New York, NY',
     description: [
-      'Relevant Coursework: Marketing, Acccounting, Legal Environment of Business, Visual Merchandizing, and more.',
+      'Relevant Coursework: Marketing, Accounting, Legal Environment of Business, Visual Merchandising, and more.',
       'Served as Treasurer for the Fashion Organization, efficiently managing fundraising and revenue, and creating informative and engaging digital media.',
     ],
   },
