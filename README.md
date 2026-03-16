@@ -8,8 +8,8 @@ I sit at the intersection of **Data Analytics** and **Product Design**. I love t
 
 ### 🚀 At a Glance
 - 🔍 **Main Focus:** Business Intelligence, Operations, and UI/UX Design.
-- 🏗️ **Current Project:** Refining my [NYC Distance Based Pricing Project](Link-To-Repo-Here) — an analysis of urban logistics and pricing models.
-- 💼 **Goal:** I am actively seeking opportunities in **Data Analytics** or **Business Intelligence**.
+- 🏗️ **Current Project:** Figuring it out.
+- 💼 **Goal:** Seeking a role in Data Analytics or Business Intelligence
 
 ---
 
@@ -22,14 +22,14 @@ I sit at the intersection of **Data Analytics** and **Product Design**. I love t
 ---
 
 ### 🏆 Featured Work: NYC Distance Based Pricing
-> This project explores [Briefly describe the impact—e.g., how you optimized pricing or what data you visualized]. 
-> **[View Repository →](Link-To-Repo-Here)**
+> This project explores how the MTA would run if the current flat fare model ($2.90) changed to a distance based model. 
+> **[View Repository →]((https://github.com/charlie2bored/NYC-Fare-Systems))**
 
 ---
 
 ### 🎨 Beyond the Code
 When I'm not in a spreadsheet or a code editor, you can find me:
-- 🏒 Being a massive hype-man for the **NJ Devils**.
+- 🏒 Being a massive hype-man for the **NJ Devils** and **NY Redbulls**.
 - 💃 Competing on the dance floor.
 - 📚 Adding to my book collection or creating art.
 - 🎮 Gaming.
@@ -39,8 +39,8 @@ When I'm not in a spreadsheet or a code editor, you can find me:
 ### 📬 Let's Connect!
 I'm always open to discussing data, design, or the NHL.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](Your-LinkedIn-URL) 
-[![Website](https://img.shields.io/badge/Portfolio-%23000000.svg?logo=firefox&logoColor=white)](Your-Website-URL)
-[![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:your-email@example.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)]((https://www.linkedin.com/in/charlie2bored/)) 
+[![Website](https://img.shields.io/badge/Portfolio-%23000000.svg?logo=firefox&logoColor=white)](charlie2bored.com)
+[![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:iamcharlesvargas@gmail.com)
 
 New York, NY  USA 📍
