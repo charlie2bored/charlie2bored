@@ -93,7 +93,7 @@ const education = [
     location: 'Scotch Plains, NJ',
     description: [
       'Completed four years of intensive, conservatory-style training in classical ballet, modern (Graham/Horton), and contemporary techniques, maintaining a rigorous daily rehearsal schedule alongside a full academic load.',
-      'Performed in over 10 juried showcases and mainstage productions, collaborating with guest choreographers to learn and perform complex repertoire and refine stage presence, spatial awareness, and ensemble synchronization.'
+      'Performed in over 10 showcases and mainstage productions, collaborating with guest choreographers to learn and perform complex repertoire and refine stage presence, spatial awareness, and ensemble synchronization.'
     ]
   }
 ];
