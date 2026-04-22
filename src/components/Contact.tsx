@@ -134,14 +134,20 @@ const Contact = () => {
           viewport={{ once: true }}
           className="flex justify-center gap-16 mt-[100px]"
         >
-          {['GitHub', 'LinkedIn', 'Twitter', 'Dribbble'].map((social) => (
+          {[
+            { label: 'GitHub', url: 'https://github.com/charlie2bored' },
+            { label: 'LinkedIn', url: 'https://www.linkedin.com/in/charlie2bored/' },
+            { label: 'Twitter', url: 'https://x.com/charlie2bored' },
+          ].map((social) => (
             <a
-              key={social}
-              href="#"
+              key={social.label}
+              href={social.url}
+              target="_blank"
+              rel="noreferrer"
               className="transition-colors duration-300 text-lg font-medium hover:opacity-70"
               style={{ color: 'var(--text-secondary)' }}
             >
-              {social}
+              {social.label}
             </a>
           ))}
         </motion.div>
