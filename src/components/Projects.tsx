@@ -18,25 +18,28 @@ const projects = [
   },
   {
     number: '(02)',
+    slug: 'clearcore-protein',
+    title: 'ClearCore Protein',
+    description:
+      'Marketing site for a fictional gluten-free protein bar brand. Multi-page React app on Vite + TypeScript + Tailwind v4, with Framer Motion and GSAP scroll animations. Built end to end, with real routes, store locator, flavor detail pages, and contact form.',
+    image: '/projects/clearcore-protein.png',
+    hoverMetric: 'Multi-page site · routes, locator, flavors, contact',
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind v4', 'Framer Motion', 'GSAP'],
+    links: {
+      github: 'https://github.com/charlie2bored/clearcore',
+      demo: 'https://clearcore-tau.vercel.app/',
+    },
+  },
+  {
+    number: '(03)',
     slug: 'speedreader',
     title: 'SpeedReader',
     description: 'A high-performance web application that utilizes Rapid Serial Visual Presentation (RSVP) and Optimal Recognition Point (ORP) highlighting to enable distraction-free reading at speeds of up to 1000 words per minute.',
     image: '/projects/speedreader.png',
     hoverMetric: '↑ 1,000 WPM RSVP reading with ORP emphasis',
     tech: ['React', 'Vite', 'JavaScript', 'HTML', 'CSS'],
-    links: { github: 'https://github.com/charlie2bored/SpeedReader', demo: 'https://speed-reader-weld.vercel.app/' }
+    links: { github: 'https://github.com/charlie2bored/SpeedReader', demo: 'https://speed-reader-weld.vercel.app/' },
   },
-  {
-    number: '(03)',
-    slug: 'data-viz-dashboard',
-    title: 'Data Visualization Dashboard',
-    description:
-      'In-progress build: interactive dashboard explorations with D3-style visuals and filterable datasets. Repo and demo links go live once the deployment is finalized.',
-    image: '/projects/data-viz-dashboard.jpg',
-    hoverMetric: 'Interactivity underway · filtered D3-style views',
-    tech: ['D3.js', 'Python', 'Flask'],
-    links: { github: '#', demo: '#' }
-  }
 ];
 
 type Project = (typeof projects)[number];
