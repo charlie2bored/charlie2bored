@@ -43,19 +43,19 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const root = document.documentElement;
 
     if (theme === 'dark') {
-      // Apply dark theme styles directly - pure black/white
       root.style.setProperty('--bg-color', '#000000');
+      root.style.setProperty('--bg-color-rgb', '0, 0, 0');
       root.style.setProperty('--text-color', '#ffffff');
-      root.style.setProperty('--text-secondary', '#ffffff');
-      root.style.setProperty('--skills-color', '#ffffff');
+      root.style.setProperty('--text-secondary', '#a3a3a3');
+      root.style.setProperty('--skills-color', '#d4d4d4');
       root.style.setProperty('--nav-bg', '#000000');
       localStorage.setItem('theme', 'dark');
     } else {
-      // Apply light theme styles directly - pure black/white
       root.style.setProperty('--bg-color', '#ffffff');
-      root.style.setProperty('--text-color', '#000000');
-      root.style.setProperty('--text-secondary', '#000000');
-      root.style.setProperty('--skills-color', '#000000');
+      root.style.setProperty('--bg-color-rgb', '255, 255, 255');
+      root.style.setProperty('--text-color', '#0a0a0a');
+      root.style.setProperty('--text-secondary', '#525252');
+      root.style.setProperty('--skills-color', '#404040');
       root.style.setProperty('--nav-bg', '#ffffff');
       localStorage.setItem('theme', 'light');
     }

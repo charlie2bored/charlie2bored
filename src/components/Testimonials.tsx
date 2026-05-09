@@ -23,12 +23,12 @@ const Collaboration = () => {
         >
           <h2
             id="collaboration-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
+            className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2"
             style={{ color: 'var(--text-color)' }}
           >
             Collaboration and references
           </h2>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto px-1" style={{ color: 'var(--text-secondary)' }}>
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             Detailed written recommendations live on LinkedIn. For hiring teams,
             references are available on request once we&apos;ve spoken.
           </p>

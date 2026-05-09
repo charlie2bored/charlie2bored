@@ -20,9 +20,9 @@ const experiences = [
     company: 'Apple Montessori Schools',
     description: [
       'Automated KPI dashboards in Power BI integrating HR, Finance, and enrollment data across 20+ schools, reducing manual reporting time by 50% and saving leadership more than 15 hours monthly.',
+      'Built predictive enrollment models across 20+ schools, improving forecasting accuracy by about 50% and contributing to initiatives that reduced student attrition by about 10%.',
       'Delivered real-time performance analytics that directly informed pricing strategy, staffing decisions, and market expansion planning.',
-      'Integrated and cleaned 3+ years of data from multiple CRM systems and billing platforms, mapping full customer journey and identifying conversion bottlenecks that increased enrollment rates.',
-      'Built predictive enrollment models tracking 20+ schools, improving forecasting accuracy by 50% and generating data-driven recommendations that reduced student attrition by 10%.',
+      'Integrated and cleaned 3+ years of data from multiple CRM systems and billing platforms, mapping the full customer journey and identifying conversion bottlenecks that increased enrollment rates.',
       'Supported annual tuition and fee pricing analysis, organizing complex rate and policy data across 20+ sites, validating accuracy, and enabling timely updates for open enrollment.',
       'Streamlined the acquisition process across 150+ active targets, tightening pipeline review and go/no-go decisions for leadership.',
     ],
@@ -49,20 +49,20 @@ const additionalExperience = [
     title: 'Team Toro',
     company: 'NJ Devils',
     description: [
-      'Coordinated in-arena activations that kept fans energized between periods, delivering scripted moments and live engagement tailored to each game-day theme.',
-      'Collaborated with operations and creative partners to rehearse and refine movement cues, ensuring every activation stayed on-brand while meeting safety guidelines.',
+      'Ran between-period activations in front of arena-scale crowds, reading energy and response in real time so scripted beats landed when the building was ready (continuous feedback you only get live, not on a survey delay).',
+      'Tightened pacing and movement with operations and creative across games, iterating cues the way you would after usability tests: clearer handoffs, safer flow, and sharper alignment with the game-night theme.',
     ],
-    skills: ['Fan Engagement', 'Event Coordination', 'Team Collaboration'],
+    skills: ['Live audience insight', 'Rapid iteration', 'Cross-functional collaboration'],
   },
   {
     year: 'September 2025 to Present',
     title: '"WOO!" Crew',
     company: 'NJ Devils',
     description: [
-      'Drove engagement with 10,000+ Devils fans per game through on-ice events and game enhancement activities.',
-      'Positively represented the brand in a public-facing role, fostering a welcoming atmosphere and demonstrating effective communication.',
+      'Facilitated live engagement for 10,000+ fans each game through on-ice activations, using the crowd as an instant research panel: timing, spacing, and energy showed what read as fun versus confusing before the next puck drop.',
+      'Carried the brand in a high-visibility role where clarity and tone have to work on first exposure, similar to testing copy and micro-interactions where there is no second chance to explain.',
     ],
-    skills: ['Fan Engagement', 'Communication', 'Public Relations'],
+    skills: ['Qualitative feedback loops', 'Live experience design', 'Brand communication'],
   },
   {
     year: 'September 2020 to May 2024',
@@ -73,26 +73,6 @@ const additionalExperience = [
       'Balanced conservatory-style rehearsals in classical ballet, modern (Graham/Horton), and contemporary techniques while contributing to audience engagement efforts.',
     ],
     skills: ['Performance', 'Collaboration', 'Production Support'],
-  },
-  {
-    year: 'Summer 2022 + 2023',
-    title: 'Lifeguard',
-    company: 'Lifetime Fitness',
-    description: [
-      'Demonstrated strong observational skills and quick decision-making in high-pressure situations to ensure patron safety.',
-      'Enforced rules and responded quickly to emergencies, highlighting critical thinking and adherence to protocols.',
-    ],
-    skills: ['Event Coordination', 'Customer Service', 'Problem Solving'],
-  },
-  {
-    year: 'December 2021 to September 2022',
-    title: 'Head Instructor',
-    company: 'Cesar-Kai Karate Academy',
-    description: [
-      'Ensured excellent customer service to families, promoting student engagement, motivation, and safety.',
-      'Taught complex forms and sparring, mentoring students to develop strong personal traits and life lessons.',
-    ],
-    skills: ['Customer Service', 'Teaching', 'Leadership'],
   },
 ];
 
@@ -131,9 +111,9 @@ const Experience = () => {
           className="text-center mb-12 md:mb-[100px]"
           style={{ color: 'var(--text-color)' }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5">Experience</h2>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto px-1" style={{ color: 'var(--text-secondary)' }}>
-            Leadership from live events and sports; design from UI, web, and marketing; depth from data and BI, unified in one timeline.
+          <h2 className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2">Experience</h2>
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            Impact first; dates note how long each role ran. Overlapping periods reflect school plus work: for example, a multi-month UX contract beside an ongoing BI internship.
           </p>
         </motion.div>
 
@@ -145,30 +125,33 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 gap-4 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-12 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-16 min-w-0"
+              className="min-w-0"
             >
-              <div className="text-base sm:text-lg md:text-xl font-medium md:pt-3 shrink-0" style={{ color: 'var(--text-color)' }}>
+              <h3 className="text-[1.45rem] sm:text-3xl md:text-[1.9rem] font-bold tracking-tight mb-2" style={{ color: 'var(--text-color)' }}>
+                {exp.title}
+              </h3>
+              <h4 className="text-lg sm:text-xl md:text-2xl mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
+                {exp.company}
+              </h4>
+              <p className="text-sm sm:text-base mb-6 font-normal" style={{ color: 'var(--text-secondary)' }}>
                 {exp.year}
-              </div>
-
-              <div className="min-w-0">
-                <h3 className="text-2xl sm:text-3xl font-bold mb-3" style={{ color: 'var(--text-color)' }}>{exp.title}</h3>
-                <h4 className="text-xl sm:text-2xl mb-6" style={{ color: 'var(--text-color)' }}>{exp.company}</h4>
-                <ul className="text-base sm:text-lg mb-8 max-w-2xl leading-relaxed space-y-3 ps-1" style={{ color: 'var(--text-secondary)' }}>
-                  {exp.description.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="flex items-start">
-                      <span className="mr-3 mt-1" style={{ color: 'var(--text-secondary)' }}>•</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-4">
-                  {exp.skills.map((skill, skillIndex) => (
-                    <span key={skillIndex} style={{ color: 'var(--text-secondary)' }}>
-                      {skill}
+              </p>
+              <ul className="text-base sm:text-lg mb-8 max-w-2xl leading-relaxed space-y-3 ps-1" style={{ color: 'var(--text-secondary)' }}>
+                {exp.description.map((bullet, bulletIndex) => (
+                  <li key={bulletIndex} className="flex items-start">
+                    <span className="mr-3 mt-1 shrink-0" style={{ color: 'var(--text-secondary)' }}>
+                      •
                     </span>
-                  ))}
-                </div>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-4">
+                {exp.skills.map((skill, skillIndex) => (
+                  <span key={skillIndex} style={{ color: 'var(--text-secondary)' }}>
+                    {skill}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}
@@ -182,8 +165,8 @@ const Experience = () => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-[100px] mt-24 md:mt-[150px]"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5">Education</h2>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto px-1" style={{ color: 'var(--text-secondary)' }}>
+          <h2 className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2">Education</h2>
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             Academic foundation and continuous learning
           </p>
         </motion.div>
@@ -196,25 +179,30 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 gap-4 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-12 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-16 min-w-0"
+              className="min-w-0"
             >
-              <div className="text-base sm:text-lg md:text-xl font-medium md:pt-3 shrink-0" style={{ color: 'var(--text-color)' }}>
+              <h3 className="text-2xl sm:text-3xl md:text-[1.85rem] font-bold tracking-tight mb-2" style={{ color: 'var(--text-color)' }}>
+                {edu.degree}
+              </h3>
+              <h4 className="text-lg sm:text-xl md:text-2xl mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
+                {edu.institution}
+              </h4>
+              <p className="text-sm sm:text-base mb-2 font-normal" style={{ color: 'var(--text-secondary)' }}>
                 {edu.year}
-              </div>
-
-              <div className="min-w-0">
-                <h3 className="text-2xl sm:text-3xl font-bold mb-3" style={{ color: 'var(--text-color)' }}>{edu.degree}</h3>
-                <h4 className="text-xl sm:text-2xl mb-2" style={{ color: 'var(--text-color)' }}>{edu.institution}</h4>
-                <p className="text-base sm:text-lg mb-4" style={{ color: 'var(--text-secondary)' }}>{edu.location}</p>
-                <ul className="text-base sm:text-lg mb-6 max-w-2xl leading-relaxed space-y-3 ps-1" style={{ color: 'var(--text-secondary)' }}>
-                  {edu.description.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="flex items-start">
-                      <span className="mr-3 mt-1" style={{ color: 'var(--text-secondary)' }}>•</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </p>
+              <p className="text-base sm:text-lg mb-6" style={{ color: 'var(--text-secondary)' }}>
+                {edu.location}
+              </p>
+              <ul className="text-base sm:text-lg mb-6 max-w-2xl leading-relaxed space-y-3 ps-1" style={{ color: 'var(--text-secondary)' }}>
+                {edu.description.map((bullet, bulletIndex) => (
+                  <li key={bulletIndex} className="flex items-start">
+                    <span className="mr-3 mt-1 shrink-0" style={{ color: 'var(--text-secondary)' }}>
+                      •
+                    </span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>
@@ -227,8 +215,8 @@ const Experience = () => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-[100px] mt-24 md:mt-[150px]"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5">Additional Experience</h2>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto px-1" style={{ color: 'var(--text-secondary)' }}>
+          <h2 className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2">Additional experience</h2>
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             Other professional roles and experiences
           </p>
         </motion.div>
@@ -241,30 +229,33 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 gap-4 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-12 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-16 min-w-0"
+              className="min-w-0"
             >
-              <div className="text-base sm:text-lg md:text-xl font-medium md:pt-3 shrink-0" style={{ color: 'var(--text-color)' }}>
+              <h3 className="text-[1.45rem] sm:text-3xl md:text-[1.9rem] font-bold tracking-tight mb-2" style={{ color: 'var(--text-color)' }}>
+                {exp.title}
+              </h3>
+              <h4 className="text-lg sm:text-xl md:text-2xl mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
+                {exp.company}
+              </h4>
+              <p className="text-sm sm:text-base mb-6 font-normal" style={{ color: 'var(--text-secondary)' }}>
                 {exp.year}
-              </div>
-
-              <div className="min-w-0">
-                <h3 className="text-2xl sm:text-3xl font-bold mb-3" style={{ color: 'var(--text-color)' }}>{exp.title}</h3>
-                <h4 className="text-xl sm:text-2xl mb-6" style={{ color: 'var(--text-color)' }}>{exp.company}</h4>
-                <ul className="text-base sm:text-lg mb-8 max-w-2xl leading-relaxed space-y-3 ps-1" style={{ color: 'var(--text-secondary)' }}>
-                  {exp.description.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="flex items-start">
-                      <span className="mr-3 mt-1" style={{ color: 'var(--text-secondary)' }}>•</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-4">
-                  {exp.skills.map((skill, skillIndex) => (
-                    <span key={skillIndex} style={{ color: 'var(--text-secondary)' }}>
-                      {skill}
+              </p>
+              <ul className="text-base sm:text-lg mb-8 max-w-2xl leading-relaxed space-y-3 ps-1" style={{ color: 'var(--text-secondary)' }}>
+                {exp.description.map((bullet, bulletIndex) => (
+                  <li key={bulletIndex} className="flex items-start">
+                    <span className="mr-3 mt-1 shrink-0" style={{ color: 'var(--text-secondary)' }}>
+                      •
                     </span>
-                  ))}
-                </div>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-4">
+                {exp.skills.map((skill, skillIndex) => (
+                  <span key={skillIndex} style={{ color: 'var(--text-secondary)' }}>
+                    {skill}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}

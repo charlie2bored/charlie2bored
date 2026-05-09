@@ -17,7 +17,7 @@ export function PersonJsonLd() {
     url: siteUrl,
     sameAs,
     description:
-      'Product design, social media, and UI/UX, with business intelligence and analytics (Power BI, SQL, Python), for roles where outcomes must be supported with data.',
+      'Product designer and UX practitioner (Figma, web). Business intelligence internship experience with Power BI, SQL, Python, and measurable operational impact.',
     knowsAbout: [
       'Data Analytics',
       'Business Intelligence',

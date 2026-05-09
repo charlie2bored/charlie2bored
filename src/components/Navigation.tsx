@@ -1,15 +1,36 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTheme } from '@/contexts/ThemeContext';
 import { FiSun, FiMoon } from 'react-icons/fi';
+import { getPublicResumeUrl } from '@/lib/site';
+
+const NYC_FARE_CASE = '/projects/nyc-fare-analysis';
+
+const caseStudyAnchors: { slug: string; label: string }[] = [
+  { slug: 'objective', label: 'Objective' },
+  { slug: 'approach', label: 'Approach' },
+  { slug: 'process', label: 'Process' },
+  { slug: 'findings', label: 'Findings' },
+  { slug: 'conclusion', label: 'Conclusion' },
+  { slug: 'reflection', label: 'Reflection' },
+  { slug: 'contact', label: 'Contact' },
+];
+
+function caseStudyHref(pathname: string, slug: string) {
+  if (pathname === NYC_FARE_CASE) return `#${slug}`;
+  return `${NYC_FARE_CASE}#${slug}`;
+}
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme, mounted } = useTheme();
+  const pathname = usePathname();
+  const showCaseAnchors = pathname === NYC_FARE_CASE;
 
   // Handle scroll effect
   useEffect(() => {
@@ -32,6 +53,8 @@ const Navigation = () => {
       root.style.overflow = '';
     };
   }, [isOpen]);
+
+  const resumeUrl = getPublicResumeUrl();
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -105,6 +128,21 @@ const Navigation = () => {
                 </Link>
               </motion.li>
             ))}
+            {resumeUrl ? (
+              <motion.li role="none" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.8 + navItems.length * 0.1, ease: 'easeOut' }}>
+                <a
+                  role="menuitem"
+                  href={resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative font-semibold transition-all duration-300 hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1"
+                  style={{ color: 'var(--text-color)' }}
+                  {...(resumeUrl.startsWith('/') ? { download: true } : {})}
+                >
+                  Résumé
+                </a>
+              </motion.li>
+            ) : null}
           </motion.ul>
 
           {/* Theme Toggle Button */}
@@ -173,6 +211,33 @@ const Navigation = () => {
             />
           </motion.button>
         </div>
+
+        {showCaseAnchors ? (
+          <nav
+            aria-label="Case study sections"
+            className="hidden md:flex flex-wrap items-center gap-y-2 border-t mt-5 pt-4 text-[12px] sm:text-[13px] font-semibold tracking-wide"
+            style={{
+              borderColor: 'rgba(128, 128, 128, 0.35)',
+            }}
+          >
+            {caseStudyAnchors.map(({ slug, label }, i) => (
+              <Fragment key={slug}>
+                {i > 0 ? (
+                  <span className="mx-3 shrink-0 text-neutral-400 select-none opacity-65" aria-hidden>
+                    ·
+                  </span>
+                ) : null}
+                <Link
+                  href={caseStudyHref(pathname, slug)}
+                  className="transition-opacity duration-200 hover:opacity-65 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-0.5"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  {label}
+                </Link>
+              </Fragment>
+            ))}
+          </nav>
+        ) : null}
 
         {/* Mobile Navigation */}
         <AnimatePresence>
@@ -246,6 +311,51 @@ const Navigation = () => {
                     </Link>
                   </motion.li>
                 ))}
+                {showCaseAnchors ? (
+                  <motion.li
+                    role="none"
+                    className="border-t pt-6 mt-2"
+                    style={{ borderColor: 'rgba(128, 128, 128, 0.35)' }}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: navItems.length * 0.1 + 0.35 }}
+                  >
+                    <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-secondary)' }}>
+                      NYC fare case study
+                    </div>
+                    <ul className="space-y-1">
+                      {caseStudyAnchors.map(({ slug, label }) => (
+                        <li key={slug}>
+                          <Link
+                            role="menuitem"
+                            href={caseStudyHref(pathname, slug)}
+                            className="block py-2.5 text-base font-semibold hover:opacity-70 min-h-[44px] flex items-center"
+                            style={{ color: 'var(--text-color)' }}
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.li>
+                ) : null}
+                {resumeUrl ? (
+                  <motion.li role="none" initial={{ opacity: 0, x: -30, scale: 0.8 }} animate={{ opacity: 1, x: 0, scale: 1, transition: { delay: navItems.length * 0.1 + 0.3, type: 'spring', stiffness: 200, damping: 20 } }} exit={{ opacity: 0, x: -30 }}>
+                    <a
+                      role="menuitem"
+                      href={resumeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-lg font-semibold py-3 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                      style={{ color: 'var(--text-color)' }}
+                      onClick={() => setIsOpen(false)}
+                      {...(resumeUrl.startsWith('/') ? { download: true } : {})}
+                    >
+                      Résumé (PDF)
+                    </a>
+                  </motion.li>
+                ) : null}
               </motion.ul>
             </motion.nav>
           )}

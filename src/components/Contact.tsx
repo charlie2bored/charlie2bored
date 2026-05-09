@@ -14,9 +14,11 @@ const Contact = () => {
           className="text-center mb-12 md:mb-[100px]"
           style={{ color: 'var(--text-color)' }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5" style={{ color: 'var(--text-color)' }}>Get In Touch</h2>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto px-1" style={{ color: 'var(--text-secondary)' }}>
-            For hiring, collaborations, or project inquiries: reach out by email or use the form below. I typically reply within a few days.
+          <h2 className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2" style={{ color: 'var(--text-color)' }}>
+            Get in touch
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            For hiring, collaborations, or project inquiries: use the form below or email. I typically reply within a few days.
           </p>
         </motion.div>
 
@@ -37,17 +39,6 @@ const Contact = () => {
                 style={{ color: 'var(--text-color)' }}
               >
                 iamcharlesvargas@gmail.com
-              </a>
-            </div>
-
-            <div className="border-b border-gray-200 pb-5">
-              <div className="text-sm uppercase tracking-wider mb-3" style={{ color: 'var(--text-secondary)' }}>Phone</div>
-              <a
-                href="tel:+19085105281"
-                className="text-lg sm:text-xl font-medium underline-offset-4 hover:underline"
-                style={{ color: 'var(--text-color)' }}
-              >
-                +1 (908) 510-5281
               </a>
             </div>
 

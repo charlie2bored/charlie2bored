@@ -100,9 +100,9 @@ body {
 :root {
   --bg-color: #ffffff;
   --bg-color-rgb: 255, 255, 255;
-  --text-color: #000000;
-  --text-secondary: #000000;
-  --skills-color: #000000;
+  --text-color: #0a0a0a;
+  --text-secondary: #525252;
+  --skills-color: #404040;
   --nav-bg: #ffffff;
 }
 

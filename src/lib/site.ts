@@ -10,3 +10,12 @@ export function getSiteUrl(): string {
   if (raw) return raw.replace(/\/$/, '');
   return 'https://charlie2bored.vercel.app';
 }
+
+/** Public HTTPS URL or site-relative path to résumé PDF (e.g. /Charlie-Vargas-Resume.pdf). */
+export function getPublicResumeUrl(): string {
+  const raw =
+    typeof process.env.NEXT_PUBLIC_RESUME_URL === 'string'
+      ? process.env.NEXT_PUBLIC_RESUME_URL.trim()
+      : '';
+  return raw;
+}

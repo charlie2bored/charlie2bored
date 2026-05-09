@@ -16,16 +16,18 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      'Charlie Vargas | Product Design, Social & UI/UX Portfolio',
+      'Charlie Vargas | Product Designer · UX & BI Internship Portfolio',
     template: '%s | Charlie Vargas',
   },
   description:
-    'Charlie Vargas (“2bored”): product design, social media, and UI/UX with BI and analytics when the work requires rigor. NYC/NJ, hybrid local or remote. Open to internships and junior-track roles.',
+    'Charlie Vargas (“2bored”): product and UX designer with UI shipped from Figma, plus BI and analytics depth (Power BI, SQL, Python) from internships. NYC/NJ hybrid or remote. Open to internships and junior-track roles.',
   keywords: [
     'Charlie Vargas',
+    'product designer',
+    'UX designer',
     'product design',
     'UI UX',
-    'social media',
+    'junior analyst',
     'internship',
     'portfolio',
     'business intelligence',
@@ -42,15 +44,15 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Charlie Vargas',
-    title: 'Charlie Vargas | Product, Social & UX (with analytics depth)',
+    title: 'Charlie Vargas | Product Designer (UX + analytics depth)',
     description:
-      'Featured work including NYC fare analysis, UI projects, and experience. Hybrid NYC/NJ or remote.',
+      'Product and UX designer; BI internships with measurable impact. Featured: NYC fare analysis, shipped UI, Power BI dashboards.',
   },
   twitter: {
     card: 'summary',
-    title: 'Charlie Vargas | Product, Social & UX (with analytics depth)',
+    title: 'Charlie Vargas | Product Designer (UX + analytics depth)',
     description:
-      'Portfolio: product design, social, and UI/UX plus BI and data. Internships and early-career roles.',
+      'Portfolio: product and UX design, shipped UI, BI internship outcomes, and NYC fare analytics. Early-career and internships.',
   },
 };
 

@@ -3,33 +3,7 @@
 import type { MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
-const HiringLinks = () => {
-  const resumeUrl =
-    typeof process.env.NEXT_PUBLIC_RESUME_URL === 'string'
-      ? process.env.NEXT_PUBLIC_RESUME_URL.trim()
-      : '';
-
-  if (!resumeUrl) return null;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 1.75 }}
-    >
-      <a
-        href={resumeUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-base sm:text-lg underline underline-offset-[5px] decoration-2 hover:opacity-80 touch-manipulation min-h-[44px] inline-flex items-center"
-        style={{ color: 'var(--text-secondary)' }}
-      >
-        Résumé (PDF)
-      </a>
-    </motion.div>
-  );
-};
+import { getPublicResumeUrl } from '@/lib/site';
 
 const outlineButtonStyle = {
   borderColor: 'var(--text-color)',
@@ -48,10 +22,15 @@ const outlineButtonHoverHandlers = {
   },
 };
 
+const buttonPrimary =
+  'px-8 py-4 min-h-[48px] inline-flex items-center justify-center bg-black dark:bg-white text-white dark:text-black rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 text-lg sm:text-xl font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto text-center touch-manipulation';
+
 const buttonOutline =
   'px-8 py-4 min-h-[48px] inline-flex items-center justify-center border-2 rounded-lg transition-all duration-300 text-lg sm:text-xl font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto text-center touch-manipulation';
 
 const Hero = () => {
+  const resumeUrl = getPublicResumeUrl();
+
   return (
     <section
       className="pt-[calc(6.5rem+env(safe-area-inset-top,0px))] pb-24 md:pb-[150px] min-h-[100dvh] md:min-h-screen flex items-center"
@@ -106,7 +85,7 @@ const Hero = () => {
               stiffness: 50,
               damping: 20,
             }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-3 leading-[1.1] sm:leading-tight"
+            className="text-[2.75rem] sm:text-7xl md:text-8xl lg:text-[6.85rem] font-extrabold mb-4 leading-[1.02] tracking-[-0.035em]"
             style={{ color: 'var(--text-color)' }}
             whileHover={{
               scale: 1.02,
@@ -120,7 +99,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.55 }}
-            className="text-lg sm:text-xl md:text-2xl mb-6 font-medium"
+            className="text-xs sm:text-sm mb-8 font-semibold uppercase tracking-[0.22em]"
             style={{ color: 'var(--text-secondary)' }}
           >
             Also known as &quot;2bored&quot; online
@@ -130,38 +109,60 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.65 }}
-            className="text-xl sm:text-2xl md:text-3xl mb-8 leading-relaxed font-light"
-            style={{ color: 'var(--text-secondary)' }}
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-[3.85rem] mb-5 leading-[1.08] font-extrabold tracking-tight"
+            style={{ color: 'var(--text-color)' }}
           >
-            Product design, social media, and UI/UX: grounded in BI and analytics when outcomes hinge on data.
+            Product designer
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-base sm:text-xl mb-4 max-w-2xl leading-relaxed"
+            transition={{ duration: 0.7, delay: 0.72 }}
+            className="text-base sm:text-lg md:text-xl mb-7 max-w-2xl leading-relaxed font-normal"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Team leadership from sports and live events; design thinking from UI, web, and marketing; analytical rigor from data and BI internships. I gravitate toward{' '}
+            UX and web work in Figma, with a measurable analytics track record from BI internships (Power BI, SQL, Python). Open to{' '}
             <strong className="font-semibold" style={{ color: 'var(--text-color)' }}>
-              Figma and shipping interfaces
+              product design, UX, and junior data roles
             </strong>
-            , with the rest in SQL, reporting, and narrative. Open to{' '}
-            <strong className="font-semibold" style={{ color: 'var(--text-color)' }}>
-              internships and junior-track roles
-            </strong>{' '}
-            in product design, social, and UX.
+            .
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.82 }}
+            className="mb-8 max-w-2xl rounded-xl border-2 px-5 py-4 sm:px-6 sm:py-5"
+            style={{
+              borderColor: 'var(--text-secondary)',
+              backgroundColor: 'var(--bg-color)',
+            }}
+          >
+            <p className="text-sm font-medium uppercase tracking-wide mb-2" style={{ color: 'var(--text-secondary)' }}>
+              Recent internship impact
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-color)' }}>
+              Cut <strong className="font-semibold">manual reporting by about 50%</strong> across a 20+ school network with Power BI dashboards, and contributed to actions that{' '}
+              <strong className="font-semibold">reduced student attrition by about 10%</strong> (forecasting and enrollment modeling).
+            </p>
+            <p className="text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
+              Apple Montessori Schools, Business Intelligence internship
+            </p>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.92 }}
-            className="text-sm sm:text-base mb-12 max-w-2xl italic"
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="text-sm sm:text-base mb-12 max-w-2xl"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Best sample to open first: NYC distance-based fare analysis (data story and shipped site).
+            For a self-contained data story and shipped frontend, start with{' '}
+            <Link href="/#nyc-fare" className="underline underline-offset-4 hover:opacity-80">
+              NYC distance-based fare analysis
+            </Link>
+            .
           </motion.p>
 
           <motion.div
@@ -174,12 +175,40 @@ const Hero = () => {
               stiffness: 80,
               damping: 25,
             }}
-            className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-10"
+            className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5"
           >
+            {resumeUrl ? (
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 1.12 }}
+              >
+                <motion.div
+                  whileHover={{
+                    scale: 1.05,
+                    y: -8,
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+                    transition: { duration: 0.3, ease: 'easeOut' },
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <a
+                    href={resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonPrimary}
+                    {...(resumeUrl.startsWith('/') ? { download: true } : {})}
+                  >
+                    Download résumé (PDF)
+                  </a>
+                </motion.div>
+              </motion.div>
+            ) : null}
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 1.25 }}
+              transition={{ duration: 0.6, delay: resumeUrl ? 1.2 : 1.12 }}
             >
               <motion.div
                 whileHover={{
@@ -190,13 +219,8 @@ const Hero = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Link
-                  href="/projects"
-                  className={buttonOutline}
-                  style={outlineButtonStyle}
-                  {...outlineButtonHoverHandlers}
-                >
-                  All Projects
+                <Link href="/#speedreader" className={buttonOutline} style={outlineButtonStyle} {...outlineButtonHoverHandlers}>
+                  Here for design work
                 </Link>
               </motion.div>
             </motion.div>
@@ -204,7 +228,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 1.4 }}
+              transition={{ duration: 0.6, delay: resumeUrl ? 1.28 : 1.2 }}
             >
               <motion.div
                 whileHover={{
@@ -215,20 +239,52 @@ const Hero = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Link
-                  href="/contact"
-                  className={buttonOutline}
-                  style={outlineButtonStyle}
-                  {...outlineButtonHoverHandlers}
-                >
+                <Link href="/#nyc-fare" className={buttonOutline} style={outlineButtonStyle} {...outlineButtonHoverHandlers}>
+                  Here for data work
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: resumeUrl ? 1.36 : 1.28 }}
+            >
+              <motion.div
+                whileHover={{
+                  scale: 1.05,
+                  y: -8,
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+                  transition: { duration: 0.3, ease: 'easeOut' },
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link href="/projects" className={buttonOutline} style={outlineButtonStyle} {...outlineButtonHoverHandlers}>
+                  All projects
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: resumeUrl ? 1.44 : 1.36 }}
+            >
+              <motion.div
+                whileHover={{
+                  scale: 1.05,
+                  y: -8,
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+                  transition: { duration: 0.3, ease: 'easeOut' },
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link href="/contact" className={buttonOutline} style={outlineButtonStyle} {...outlineButtonHoverHandlers}>
                   Contact
                 </Link>
               </motion.div>
             </motion.div>
           </motion.div>
-          <div className="mt-10 empty:hidden">
-            <HiringLinks />
-          </div>
         </motion.div>
       </div>
     </section>

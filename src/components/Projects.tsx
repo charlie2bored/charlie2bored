@@ -12,6 +12,7 @@ const projects = [
     title: 'NYC Distance-Based Pricing',
     description: 'Analyzed MTA ridership data to demonstrate that replacing flat fares ($2.90) with distance-based pricing ($2.00 + $0.24/mile) could increase annual revenue by $277M while reducing costs for 29% of riders.',
     image: '/projects/nyc-fare-systems.jpg',
+    hoverMetric: '↑ ~$277M annual revenue opportunity modeled',
     tech: ['Python', 'SQL', 'Data Analytics', 'Business Operations'],
     links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' }
   },
@@ -21,6 +22,7 @@ const projects = [
     title: 'SpeedReader',
     description: 'A high-performance web application that utilizes Rapid Serial Visual Presentation (RSVP) and Optimal Recognition Point (ORP) highlighting to enable distraction-free reading at speeds of up to 1000 words per minute.',
     image: '/projects/speedreader.png',
+    hoverMetric: '↑ 1,000 WPM RSVP reading with ORP emphasis',
     tech: ['React', 'Vite', 'JavaScript', 'HTML', 'CSS'],
     links: { github: 'https://github.com/charlie2bored/SpeedReader', demo: 'https://speed-reader-weld.vercel.app/' }
   },
@@ -31,6 +33,7 @@ const projects = [
     description:
       'In-progress build: interactive dashboard explorations with D3-style visuals and filterable datasets. Repo and demo links go live once the deployment is finalized.',
     image: '/projects/data-viz-dashboard.jpg',
+    hoverMetric: 'Interactivity underway · filtered D3-style views',
     tech: ['D3.js', 'Python', 'Flask'],
     links: { github: '#', demo: '#' }
   }
@@ -54,43 +57,63 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.2 }}
       viewport={{ once: true }}
-      className="grid grid-cols-1 gap-6 sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-10 lg:grid-cols-[100px_minmax(0,1fr)] lg:gap-16 hover:-translate-y-2 transition-transform duration-300 min-w-0 scroll-mt-28"
+      className="group/card grid grid-cols-1 gap-6 sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-10 lg:grid-cols-[100px_minmax(0,1fr)] lg:gap-16 min-w-0 scroll-mt-28 motion-safe:transition-transform motion-safe:duration-300 motion-safe:[@media(hover:hover)]:hover:-translate-y-1"
     >
       <div className="text-lg sm:text-xl font-medium sm:pt-3 shrink-0" style={{ color: 'var(--text-color)' }}>
         {project.number}
       </div>
 
       <div className="min-w-0">
-        {/* Project Image */}
-        <div className="aspect-video rounded-2xl mb-8 overflow-hidden border-2 relative" style={{ borderColor: 'var(--text-secondary)' }}>
-          {!imageError ? (
-            <Image
-              src={project.image}
-              alt={`Preview image for ${project.title} project`}
-              fill
-              className="w-full h-full object-cover"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
-              onError={() => setImageError(true)}
-            />
-          ) : (
+        <div className="mb-8 rounded-2xl overflow-hidden border-2" style={{ borderColor: 'var(--text-secondary)' }}>
+          <div className="group/media relative aspect-video w-full overflow-hidden isolate bg-neutral-900">
+            {!imageError ? (
+              <Image
+                src={project.image}
+                alt={`Preview image for ${project.title} project`}
+                fill
+                className="object-cover motion-safe:duration-500 motion-safe:transition-transform motion-safe:[@media(hover:hover)]:[@media(prefers-reduced-motion:no-preference)]:group-hover/media:scale-[1.025]"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <div
+                className="w-full h-full min-h-[12rem] flex items-center justify-center"
+                style={{ backgroundColor: 'var(--bg-color)' }}
+              >
+                <span className="text-6xl" aria-hidden="true">
+                  🖼️
+                </span>
+              </div>
+            )}
+
             <div
-              className="w-full h-full flex items-center justify-center"
+              aria-hidden="true"
+              className="hidden md:flex pointer-events-none absolute inset-0 flex-col justify-end opacity-0 translate-y-1 motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 [@media(hover:hover)_and_(pointer:fine)]:group-hover/media:opacity-100 [@media(hover:hover)_and_(pointer:fine)]:group-hover/media:translate-y-0"
               style={{
-                backgroundColor: 'var(--bg-color)',
-                border: '2px solid var(--text-secondary)'
+                backgroundImage: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 45%, transparent 78%)',
               }}
             >
-              <span className="text-6xl" aria-hidden="true">
-                🖼️
-              </span>
+              <p className="px-6 sm:px-8 pb-6 sm:pb-7 text-lg sm:text-2xl font-semibold tracking-tight text-white drop-shadow-md">
+                {project.hoverMetric}
+              </p>
             </div>
-          )}
+          </div>
+
+          <div
+            className="md:hidden border-t px-4 py-4"
+            style={{ borderColor: 'var(--text-secondary)', backgroundColor: 'var(--bg-color)' }}
+          >
+            <p className="text-base font-semibold tracking-tight leading-snug" style={{ color: 'var(--text-color)' }}>
+              {project.hoverMetric}
+            </p>
+          </div>
         </div>
 
-        <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight break-words" style={{ color: 'var(--text-color)' }}>
+        <p className="sr-only">Highlight: {project.hoverMetric}</p>
+        <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight break-words" style={{ color: 'var(--text-color)' }}>
           {project.title}
         </h3>
-        <p className="text-base sm:text-xl mb-10 max-w-2xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+        <p className="text-base sm:text-lg md:text-xl mb-10 max-w-2xl leading-relaxed font-normal" style={{ color: 'var(--text-secondary)' }}>
           {project.description}
         </p>
 
@@ -154,6 +177,18 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             </span>
           )}
         </div>
+
+        {project.slug === 'nyc-fare' ? (
+          <div className="mt-10 pt-10 border-t" style={{ borderColor: 'var(--text-secondary)' }}>
+            <Link
+              href="/projects/nyc-fare-analysis"
+              className="inline-flex min-h-[44px] items-center text-lg font-semibold underline-offset-[6px] decoration-2 hover:opacity-75 touch-manipulation"
+              style={{ color: 'var(--text-color)' }}
+            >
+              Read full written case study →
+            </Link>
+          </div>
+        ) : null}
       </div>
     </motion.div>
   );
@@ -175,8 +210,10 @@ const Projects = ({ showSeeAllLink = true }: ProjectsProps) => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-[100px]"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5" style={{ color: 'var(--text-color)' }}>Featured Work</h2>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto px-1" style={{ color: 'var(--text-secondary)' }}>
+          <h2 className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2" style={{ color: 'var(--text-color)' }}>
+            Featured work
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             Design, data, and frontend work: case studies with code, demos, and context.
           </p>
         </motion.div>
