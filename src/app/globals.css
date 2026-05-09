@@ -38,10 +38,32 @@
     outline-offset: 2px;
   }
 
-  /* Ensure minimum touch target size */
-  button, a, input, select, textarea {
+  /*
+   * Tap targets (WCAG): enforce minimum sizes on primary controls and form fields.
+   * Do not apply min-width indiscriminately to links (breaks compact text links).
+   */
+  button,
+  [role='button'],
+  input[type='submit'],
+  input[type='button'],
+  input[type='reset'] {
     min-height: 44px;
     min-width: 44px;
+  }
+
+  input[type='email'],
+  input[type='text'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='number'],
+  input[type='password'],
+  select {
+    min-height: 44px;
+  }
+
+  textarea {
+    min-height: 120px;
   }
 
   /* Skip link for keyboard users */
@@ -64,6 +86,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {

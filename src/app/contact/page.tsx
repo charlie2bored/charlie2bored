@@ -1,6 +1,16 @@
+import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+export const metadata: Metadata = {
+  title: 'Contact',
+  description:
+    'Reach Charlie Vargas for data analytics, BI, UX design, or full-time roles. Email, phone, and social links.',
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact | Charlie Vargas',
+  },
+};
 
 export default function ContactPage() {
   return (
@@ -10,7 +20,7 @@ export default function ContactPage() {
       minHeight: '100vh'
     }}>
       <Navigation />
-      <div className="pt-[120px]">
+      <div className="pt-[calc(7.5rem+env(safe-area-inset-top,0px))]">
         <Contact />
       </div>
       <Footer />

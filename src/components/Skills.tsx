@@ -23,18 +23,18 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section className="py-[100px]">
-      <div className="max-w-5xl mx-auto px-5">
+    <section className="py-16 md:py-24 lg:py-[100px]">
+      <div className="max-w-5xl mx-auto px-4 sm:px-5 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-[80px]"
+          className="text-center mb-12 md:mb-[80px]"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-5" style={{ color: 'var(--text-color)' }}>Skills & Technologies</h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-            A comprehensive toolkit for data analysis, web development, and creative design.
+          <p className="text-lg max-w-2xl mx-auto px-1" style={{ color: 'var(--text-secondary)' }}>
+            Stacks I reach for from analysis through shipping: data work, interfaces, and lightweight deploys.
           </p>
         </motion.div>
 

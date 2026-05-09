@@ -1,80 +1,80 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
-const testimonials = [
-  {
-    quote: "Charlie's analytical skills and attention to detail transformed our data strategy. The insights provided were invaluable for our business decisions.",
-    author: "Sarah Johnson",
-    role: "CEO, TechStart Inc.",
-    avatar: "SJ"
-  },
-  {
-    quote: "Working with Charlie was a game-changer. His ability to communicate complex data insights in simple, actionable terms is exceptional.",
-    author: "Michael Chen",
-    role: "Data Director, InnovateCorp",
-    avatar: "MC"
-  },
-  {
-    quote: "Charlie delivered beyond expectations. The dashboards and visualizations created were not only beautiful but also incredibly functional.",
-    author: "Emily Rodriguez",
-    role: "Product Manager, DataFlow",
-    avatar: "ER"
-  }
+const LINKEDIN = 'https://www.linkedin.com/in/charlie2bored/';
+
+const highlights = [
+  'Cross-functional work across analytics ops, dashboards, and product-minded design.',
+  'Comfortable translating messy data into decisions stakeholders can trust.',
 ];
 
-const Testimonials = () => {
+const Collaboration = () => {
   return (
-    <section className="py-[150px]">
-      <div className="max-w-5xl mx-auto px-5">
+    <section className="py-16 md:py-28 lg:py-[150px]" aria-labelledby="collaboration-heading">
+      <div className="max-w-5xl mx-auto px-4 sm:px-5 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-[100px]"
+          className="text-center mb-12 md:mb-[100px]"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-5" style={{ color: 'var(--text-color)' }}>
-            What People Say
+          <h2
+            id="collaboration-heading"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
+            style={{ color: 'var(--text-color)' }}
+          >
+            Collaboration and references
           </h2>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-            Feedback from colleagues, clients, and collaborators who have experienced the impact of data-driven solutions.
+          <p className="text-lg sm:text-xl max-w-2xl mx-auto px-1" style={{ color: 'var(--text-secondary)' }}>
+            Detailed written recommendations live on LinkedIn. For hiring teams,
+            references are available on request once we&apos;ve spoken.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-2xl border border-gray-200 dark:border-gray-700"
-              style={{ backgroundColor: 'var(--bg-color)' }}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mx-auto p-8 rounded-2xl border border-gray-200 dark:border-gray-700 space-y-6"
+          style={{ backgroundColor: 'var(--bg-color)' }}
+        >
+          <ul className="text-base sm:text-lg leading-relaxed space-y-4 list-disc ps-6" style={{ color: 'var(--text-secondary)' }}>
+            {highlights.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2">
+            <Link
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg text-lg font-medium touch-manipulation w-full sm:w-auto text-center"
+              style={{
+                backgroundColor: 'var(--text-color)',
+                color: 'var(--bg-color)',
+              }}
             >
-              <div className="text-4xl mb-4">&quot;</div>
-              <p className="text-lg leading-relaxed mb-6 italic" style={{ color: 'var(--text-secondary)' }}>
-                {testimonial.quote}
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold mr-4" style={{
-                  backgroundColor: 'var(--text-secondary)',
-                  color: 'var(--bg-color)'
-                }}>
-                  {testimonial.avatar}
-                </div>
-                <div>
-                  <p className="font-semibold" style={{ color: 'var(--text-color)' }}>{testimonial.author}</p>
-                  <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{testimonial.role}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              View LinkedIn profile
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg text-lg font-medium border-2 touch-manipulation w-full sm:w-auto text-center"
+              style={{
+                borderColor: 'var(--text-color)',
+                color: 'var(--text-color)',
+              }}
+            >
+              Contact for references
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-export default Testimonials;
+export default Collaboration;

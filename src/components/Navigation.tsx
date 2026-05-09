@@ -21,6 +21,18 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isOpen) {
+      root.style.overflow = 'hidden';
+    } else {
+      root.style.overflow = '';
+    }
+    return () => {
+      root.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/experience', label: 'Experience' },
@@ -45,7 +57,7 @@ const Navigation = () => {
           ease: [0.25, 0.46, 0.45, 0.94],
           delay: 0.2
         }}
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-[env(safe-area-inset-top,0px)]"
         style={{
           backgroundColor: 'var(--nav-bg)',
           boxShadow: isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.1)' : 'none'
@@ -98,7 +110,8 @@ const Navigation = () => {
           {/* Theme Toggle Button */}
           <motion.button
             onClick={toggleTheme}
-            className="p-3 rounded-lg transition-all duration-300 ml-4 hover:scale-110 hover:rotate-12"
+            type="button"
+            className="p-3 rounded-lg transition-all duration-300 ml-2 md:ml-4 hover:scale-110 hover:rotate-12 touch-manipulation min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
             style={{
               backgroundColor: 'var(--bg-color)',
               border: '1px solid var(--text-secondary)',
@@ -132,11 +145,12 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <motion.button
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-            className="md:hidden flex flex-col space-y-1 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+            className="md:hidden flex flex-col justify-center items-center gap-1.5 p-2 min-h-[44px] min-w-[44px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 1.0 }}
@@ -224,7 +238,7 @@ const Navigation = () => {
                     <Link
                       role="menuitem"
                       href={item.href}
-                      className="block text-lg font-medium transition-all duration-300 hover:opacity-70 hover:translate-x-2 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                      className="block text-lg font-medium transition-all duration-300 hover:opacity-70 hover:translate-x-2 py-3 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
                       style={{ color: 'var(--text-secondary)' }}
                       onClick={() => setIsOpen(false)}
                     >

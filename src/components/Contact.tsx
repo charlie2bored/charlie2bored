@@ -4,23 +4,23 @@ import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
-    <section className="py-[150px]">
-      <div className="max-w-5xl mx-auto px-5">
+    <section className="py-16 md:py-28 lg:py-[150px] pb-[max(4rem,calc(3rem+env(safe-area-inset-bottom,0px)))]">
+      <div className="max-w-5xl mx-auto px-4 sm:px-5 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-[100px]"
+          className="text-center mb-12 md:mb-[100px]"
           style={{ color: 'var(--text-color)' }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-5" style={{ color: 'var(--text-color)' }}>Get In Touch</h2>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-            I&apos;m always interested in new opportunities and exciting projects. Let&apos;s connect!
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5" style={{ color: 'var(--text-color)' }}>Get In Touch</h2>
+          <p className="text-lg sm:text-xl max-w-2xl mx-auto px-1" style={{ color: 'var(--text-secondary)' }}>
+            For hiring, collaborations, or project inquiries: reach out by email or use the form below. I typically reply within a few days.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -31,12 +31,24 @@ const Contact = () => {
           >
             <div className="border-b border-gray-200 pb-5">
               <div className="text-sm uppercase tracking-wider mb-3" style={{ color: 'var(--text-secondary)' }}>Email</div>
-              <div className="text-xl font-medium" style={{ color: 'var(--text-color)' }}>iamcharlesvargas@gmail.com</div>
+              <a
+                href="mailto:iamcharlesvargas@gmail.com"
+                className="text-lg sm:text-xl font-medium underline-offset-4 hover:underline break-all"
+                style={{ color: 'var(--text-color)' }}
+              >
+                iamcharlesvargas@gmail.com
+              </a>
             </div>
 
             <div className="border-b border-gray-200 pb-5">
               <div className="text-sm uppercase tracking-wider mb-3" style={{ color: 'var(--text-secondary)' }}>Phone</div>
-              <div className="text-xl font-medium" style={{ color: 'var(--text-color)' }}>+1 (908) 510-5281</div>
+              <a
+                href="tel:+19085105281"
+                className="text-lg sm:text-xl font-medium underline-offset-4 hover:underline"
+                style={{ color: 'var(--text-color)' }}
+              >
+                +1 (908) 510-5281
+              </a>
             </div>
 
             <div className="pb-5">
@@ -64,7 +76,7 @@ const Contact = () => {
                 placeholder="Your Name"
                 aria-required="true"
                 aria-describedby="name-error"
-                className="w-full pb-3 border-b border-gray-200 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 placeholder-gray-600 dark:placeholder-gray-400"
+                className="w-full py-3 border-b border-gray-200 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 placeholder-gray-600 dark:placeholder-gray-400 touch-manipulation"
                 style={{ color: 'var(--text-color)' }}
                 required
               />
@@ -79,7 +91,7 @@ const Contact = () => {
                 placeholder="Your Email"
                 aria-required="true"
                 aria-describedby="email-error"
-                className="w-full pb-3 border-b border-gray-200 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 placeholder-gray-600 dark:placeholder-gray-400"
+                className="w-full py-3 border-b border-gray-200 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 placeholder-gray-600 dark:placeholder-gray-400 touch-manipulation"
                 style={{ color: 'var(--text-color)' }}
                 required
               />
@@ -94,7 +106,7 @@ const Contact = () => {
                 rows={5}
                 aria-required="true"
                 aria-describedby="message-error"
-                className="w-full pb-3 border-b bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 placeholder-gray-600 dark:placeholder-gray-400 resize-none"
+                className="w-full py-3 border-b bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 placeholder-gray-600 dark:placeholder-gray-400 resize-none touch-manipulation"
                 style={{
                   borderColor: 'var(--text-secondary)',
                   color: 'var(--text-color)'
@@ -106,7 +118,7 @@ const Contact = () => {
             <button
               type="submit"
               aria-label="Send contact message"
-              className="w-fit border px-8 py-4 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:shadow-lg transform hover:-translate-y-1"
+              className="w-full sm:w-fit min-h-[48px] border px-8 py-4 inline-flex items-center justify-center text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:shadow-lg transform hover:-translate-y-1 touch-manipulation"
               style={{
                 borderColor: 'var(--text-color)',
                 color: 'var(--text-color)',
@@ -132,7 +144,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="flex justify-center gap-16 mt-[100px]"
+          className="flex flex-wrap justify-center gap-x-8 gap-y-4 sm:gap-x-12 md:gap-16 mt-16 md:mt-[100px] px-2"
         >
           {[
             { label: 'GitHub', url: 'https://github.com/charlie2bored' },
@@ -143,8 +155,8 @@ const Contact = () => {
               key={social.label}
               href={social.url}
               target="_blank"
-              rel="noreferrer"
-              className="transition-colors duration-300 text-lg font-medium hover:opacity-70"
+              rel="noopener noreferrer"
+              className="inline-flex items-center min-h-[44px] px-3 py-2 touch-manipulation transition-colors duration-300 text-lg font-medium hover:opacity-70"
               style={{ color: 'var(--text-secondary)' }}
             >
               {social.label}
