@@ -127,32 +127,10 @@ const Hero = () => {
             .
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.82 }}
-            className="mb-8 max-w-2xl rounded-xl border-2 px-5 py-4 sm:px-6 sm:py-5"
-            style={{
-              borderColor: 'var(--text-secondary)',
-              backgroundColor: 'var(--bg-color)',
-            }}
-          >
-            <p className="text-sm font-medium uppercase tracking-wide mb-2" style={{ color: 'var(--text-secondary)' }}>
-              Recent internship impact
-            </p>
-            <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-color)' }}>
-              Cut <strong className="font-semibold">manual reporting by about 50%</strong> across a 20+ school network with Power BI dashboards, and contributed to actions that{' '}
-              <strong className="font-semibold">reduced student attrition by about 10%</strong> (forecasting and enrollment modeling).
-            </p>
-            <p className="text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
-              Apple Montessori Schools, Business Intelligence internship
-            </p>
-          </motion.div>
-
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.85 }}
             className="text-sm sm:text-base mb-12 max-w-2xl"
             style={{ color: 'var(--text-secondary)' }}
           >
@@ -168,14 +146,14 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.8,
-              delay: 1,
+              delay: 0.92,
               type: 'spring',
               stiffness: 80,
               damping: 25,
             }}
             className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5"
           >
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 1.08 }}>
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 1 }}>
               <motion.div
                 whileHover={{
                   scale: 1.05,
@@ -199,7 +177,7 @@ const Hero = () => {
               </motion.div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 1.14 }}>
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 1.06 }}>
               <motion.div
                 whileHover={{
                   scale: 1.05,
@@ -226,7 +204,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={{ duration: 0.6, delay: 1.12 }}
             >
               <motion.div
                 whileHover={{
@@ -246,7 +224,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 1.26 }}
+              transition={{ duration: 0.6, delay: 1.18 }}
             >
               <motion.div
                 whileHover={{
