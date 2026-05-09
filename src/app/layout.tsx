@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
       'Product and UX designer; BI internships with measurable impact. Featured: NYC fare analysis, shipped UI, Power BI dashboards.',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Charlie Vargas | Product Designer (UX + analytics depth)',
     description:
       'Portfolio: product and UX design, shipped UI, BI internship outcomes, and NYC fare analytics. Early-career and internships.',
@@ -72,6 +73,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <PersonJsonLd />
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

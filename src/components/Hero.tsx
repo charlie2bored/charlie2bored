@@ -3,7 +3,7 @@
 import type { MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { getPublicResumeUrl } from '@/lib/site';
+import { getUxResumeUrl, getDataResumeUrl } from '@/lib/site';
 
 const outlineButtonStyle = {
   borderColor: 'var(--text-color)',
@@ -22,14 +22,12 @@ const outlineButtonHoverHandlers = {
   },
 };
 
-const buttonPrimary =
-  'px-8 py-4 min-h-[48px] inline-flex items-center justify-center bg-black dark:bg-white text-white dark:text-black rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 text-lg sm:text-xl font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto text-center touch-manipulation';
-
 const buttonOutline =
   'px-8 py-4 min-h-[48px] inline-flex items-center justify-center border-2 rounded-lg transition-all duration-300 text-lg sm:text-xl font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto text-center touch-manipulation';
 
 const Hero = () => {
-  const resumeUrl = getPublicResumeUrl();
+  const uxResumeUrl = getUxResumeUrl();
+  const dataResumeUrl = getDataResumeUrl();
 
   return (
     <section
@@ -102,7 +100,7 @@ const Hero = () => {
             className="text-xs sm:text-sm mb-8 font-semibold uppercase tracking-[0.22em]"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Also known as &quot;2bored&quot; online
+            Known as &quot;charlie2bored&quot; online
           </motion.p>
 
           <motion.h2
@@ -177,39 +175,31 @@ const Hero = () => {
             }}
             className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5"
           >
-            {resumeUrl ? (
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 1.08 }}>
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 1.12 }}
+                whileHover={{
+                  scale: 1.05,
+                  y: -8,
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+                  transition: { duration: 0.3, ease: 'easeOut' },
+                }}
+                whileTap={{ scale: 0.98 }}
               >
-                <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                    y: -8,
-                    boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-                    transition: { duration: 0.3, ease: 'easeOut' },
-                  }}
-                  whileTap={{ scale: 0.98 }}
+                <a
+                  href={uxResumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonOutline}
+                  style={outlineButtonStyle}
+                  {...outlineButtonHoverHandlers}
+                  {...(uxResumeUrl.startsWith('/') ? { download: true } : {})}
                 >
-                  <a
-                    href={resumeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={buttonPrimary}
-                    {...(resumeUrl.startsWith('/') ? { download: true } : {})}
-                  >
-                    Download résumé (PDF)
-                  </a>
-                </motion.div>
+                  Design Resume
+                </a>
               </motion.div>
-            ) : null}
+            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: resumeUrl ? 1.2 : 1.12 }}
-            >
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 1.14 }}>
               <motion.div
                 whileHover={{
                   scale: 1.05,
@@ -219,36 +209,24 @@ const Hero = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Link href="/#speedreader" className={buttonOutline} style={outlineButtonStyle} {...outlineButtonHoverHandlers}>
-                  Here for design work
-                </Link>
+                <a
+                  href={dataResumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonOutline}
+                  style={outlineButtonStyle}
+                  {...outlineButtonHoverHandlers}
+                  {...(dataResumeUrl.startsWith('/') ? { download: true } : {})}
+                >
+                  Data Resume
+                </a>
               </motion.div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: resumeUrl ? 1.28 : 1.2 }}
-            >
-              <motion.div
-                whileHover={{
-                  scale: 1.05,
-                  y: -8,
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-                  transition: { duration: 0.3, ease: 'easeOut' },
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link href="/#nyc-fare" className={buttonOutline} style={outlineButtonStyle} {...outlineButtonHoverHandlers}>
-                  Here for data work
-                </Link>
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: resumeUrl ? 1.36 : 1.28 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
             >
               <motion.div
                 whileHover={{
@@ -260,7 +238,7 @@ const Hero = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Link href="/projects" className={buttonOutline} style={outlineButtonStyle} {...outlineButtonHoverHandlers}>
-                  All projects
+                  All Projects
                 </Link>
               </motion.div>
             </motion.div>
@@ -268,7 +246,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: resumeUrl ? 1.44 : 1.36 }}
+              transition={{ duration: 0.6, delay: 1.26 }}
             >
               <motion.div
                 whileHover={{

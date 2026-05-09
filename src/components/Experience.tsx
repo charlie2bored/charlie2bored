@@ -49,7 +49,7 @@ const additionalExperience = [
     title: 'Team Toro',
     company: 'NJ Devils',
     description: [
-      'Ran between-period activations in front of arena-scale crowds, reading energy and response in real time so scripted beats landed when the building was ready (continuous feedback you only get live, not on a survey delay).',
+      'Ran pre-game and halftime activations in front of arena-scale crowds, reading energy and response in real time so scripted beats landed when the building was ready (continuous feedback you only get live, not on a survey delay).',
       'Tightened pacing and movement with operations and creative across games, iterating cues the way you would after usability tests: clearer handoffs, safer flow, and sharper alignment with the game-night theme.',
     ],
     skills: ['Live audience insight', 'Rapid iteration', 'Cross-functional collaboration'],
@@ -79,7 +79,7 @@ const additionalExperience = [
 const education = [
   {
     year: 'August 2024 to Present',
-    degree: 'Bachelor of Arts in Social Entrepreneurship',
+    degree: 'B.A. in Business Administration',
     institution: 'Northeastern University',
     location: 'New York, NY',
     description: [

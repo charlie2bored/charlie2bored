@@ -165,7 +165,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 border: '2px solid var(--text-color)'
               }}
             >
-              Live Demo
+              {project.slug === 'nyc-fare' ? 'Case Study' : 'Live Demo'}
             </a>
           ) : (
             <span
@@ -178,17 +178,6 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           )}
         </div>
 
-        {project.slug === 'nyc-fare' ? (
-          <div className="mt-10 pt-10 border-t" style={{ borderColor: 'var(--text-secondary)' }}>
-            <Link
-              href="/projects/nyc-fare-analysis"
-              className="inline-flex min-h-[44px] items-center text-lg font-semibold underline-offset-[6px] decoration-2 hover:opacity-75 touch-manipulation"
-              style={{ color: 'var(--text-color)' }}
-            >
-              Read full written case study →
-            </Link>
-          </div>
-        ) : null}
       </div>
     </motion.div>
   );
