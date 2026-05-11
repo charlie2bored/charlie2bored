@@ -8,41 +8,75 @@ import { useState } from 'react';
 const projects = [
   {
     number: '(01)',
-    slug: 'nyc-fare',
-    title: 'NYC Distance-Based Pricing',
-    description: 'Analyzed MTA ridership data to demonstrate that replacing flat fares ($2.90) with distance-based pricing ($2.00 + $0.24/mile) could increase annual revenue by $277M while reducing costs for 29% of riders.',
-    image: '/projects/nyc-fare-systems.jpg',
-    hoverMetric: '↑ ~$277M annual revenue opportunity modeled',
-    tech: ['Python', 'SQL', 'Data Analytics', 'Business Operations'],
-    links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' }
-  },
-  {
-    number: '(02)',
     slug: 'clearcore-protein',
     title: 'ClearCore Protein',
+    role: 'Solo designer and developer',
     description:
-      'Marketing site for a fictional gluten-free protein bar brand. Multi-page React app on Vite + TypeScript + Tailwind v4, with Framer Motion and GSAP scroll animations. Built end to end, with real routes, store locator, flavor detail pages, and contact form.',
+      'Marketing site for a fictional gluten-free protein bar brand. I owned the design system, IA, and frontend: a multi-page React app on Vite, TypeScript, and Tailwind v4 with real routes for store locator, flavor detail, and contact, plus Framer Motion and GSAP for scroll motion.',
+    designThinking: {
+      problem: 'A new CPG brand needs a site that feels confident and shoppable before there is anything to ship.',
+      decisions: [
+        'Built a small token-driven design system first so flavor pages, locator, and marketing pages could share the same rhythm without re-inventing components.',
+        'Split flavor pages from the catalog so each SKU has its own URL, image set, and ingredient story instead of a single overloaded grid.',
+        'Used motion to reinforce hierarchy on entry, then quieted it on scroll so secondary content reads without competing.',
+      ],
+    },
     image: '/projects/clearcore-protein.png',
-    hoverMetric: 'Multi-page site · routes, locator, flavors, contact',
-    tech: ['React', 'TypeScript', 'Vite', 'Tailwind v4', 'Framer Motion', 'GSAP'],
+    hoverMetric: 'Design system, IA, and frontend — shipped end to end',
+    tech: ['Product Design', 'Design System', 'React', 'TypeScript', 'Tailwind v4', 'Framer Motion', 'GSAP'],
+    caseStudy: '/projects/clearcore',
     links: {
       github: 'https://github.com/charlie2bored/clearcore',
       demo: 'https://clearcore-tau.vercel.app/',
     },
   },
   {
-    number: '(03)',
+    number: '(02)',
     slug: 'speedreader',
     title: 'SpeedReader',
-    description: 'A high-performance web application that utilizes Rapid Serial Visual Presentation (RSVP) and Optimal Recognition Point (ORP) highlighting to enable distraction-free reading at speeds of up to 1000 words per minute.',
+    role: 'Solo designer and developer',
+    description:
+      'A focused reading tool that uses Rapid Serial Visual Presentation with an Optimal Recognition Point cue to keep the eye anchored. The design problem was attention, not speed: how much chrome can you remove before the reader loses orientation?',
+    designThinking: {
+      problem: 'Long-form reading on the web is hostile to focus. Most "speed reader" UIs add controls until they become the distraction.',
+      decisions: [
+        'Stripped the interface to one fixation point and the controls needed to recover from a misread; everything else is keyboard.',
+        'Tuned ORP highlighting contrast so the focal letter reads as the anchor without flickering between words.',
+        'Sized the reading column for cognitive comfort at high WPM rather than for screen real estate.',
+      ],
+    },
     image: '/projects/speedreader.png',
-    hoverMetric: '↑ 1,000 WPM RSVP reading with ORP emphasis',
-    tech: ['React', 'Vite', 'JavaScript', 'HTML', 'CSS'],
+    hoverMetric: 'Reading UI tuned for focus, not feature count',
+    tech: ['Product Design', 'Interaction Design', 'React', 'Vite', 'JavaScript'],
     links: { github: 'https://github.com/charlie2bored/SpeedReader', demo: 'https://speed-reader-weld.vercel.app/' },
+  },
+  {
+    number: '(03)',
+    slug: 'nyc-fare',
+    title: 'NYC Distance-Based Fare',
+    role: 'Solo: research, analysis, and frontend',
+    description:
+      'A side project where I treated MTA ridership data as a product question: would a distance-based fare change who pays and who saves? I modeled the math, then designed a small site to let a non-technical reader see the tradeoff for their own commute.',
+    designThinking: {
+      problem: 'Fare debates usually live in spreadsheets and op-eds. Riders cannot see how a policy change would affect their own trip.',
+      decisions: [
+        'Framed the page around a single comparison — your trip today vs. the proposed model — so the reader is the protagonist, not the agency.',
+        'Showed the loss as well as the gain: about 29% of modeled riders pay less, the rest pay more. Hiding that would have been a worse design choice than a worse number.',
+        'Kept the visual language quiet so the numbers carry the argument instead of the chart styling.',
+      ],
+    },
+    image: '/projects/nyc-fare-systems.jpg',
+    hoverMetric: 'I think in numbers — and design the page that shows the math',
+    tech: ['Data Storytelling', 'Information Design', 'Python', 'SQL', 'Frontend'],
+    links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' },
   },
 ];
 
-type Project = (typeof projects)[number];
+type Project = (typeof projects)[number] & {
+  role?: string;
+  caseStudy?: string;
+  designThinking?: { problem: string; decisions: string[] };
+};
 
 function isLiveOutboundUrl(url: string) {
   return /^https?:\/\//i.test(url.trim());
@@ -113,12 +147,53 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </div>
 
         <p className="sr-only">Highlight: {project.hoverMetric}</p>
-        <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight break-words" style={{ color: 'var(--text-color)' }}>
+        <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 leading-tight break-words" style={{ color: 'var(--text-color)' }}>
           {project.title}
         </h3>
-        <p className="text-base sm:text-lg md:text-xl mb-10 max-w-2xl leading-relaxed font-normal" style={{ color: 'var(--text-secondary)' }}>
+        {project.role ? (
+          <p
+            className="text-xs sm:text-sm mb-6 font-semibold uppercase tracking-[0.18em]"
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            {project.role}
+          </p>
+        ) : null}
+        <p className="text-base sm:text-lg md:text-xl mb-8 max-w-2xl leading-relaxed font-normal" style={{ color: 'var(--text-secondary)' }}>
           {project.description}
         </p>
+
+        {project.designThinking ? (
+          <div
+            className="mb-10 max-w-2xl border-l-2 ps-5 sm:ps-6"
+            style={{ borderColor: 'var(--text-secondary)' }}
+          >
+            <p
+              className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] mb-2"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Design thinking
+            </p>
+            <p
+              className="text-base sm:text-lg leading-relaxed mb-4 font-medium"
+              style={{ color: 'var(--text-color)' }}
+            >
+              {project.designThinking.problem}
+            </p>
+            <ul
+              className="text-base sm:text-lg leading-relaxed space-y-2"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              {project.designThinking.decisions.map((decision, decisionIndex) => (
+                <li key={decisionIndex} className="flex items-start">
+                  <span className="mr-3 mt-1 shrink-0" aria-hidden="true">
+                    →
+                  </span>
+                  <span>{decision}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
         <div className="flex flex-wrap gap-6 mb-10">
           {project.tech.map((tech, techIndex) => (
@@ -137,13 +212,26 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </div>
 
         <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 lg:gap-10">
+          {project.caseStudy ? (
+            <Link
+              href={project.caseStudy}
+              className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg transition-all duration-300 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 touch-manipulation w-full sm:w-auto text-center"
+              style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)' }}
+            >
+              Read case study
+            </Link>
+          ) : null}
           {githubLive ? (
             <a
               href={project.links.github}
               target="_blank"
               rel="noreferrer noopener"
               className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg transition-all duration-300 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 touch-manipulation w-full sm:w-auto text-center"
-              style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)' }}
+              style={{
+                backgroundColor: project.caseStudy ? 'var(--bg-color)' : 'var(--text-color)',
+                color: project.caseStudy ? 'var(--text-color)' : 'var(--bg-color)',
+                border: project.caseStudy ? '2px solid var(--text-color)' : undefined,
+              }}
             >
               GitHub
             </a>
@@ -168,7 +256,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 border: '2px solid var(--text-color)'
               }}
             >
-              {project.slug === 'nyc-fare' ? 'Case Study' : 'Live Demo'}
+              Live demo
             </a>
           ) : (
             <span
@@ -206,7 +294,7 @@ const Projects = ({ showSeeAllLink = true }: ProjectsProps) => {
             Featured work
           </h2>
           <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Design, data, and frontend work: case studies with code, demos, and context.
+            Product design first, with the decision trail behind each call. Code, demos, and what got cut.
           </p>
         </motion.div>
 

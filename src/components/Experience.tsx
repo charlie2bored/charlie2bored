@@ -49,20 +49,20 @@ const additionalExperience = [
     title: 'Team Toro',
     company: 'NJ Devils',
     description: [
-      'Ran pre-game and halftime activations in front of arena-scale crowds, reading energy and response in real time so scripted beats landed when the building was ready (continuous feedback you only get live, not on a survey delay).',
-      'Tightened pacing and movement with operations and creative across games, iterating cues the way you would after usability tests: clearer handoffs, safer flow, and sharper alignment with the game-night theme.',
+      'Perform pre-game and halftime activations in front of arena-sized crowds, adjusting pacing and energy on the fly so scripted beats still land when the building is quiet or hot.',
+      'Coordinate with operations and creative between games to refine cues, transitions, and choreography across the season.',
     ],
-    skills: ['Live audience insight', 'Rapid iteration', 'Cross-functional collaboration'],
+    skills: ['Live performance', 'Stagecraft', 'Cross-functional coordination'],
   },
   {
     year: 'September 2025 to Present',
     title: '"WOO!" Crew',
     company: 'NJ Devils',
     description: [
-      'Facilitated live engagement for 10,000+ fans each game through on-ice activations, using the crowd as an instant research panel: timing, spacing, and energy showed what read as fun versus confusing before the next puck drop.',
-      'Carried the brand in a high-visibility role where clarity and tone have to work on first exposure, similar to testing copy and micro-interactions where there is no second chance to explain.',
+      'Represent the team in front of 10,000+ fans per game, running on-ice activations, fan moments, and arena-floor engagement across all three periods.',
+      'Hold a high-visibility brand-facing role where tone, timing, and presence have to read clearly on first contact.',
     ],
-    skills: ['Qualitative feedback loops', 'Live experience design', 'Brand communication'],
+    skills: ['Live performance', 'Brand representation', 'Crowd engagement'],
   },
   {
     year: 'September 2020 to May 2024',

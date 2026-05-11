@@ -93,16 +93,6 @@ const Hero = () => {
             Charlie Vargas
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.55 }}
-            className="text-xs sm:text-sm mb-8 font-semibold uppercase tracking-[0.22em]"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Known as &quot;charlie2bored&quot; online
-          </motion.p>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -120,11 +110,7 @@ const Hero = () => {
             className="text-base sm:text-lg md:text-xl mb-7 max-w-2xl leading-relaxed font-normal"
             style={{ color: 'var(--text-secondary)' }}
           >
-            UX and web work in Figma, with a measurable analytics track record from BI internships (Power BI, SQL, Python). Open to{' '}
-            <strong className="font-semibold" style={{ color: 'var(--text-color)' }}>
-              product design, UX, and junior data roles
-            </strong>
-            .
+            I design product interfaces in Figma and ship the frontend that follows. A BI internship in Power BI, SQL, and Python taught me to think in numbers, so the design decisions are grounded in data instead of decorated with it.
           </motion.p>
 
           <motion.p
@@ -134,11 +120,11 @@ const Hero = () => {
             className="text-sm sm:text-base mb-12 max-w-2xl"
             style={{ color: 'var(--text-secondary)' }}
           >
-            For a self-contained data story and shipped frontend, start with{' '}
-            <Link href="/#nyc-fare" className="underline underline-offset-4 hover:opacity-80">
-              NYC distance-based fare analysis
+            Start with{' '}
+            <Link href="/#clearcore-protein" className="underline underline-offset-4 hover:opacity-80">
+              ClearCore Protein
             </Link>
-            .
+            , a multi-page React site I built end to end.
           </motion.p>
 
           <motion.div
