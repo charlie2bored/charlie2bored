@@ -1,6 +1,12 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useSyncExternalStore,
+} from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -20,27 +26,38 @@ export const useTheme = () => {
   return context;
 };
 
+const themeListeners = new Set<() => void>();
+
+const subscribe = (callback: () => void) => {
+  themeListeners.add(callback);
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === 'theme') callback();
+  };
+  window.addEventListener('storage', onStorage);
+  return () => {
+    themeListeners.delete(callback);
+    window.removeEventListener('storage', onStorage);
+  };
+};
+
+const getSnapshot = (): Theme => {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light' || saved === 'dark') return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+const getServerSnapshot = (): Theme => 'light';
+
 interface ThemeProviderProps {
   children: React.ReactNode;
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  // Server and client must produce identical first-render output.
-  // Read the user's actual preference after mount; until then, mounted=false
-  // lets consumers gate any theme-dependent UI (e.g. the toggle icon).
-  const [theme, setTheme] = useState<Theme>('light');
-  const [mounted, setMounted] = useState(false);
+  // useSyncExternalStore returns the server snapshot during SSR and on the
+  // first client render, then re-renders with the real client snapshot.
+  // No setState-in-effect, no hydration mismatch.
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme | null;
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
-    setTheme(savedTheme || systemTheme);
-    setMounted(true);
-  }, []);
-
-  // Apply theme when it changes - use direct DOM manipulation
   useEffect(() => {
     const root = document.documentElement;
 
@@ -51,7 +68,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       root.style.setProperty('--text-secondary', '#a3a3a3');
       root.style.setProperty('--skills-color', '#d4d4d4');
       root.style.setProperty('--nav-bg', '#000000');
-      localStorage.setItem('theme', 'dark');
     } else {
       root.style.setProperty('--bg-color', '#ffffff');
       root.style.setProperty('--bg-color-rgb', '255, 255, 255');
@@ -59,16 +75,17 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       root.style.setProperty('--text-secondary', '#525252');
       root.style.setProperty('--skills-color', '#404040');
       root.style.setProperty('--nav-bg', '#ffffff');
-      localStorage.setItem('theme', 'light');
     }
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
+  const toggleTheme = useCallback(() => {
+    const next: Theme = theme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', next);
+    themeListeners.forEach((cb) => cb());
+  }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, mounted: true }}>
       {children}
     </ThemeContext.Provider>
   );
