@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Collaboration from '@/components/Testimonials';
+import Writing from '@/components/Writing';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -27,6 +28,7 @@ export default function Home() {
         <Experience />
         <Projects />
         <Collaboration />
+        <Writing />
         <Contact />
       </main>
       <Footer />
