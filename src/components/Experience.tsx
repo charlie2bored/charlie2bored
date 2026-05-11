@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const experiences = [
   {
     year: 'March 2026 to Present',
-    title: 'Digital Marketing',
+    title: 'Product Designer',
     company: 'Medara',
     description: [
       'Manage and continuously optimize website content, structure, and user experience to improve clarity, engagement, and alignment with company objectives.',
@@ -30,7 +30,7 @@ const experiences = [
   },
   {
     year: 'August 2025 to October 2025',
-    title: 'UI/UX Designer',
+    title: 'Product Designer',
     company: 'Rossitech LTD',
     description: [
       'Led end-to-end web design projects for clients launching their first digital presence, leveraging Figma, Framer, Sketch, and other design tools to create visually compelling, mobile-optimized, high-converting websites.',
