@@ -15,9 +15,9 @@ const essays: Essay[] = [
   {
     title: 'The Paper Schedule',
     description:
-      'There’s a printed train schedule on the wall of every Tokyo station, and the trains come when it says they will. The MTA has the money to do the same — what’s broken is who answers when they don’t.',
+      'There’s a printed train schedule on the wall of every Tokyo station, and the trains come when it says they will. The MTA has the money to do the same; what’s broken is who answers when they don’t.',
     date: 'May 2026',
-    href: '/writing',
+    href: '/writing/paper-schedule',
   },
 ];
 
