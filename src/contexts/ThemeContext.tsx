@@ -25,18 +25,20 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  // Get initial theme without causing re-renders
-  const getInitialTheme = (): Theme => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme') as Theme;
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      return savedTheme || systemTheme;
-    }
-    return 'light';
-  };
+  // Server and client must produce identical first-render output.
+  // Read the user's actual preference after mount; until then, mounted=false
+  // lets consumers gate any theme-dependent UI (e.g. the toggle icon).
+  const [theme, setTheme] = useState<Theme>('light');
+  const [mounted, setMounted] = useState(false);
 
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
-  const mounted = true; // Always true on client side
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+    setTheme(savedTheme || systemTheme);
+    setMounted(true);
+  }, []);
 
   // Apply theme when it changes - use direct DOM manipulation
   useEffect(() => {
