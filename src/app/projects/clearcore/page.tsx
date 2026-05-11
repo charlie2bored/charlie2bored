@@ -5,12 +5,12 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'ClearCore Protein — Case Study',
+  title: 'ClearCore Protein Case Study',
   description:
     'How I designed and shipped ClearCore Protein: a multi-page React marketing site for a fictional CPG brand. Brief, research, decisions, what got cut, and what I would do differently.',
   alternates: { canonical: '/projects/clearcore' },
   openGraph: {
-    title: 'ClearCore Protein — Case Study | Charlie Vargas',
+    title: 'ClearCore Protein Case Study | Charlie Vargas',
   },
 };
 
@@ -24,11 +24,11 @@ const facts: { label: string; value: string }[] = [
 const decisions: { title: string; body: string }[] = [
   {
     title: 'A token-driven system before any page',
-    body: 'I started in tokens, not in screens. Color, type ramp, spacing, and motion timing all live in Tailwind v4 theme tokens so the flavor pages, locator, and home all share the same rhythm. Building the system first felt slower for two days and saved a week after that — visual decisions stopped being one-offs.',
+    body: 'I started in tokens, not in screens. Color, type ramp, spacing, and motion timing all live in Tailwind v4 theme tokens so the flavor pages, locator, and home all share the same rhythm. Building the system first felt slower for two days and saved a week after that. Visual decisions stopped being one-offs.',
   },
   {
     title: 'A real route for every flavor, not a single grid',
-    body: 'The instinct was to put every SKU on one shop page. That collapses three different stories — ingredients, taste, and use case — into a row of cards. I gave each flavor its own URL, hero, ingredient breakdown, and pairing notes. The trade-off is more pages to maintain. The win is that each flavor reads like a product, not a thumbnail.',
+    body: 'The instinct was to put every SKU on one shop page. That collapses three different stories (ingredients, taste, and use case) into a row of cards. I gave each flavor its own URL, hero, ingredient breakdown, and pairing notes. The trade-off is more pages to maintain. The win is that each flavor reads like a product, not a thumbnail.',
   },
   {
     title: 'A store locator that lies less',
@@ -66,11 +66,11 @@ const differently: { title: string; body: string }[] = [
   },
   {
     title: 'Write the brand voice document before the headlines',
-    body: 'I wrote headlines and discovered the voice. That is fine for one page; by page four, I was reverse-engineering rules. A one-page voice doc — what we sound like, what we never say, three reference brands — would have saved hours of copy rewrites.',
+    body: 'I wrote headlines and discovered the voice. That is fine for one page; by page four, I was reverse-engineering rules. A one-page voice doc (what we sound like, what we never say, three reference brands) would have saved hours of copy rewrites.',
   },
   {
     title: 'Set a real motion budget',
-    body: 'I added motion as I went, then pulled some of it back at the end. A motion budget written up front — number of animated elements per viewport, max duration, reduced-motion fallbacks — would have stopped me from cutting things I had already polished.',
+    body: 'I added motion as I went, then pulled some of it back at the end. A motion budget written up front (number of animated elements per viewport, max duration, reduced-motion fallbacks) would have stopped me from cutting things I had already polished.',
   },
   {
     title: 'Treat the locator as a real product flow',
@@ -108,7 +108,7 @@ export default function ClearCoreCaseStudyPage() {
             style={{ color: 'var(--text-secondary)' }}
           >
             A marketing site for a fictional gluten-free protein bar brand. I owned the design
-            system, IA, and frontend end to end. This is how the decisions were made — including
+            system, IA, and frontend end to end. This is how the decisions were made, including
             the ones I cut and the ones I would change next time.
           </p>
         </header>
@@ -180,8 +180,8 @@ export default function ClearCoreCaseStudyPage() {
           >
             <p>
               The premise: a new CPG brand needs a site that feels confident and shoppable before
-              there is anything to actually ship. No inventory, no warehouse, no retail partners —
-              just the kind of marketing surface that a real brand uses to earn its first
+              there is anything to actually ship. No inventory, no warehouse, no retail partners.
+              Just the kind of marketing surface that a real brand uses to earn its first
               wholesale meeting.
             </p>
             <p>
@@ -206,7 +206,7 @@ export default function ClearCoreCaseStudyPage() {
             style={{ color: 'var(--text-color)' }}
           >
             <p>
-              I audited a dozen protein-bar and adjacent CPG sites — RXBAR, Aloha, David, Built,
+              I audited a dozen protein-bar and adjacent CPG sites: RXBAR, Aloha, David, Built,
               Magic Spoon, Olipop, and a handful of indie brands. Three patterns kept showing up.
             </p>
             <p>
@@ -228,7 +228,7 @@ export default function ClearCoreCaseStudyPage() {
             <p>
               I also leaned on what I had learned from internship work in BI and analytics:
               decisions stick when they connect to a number the team can defend. So even on a
-              fictional brand, every IA call had to answer the question — what would a real
+              fictional brand, every IA call had to answer the question: what would a real
               founder measure to know this worked?
             </p>
           </div>
