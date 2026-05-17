@@ -20,6 +20,7 @@ type Essay = {
   readingTime: string;
   description: string;
   href: string;
+  substackHref?: string;
 };
 
 const essays: Essay[] = [
@@ -31,6 +32,8 @@ const essays: Essay[] = [
     description:
       'There’s a paper schedule on the wall of every train station in Tokyo, and the trains come when it says they will. The MTA has the money to do the same. What’s broken is who answers when they don’t.',
     href: '/writing/paper-schedule',
+    substackHref:
+      'https://open.substack.com/pub/charlie2bored/p/the-paper-schedule?r=6ajw00&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true',
   },
 ];
 
@@ -65,6 +68,15 @@ export default function WritingIndexPage() {
           >
             Thoughts on data, transit, operations, and whatever else I’ve been chewing on.
           </p>
+          <a
+            href="https://open.substack.com/pub/charlie2bored/p/the-paper-schedule?r=6ajw00&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 mt-5 text-base font-medium underline underline-offset-4 hover:opacity-80"
+            style={{ color: 'var(--text-color)' }}
+          >
+            Subscribe on Substack →
+          </a>
         </header>
 
         <ul className="max-w-3xl mx-auto px-5 space-y-6">
@@ -107,6 +119,17 @@ export default function WritingIndexPage() {
                   <span aria-hidden="true">→</span>
                 </span>
               </Link>
+              {essay.substackHref && (
+                <a
+                  href={essay.substackHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-3 ml-1 text-sm font-medium underline underline-offset-4 hover:opacity-80"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  Also on Substack →
+                </a>
+              )}
             </li>
           ))}
         </ul>

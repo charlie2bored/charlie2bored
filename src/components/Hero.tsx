@@ -106,7 +106,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.85 }}
-            className="text-sm sm:text-base mb-12 max-w-2xl"
+            className="text-sm sm:text-base mb-6 max-w-2xl"
             style={{ color: 'var(--text-secondary)' }}
           >
             If you&apos;re going to look at one thing, look at the{' '}
@@ -114,6 +114,25 @@ const Hero = () => {
               NYC fare analysis
             </Link>
             . I modeled MTA ridership data to ask a question I couldn&apos;t find a clean answer to: who would actually pay more under a distance-based fare, and who would pay less.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="text-sm sm:text-base mb-12 max-w-2xl"
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            Latest essay:{' '}
+            <a
+              href="https://open.substack.com/pub/charlie2bored/p/the-paper-schedule?r=6ajw00&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:opacity-80"
+            >
+              The Paper Schedule
+            </a>{' '}
+            on Substack.
           </motion.p>
 
           <motion.div
