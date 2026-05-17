@@ -47,7 +47,7 @@ const additionalExperience = [
   {
     year: 'February 2026 to Present',
     title: 'Team Toro',
-    company: 'NJ Devils',
+    company: 'New York Red Bulls',
     description: [
       'Perform pre-game and halftime activations in front of arena-sized crowds, adjusting pacing and energy on the fly so scripted beats still land when the building is quiet or hot.',
       'Coordinate with operations and creative between games to refine cues, transitions, and choreography across the season.',
