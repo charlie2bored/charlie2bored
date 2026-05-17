@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'ClearCore Protein Case Study',
   description:
-    'How I designed and shipped ClearCore Protein: a multi-page React marketing site for a fictional CPG brand. Brief, research, decisions, what got cut, and what I would do differently.',
+    'How I built and shipped ClearCore Protein: a multi-page React marketing site for a fictional CPG brand. Brief, research, decisions, what got cut, and what I would do differently.',
   alternates: { canonical: '/projects/clearcore' },
   openGraph: {
     title: 'ClearCore Protein Case Study | Charlie Vargas',
@@ -15,66 +15,66 @@ export const metadata: Metadata = {
 };
 
 const facts: { label: string; value: string }[] = [
-  { label: 'Role', value: 'Solo designer and developer' },
+  { label: 'Role', value: 'Solo build, end to end' },
   { label: 'Timeline', value: 'Three weeks, evenings and weekends' },
-  { label: 'Scope', value: 'Brand IA, design system, frontend' },
-  { label: 'Stack', value: 'React, TypeScript, Vite, Tailwind v4, Framer Motion, GSAP' },
+  { label: 'Scope', value: 'Information architecture, component system, frontend' },
+  { label: 'Stack', value: 'React, TypeScript, Vite, React Router, Tailwind v4, Framer Motion, GSAP' },
 ];
 
 const decisions: { title: string; body: string }[] = [
   {
     title: 'A token-driven system before any page',
-    body: 'I started in tokens, not in screens. Color, type ramp, spacing, and motion timing all live in Tailwind v4 theme tokens so the flavor pages, locator, and home all share the same rhythm. Building the system first felt slower for two days and saved a week after that. Visual decisions stopped being one-offs.',
+    body: 'I started in tokens, not in screens. Color, type ramp, spacing, and motion timing all live in Tailwind v4 theme tokens. The flavor pages, the locator, and the home page all share the same rhythm because of it. Building the system first felt slower for the first 2 days and saved me a week after that. Visual decisions stopped being one-offs.',
   },
   {
     title: 'A real route for every flavor, not a single grid',
-    body: 'The instinct was to put every SKU on one shop page. That collapses three different stories (ingredients, taste, and use case) into a row of cards. I gave each flavor its own URL, hero, ingredient breakdown, and pairing notes. The trade-off is more pages to maintain. The win is that each flavor reads like a product, not a thumbnail.',
+    body: 'The instinct was to put every SKU on one shop page. That collapses 3 different stories (ingredients, taste, and use case) into a row of cards. I gave each flavor its own URL, hero, ingredient breakdown, and pairing notes. The tradeoff is more pages to maintain. The win is that each flavor reads like a product instead of a thumbnail.',
   },
   {
     title: 'A store locator that lies less',
-    body: 'For a fictional brand, the lazy move is a fake map with fake pins. I built the locator UI assuming the data layer would arrive later, with empty, loading, and zero-result states designed before the happy path. The page tells the truth about availability instead of pretending coverage I do not have.',
+    body: "For a fictional brand, the lazy move is a fake map with fake pins. I built the locator UI assuming the data layer would arrive later, and I wired up the empty, loading, and zero-result states before the happy path. The page tells the truth about availability instead of pretending coverage I don't have.",
   },
   {
     title: 'Motion that points at hierarchy, then gets out of the way',
-    body: 'Framer Motion handles entrance reveals to set hierarchy on first paint; GSAP handles pinned scroll moments on the home page where the story benefits from a beat. Everywhere else, motion is opt-in to prefers-reduced-motion and stops at the fold. The rule I used: if the animation does not change what the reader understands, it should not be there.',
+    body: "Framer Motion handles the entrance reveals to set hierarchy on first paint. GSAP handles the pinned scroll moments on the home page where the story benefits from a beat. Everywhere else, motion is opt-in to prefers-reduced-motion and stops at the fold. The rule I used: if the animation doesn't change what the reader understands, it shouldn't be there.",
   },
   {
-    title: 'Contact form designed as a real conversion, not a placeholder',
-    body: 'Even for a fictional brand, the contact form was treated as a primary path. Real labels, real validation states, error copy written in plain English, and a success state that closes the loop instead of redirecting to a wall. It is the cheapest page on the site to take seriously and the one that signals everything about how the team behind it would treat a customer.',
+    title: 'Contact form built as a real conversion, not a placeholder',
+    body: "Even for a fictional brand, the contact form was treated as a primary path. Real labels, real validation states, error copy written in plain English, and a success state that closes the loop instead of dumping the user on a redirect wall. It's the cheapest page on the site to take seriously, and the one that signals everything about how the team behind it would treat a customer.",
   },
 ];
 
 const cuts: { title: string; body: string }[] = [
   {
     title: 'Cart and checkout',
-    body: 'I scoped a cart, mini-cart, and a Stripe-style checkout in the first sketch. I cut it. With no real inventory, fulfillment, or payment partner, building checkout would have meant designing a lie. The contact form became the conversion, and the brand reads as honest instead of overreaching.',
+    body: 'I scoped a cart, mini-cart, and a Stripe-style checkout in the first sketch. I cut it. With no real inventory, fulfillment, or payment partner, shipping checkout would have meant building a lie. The contact form became the conversion. The brand reads as honest instead of overreaching.',
   },
   {
     title: 'A custom 3D bar renderer',
-    body: 'The first concept had a WebGL hero with a rotating bar. It looked great in isolation and felt like a tax everywhere else: load time, motion accessibility, and a hero that fought the headline for attention. I replaced it with a photographic hero and put the saved week into the flavor pages.',
+    body: 'The first concept had a WebGL hero with a rotating bar. It looked great in isolation and felt like a tax everywhere else. Load time, motion accessibility, and a hero that fought the headline for attention. I replaced it with a photographic hero and put the saved week into the flavor pages.',
   },
   {
     title: 'An on-site blog',
-    body: 'I drafted an IA with a Journal section for recipes and ingredient deep-dives. It was a content commitment I could not honor solo, and an empty blog dated the site immediately. Cut. If the brand were real, I would design the blog when there were three real posts ready, not before.',
+    body: "I drafted an IA with a Journal section for recipes and ingredient deep-dives. It was a content commitment I couldn't honor solo, and an empty blog dated the site immediately. Cut. If the brand were real, I'd build the blog when there were 3 real posts ready, not before.",
   },
 ];
 
 const differently: { title: string; body: string }[] = [
   {
     title: 'Test the hero on a phone first',
-    body: 'I designed the desktop hero first and adapted down. The mobile version works, but it is a translation, not a native composition. Next time I want to compose the small-screen hero first and let it pressure-test the desktop layout.',
+    body: "I built the desktop hero first and adapted down. The mobile version works, but it's a translation, not a native composition. Next time I want to compose the small-screen hero first and let it pressure-test the desktop layout.",
   },
   {
     title: 'Write the brand voice document before the headlines',
-    body: 'I wrote headlines and discovered the voice. That is fine for one page; by page four, I was reverse-engineering rules. A one-page voice doc (what we sound like, what we never say, three reference brands) would have saved hours of copy rewrites.',
+    body: "I wrote headlines and discovered the voice. That's fine for one page. By page four, I was reverse-engineering rules. A one-page voice doc (what we sound like, what we never say, 3 reference brands) would have saved me hours of copy rewrites.",
   },
   {
     title: 'Set a real motion budget',
-    body: 'I added motion as I went, then pulled some of it back at the end. A motion budget written up front (number of animated elements per viewport, max duration, reduced-motion fallbacks) would have stopped me from cutting things I had already polished.',
+    body: "I added motion as I went and pulled some of it back at the end. A motion budget written up front (number of animated elements per viewport, max duration, reduced-motion fallbacks) would have stopped me from cutting things I'd already polished.",
   },
   {
     title: 'Treat the locator as a real product flow',
-    body: 'I designed states for the locator, but I never wrote the empty-state copy as carefully as I wrote the home page copy. If a real user hit zero results, the page would feel like a dead end. Next time the page that fails most often gets the best writing pass.',
+    body: 'I shipped states for the locator, but I never wrote the empty-state copy as carefully as I wrote the home page copy. If a real user hit zero results, the page would feel like a dead end. Next time, the page that fails most often gets the best writing pass.',
   },
 ];
 
@@ -107,9 +107,10 @@ export default function ClearCoreCaseStudyPage() {
             className="text-xl leading-relaxed"
             style={{ color: 'var(--text-secondary)' }}
           >
-            A marketing site for a fictional gluten-free protein bar brand. I owned the design
-            system, IA, and frontend end to end. This is how the decisions were made, including
-            the ones I cut and the ones I would change next time.
+            This is a marketing site I built for a fictional gluten-free protein bar brand. I owned
+            the information architecture, the component system, and the frontend, end to end. Below
+            is how I made the calls I did, including the ones I cut and the ones I&apos;d do
+            differently next time.
           </p>
         </header>
 
@@ -180,16 +181,16 @@ export default function ClearCoreCaseStudyPage() {
           >
             <p>
               The premise: a new CPG brand needs a site that feels confident and shoppable before
-              there is anything to actually ship. No inventory, no warehouse, no retail partners.
-              Just the kind of marketing surface that a real brand uses to earn its first
+              there&apos;s actually anything to ship. No inventory, no warehouse, no retail
+              partners. Just the kind of marketing surface a real brand uses to earn its first
               wholesale meeting.
             </p>
             <p>
               That framing is harder than it sounds. A real brand site can lean on real product
-              photography, real testimonials, real store locations. A fictional one has to build
-              all of that scaffolding without crossing into make-believe. The design challenge was
-              to make the site read as a serious early-stage brand without faking proof it had
-              not earned.
+              photography, real testimonials, and real store locations. A fictional one has to
+              build all of that scaffolding without crossing into make-believe. The real challenge
+              was making the site read as a serious early-stage brand without faking proof it
+              hadn&apos;t earned.
             </p>
           </div>
         </section>
@@ -206,30 +207,31 @@ export default function ClearCoreCaseStudyPage() {
             style={{ color: 'var(--text-color)' }}
           >
             <p>
-              I audited a dozen protein-bar and adjacent CPG sites: RXBAR, Aloha, David, Built,
+              I audited a dozen protein-bar and adjacent CPG sites. RXBAR, Aloha, David, Built,
               Magic Spoon, Olipop, and a handful of indie brands. Three patterns kept showing up.
             </p>
             <p>
               First, the homepage usually overstuffs the hero. Brands try to land a tagline, a
-              flavor lineup, social proof, and a primary CTA in one viewport. The pages that read
-              best treat the hero as a single argument and trust the next scroll to do the rest.
+              flavor lineup, social proof, and a primary CTA all in one viewport. The pages that
+              read best treat the hero as a single argument and trust the next scroll to do the
+              rest.
             </p>
             <p>
-              Second, ingredient transparency is a real differentiator and a real design problem.
-              Most brands list ingredients in a way that reads as legal copy. The brands that win
+              Second, ingredient transparency is a real differentiator and a real product problem.
+              Most brands list ingredients in a way that reads like legal copy. The ones that win
               on trust make the ingredient panel feel like the front of the package, not the
               back.
             </p>
             <p>
               Third, store locators are almost always disappointing. They load slowly, return zero
-              results in obvious zip codes, and rarely tell you when data was last updated. There
-              is a small but real opportunity to design honestly here.
+              results in obvious zip codes, and rarely tell you when the data was last updated.
+              There&apos;s a small but real opportunity to approach this honestly.
             </p>
             <p>
-              I also leaned on what I had learned from internship work in BI and analytics:
-              decisions stick when they connect to a number the team can defend. So even on a
-              fictional brand, every IA call had to answer the question: what would a real
-              founder measure to know this worked?
+              I also leaned on what I&apos;d picked up from my BI internship. Decisions stick when
+              they connect to a number the team can defend. So even on a fictional brand, every IA
+              call had to answer the question: what would a real founder measure to know this
+              worked?
             </p>
           </div>
         </section>
@@ -281,8 +283,8 @@ export default function ClearCoreCaseStudyPage() {
             className="text-base sm:text-lg leading-relaxed mb-8"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Cuts are part of the work. These were the three biggest, and the reasons hold up
-            better than the original scope did.
+            Cuts are part of the work. These are the 3 biggest, and the reasons hold up better
+            than the original scope did.
           </p>
           <div className="space-y-8">
             {cuts.map((cut) => (
@@ -319,7 +321,7 @@ export default function ClearCoreCaseStudyPage() {
             className="text-base sm:text-lg leading-relaxed mb-8"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Four honest notes. The site shipped; these are the things I want to fix before the
+            Four honest notes. The site shipped. These are the things I want to fix before the
             next one starts.
           </p>
           <ol className="space-y-8 list-decimal pl-6">
@@ -356,7 +358,7 @@ export default function ClearCoreCaseStudyPage() {
             <li>A Tailwind v4 token system covering color, type, spacing, radius, and motion timing.</li>
             <li>Dedicated flavor detail pages with ingredient breakdowns and pairing notes.</li>
             <li>A store locator UI with deliberate empty, loading, and zero-result states.</li>
-            <li>A contact form designed as a primary conversion, with real validation and success states.</li>
+            <li>A contact form built as a primary conversion, with real validation and success states.</li>
             <li>Framer Motion entrance choreography and GSAP scroll moments, both with reduced-motion fallbacks.</li>
           </ul>
         </section>

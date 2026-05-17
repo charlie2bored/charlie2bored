@@ -6,8 +6,8 @@ import Link from 'next/link';
 const LINKEDIN = 'https://www.linkedin.com/in/charlie2bored/';
 
 const highlights = [
-  'Cross-functional work across analytics ops, dashboards, and product-minded design.',
-  'Comfortable translating messy data into decisions stakeholders can trust.',
+  'I’ve worked across analytics, BI dashboards, and operational reporting, usually at the same time.',
+  'Most of the job is taking messy data and getting it to a place where stakeholders trust the answer.',
 ];
 
 const Collaboration = () => {
@@ -29,8 +29,8 @@ const Collaboration = () => {
             Collaboration and references
           </h2>
           <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Detailed written recommendations live on LinkedIn. For hiring teams,
-            references are available on request once we&apos;ve spoken.
+            The written recommendations are on LinkedIn. If you&apos;re hiring, I&apos;m happy to share
+            references once we&apos;ve actually had a conversation.
           </p>
         </motion.div>
 

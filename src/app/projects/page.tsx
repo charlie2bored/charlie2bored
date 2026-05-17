@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Projects',
   description:
-    'Featured work: NYC distance-based fare analysis, ClearCore Protein brand site, and SpeedReader RSVP, with live demos and code where available.',
+    'Analytical and built work: NYC distance-based fare analysis on real MTA data, plus shipped React projects (ClearCore Protein and SpeedReader) with live demos and source.',
   alternates: { canonical: '/projects' },
   openGraph: {
     title: 'Projects | Charlie Vargas',

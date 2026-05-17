@@ -15,7 +15,7 @@ const essays: Essay[] = [
   {
     title: 'The Paper Schedule',
     description:
-      'There’s a printed train schedule on the wall of every Tokyo station, and the trains come when it says they will. The MTA has the money to do the same; what’s broken is who answers when they don’t.',
+      'There’s a paper schedule on the wall of every train station in Tokyo, and the trains come when it says they will. The MTA has the money to do the same. What’s broken is who answers when they don’t.',
     date: 'May 2026',
     href: '/writing/paper-schedule',
   },
@@ -36,7 +36,7 @@ const Writing = () => {
             Writing + Essays
           </h2>
           <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-            Thoughts on data, design, and whatever else I’ve been chewing on.
+            Thoughts on data, transit, operations, and whatever else I’ve been chewing on.
           </p>
         </motion.div>
 

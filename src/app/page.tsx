@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Experience from '@/components/Experience';
+import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Collaboration from '@/components/Testimonials';
 import Writing from '@/components/Writing';
@@ -26,7 +27,8 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <Experience />
-        <Projects />
+        <Skills />
+        <Projects featuredOnly />
         <Collaboration />
         <Writing />
         <Contact />

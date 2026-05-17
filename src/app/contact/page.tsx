@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Reach Charlie Vargas for data analytics, BI, UX design, or full-time roles. Email, phone, and social links.',
+    'Reach Charlie Vargas for BI, data, or operations analyst roles, internships, and collaborations. Email and social links.',
   alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact | Charlie Vargas',

@@ -113,7 +113,7 @@ const Experience = () => {
         >
           <h2 className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2">Experience</h2>
           <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Impact first; dates note how long each role ran. Overlapping periods reflect school plus work: for example, a multi-month UX contract beside an ongoing BI internship.
+            What I did first, then how long each role ran. Some of these overlap because I was in school and working a few things at once, including a multi-year BI internship.
           </p>
         </motion.div>
 

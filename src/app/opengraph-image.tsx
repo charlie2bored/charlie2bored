@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Charlie Vargas | Product designer, UX & analytics portfolio';
+export const alt = 'Charlie Vargas | BI, data & operations analyst portfolio';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -44,7 +44,7 @@ export default function OpenGraphImage() {
             maxWidth: 820,
           }}
         >
-          Product design &amp; UX, with analytics depth · NYC / NJ hybrid or remote
+          BI, data &amp; operations analyst · Power BI, SQL, Python · NYC, NJ &amp; CT, hybrid or remote
         </div>
         <div
           style={{

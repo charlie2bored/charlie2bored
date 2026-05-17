@@ -8,22 +8,43 @@ import { useState } from 'react';
 const projects = [
   {
     number: '(01)',
+    slug: 'nyc-fare',
+    title: 'NYC Distance-Based Fare',
+    role: 'Solo: research, modeling, and frontend',
+    description:
+      'I treated MTA ridership data as a policy question. Would a distance-based fare actually change who pays and who saves? I modeled the math in Python off the open OD pairings, fare structures, and station metadata. Then I built a small site so a non-technical reader could test the tradeoff for their own commute.',
+    approach: {
+      problem:
+        'Fare debates usually live in spreadsheets and op-eds. Riders can’t see how a policy change would actually affect their own trip.',
+      decisions: [
+        'Built the analysis in pandas and NumPy off the open MTA OD pairings, fare structures, and station metadata. The whole thing is reproducible, so the model can be re-run when the data changes.',
+        'Reported the loss as well as the gain. About 29% of riders in the model pay less, and the rest pay more. Hiding that would have been a worse choice than reporting a worse number.',
+        'Framed the page around a single comparison, your trip today versus the proposed model, so the reader is the one driving the page and not the agency.',
+      ],
+    },
+    image: '/projects/nyc-fare-systems.jpg',
+    hoverMetric: 'Modeled a fare policy on real MTA data, then built the page that explains the tradeoff',
+    tech: ['Python', 'pandas', 'NumPy', 'matplotlib', 'TypeScript', 'Vite', 'Tailwind', 'Data storytelling'],
+    links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' },
+  },
+  {
+    number: '(02)',
     slug: 'clearcore-protein',
     title: 'ClearCore Protein',
-    role: 'Solo designer and developer',
+    role: 'Solo build, end to end',
     description:
-      'Marketing site for a fictional gluten-free protein bar brand. I owned the design system, IA, and frontend: a multi-page React app on Vite, TypeScript, and Tailwind v4 with real routes for store locator, flavor detail, and contact, plus Framer Motion and GSAP for scroll motion.',
-    designThinking: {
-      problem: 'A new CPG brand needs a site that feels confident and shoppable before there is anything to ship.',
+      'A multi-page React site I built for a fictional CPG brand. I owned the information architecture, the component system, and the frontend. It has real routes for the store locator, flavor pages, and contact, with Framer Motion and GSAP handling the motion. The stack is Vite, TypeScript, and Tailwind v4.',
+    approach: {
+      problem: 'A new CPG brand needs a site that reads as confident and shoppable before there’s actually anything to ship.',
       decisions: [
-        'Built a small token-driven design system first so flavor pages, locator, and marketing pages could share the same rhythm without re-inventing components.',
-        'Split flavor pages from the catalog so each SKU has its own URL, image set, and ingredient story instead of a single overloaded grid.',
-        'Used motion to reinforce hierarchy on entry, then quieted it on scroll so secondary content reads without competing.',
+        'Built a small token-driven system first, so the flavor pages, the locator, and the marketing pages could share the same rhythm instead of reinventing components for each.',
+        'Split the flavor pages out of the catalog. Each SKU has its own URL, image set, and ingredient story, instead of a single overloaded grid.',
+        'Used motion to reinforce hierarchy on entry, then quieted it on scroll so the secondary content reads without anything competing for attention.',
       ],
     },
     image: '/projects/clearcore-protein.png',
-    hoverMetric: 'Design system, IA, and frontend — shipped end to end',
-    tech: ['Product Design', 'Design System', 'React', 'TypeScript', 'Tailwind v4', 'Framer Motion', 'GSAP'],
+    hoverMetric: 'Built the whole thing solo: information architecture, components, and the frontend',
+    tech: ['React', 'TypeScript', 'Vite', 'React Router', 'Tailwind v4', 'Framer Motion', 'GSAP'],
     caseStudy: '/projects/clearcore',
     links: {
       github: 'https://github.com/charlie2bored/clearcore',
@@ -31,51 +52,31 @@ const projects = [
     },
   },
   {
-    number: '(02)',
+    number: '(03)',
     slug: 'speedreader',
     title: 'SpeedReader',
-    role: 'Solo designer and developer',
+    role: 'Solo build, end to end',
     description:
-      'A focused reading tool that uses Rapid Serial Visual Presentation with an Optimal Recognition Point cue to keep the eye anchored. The design problem was attention, not speed: how much chrome can you remove before the reader loses orientation?',
-    designThinking: {
-      problem: 'Long-form reading on the web is hostile to focus. Most "speed reader" UIs add controls until they become the distraction.',
+      'A reading tool that uses Rapid Serial Visual Presentation with an Optimal Recognition Point cue so the eye stays anchored. The real question wasn’t about speed. It was about attention. How much of the UI can you strip away before the reader loses their place?',
+    approach: {
+      problem: 'Long-form reading on the web is hostile to focus. Most "speed reader" UIs end up adding controls until the controls become the distraction.',
       decisions: [
-        'Stripped the interface to one fixation point and the controls needed to recover from a misread; everything else is keyboard.',
-        'Tuned ORP highlighting contrast so the focal letter reads as the anchor without flickering between words.',
-        'Sized the reading column for cognitive comfort at high WPM rather than for screen real estate.',
+        'Stripped the interface down to one fixation point and the controls you need to recover from a misread. Everything else is keyboard.',
+        'Tuned the ORP highlight contrast so the focal letter reads as the anchor and doesn’t flicker between words.',
+        'Sized the reading column for what’s actually readable at high WPM, not for what fills the screen.',
       ],
     },
     image: '/projects/speedreader.png',
-    hoverMetric: 'Reading UI tuned for focus, not feature count',
-    tech: ['Product Design', 'Interaction Design', 'React', 'Vite', 'JavaScript'],
+    hoverMetric: 'Built for focus, not for feature count',
+    tech: ['React', 'Vite', 'JavaScript', 'Tailwind'],
     links: { github: 'https://github.com/charlie2bored/SpeedReader', demo: 'https://speed-reader-weld.vercel.app/' },
-  },
-  {
-    number: '(03)',
-    slug: 'nyc-fare',
-    title: 'NYC Distance-Based Fare',
-    role: 'Solo: research, analysis, and frontend',
-    description:
-      'A side project where I treated MTA ridership data as a product question: would a distance-based fare change who pays and who saves? I modeled the math, then designed a small site to let a non-technical reader see the tradeoff for their own commute.',
-    designThinking: {
-      problem: 'Fare debates usually live in spreadsheets and op-eds. Riders cannot see how a policy change would affect their own trip.',
-      decisions: [
-        'Framed the page around a single comparison — your trip today vs. the proposed model — so the reader is the protagonist, not the agency.',
-        'Showed the loss as well as the gain: about 29% of modeled riders pay less, the rest pay more. Hiding that would have been a worse design choice than a worse number.',
-        'Kept the visual language quiet so the numbers carry the argument instead of the chart styling.',
-      ],
-    },
-    image: '/projects/nyc-fare-systems.jpg',
-    hoverMetric: 'I think in numbers — and design the page that shows the math',
-    tech: ['Data Storytelling', 'Information Design', 'Python', 'SQL', 'Frontend'],
-    links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' },
   },
 ];
 
 type Project = (typeof projects)[number] & {
   role?: string;
   caseStudy?: string;
-  designThinking?: { problem: string; decisions: string[] };
+  approach?: { problem: string; decisions: string[] };
 };
 
 function isLiveOutboundUrl(url: string) {
@@ -162,7 +163,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           {project.description}
         </p>
 
-        {project.designThinking ? (
+        {project.approach ? (
           <div
             className="mb-10 max-w-2xl border-l-2 ps-5 sm:ps-6"
             style={{ borderColor: 'var(--text-secondary)' }}
@@ -171,19 +172,19 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] mb-2"
               style={{ color: 'var(--text-secondary)' }}
             >
-              Design thinking
+              Approach
             </p>
             <p
               className="text-base sm:text-lg leading-relaxed mb-4 font-medium"
               style={{ color: 'var(--text-color)' }}
             >
-              {project.designThinking.problem}
+              {project.approach.problem}
             </p>
             <ul
               className="text-base sm:text-lg leading-relaxed space-y-2"
               style={{ color: 'var(--text-secondary)' }}
             >
-              {project.designThinking.decisions.map((decision, decisionIndex) => (
+              {project.approach.decisions.map((decision, decisionIndex) => (
                 <li key={decisionIndex} className="flex items-start">
                   <span className="mr-3 mt-1 shrink-0" aria-hidden="true">
                     →
@@ -275,11 +276,18 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 };
 
 type ProjectsProps = {
-  /** When false, hides the redundant “See all projects” link (e.g. on `/projects`). */
+  /** When false, hides the redundant "See all projects" link (e.g. on `/projects`). */
   showSeeAllLink?: boolean;
+  /** When true, only render the featured (lead) project (used on the home page). */
+  featuredOnly?: boolean;
 };
 
-const Projects = ({ showSeeAllLink = true }: ProjectsProps) => {
+const Projects = ({ showSeeAllLink = true, featuredOnly = false }: ProjectsProps) => {
+  const visible = featuredOnly ? projects.slice(0, 1) : projects;
+  const subhead = featuredOnly
+    ? 'The piece I’d lead with is a fare-policy analysis I ran on real MTA data. The rest of what I’ve worked on is on the projects page.'
+    : 'Analyses I ran and things I built. Each one tries to leave a trail of why I made the calls I did. Source, demos, and the parts I cut are all linked.';
+
   return (
     <section className="py-16 md:py-28 lg:py-[150px]">
       <div className="max-w-5xl mx-auto px-4 sm:px-5 min-w-0">
@@ -294,12 +302,12 @@ const Projects = ({ showSeeAllLink = true }: ProjectsProps) => {
             Featured work
           </h2>
           <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Product design first, with the decision trail behind each call. Code, demos, and what got cut.
+            {subhead}
           </p>
         </motion.div>
 
         <div className="space-y-16 md:space-y-24 lg:space-y-[100px]">
-          {projects.map((project, index) => (
+          {visible.map((project, index) => (
             <ProjectCard key={`${project.number}-${project.title}`} project={project} index={index} />
           ))}
         </div>

@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Writing',
   description:
-    'Essays on transit, design, data, and whatever else I’ve been chewing on.',
+    'Essays on transit, data, operations, and whatever else I’ve been chewing on.',
   alternates: { canonical: '/writing' },
   openGraph: {
     title: 'Writing | Charlie Vargas',
@@ -29,7 +29,7 @@ const essays: Essay[] = [
     date: 'May 2026',
     readingTime: '12 min read',
     description:
-      'There’s a printed train schedule on the wall of every Tokyo station, and the trains come when it says they will. The MTA has the money to do the same; what’s broken is who answers when they don’t.',
+      'There’s a paper schedule on the wall of every train station in Tokyo, and the trains come when it says they will. The MTA has the money to do the same. What’s broken is who answers when they don’t.',
     href: '/writing/paper-schedule',
   },
 ];
@@ -63,7 +63,7 @@ export default function WritingIndexPage() {
             className="text-xl leading-relaxed"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Thoughts on data, design, transit, and whatever else I’ve been chewing on.
+            Thoughts on data, transit, operations, and whatever else I’ve been chewing on.
           </p>
         </header>
 

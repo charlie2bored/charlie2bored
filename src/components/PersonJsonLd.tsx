@@ -17,13 +17,19 @@ export function PersonJsonLd() {
     url: siteUrl,
     sameAs,
     description:
-      'Product designer and UX practitioner (Figma, web). Business intelligence internship experience with Power BI, SQL, Python, and measurable operational impact.',
+      'BI, data, and operations analyst. I work in Power BI, SQL, and Python, mostly from a multi-year BI internship. I’ve automated KPI dashboards, built predictive enrollment models, and done pricing analysis across 20+ sites.',
     knowsAbout: [
       'Data Analytics',
       'Business Intelligence',
+      'Operations Analytics',
       'SQL',
       'Python',
-      'UI/UX Design',
+      'pandas',
+      'Power BI',
+      'Tableau',
+      'KPI Dashboards',
+      'Predictive Modeling',
+      'Data Storytelling',
     ],
   };
 

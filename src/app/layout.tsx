@@ -17,24 +17,27 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      'Charlie Vargas | Product Designer · UX & BI Internship Portfolio',
+      'Charlie Vargas | BI, Data & Operations Analyst',
     template: '%s | Charlie Vargas',
   },
   description:
-    'Charlie Vargas (“2bored”): product and UX designer with UI shipped from Figma, plus BI and analytics depth (Power BI, SQL, Python) from internships. NYC/NJ hybrid or remote. Open to internships and junior-track roles.',
+    'Charlie Vargas ("2bored"): BI, data, and operations analyst. I work mostly in Power BI, SQL, and Python, most of it from a multi-year BI internship. I’ve automated KPI dashboards, built predictive enrollment models, and done pricing analysis across 20+ sites. NYC, NJ, or CT; hybrid or remote.',
   keywords: [
     'Charlie Vargas',
-    'product designer',
-    'UX designer',
-    'product design',
-    'UI UX',
-    'junior analyst',
-    'internship',
-    'portfolio',
-    'business intelligence',
+    'data analyst',
+    'business intelligence analyst',
+    'BI analyst',
+    'operations analyst',
     'Power BI',
     'SQL',
     'Python',
+    'pandas',
+    'Tableau',
+    'KPI dashboards',
+    'predictive modeling',
+    'data storytelling',
+    'NYC fare analysis',
+    'portfolio',
   ],
   authors: [{ name: 'Charlie Vargas', url: 'https://www.linkedin.com/in/charlie2bored/' }],
   creator: 'Charlie Vargas',
@@ -45,15 +48,15 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Charlie Vargas',
-    title: 'Charlie Vargas | Product Designer (UX + analytics depth)',
+    title: 'Charlie Vargas | BI, Data & Operations Analyst',
     description:
-      'Product and UX designer; BI internships with measurable impact. Featured: NYC fare analysis, shipped UI, Power BI dashboards.',
+      'BI, data, and operations analyst. I work in Power BI, SQL, and Python. KPI dashboards, predictive models, and an NYC fare-policy analysis on real MTA data.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Charlie Vargas | Product Designer (UX + analytics depth)',
+    title: 'Charlie Vargas | BI, Data & Operations Analyst',
     description:
-      'Portfolio: product and UX design, shipped UI, BI internship outcomes, and NYC fare analytics. Early-career and internships.',
+      'Portfolio: BI dashboards, operational analytics, and an NYC fare-policy model on real MTA data. NYC, NJ, or CT; hybrid or remote.',
   },
 };
 

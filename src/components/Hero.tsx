@@ -3,7 +3,7 @@
 import type { MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { getUxResumeUrl, getDataResumeUrl } from '@/lib/site';
+import { getDataResumeUrl } from '@/lib/site';
 
 const outlineButtonStyle = {
   borderColor: 'var(--text-color)',
@@ -26,7 +26,6 @@ const buttonOutline =
   'px-8 py-4 min-h-[48px] inline-flex items-center justify-center border-2 rounded-lg transition-all duration-300 text-lg sm:text-xl font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto text-center touch-manipulation';
 
 const Hero = () => {
-  const uxResumeUrl = getUxResumeUrl();
   const dataResumeUrl = getDataResumeUrl();
 
   return (
@@ -69,7 +68,7 @@ const Hero = () => {
                 transition: { duration: 0.2 },
               }}
             >
-              NYC &amp; NJ · Hybrid local or remote
+              NYC, NJ &amp; CT · Hybrid local or remote
             </motion.span>
           </motion.div>
 
@@ -93,16 +92,6 @@ const Hero = () => {
             Charlie Vargas
           </motion.h1>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.65 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-[3.85rem] mb-5 leading-[1.08] font-extrabold tracking-tight"
-            style={{ color: 'var(--text-color)' }}
-          >
-            Product designer
-          </motion.h2>
-
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -110,7 +99,7 @@ const Hero = () => {
             className="text-base sm:text-lg md:text-xl mb-7 max-w-2xl leading-relaxed font-normal"
             style={{ color: 'var(--text-secondary)' }}
           >
-            I design product interfaces in Figma and ship the frontend that follows. A BI internship in Power BI, SQL, and Python taught me to think in numbers, so the design decisions are grounded in data instead of decorated with it.
+            I&apos;m a BI and operations analyst. I work mostly in Power BI, SQL, and Python. The last 2 years of my BI internship taught me what a working BI operation actually does, automating KPI dashboards across 20 schools, building enrollment forecasts, and turning messy data into something leadership can act on.
           </motion.p>
 
           <motion.p
@@ -120,11 +109,11 @@ const Hero = () => {
             className="text-sm sm:text-base mb-12 max-w-2xl"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Start with{' '}
-            <Link href="/#clearcore-protein" className="underline underline-offset-4 hover:opacity-80">
-              ClearCore Protein
+            If you&apos;re going to look at one thing, look at the{' '}
+            <Link href="/#nyc-fare" className="underline underline-offset-4 hover:opacity-80">
+              NYC fare analysis
             </Link>
-            , a multi-page React site I built end to end.
+            . I modeled MTA ridership data to ask a question I couldn&apos;t find a clean answer to: who would actually pay more under a distance-based fare, and who would pay less.
           </motion.p>
 
           <motion.div
@@ -150,30 +139,6 @@ const Hero = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <a
-                  href={uxResumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonOutline}
-                  style={outlineButtonStyle}
-                  {...outlineButtonHoverHandlers}
-                  {...(uxResumeUrl.startsWith('/') ? { download: true } : {})}
-                >
-                  Design Resume
-                </a>
-              </motion.div>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 1.06 }}>
-              <motion.div
-                whileHover={{
-                  scale: 1.05,
-                  y: -8,
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-                  transition: { duration: 0.3, ease: 'easeOut' },
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <a
                   href={dataResumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -182,7 +147,7 @@ const Hero = () => {
                   {...outlineButtonHoverHandlers}
                   {...(dataResumeUrl.startsWith('/') ? { download: true } : {})}
                 >
-                  Data Resume
+                  Resume
                 </a>
               </motion.div>
             </motion.div>
@@ -202,7 +167,7 @@ const Hero = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Link href="/projects" className={buttonOutline} style={outlineButtonStyle} {...outlineButtonHoverHandlers}>
-                  All Projects
+                  Projects
                 </Link>
               </motion.div>
             </motion.div>

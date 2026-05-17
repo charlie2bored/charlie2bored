@@ -18,7 +18,7 @@ const Contact = () => {
             Get in touch
           </h2>
           <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            For hiring, collaborations, or project inquiries: use the form below or email. I typically reply within a few days.
+            For hiring, collaborations, or anything else, use the form below or email me directly. I usually get back within a few days.
           </p>
         </motion.div>
 
