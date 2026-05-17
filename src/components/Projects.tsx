@@ -18,7 +18,7 @@ const projects = [
         'Fare debates usually live in spreadsheets and op-eds. Riders can’t see how a policy change would actually affect their own trip.',
       decisions: [
         'Built the analysis in pandas and NumPy off the open MTA OD pairings, fare structures, and station metadata. The whole thing is reproducible, so the model can be re-run when the data changes.',
-        'Reported the loss as well as the gain. About 29% of riders in the model pay less, and the rest pay more. Hiding that would have been a worse choice than reporting a worse number.',
+        'Reported the loss as well as the gain. About 15% of riders in the model pay less, and the rest pay more. Hiding that would have been a worse choice than reporting a worse number.',
         'Framed the page around a single comparison, your trip today versus the proposed model, so the reader is the one driving the page and not the agency.',
       ],
     },

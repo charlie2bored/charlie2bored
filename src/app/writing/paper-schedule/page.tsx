@@ -144,10 +144,10 @@ export default function PaperSchedulePage() {
           <p>
             I’ve spent some time looking at the MTA up close. I built a fare analysis<Fn n={2} />{' '}
             last year showing that New York’s flat $2.90 fare (now $3) could be replaced with a
-            distance-based model that would generate around $277 million in additional annual
-            revenue while lowering costs for nearly a third of trips. The deeper I went into the
-            data, the clearer it became that the system’s problems aren’t hiding. The numbers are
-            fine. They have always been fine.
+            distance-based model that would generate around $913 million in additional annual
+            revenue while lowering costs for about 15% of trips. The deeper I went into the data,
+            the clearer it became that the system’s problems aren’t hiding. The numbers are fine.
+            They have always been fine.
           </p>
           <p>
             What’s actually broken doesn’t show up on a balance sheet. It shows up in who answers
