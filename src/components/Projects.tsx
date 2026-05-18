@@ -44,7 +44,7 @@ const projects = [
         'Framed the page around a single comparison, your trip today versus the proposed model, so the reader is the one driving the page and not the agency.',
       ],
     },
-    image: '/projects/nyc-fare-systems.jpg',
+    image: '/projects/nyc-fare-systems.png',
     hoverMetric: 'Modeled a fare policy on real MTA data, then built the page that explains the tradeoff',
     tech: ['Python', 'pandas', 'NumPy', 'matplotlib', 'TypeScript', 'Vite', 'Tailwind', 'Data storytelling'],
     links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' },
