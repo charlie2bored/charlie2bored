@@ -110,7 +110,7 @@ const Hero = () => {
             style={{ color: 'var(--text-secondary)' }}
           >
             If you&apos;re going to look at one thing, look at the{' '}
-            <Link href="/#nyc-fare" className="underline underline-offset-4 hover:opacity-80">
+            <Link href="/projects#nyc-fare" className="underline underline-offset-4 hover:opacity-80">
               NYC fare analysis
             </Link>
             . I modeled MTA ridership data to ask a question I couldn&apos;t find a clean answer to: who would actually pay more under a distance-based fare, and who would pay less.
