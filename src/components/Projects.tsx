@@ -8,6 +8,28 @@ import { useState } from 'react';
 const projects = [
   {
     number: '(01)',
+    slug: 'nyc-d2-enrollment',
+    title: 'NYC District 2 Elementary Enrollment Forecasting',
+    role: 'Solo: data engineering, modeling, dashboard, and writeup',
+    description:
+      'I forecast 30 NYC public elementary schools three years out, then back-tested the model once NYSED released the actuals for those years. The methodological call — three analyst-bounded scenarios over a single ML default — beat Facebook Prophet on the same data by more than 2x in MAPE.',
+    approach: {
+      problem:
+        'Pre-COVID was a six-year flat plateau at ~15,800 K-5 students. COVID broke it to ~12,400. With only two post-break data points, a Prophet-style ML answer pretends to know more than the data can say.',
+      decisions: [
+        'Stitched 12 years of NYC DOE and NYSED enrollment data and fit a piecewise linear model with a known structural break at 2020. Bounded the future with three analyst scenarios — decline, stabilization, recovery — instead of a single point forecast.',
+        'Back-tested when NYSED published the 2022–25 actuals. The Base scenario landed at 8.71% MAPE. Prophet on the same data landed at 19.20%. The analyst-bounded approach beat the ML default by more than 2x.',
+        'Tested the popular "wealthy catchments left first" story and refused to ship it. Pearson r = +0.14 between catchment income and enrollment decline. Lowest-income schools in Chinatown and the Lower East Side declined more than the high-income downtown catchments; the resilient outlier is Roosevelt Island (+13%), suggesting geographic friction of exit — not income — is what matters.',
+        'Shipped a four-page Power BI dashboard: system-wide fan chart, scenario/model operational matrix, single-school drill-through, and a backtest validation page.',
+      ],
+    },
+    image: '/projects/nyc-d2-enrollment.png',
+    hoverMetric: 'Bounded scenarios beat a single ML default by 2x MAPE — measured against the actuals that came out later',
+    tech: ['Python', 'pandas', 'NumPy', 'statsmodels', 'Prophet', 'Power BI'],
+    links: { github: 'https://github.com/charlie2bored/nyc-d2-enrollment-forecasting', demo: '' },
+  },
+  {
+    number: '(02)',
     slug: 'nyc-fare',
     title: 'NYC Distance-Based Fare',
     role: 'Solo: research, modeling, and frontend',
@@ -28,7 +50,7 @@ const projects = [
     links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' },
   },
   {
-    number: '(02)',
+    number: '(03)',
     slug: 'clearcore-protein',
     title: 'ClearCore Protein',
     role: 'Solo build, end to end',
@@ -52,7 +74,7 @@ const projects = [
     },
   },
   {
-    number: '(03)',
+    number: '(04)',
     slug: 'speedreader',
     title: 'SpeedReader',
     role: 'Solo build, end to end',
@@ -259,7 +281,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             >
               Live demo
             </a>
-          ) : (
+          ) : project.links.demo ? (
             <span
               className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg text-base sm:text-lg font-medium w-full sm:w-auto text-center opacity-60 border-2 border-dashed"
               style={{ borderColor: 'var(--text-secondary)', color: 'var(--text-secondary)' }}
@@ -267,7 +289,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             >
               Live demo · coming soon
             </span>
-          )}
+          ) : null}
         </div>
 
       </div>
@@ -285,7 +307,7 @@ type ProjectsProps = {
 const Projects = ({ showSeeAllLink = true, featuredOnly = false }: ProjectsProps) => {
   const visible = featuredOnly ? projects.slice(0, 1) : projects;
   const subhead = featuredOnly
-    ? 'The piece I’d lead with is a fare-policy analysis I ran on real MTA data. The rest of what I’ve worked on is on the projects page.'
+    ? 'The piece I’d lead with is a three-year enrollment forecast I ran on 30 NYC public elementary schools, then back-tested when the real numbers came out. The rest of what I’ve worked on is on the projects page.'
     : 'Analyses I ran and things I built. Each one tries to leave a trail of why I made the calls I did. Source, demos, and the parts I cut are all linked.';
 
   return (
