@@ -110,10 +110,10 @@ const Hero = () => {
             style={{ color: 'var(--text-secondary)' }}
           >
             If you&apos;re going to look at one thing, look at the{' '}
-            <Link href="/projects#nyc-fare" className="underline underline-offset-4 hover:opacity-80">
-              NYC fare analysis
+            <Link href="/projects#nyc-d2-enrollment" className="underline underline-offset-4 hover:opacity-80">
+              NYC District 2 enrollment forecast
             </Link>
-            . I modeled MTA ridership data to ask a question I couldn&apos;t find a clean answer to: who would actually pay more under a distance-based fare, and who would pay less.
+            . I projected K-5 enrollment for 30 schools three years out and back-tested against the actuals NYSED released later: three analyst-bounded scenarios beat a single Prophet default by more than 2x in MAPE.
           </motion.p>
 
           <motion.p
