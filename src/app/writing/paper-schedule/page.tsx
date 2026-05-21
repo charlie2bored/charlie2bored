@@ -87,7 +87,8 @@ export default function PaperSchedulePage() {
       }}
     >
       <Navigation />
-      <article className="pt-[140px] pb-[120px]">
+      <main id="main-content">
+        <article className="pt-[140px] pb-[120px]">
         <header className="max-w-3xl mx-auto px-5 mb-12 text-center">
           <p
             className="text-sm uppercase tracking-wider mb-3"
@@ -392,6 +393,7 @@ export default function PaperSchedulePage() {
           </div>
         </footer>
       </article>
+      </main>
       <Footer />
     </div>
   );

@@ -48,7 +48,7 @@ export default function WritingIndexPage() {
       }}
     >
       <Navigation />
-      <article className="pt-[140px] pb-[120px]">
+      <main id="main-content" className="pt-[140px] pb-[120px]">
         <header className="max-w-3xl mx-auto px-5 mb-16 text-center">
           <p
             className="text-sm uppercase tracking-[0.22em] mb-3 font-semibold"
@@ -133,7 +133,7 @@ export default function WritingIndexPage() {
             </li>
           ))}
         </ul>
-      </article>
+      </main>
       <Footer />
     </div>
   );

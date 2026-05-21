@@ -20,9 +20,9 @@ export default function ProjectsPage() {
       minHeight: '100vh'
     }}>
       <Navigation />
-      <div className="pt-[calc(7.5rem+env(safe-area-inset-top,0px))]">
+      <main id="main-content" className="pt-[calc(7.5rem+env(safe-area-inset-top,0px))]">
         <Projects showSeeAllLink={false} />
-      </div>
+      </main>
       <Footer />
     </div>
   );

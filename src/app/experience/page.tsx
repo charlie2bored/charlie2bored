@@ -20,9 +20,9 @@ export default function ExperiencePage() {
       minHeight: '100vh'
     }}>
       <Navigation />
-      <div className="pt-[calc(7.5rem+env(safe-area-inset-top,0px))]">
+      <main id="main-content" className="pt-[calc(7.5rem+env(safe-area-inset-top,0px))]">
         <Experience />
-      </div>
+      </main>
       <Footer />
     </div>
   );
