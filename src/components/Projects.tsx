@@ -12,19 +12,19 @@ const projects = [
     title: 'NYC District 2 Elementary Enrollment Forecasting',
     role: 'Solo: data engineering, modeling, dashboard, and writeup',
     description:
-      'I forecast 30 NYC public elementary schools three years out, then back-tested the model once NYSED released the actuals for those years. The methodological call — three analyst-bounded scenarios over a single ML default — beat Facebook Prophet on the same data by more than 2x in MAPE.',
+      'I forecast 30 NYC public elementary schools three years out, then back-tested the model once NYSED released the actuals for those years. The methodological call, three analyst-bounded scenarios over a single ML default, beat Facebook Prophet on the same data by more than 2x in MAPE.',
     approach: {
       problem:
         'Pre-COVID was a six-year flat plateau at ~15,800 K-5 students. COVID broke it to ~12,400. With only two post-break data points, a Prophet-style ML answer pretends to know more than the data can say.',
       decisions: [
-        'Stitched 12 years of NYC DOE and NYSED enrollment data and fit a piecewise linear model with a known structural break at 2020. Bounded the future with three analyst scenarios — decline, stabilization, recovery — instead of a single point forecast.',
+        'Stitched 12 years of NYC DOE and NYSED enrollment data and fit a piecewise linear model with a known structural break at 2020. Bounded the future with three analyst scenarios (decline, stabilization, recovery) instead of a single point forecast.',
         'Back-tested when NYSED published the 2022–25 actuals. The Base scenario landed at 8.71% MAPE. Prophet on the same data landed at 19.20%. The analyst-bounded approach beat the ML default by more than 2x.',
-        'Tested the popular "wealthy catchments left first" story and refused to ship it. Pearson r = +0.14 between catchment income and enrollment decline. Lowest-income schools in Chinatown and the Lower East Side declined more than the high-income downtown catchments; the resilient outlier is Roosevelt Island (+13%), suggesting geographic friction of exit — not income — is what matters.',
+        'Tested the popular "wealthy catchments left first" story and refused to ship it. Pearson r = +0.14 between catchment income and enrollment decline. Lowest-income schools in Chinatown and the Lower East Side declined more than the high-income downtown catchments; the resilient outlier is Roosevelt Island (+13%), suggesting geographic friction of exit, not income, is what matters.',
         'Shipped a four-page Power BI dashboard: system-wide fan chart, scenario/model operational matrix, single-school drill-through, and a backtest validation page.',
       ],
     },
     image: '/projects/nyc-d2-enrollment.png',
-    hoverMetric: 'Bounded scenarios beat a single ML default by 2x MAPE — measured against the actuals that came out later',
+    hoverMetric: 'Bounded scenarios beat a single ML default by 2x MAPE, measured against the actuals that came out later',
     tech: ['Python', 'pandas', 'NumPy', 'statsmodels', 'Prophet', 'Power BI'],
     links: { github: 'https://github.com/charlie2bored/nyc-d2-enrollment-forecasting', demo: '' },
   },
@@ -34,19 +34,19 @@ const projects = [
     title: 'NYC Subway Events from Ridership Data',
     role: 'Solo: data engineering, modeling, and signature analysis',
     description:
-      'Asked whether you can detect when a major NYC event happens — Knicks games, marathons, parades — without ever opening an event calendar, using only MTA hourly ridership. Built seasonal baselines per station, scored the residuals against known 2024 events, and recovered 495 of 513 (96.5%). The signatures cluster by venue, not by sport.',
+      'Asked whether you can detect when a major NYC event happens (Knicks games, marathons, parades) without ever opening an event calendar, using only MTA hourly ridership. Built seasonal baselines per station, scored the residuals against known 2024 events, and recovered 495 of 513 (96.5%). The signatures cluster by venue, not by sport.',
     approach: {
       problem:
         'Event detection in cities usually leans on calendars and permits. That leaves out the events nobody publishes a permit for and biases the data toward the venues that are easy to list. I wanted to know how much of the signal lives in the ridership itself.',
       decisions: [
         'Built day-of-week and season-aware ridership baselines per station-hour, so a sold-out Sunday MSG game gets scored against the right Sundays, not against a generic weekday median. Without that, the model flags every Friday night.',
-        'Quantified each event with five fingerprint dimensions — peak intensity, lead time, lag time, decay half-life, and pre/post asymmetry — instead of just an excess-ridership number. The shape is what tells you Knicks from Rangers from a U2 show.',
-        'Clustered the fingerprints and reported the result honestly: the venue dominates the signature, not the sport. Knicks, Rangers, and MSG concerts land in the same cluster. Yankees day games and night games sit ~3x apart in intensity. Parades stay asymmetric — people arrive early and exit fast.',
+        'Quantified each event with five fingerprint dimensions (peak intensity, lead time, lag time, decay half-life, and pre/post asymmetry) instead of just an excess-ridership number. The shape is what tells you Knicks from Rangers from a U2 show.',
+        'Clustered the fingerprints and reported the result honestly: the venue dominates the signature, not the sport. Knicks, Rangers, and MSG concerts land in the same cluster. Yankees day games and night games sit ~3x apart in intensity. Parades stay asymmetric: people arrive early and exit fast.',
         'Validated against a held-out 2024 calendar of 513 events: 96.5% recall, without ever giving the model the calendar.',
       ],
     },
     image: '/projects/nyc-subway-events.webp',
-    hoverMetric: '96.5% recall on 513 known 2024 events — recovered from ridership alone, no calendar',
+    hoverMetric: '96.5% recall on 513 known 2024 events, all recovered from ridership alone',
     tech: ['Python', 'pandas', 'scikit-learn', 'Socrata API', 'NOAA Weather'],
     links: {
       github: 'https://github.com/charlie2bored/nyc-subway-events-from-ridership-data',
