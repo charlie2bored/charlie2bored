@@ -111,7 +111,7 @@ const Hero = () => {
           >
             If you&apos;re going to look at one thing, look at the{' '}
             <Link href="/projects#nyc-d2-enrollment" className="underline underline-offset-4 hover:opacity-80">
-              NYC District 2 enrollment forecast
+              NYC District 2 Enrollment Forecast
             </Link>
             . I projected K-5 enrollment for 30 schools three years out and back-tested against the actuals NYSED released later: three analyst-bounded scenarios beat a single Prophet default by more than 2x in MAPE.
           </motion.p>
