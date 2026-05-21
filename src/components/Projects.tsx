@@ -30,6 +30,31 @@ const projects = [
   },
   {
     number: '(02)',
+    slug: 'nyc-subway-events',
+    title: 'NYC Subway Events from Ridership Data',
+    role: 'Solo: data engineering, modeling, and signature analysis',
+    description:
+      'Asked whether you can detect when a major NYC event happens — Knicks games, marathons, parades — without ever opening an event calendar, using only MTA hourly ridership. Built seasonal baselines per station, scored the residuals against known 2024 events, and recovered 495 of 513 (96.5%). The signatures cluster by venue, not by sport.',
+    approach: {
+      problem:
+        'Event detection in cities usually leans on calendars and permits. That leaves out the events nobody publishes a permit for and biases the data toward the venues that are easy to list. I wanted to know how much of the signal lives in the ridership itself.',
+      decisions: [
+        'Built day-of-week and season-aware ridership baselines per station-hour, so a sold-out Sunday MSG game gets scored against the right Sundays, not against a generic weekday median. Without that, the model flags every Friday night.',
+        'Quantified each event with five fingerprint dimensions — peak intensity, lead time, lag time, decay half-life, and pre/post asymmetry — instead of just an excess-ridership number. The shape is what tells you Knicks from Rangers from a U2 show.',
+        'Clustered the fingerprints and reported the result honestly: the venue dominates the signature, not the sport. Knicks, Rangers, and MSG concerts land in the same cluster. Yankees day games and night games sit ~3x apart in intensity. Parades stay asymmetric — people arrive early and exit fast.',
+        'Validated against a held-out 2024 calendar of 513 events: 96.5% recall, without ever giving the model the calendar.',
+      ],
+    },
+    image: '/projects/nyc-subway-events.webp',
+    hoverMetric: '96.5% recall on 513 known 2024 events — recovered from ridership alone, no calendar',
+    tech: ['Python', 'pandas', 'scikit-learn', 'Socrata API', 'NOAA Weather'],
+    links: {
+      github: 'https://github.com/charlie2bored/nyc-subway-events-from-ridership-data',
+      demo: '',
+    },
+  },
+  {
+    number: '(03)',
     slug: 'nyc-fare',
     title: 'NYC Distance-Based Fare',
     role: 'Solo: research, modeling, and frontend',
@@ -50,7 +75,7 @@ const projects = [
     links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' },
   },
   {
-    number: '(03)',
+    number: '(04)',
     slug: 'clearcore-protein',
     title: 'ClearCore Protein',
     role: 'Solo build, end to end',
@@ -74,7 +99,7 @@ const projects = [
     },
   },
   {
-    number: '(04)',
+    number: '(05)',
     slug: 'speedreader',
     title: 'SpeedReader',
     role: 'Solo build, end to end',
