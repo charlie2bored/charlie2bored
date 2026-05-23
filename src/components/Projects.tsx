@@ -46,8 +46,9 @@ const projects = [
       ],
     },
     image: '/projects/nyc-subway-events.webp',
-    hoverMetric: '96.5% recall on 513 known 2024 events, all recovered from ridership alone',
+    hoverMetric: '96.5% recall on 513 known 2024 events, recovered from ridership alone',
     tech: ['Python', 'pandas', 'scikit-learn', 'Socrata API', 'NOAA Weather'],
+    caseStudy: '/projects/nyc-subway-events',
     links: {
       github: 'https://github.com/charlie2bored/nyc-subway-events-from-ridership-data',
       demo: '',

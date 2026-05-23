@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/',
     '/projects',
     '/projects/clearcore',
+    '/projects/nyc-subway-events',
     '/writing',
     '/writing/paper-schedule',
     '/experience',
