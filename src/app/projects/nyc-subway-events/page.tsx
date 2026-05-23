@@ -20,7 +20,8 @@ const facts: { label: string; value: string }[] = [
   { label: 'Scope', value: 'Pipeline, baselines, ground-truth scraping, clustering, viz' },
   {
     label: 'Stack',
-    value: 'Python, pandas, NumPy, scikit-learn, SciPy, UMAP, requests, matplotlib',
+    value:
+      'Python, pandas, NumPy, scikit-learn, SciPy, UMAP, holidays, beautifulsoup4, requests, matplotlib',
   },
 ];
 
@@ -72,8 +73,8 @@ const differently: { title: string; body: string }[] = [
     body: 'Five summary statistics per event compresses a lot. With richer features (say, hourly z-scores across the surrounding eight hours instead of summary stats) within-venue clustering would probably be cleaner. The 5-dimension space was the right starting point for interpretability, but it leaves real signal on the table.',
   },
   {
-    title: 'Handle multi-night residencies as their own category',
-    body: 'Phish and Billy Joel residencies at MSG run eight to ten consecutive nights. Even after the contamination fix, those nights still partially leak into the baseline because they happen so frequently. I would flag known residencies as a separate category and exclude the whole window from the baseline, not just individual nights.',
+    title: 'Handle high-frequency artists as their own category',
+    body: 'Phish and Billy Joel each play MSG a dozen-plus nights a year. When the same artist returns to the same venue that often, even the event-aware baseline starts to expect those nights as part of normal — their shows leak back into the baseline and the anomaly against it shrinks. I would flag known high-frequency residents as a separate category and exclude their entire annual footprint from the baseline rather than night-by-night.',
   },
   {
     title: 'Split Penn Station into its two real complexes',
@@ -204,14 +205,17 @@ export default function NycSubwayEventsCaseStudyPage() {
               style={{ color: 'var(--text-color)' }}
             >
               <p>
-                I used MTA hourly ridership for all of 2024, broken down by station complex. Five
-                of those complexes do most of the work in this analysis: Penn Station / MSG, Yankee
-                Stadium, Citi Field, Barclays Center, and the broader Midtown ring.
+                I used MTA hourly ridership for all of 2024, broken down by station complex. The
+                analysis runs against five complexes: 34 St-Penn Station (MSG), Atlantic
+                Av-Barclays (Barclays Center), Mets-Willets Point (Citi Field plus Arthur Ashe
+                Stadium), 161 St-Yankee Stadium, and Times Sq-42 St as a civic-event control
+                station.
               </p>
               <p>
-                Ground truth came from scraped MLB, NBA, and NHL schedules, MSG concert listings,
-                Barclays event calendars, and civic event records like the marathon and major
-                parades. 513 known 2024 events ended up in the labeled set.
+                Ground truth came from scrapers for MLB, NBA, and NHL schedules via the
+                sports-reference.com family, MSG and Barclays concerts via the setlist.fm API,
+                parades via a dedicated scraper, and a hand-curated set of playoffs and US Open
+                sessions. 513 known 2024 events ended up in the labeled set.
               </p>
               <p>
                 Confounder data: NOAA daily weather at the Central Park station. Without it, every
@@ -343,6 +347,7 @@ export default function NycSubwayEventsCaseStudyPage() {
             >
               <li>A reproducible Python pipeline: ingest, baseline, anomaly, ground truth, match, fingerprint, viz.</li>
               <li>96.5% recall against 513 known 2024 events, up from 93.0% on the naive baseline.</li>
+              <li>Found the 2024 World Series unprompted: Yankees vs Dodgers Game 4 on October 29 was the year&apos;s peak anomaly at +15,507 riders above baseline at Yankee Stadium.</li>
               <li>Five fingerprint dimensions per event (peak intensity, lead time, lag time, decay half-life, asymmetry).</li>
               <li>K-means clustering at k=6 with a Ward hierarchical cross-check; UMAP for 2D visualization only.</li>
               <li>NOAA Central Park weather join that splits 18 false negatives into weather-explained vs genuinely unexplained.</li>
