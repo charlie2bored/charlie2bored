@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { SUBSTACK_URL } from '@/lib/site';
 
 interface Essay {
   title: string;
@@ -19,8 +20,7 @@ const essays: Essay[] = [
       'There’s a paper schedule on the wall of every train station in Tokyo, and the trains come when it says they will. The MTA has the money to do the same. What’s broken is who answers when they don’t.',
     date: 'May 2026',
     href: '/writing/paper-schedule',
-    substackHref:
-      'https://open.substack.com/pub/charlie2bored/p/the-paper-schedule?r=6ajw00&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true',
+    substackHref: SUBSTACK_URL,
   },
 ];
 
@@ -42,7 +42,7 @@ const Writing = () => {
             Thoughts on data, transit, operations, and whatever else I’ve been chewing on.
           </p>
           <a
-            href="https://open.substack.com/pub/charlie2bored/p/the-paper-schedule?r=6ajw00&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+            href={SUBSTACK_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 mt-5 text-base font-medium underline underline-offset-4 hover:opacity-80"

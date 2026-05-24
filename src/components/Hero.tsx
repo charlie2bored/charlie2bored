@@ -3,7 +3,7 @@
 import type { MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { getDataResumeUrl } from '@/lib/site';
+import { getDataResumeUrl, SUBSTACK_URL } from '@/lib/site';
 
 const outlineButtonStyle = {
   borderColor: 'var(--text-color)',
@@ -125,7 +125,7 @@ const Hero = () => {
           >
             Latest essay:{' '}
             <a
-              href="https://open.substack.com/pub/charlie2bored/p/the-paper-schedule?r=6ajw00&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+              href={SUBSTACK_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 hover:opacity-80"

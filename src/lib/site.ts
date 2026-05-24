@@ -22,3 +22,6 @@ const DEFAULT_DATA_RESUME = '/Charles-Vargas-Data.pdf';
 export function getDataResumeUrl(): string {
   return trimPublicEnv('NEXT_PUBLIC_RESUME_DATA_URL') || DEFAULT_DATA_RESUME;
 }
+
+export const SUBSTACK_URL =
+  'https://open.substack.com/pub/charlie2bored/p/the-paper-schedule?r=6ajw00&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true';
