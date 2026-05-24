@@ -1,54 +1,35 @@
-# Hi, I'm Charlie! 👋
+# Charlie Vargas
 
-### Student | Data Analyst | Business Intelligence & Ops
+**[charlie2bored.com](https://charlie2bored.com)** — full portfolio with the writeups
 
-I sit at the intersection of **Data Analytics** and **Product Design**. I love transforming complex datasets into actionable business insights and building intuitive, user-centric interfaces.
+I’m a BI and operations analyst working mostly in Power BI, SQL, and Python. The last two years of my BI internship taught me what a working BI operation actually does: automating KPI dashboards across 20 schools, building enrollment forecasts, and turning messy data into something leadership can act on.
 
----
+## Pinned work
 
-### 🚀 At a Glance
+### NYC District 2 Elementary Enrollment Forecasting
 
-- 🔍 **Main Focus:** Business Intelligence, Operations, and UI/UX Design.
-- 🏗️ **Current Project:** Figuring it out.
-- 💼 **Goal:** Seeking a role in Data Analytics or Business Intelligence.
+Forecast K-5 enrollment for 30 NYC public elementary schools three years out, then back-tested when NYSED released the actuals. Three analyst-bounded scenarios beat a single Prophet default by more than 2x in MAPE — 8.71% vs 19.20%.
 
----
+[Code](https://github.com/charlie2bored/nyc-d2-enrollment-forecasting) · [Writeup](https://charlie2bored.com/projects#nyc-d2-enrollment)
 
-### 🛠 My Toolbox
+### NYC Subway Events from Ridership Data
 
-| Area | Tools |
-| --- | --- |
-| **Data & Logic** | Python, SQL, Data Analytics, Business Operations |
-| **Frontend** | React, Next.js, UI/UX Design |
-| **Learning** | Deepening my roots in Vanilla JS, HTML5, and CSS3 |
+Can you tell when a major NYC event is happening (Knicks games, marathons, parades) without ever opening an event calendar? Built seasonal ridership baselines per station, scored the residuals against the 2024 calendar, and recovered 495 of 513 events (96.5%) using only MTA hourly ridership. The signatures cluster by venue, not by sport.
 
----
+[Code](https://github.com/charlie2bored/nyc-subway-events-from-ridership-data) · [Writeup](https://charlie2bored.com/projects/nyc-subway-events)
 
-### 🏆 Featured Work: NYC Distance Based Pricing
+### NYC Distance-Based Fare
 
-> This project explores how the MTA would run if the current flat fare model ($2.90) changed to a distance based model.
->
-> **[View Repository →](https://github.com/charlie2bored/NYC-Fare-Systems)**
+Treated MTA ridership as a policy question — would distance-based fares actually change who pays and who saves? Modeled the math on open OD pairings and built a small site so a non-technical reader could test the tradeoff for their own commute. About 15% of trips pay less; the rest pay more.
 
----
+[Code](https://github.com/charlie2bored/NYC-Fare-Systems) · [Live demo](https://nyc-fare-systems-website.vercel.app/)
 
-### 🎨 Beyond the Code
+## Outside of work
 
-When I'm not in a spreadsheet or a code editor, you can find me:
+Hyping the Devils and Red Bulls, competing on the dance floor, adding to the book collection or making something, and gaming.
 
-- 🏒 Being a massive hype-man for the **NJ Devils** and **NY Redbulls**.
-- 💃 Competing on the dance floor.
-- 📚 Adding to my book collection or creating art.
-- 🎮 Gaming.
+## Contact
 
----
-
-### 📬 Let's Connect!
-
-I'm always open to discussing data, design, or the NHL.
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/charlie2bored/)
-[![Website](https://img.shields.io/badge/Portfolio-%23000000.svg?logo=firefox&logoColor=white)](https://charlie2bored.com)
-[![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:iamcharlesvargas@gmail.com)
-
-📍 New York, NY, USA
+- [LinkedIn](https://www.linkedin.com/in/charlie2bored/)
+- [iamcharlesvargas@gmail.com](mailto:iamcharlesvargas@gmail.com)
+- New York, NY
