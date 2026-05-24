@@ -25,6 +25,15 @@ type Essay = {
 
 const essays: Essay[] = [
   {
+    slug: 'electoral-college',
+    title: 'I Tried to Save the Electoral College. The Math Wouldn’t Let Me.',
+    date: 'May 2026',
+    readingTime: '9 min read',
+    description:
+      'Every honest attempt to fix it collapses into the same answer.',
+    href: '/writing/electoral-college',
+  },
+  {
     slug: 'paper-schedule',
     title: 'The Paper Schedule',
     date: 'May 2026',
