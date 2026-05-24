@@ -157,7 +157,6 @@ const Experience = () => {
           ))}
         </div>
 
-        {/* Education Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -207,7 +206,6 @@ const Experience = () => {
           ))}
         </div>
 
-        {/* Additional Experience Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

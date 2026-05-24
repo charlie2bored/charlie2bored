@@ -2,20 +2,27 @@
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #000000;
+    --bg-color: #ffffff;
+    --bg-color-rgb: 255, 255, 255;
+    --text-color: #0a0a0a;
+    --text-secondary: #525252;
+    --skills-color: #404040;
+    --nav-bg: #ffffff;
   }
 
-  .dark {
-    --background: #000000;
-    --foreground: #ffffff;
+  :root[data-theme="dark"] {
+    --bg-color: #000000;
+    --bg-color-rgb: 0, 0, 0;
+    --text-color: #ffffff;
+    --text-secondary: #a3a3a3;
+    --skills-color: #d4d4d4;
+    --nav-bg: #000000;
   }
 
   * {
     font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  /* Respect user's reduced motion preference */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -25,17 +32,14 @@
     }
   }
 
-  /* Focus indicators for keyboard navigation */
   *:focus-visible {
     outline: 2px solid #4f46e5;
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* High contrast focus for better visibility */
-  .dark *:focus-visible {
+  :root[data-theme="dark"] *:focus-visible {
     outline: 2px solid #60a5fa;
-    outline-offset: 2px;
   }
 
   /*
@@ -66,7 +70,6 @@
     min-height: 120px;
   }
 
-  /* Skip link for keyboard users */
   .skip-link {
     position: absolute;
     top: -40px;
@@ -96,23 +99,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* CSS Variables for theming - these are overridden by JavaScript in ThemeContext */
-:root {
-  --bg-color: #ffffff;
-  --bg-color-rgb: 255, 255, 255;
-  --text-color: #0a0a0a;
-  --text-secondary: #525252;
-  --skills-color: #404040;
-  --nav-bg: #ffffff;
-}
-
-/* Dark mode - using CSS variables for consistency */
-.dark body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -121,7 +107,7 @@ body {
   background: #f1f1f1;
 }
 
-.dark ::-webkit-scrollbar-track {
+:root[data-theme="dark"] ::-webkit-scrollbar-track {
   background: #1a1a1a;
 }
 
@@ -130,7 +116,7 @@ body {
   border-radius: 3px;
 }
 
-.dark ::-webkit-scrollbar-thumb {
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb {
   background: #ffffff;
 }
 
@@ -138,6 +124,6 @@ body {
   background: #000000;
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
 }

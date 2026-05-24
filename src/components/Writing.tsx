@@ -2,29 +2,12 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { essays } from '@/lib/essays';
 import { SUBSTACK_URL } from '@/lib/site';
 
-interface Essay {
-  title: string;
-  description: string;
-  date: string;
-  href: string;
-  external?: boolean;
-  substackHref?: string;
-}
-
-const essays: Essay[] = [
-  {
-    title: 'The Paper Schedule',
-    description:
-      'There’s a paper schedule on the wall of every train station in Tokyo, and the trains come when it says they will. The MTA has the money to do the same. What’s broken is who answers when they don’t.',
-    date: 'May 2026',
-    href: '/writing/paper-schedule',
-    substackHref: SUBSTACK_URL,
-  },
-];
-
 const Writing = () => {
+  const featured = essays.slice(0, 2);
+
   return (
     <section className="py-[150px]">
       <div className="max-w-5xl mx-auto px-5">
@@ -53,69 +36,59 @@ const Writing = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {essays.map((essay, index) => {
-            const cardInner = (
-              <article
-                className="p-8 rounded-2xl h-full transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl"
-                style={{
-                  backgroundColor: 'var(--bg-color)',
-                  border: '2px solid var(--text-secondary)',
-                }}
-              >
-                <p
-                  className="text-sm uppercase tracking-wider mb-3"
-                  style={{ color: 'var(--text-secondary)' }}
+          {featured.map((essay, index) => (
+            <motion.div
+              key={essay.slug}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <Link href={essay.href}>
+                <article
+                  className="p-8 rounded-2xl h-full transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl"
+                  style={{
+                    backgroundColor: 'var(--bg-color)',
+                    border: '2px solid var(--text-secondary)',
+                  }}
                 >
-                  {essay.date}
-                </p>
-                <h3
-                  className="text-2xl font-bold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
-                  style={{ color: 'var(--text-color)' }}
-                >
-                  {essay.title}
-                </h3>
-                <p
-                  className="text-lg leading-relaxed mb-4"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
-                  {essay.description}
-                </p>
-                <span className="text-base font-medium" style={{ color: 'var(--text-color)' }}>
-                  Read essay →
-                </span>
-              </article>
-            );
-
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                {essay.external ? (
-                  <a href={essay.href} target="_blank" rel="noopener noreferrer">
-                    {cardInner}
-                  </a>
-                ) : (
-                  <Link href={essay.href}>{cardInner}</Link>
-                )}
-                {essay.substackHref && (
-                  <a
-                    href={essay.substackHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 mt-3 text-sm font-medium underline underline-offset-4 hover:opacity-80"
+                  <p
+                    className="text-sm uppercase tracking-wider mb-3"
                     style={{ color: 'var(--text-secondary)' }}
                   >
-                    Also on Substack →
-                  </a>
-                )}
-              </motion.div>
-            );
-          })}
+                    {essay.date}
+                  </p>
+                  <h3
+                    className="text-2xl font-bold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
+                    style={{ color: 'var(--text-color)' }}
+                  >
+                    {essay.title}
+                  </h3>
+                  <p
+                    className="text-lg leading-relaxed mb-4"
+                    style={{ color: 'var(--text-secondary)' }}
+                  >
+                    {essay.description}
+                  </p>
+                  <span className="text-base font-medium" style={{ color: 'var(--text-color)' }}>
+                    Read essay →
+                  </span>
+                </article>
+              </Link>
+              {essay.substackHref && (
+                <a
+                  href={essay.substackHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-3 text-sm font-medium underline underline-offset-4 hover:opacity-80"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  Also on Substack →
+                </a>
+              )}
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

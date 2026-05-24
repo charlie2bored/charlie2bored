@@ -14,10 +14,9 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen transition-colors duration-300" style={{
+    <div className="min-h-dvh transition-colors duration-300" style={{
       backgroundColor: 'var(--bg-color)',
       color: 'var(--text-color)',
-      minHeight: '100vh'
     }}>
       <Navigation />
       <main id="main-content" className="pt-[calc(7.5rem+env(safe-area-inset-top,0px))]">

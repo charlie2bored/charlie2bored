@@ -3,7 +3,8 @@
 import type { MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { getDataResumeUrl, SUBSTACK_URL } from '@/lib/site';
+import { getDataResumeUrl } from '@/lib/site';
+import { essays } from '@/lib/essays';
 
 const outlineButtonStyle = {
   borderColor: 'var(--text-color)',
@@ -27,10 +28,11 @@ const buttonOutline =
 
 const Hero = () => {
   const dataResumeUrl = getDataResumeUrl();
+  const latestEssay = essays[0];
 
   return (
     <section
-      className="pt-[calc(6.5rem+env(safe-area-inset-top,0px))] pb-24 md:pb-[150px] min-h-[100dvh] md:min-h-screen flex items-center"
+      className="pt-[calc(6.5rem+env(safe-area-inset-top,0px))] pb-24 md:pb-[150px] min-h-dvh flex items-center"
       style={{
         backgroundColor: 'var(--bg-color)',
         color: 'var(--text-color)',
@@ -124,15 +126,13 @@ const Hero = () => {
             style={{ color: 'var(--text-secondary)' }}
           >
             Latest essay:{' '}
-            <a
-              href={SUBSTACK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={latestEssay.href}
               className="underline underline-offset-4 hover:opacity-80"
             >
-              The Paper Schedule
-            </a>{' '}
-            on Substack.
+              {latestEssay.title}
+            </Link>
+            .
           </motion.p>
 
           <motion.div

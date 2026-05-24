@@ -13,7 +13,6 @@ type Theme = 'light' | 'dark';
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
-  mounted: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -59,23 +58,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    const root = document.documentElement;
-
-    if (theme === 'dark') {
-      root.style.setProperty('--bg-color', '#000000');
-      root.style.setProperty('--bg-color-rgb', '0, 0, 0');
-      root.style.setProperty('--text-color', '#ffffff');
-      root.style.setProperty('--text-secondary', '#a3a3a3');
-      root.style.setProperty('--skills-color', '#d4d4d4');
-      root.style.setProperty('--nav-bg', '#000000');
-    } else {
-      root.style.setProperty('--bg-color', '#ffffff');
-      root.style.setProperty('--bg-color-rgb', '255, 255, 255');
-      root.style.setProperty('--text-color', '#0a0a0a');
-      root.style.setProperty('--text-secondary', '#525252');
-      root.style.setProperty('--skills-color', '#404040');
-      root.style.setProperty('--nav-bg', '#ffffff');
-    }
+    document.documentElement.dataset.theme = theme;
   }, [theme]);
 
   const toggleTheme = useCallback(() => {
@@ -85,7 +68,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, mounted: true }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

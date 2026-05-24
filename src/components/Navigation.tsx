@@ -9,9 +9,8 @@ import { FiSun, FiMoon } from 'react-icons/fi';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, toggleTheme, mounted } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -43,13 +42,11 @@ const Navigation = () => {
 
   return (
     <>
-      {/* Skip link for keyboard users */}
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
 
       <motion.nav
-        role="navigation"
         aria-label="Main navigation"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -76,9 +73,7 @@ const Navigation = () => {
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <motion.ul
-            role="menubar"
             className="hidden md:flex space-x-10"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -87,7 +82,6 @@ const Navigation = () => {
             {navItems.map((item, index) => (
               <motion.li
                 key={item.href}
-                role="none"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -97,7 +91,6 @@ const Navigation = () => {
                 }}
               >
                 <Link
-                  role="menuitem"
                   href={item.href}
                   className="relative transition-all duration-300 hover:opacity-70 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-current before:transition-all before:duration-300 hover:before:w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1"
                   style={{ color: 'var(--text-secondary)' }}
@@ -108,7 +101,6 @@ const Navigation = () => {
             ))}
           </motion.ul>
 
-          {/* Theme Toggle Button */}
           <motion.button
             onClick={toggleTheme}
             type="button"
@@ -136,15 +128,14 @@ const Navigation = () => {
               exit={{ rotate: 180, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {mounted && (theme === 'light' ? (
+              {theme === 'light' ? (
                 <FiMoon className="w-5 h-5" style={{ color: 'var(--text-color)' }} />
               ) : (
                 <FiSun className="w-5 h-5" style={{ color: 'var(--text-color)' }} />
-              ))}
+              )}
             </motion.div>
           </motion.button>
 
-          {/* Mobile Menu Button */}
           <motion.button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
@@ -175,12 +166,10 @@ const Navigation = () => {
           </motion.button>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <motion.nav
               id="mobile-menu"
-              role="navigation"
               aria-label="Mobile navigation"
               initial={{ opacity: 0, height: 0, scale: 0.95 }}
               animate={{
@@ -207,7 +196,6 @@ const Navigation = () => {
               style={{ backgroundColor: 'var(--bg-color)' }}
             >
               <motion.ul
-                role="menu"
                 className="py-6 space-y-6 px-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -216,7 +204,6 @@ const Navigation = () => {
                 {navItems.map((item, index) => (
                   <motion.li
                     key={item.href}
-                    role="none"
                     initial={{ opacity: 0, x: -30, scale: 0.8 }}
                     animate={{
                       opacity: 1,
@@ -237,7 +224,6 @@ const Navigation = () => {
                     }}
                   >
                     <Link
-                      role="menuitem"
                       href={item.href}
                       className="block text-lg font-medium transition-all duration-300 hover:opacity-70 hover:translate-x-2 py-3 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
                       style={{ color: 'var(--text-secondary)' }}

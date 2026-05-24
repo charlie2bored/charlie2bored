@@ -11,16 +11,12 @@ export function getSiteUrl(): string {
   return 'https://charlie2bored.vercel.app';
 }
 
-function trimPublicEnv(key: string): string {
-  const v = typeof process.env[key] === 'string' ? process.env[key]!.trim() : '';
-  return v;
-}
-
 const DEFAULT_DATA_RESUME = '/Charles-Vargas-Data.pdf';
 
 /** Site-relative URL or HTTPS URL for the data/analytics résumé PDF. */
 export function getDataResumeUrl(): string {
-  return trimPublicEnv('NEXT_PUBLIC_RESUME_DATA_URL') || DEFAULT_DATA_RESUME;
+  const raw = process.env.NEXT_PUBLIC_RESUME_DATA_URL;
+  return (typeof raw === 'string' ? raw.trim() : '') || DEFAULT_DATA_RESUME;
 }
 
 export const SUBSTACK_URL =

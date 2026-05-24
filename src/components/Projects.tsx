@@ -3,9 +3,22 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 
-const projects = [
+type Project = {
+  number: string;
+  slug: string;
+  title: string;
+  role: string;
+  description: string;
+  approach: { problem: string; decisions: string[] };
+  image: string;
+  hoverMetric: string;
+  tech: string[];
+  caseStudy?: string;
+  links: { github: string; demo: string };
+};
+
+const projects: Project[] = [
   {
     number: '(01)',
     slug: 'nyc-d2-enrollment',
@@ -121,20 +134,9 @@ const projects = [
   },
 ];
 
-type Project = (typeof projects)[number] & {
-  role?: string;
-  caseStudy?: string;
-  approach?: { problem: string; decisions: string[] };
-};
-
-function isLiveOutboundUrl(url: string) {
-  return /^https?:\/\//i.test(url.trim());
-}
-
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
-  const [imageError, setImageError] = useState(false);
-  const githubLive = isLiveOutboundUrl(project.links.github);
-  const demoLive = isLiveOutboundUrl(project.links.demo);
+  const githubLive = /^https?:\/\//i.test(project.links.github.trim());
+  const demoLive = /^https?:\/\//i.test(project.links.demo.trim());
 
   return (
     <motion.div
@@ -152,25 +154,13 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       <div className="min-w-0">
         <div className="mb-8 rounded-2xl overflow-hidden border-2" style={{ borderColor: 'var(--text-secondary)' }}>
           <div className="group/media relative aspect-video w-full overflow-hidden isolate bg-neutral-900">
-            {!imageError ? (
-              <Image
-                src={project.image}
-                alt={`Preview image for ${project.title} project`}
-                fill
-                className="object-cover motion-safe:duration-500 motion-safe:transition-transform motion-safe:[@media(hover:hover)]:[@media(prefers-reduced-motion:no-preference)]:group-hover/media:scale-[1.025]"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
-                onError={() => setImageError(true)}
-              />
-            ) : (
-              <div
-                className="w-full h-full min-h-[12rem] flex items-center justify-center"
-                style={{ backgroundColor: 'var(--bg-color)' }}
-              >
-                <span className="text-6xl" aria-hidden="true">
-                  🖼️
-                </span>
-              </div>
-            )}
+            <Image
+              src={project.image}
+              alt={`Preview image for ${project.title} project`}
+              fill
+              className="object-cover motion-safe:duration-500 motion-safe:transition-transform motion-safe:[@media(hover:hover)]:[@media(prefers-reduced-motion:no-preference)]:group-hover/media:scale-[1.025]"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
+            />
 
             <div
               aria-hidden="true"
@@ -199,50 +189,46 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 leading-tight break-words" style={{ color: 'var(--text-color)' }}>
           {project.title}
         </h3>
-        {project.role ? (
-          <p
-            className="text-xs sm:text-sm mb-6 font-semibold uppercase tracking-[0.18em]"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            {project.role}
-          </p>
-        ) : null}
+        <p
+          className="text-xs sm:text-sm mb-6 font-semibold uppercase tracking-[0.18em]"
+          style={{ color: 'var(--text-secondary)' }}
+        >
+          {project.role}
+        </p>
         <p className="text-base sm:text-lg md:text-xl mb-8 max-w-2xl leading-relaxed font-normal" style={{ color: 'var(--text-secondary)' }}>
           {project.description}
         </p>
 
-        {project.approach ? (
-          <div
-            className="mb-10 max-w-2xl border-l-2 ps-5 sm:ps-6"
-            style={{ borderColor: 'var(--text-secondary)' }}
+        <div
+          className="mb-10 max-w-2xl border-l-2 ps-5 sm:ps-6"
+          style={{ borderColor: 'var(--text-secondary)' }}
+        >
+          <p
+            className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] mb-2"
+            style={{ color: 'var(--text-secondary)' }}
           >
-            <p
-              className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] mb-2"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              Approach
-            </p>
-            <p
-              className="text-base sm:text-lg leading-relaxed mb-4 font-medium"
-              style={{ color: 'var(--text-color)' }}
-            >
-              {project.approach.problem}
-            </p>
-            <ul
-              className="text-base sm:text-lg leading-relaxed space-y-2"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              {project.approach.decisions.map((decision, decisionIndex) => (
-                <li key={decisionIndex} className="flex items-start">
-                  <span className="mr-3 mt-1 shrink-0" aria-hidden="true">
-                    →
-                  </span>
-                  <span>{decision}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
+            Approach
+          </p>
+          <p
+            className="text-base sm:text-lg leading-relaxed mb-4 font-medium"
+            style={{ color: 'var(--text-color)' }}
+          >
+            {project.approach.problem}
+          </p>
+          <ul
+            className="text-base sm:text-lg leading-relaxed space-y-2"
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            {project.approach.decisions.map((decision, decisionIndex) => (
+              <li key={decisionIndex} className="flex items-start">
+                <span className="mr-3 mt-1 shrink-0" aria-hidden="true">
+                  →
+                </span>
+                <span>{decision}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div className="flex flex-wrap gap-6 mb-10">
           {project.tech.map((tech, techIndex) => (
@@ -324,9 +310,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 };
 
 type ProjectsProps = {
-  /** When false, hides the redundant "See all projects" link (e.g. on `/projects`). */
   showSeeAllLink?: boolean;
-  /** When true, only render the featured (lead) project (used on the home page). */
   featuredOnly?: boolean;
 };
 

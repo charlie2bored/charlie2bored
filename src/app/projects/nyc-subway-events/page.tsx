@@ -28,11 +28,10 @@ const facts: { label: string; value: string }[] = [
 export default function NycSubwayEventsCaseStudyPage() {
   return (
     <div
-      className="min-h-screen transition-colors duration-300"
+      className="min-h-dvh transition-colors duration-300"
       style={{
         backgroundColor: 'var(--bg-color)',
         color: 'var(--text-color)',
-        minHeight: '100vh',
       }}
     >
       <Navigation />

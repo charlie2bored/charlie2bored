@@ -5,11 +5,10 @@ import Footer from '@/components/Footer';
 export default function NotFound() {
   return (
     <div
-      className="min-h-screen transition-colors duration-300"
+      className="min-h-dvh transition-colors duration-300"
       style={{
         backgroundColor: 'var(--bg-color)',
         color: 'var(--text-color)',
-        minHeight: '100vh',
       }}
     >
       <Navigation />
