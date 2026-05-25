@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'NYC Subway Events Case Study',
   description:
-    'A detector that finds major NYC events (concerts, games, parades, marathons) directly from MTA hourly ridership, with no event calendar. 96.5% recall against 513 known 2024 events.',
+    "A detector that recovers NYC's 2024 event calendar (Knicks, Rangers, Mets and Yankees games, MSG and Barclays concerts, the US Open, parades, NYE) directly from MTA hourly subway ridership, with no event calendar. 96.5% recall against 513 known 2024 events.",
   alternates: { canonical: '/projects/nyc-subway-events' },
   openGraph: {
     title: 'NYC Subway Events Case Study | Charlie Vargas',
@@ -54,8 +54,10 @@ export default function NycSubwayEventsCaseStudyPage() {
               className="text-xl leading-relaxed"
               style={{ color: 'var(--text-secondary)' }}
             >
-              A detector that finds major NYC events (concerts, games, parades, marathons)
-              directly from MTA hourly ridership, with no event calendar.
+              A detector that recovers NYC’s 2024 event calendar (Knicks, Rangers, Mets and
+              Yankees games, MSG and Barclays concerts, the US Open, parades, NYE) directly from
+              MTA hourly subway ridership, with no event calendar. 96.5% recall against 513 known
+              2024 events.
             </p>
           </header>
 
@@ -112,20 +114,169 @@ export default function NycSubwayEventsCaseStudyPage() {
               className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
               style={{ color: 'var(--text-color)' }}
             >
-              What shipped
+              Ingesting the data
             </h2>
-            <ul
-              className="space-y-3 text-base sm:text-lg leading-relaxed"
+            <div
+              className="space-y-5 text-lg leading-relaxed"
               style={{ color: 'var(--text-color)' }}
             >
-              <li>A reproducible Python pipeline: ingest, baseline, anomaly, ground truth, match, fingerprint, viz.</li>
-              <li>96.5% recall against 513 known 2024 events, up from 93.0% on the naive baseline.</li>
-              <li>Found the 2024 World Series unprompted: Yankees vs Dodgers Game 4 on October 29 was the year&apos;s peak anomaly at +15,507 riders above baseline at Yankee Stadium.</li>
-              <li>Five fingerprint dimensions per event (peak intensity, lead time, lag time, decay half-life, asymmetry).</li>
-              <li>K-means clustering at k=6 with a Ward hierarchical cross-check; UMAP for 2D visualization only.</li>
-              <li>NOAA Central Park weather join that splits 18 false negatives into weather-explained vs genuinely unexplained.</li>
-              <li>Headline finding: venue shape dominates the signature more than the sport played in it.</li>
-            </ul>
+              <p>
+                The ingest stage downloads 2024 hourly ridership counts for five station complexes
+                from the MTA’s Open Data. It downloads the ridership once and saves it locally as a
+                Parquet file, so re-runs are fast and don’t depend on the MTA’s servers.
+              </p>
+            </div>
+          </section>
+
+          <section className="max-w-2xl mx-auto px-5 mb-20">
+            <h2
+              className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
+              style={{ color: 'var(--text-color)' }}
+            >
+              Building the baseline
+            </h2>
+            <div
+              className="space-y-5 text-lg leading-relaxed"
+              style={{ color: 'var(--text-color)' }}
+            >
+              <p>
+                The baseline is a table of 168 cells, one per hour of the week (24 hours × 7 days),
+                holding the median ridership for each slot. Monday 1pm is a cell; Friday 10pm is a
+                cell. The tables are split by season, because building one table for the whole year
+                would blend low-ridership winter periods with high-ridership summer periods, and
+                the result wouldn’t represent either accurately.
+              </p>
+              <p>
+                The baseline is then refit. When an event is detected, the program flags a 3-hour
+                window around it and rebuilds the baseline with those windows excluded, so “normal”
+                is built only from quiet, non-event days. Without this, frequent events at a venue
+                get learned into the baseline as if they were normal.
+              </p>
+            </div>
+          </section>
+
+          <section className="max-w-2xl mx-auto px-5 mb-20">
+            <h2
+              className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
+              style={{ color: 'var(--text-color)' }}
+            >
+              Detecting anomalies
+            </h2>
+            <div
+              className="space-y-5 text-lg leading-relaxed"
+              style={{ color: 'var(--text-color)' }}
+            >
+              <p>
+                The program flags an unusual hour two ways. The ratio flag triggers when ridership
+                is at least 1.5× the baseline. The z-score flag measures how many standard
+                deviations an hour sits above normal, calculated against the last four same-slot
+                weeks (a rolling four-week window). The window is kept short so the comparison
+                stays local in time and doesn’t average across genuinely different periods.
+              </p>
+            </div>
+          </section>
+
+          <section className="max-w-2xl mx-auto px-5 mb-20">
+            <h2
+              className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
+              style={{ color: 'var(--text-color)' }}
+            >
+              Validating against known events
+            </h2>
+            <div
+              className="space-y-5 text-lg leading-relaxed"
+              style={{ color: 'var(--text-color)' }}
+            >
+              <p>
+                The detector works only from ridership and never sees a calendar. A separate list
+                of 513 known 2024 events is the answer key, used after detection to check whether
+                the flagged anomalies line up with real events.
+              </p>
+              <p>
+                That event list was built two ways. Structured, predictable sources were scraped:
+                sports-reference has every game in clean tables, and setlist.fm offers an official
+                API. Irregular events like parades, which happen only once or twice a year and
+                follow no schedule, were curated by hand, because building a scraper for a handful
+                of one-off events isn’t worth it.
+              </p>
+            </div>
+          </section>
+
+          <section className="max-w-2xl mx-auto px-5 mb-20">
+            <h2
+              className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
+              style={{ color: 'var(--text-color)' }}
+            >
+              Fingerprinting and clustering events
+            </h2>
+            <div
+              className="space-y-5 text-lg leading-relaxed"
+              style={{ color: 'var(--text-color)' }}
+            >
+              <p>
+                Each event is reduced to five features. Before clustering, the features are
+                z-scored, putting all five on the same scale so a large-number feature doesn’t
+                dominate the smaller ones.
+              </p>
+              <p>
+                Events are then grouped with k-means. k-means builds whatever number of clusters
+                it’s told to and can’t tell you whether that number was a good choice. Silhouette
+                score is the grading tool: it measures how tight and well-separated the clusters
+                are, higher being better. I swept k from 2 to 8 and compared silhouette scores.
+              </p>
+              <p>
+                Silhouette favored k=2, but k=2 forces every indoor-arena event into a single
+                bucket and hides the venue-versus-sport distinction the project was built to find.
+                I used k=6 instead, which surfaces that structure, a deliberate trade of a higher
+                metric for an answer to the actual question. I’m explicit about that trade. Ward
+                hierarchical clustering was run as a cross-check on k-means, and UMAP was used
+                only to visualize the data in 2D, never in the analysis itself, since collapsing
+                five dimensions to two loses information.
+              </p>
+            </div>
+          </section>
+
+          <section className="max-w-2xl mx-auto px-5 mb-20">
+            <h2
+              className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
+              style={{ color: 'var(--text-color)' }}
+            >
+              Testing the findings
+            </h2>
+            <div
+              className="space-y-5 text-lg leading-relaxed"
+              style={{ color: 'var(--text-color)' }}
+            >
+              <p>
+                Differences between event types were checked with p-values. A small p-value means
+                a measured difference is unlikely to be luck; a large one means luck can’t be
+                ruled out. The Knicks-versus-Rangers peak intensity difference came back at p =
+                0.0041: if there were no real difference, a gap that large would appear by chance
+                only 0.4% of the time, so luck is a very weak explanation.
+              </p>
+            </div>
+          </section>
+
+          <section className="max-w-2xl mx-auto px-5 mb-20">
+            <h2
+              className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
+              style={{ color: 'var(--text-color)' }}
+            >
+              What the refit actually did
+            </h2>
+            <div
+              className="space-y-5 text-lg leading-relaxed"
+              style={{ color: 'var(--text-color)' }}
+            >
+              <p>
+                The event-aware refit moved baseline cells in both directions. At MSG, early-evening
+                hours rose and late-evening hours fell. The late hours fell because v1 had treated
+                post-game exit crowds as normal ridership, inflating the baseline; v2 excludes
+                those event hours, so “normal” reflects genuinely quiet nights. That correction is
+                where most of the detection gain came from: once the late-evening baseline is
+                accurate, a real game’s exit surge stands out clearly.
+              </p>
+            </div>
           </section>
 
           <footer
