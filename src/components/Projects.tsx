@@ -38,7 +38,7 @@ const projects: Project[] = [
     },
     image: '/projects/nyc-d2-enrollment.png',
     hoverMetric: 'Bounded scenarios beat a single ML default by 2x MAPE, measured against the actuals that came out later',
-    tech: ['Python', 'pandas', 'NumPy', 'statsmodels', 'Prophet', 'Power BI'],
+    tech: ['Python', 'pandas', 'NumPy', 'statsmodels', 'Prophet', 'Power BI', 'Census ACS', 'Census Geocoder API'],
     links: { github: 'https://github.com/charlie2bored/nyc-d2-enrollment-forecasting', demo: '' },
   },
   {
@@ -79,12 +79,13 @@ const projects: Project[] = [
         'Fare debates usually live in spreadsheets and op-eds. Riders can’t see how a policy change would actually affect their own trip.',
       decisions: [
         'Built the analysis in pandas and NumPy off the open MTA OD pairings, fare structures, and station metadata. The whole thing is reproducible, so the model can be re-run when the data changes.',
+        'Uncovered roughly $913M in MTA revenue gap between current flat-fare receipts and a distance-based structure, then proposed a pricing optimization that recovers the gap without raising consumer fares.',
         'Reported the loss as well as the gain. About 15% of riders in the model pay less, and the rest pay more. Hiding that would have been a worse choice than reporting a worse number.',
         'Framed the page around a single comparison, your trip today versus the proposed model, so the reader is the one driving the page and not the agency.',
       ],
     },
     image: '/projects/nyc-fare-systems.png',
-    hoverMetric: 'Modeled a fare policy on real MTA data, then built the page that explains the tradeoff',
+    hoverMetric: 'Uncovered $913M in MTA revenue gap and proposed a distance-based fix that recovers it without raising consumer fares',
     tech: ['Python', 'pandas', 'NumPy', 'matplotlib', 'TypeScript', 'Vite', 'Tailwind', 'Data storytelling'],
     links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' },
   },

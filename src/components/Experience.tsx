@@ -15,7 +15,7 @@ const experiences = [
     skills: ['Content Strategy', 'Web & UX', 'Social Media Marketing', 'Brand & Creative'],
   },
   {
-    year: 'October 2023 to Present',
+    year: 'October 2023 to May 2026',
     title: 'Business Intelligence + Data Analytics Intern',
     company: 'Apple Montessori Schools',
     description: [
@@ -83,7 +83,7 @@ const education = [
     institution: 'Northeastern University',
     location: 'New York, NY',
     description: [
-      'Relevant Coursework: Marketing, Accounting, Legal Environment of Business, Visual Merchandising, and more.',
+      'Relevant Coursework: Accounting, Business + Society, Microeconomics, Statistics.',
       'Served as Treasurer for the Fashion Organization, efficiently managing fundraising and revenue, and creating informative and engaging digital media.',
     ],
   },
