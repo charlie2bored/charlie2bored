@@ -22,9 +22,8 @@ const experiences = [
     title: 'Product Designer',
     company: 'Medara',
     description: [
-      'Manage and continuously optimize website content, structure, and user experience to improve clarity, engagement, and alignment with company objectives.',
-      'Develop and execute social media strategy, including content planning, creation, and performance tracking to build brand presence and audience engagement.',
-      'Design and refine marketing collateral and support UI/UX enhancements, translating company messaging into clear, visually compelling materials.',
+      'Designed the investor-facing pitch deck, one-pager, and product scorecard for a pre-FDA AI medical-imaging startup, translating the product and its clinical workflow into visuals for non-technical stakeholders.',
+      'Led a full website redesign and produced the technical and clinical figures (architecture and risk-tier workflow diagrams) that communicate a complex model to investors and clinical partners.',
     ],
     skills: ['Content Strategy', 'Web & UX', 'Social Media Marketing', 'Brand & Creative'],
   },
