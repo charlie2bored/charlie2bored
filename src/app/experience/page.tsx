@@ -3,12 +3,12 @@ import Navigation from '@/components/Navigation';
 import Experience from '@/components/Experience';
 import Footer from '@/components/Footer';
 export const metadata: Metadata = {
-  title: 'Experience & Education',
+  title: 'Experience',
   description:
-    'Work experience at Apple Montessori Schools and Rossitech, education at Northeastern and Academy for Performing Arts, and related roles.',
+    'Experience: Apple Montessori Schools (BI/data) and Medara (design). Stage and performance work for the NJ Devils, NY Red Bulls, and Academy for Performing Arts. Education at Northeastern University.',
   alternates: { canonical: '/experience' },
   openGraph: {
-    title: 'Experience & Education | Charlie Vargas',
+    title: 'Experience | Charlie Vargas',
   },
 };
 

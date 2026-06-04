@@ -28,22 +28,9 @@ const experiences = [
     ],
     skills: ['Power BI', 'SQL', 'Excel', 'Python', 'Tableau', 'PowerPoint', 'Word'],
   },
-  {
-    year: 'August 2025 to October 2025',
-    title: 'Product Designer',
-    company: 'Rossitech LTD',
-    description: [
-      'Led end-to-end web design projects for clients launching their first digital presence, leveraging Figma, Framer, Sketch, and other design tools to create visually compelling, mobile-optimized, high-converting websites.',
-      'Applied UI/UX best practices to develop design systems, wireframes, and interactive prototypes that balanced usability, accessibility, and aesthetic appeal across devices and platforms.',
-      'Designed and developed web interfaces grounded in human creativity, using AI tools solely to refine visual layouts, optimize responsiveness, and enhance usability.',
-      'Refined prototypes through multiple rounds of testing, evolving designs to improve user flow, reduce friction, and lift anticipated conversion rates.',
-      'Maintained a disciplined design workflow, applying version control, component libraries, and structured handoffs to streamline development and accelerate delivery timelines.',
-    ],
-    skills: ['Figma', 'Framer', 'Sketch', 'Adobe Illustrator'],
-  },
 ];
 
-const additionalExperience = [
+const performance = [
   {
     year: 'February 2026 to Present',
     title: 'Team Toro',
@@ -69,8 +56,8 @@ const additionalExperience = [
     title: 'Performance Ensemble Member',
     company: 'Academy for Performing Arts',
     description: [
-      'Partnered with guest choreographers, stage managers, and production teams to execute juried showcases and mainstage performances.',
-      'Balanced conservatory-style rehearsals in classical ballet, modern (Graham/Horton), and contemporary techniques while contributing to audience engagement efforts.',
+      'Four years of conservatory-style training in classical ballet, modern (Graham/Horton), and contemporary techniques, on a daily rehearsal schedule alongside a full academic load.',
+      'Performed in 8+ juried showcases and mainstage productions, working with guest choreographers, stage managers, and production teams to land complex repertoire.',
     ],
     skills: ['Performance', 'Collaboration', 'Production Support'],
   },
@@ -85,16 +72,6 @@ const education = [
     description: [
       'Relevant Coursework: Accounting, Business + Society, Microeconomics, Statistics.',
       'Served as Treasurer for the Fashion Organization, efficiently managing fundraising and revenue, and creating informative and engaging digital media.',
-    ],
-  },
-  {
-    year: 'September 2020 to May 2024',
-    degree: 'High School Diploma',
-    institution: 'Academy for Performing Arts',
-    location: 'Scotch Plains, NJ',
-    description: [
-      'Performed in over 8 showcases and mainstage productions, collaborating with guest choreographers to master complex repertoire and refine stage presence, spatial awareness, and ensemble synchronization.',
-      'Completed four years of intensive, conservatory-style training in classical ballet, modern (Graham/Horton), and contemporary techniques, maintaining a rigorous daily rehearsal schedule alongside a full academic load.',
     ],
   },
 ];
@@ -164,9 +141,62 @@ const Experience = () => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-[100px] mt-24 md:mt-[150px]"
         >
+          <h2 className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2">Stage &amp; performance</h2>
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            Four years of conservatory training in classical ballet, modern (Graham/Horton), and contemporary. Now I work arena floors for the Devils and the Red Bulls.
+          </p>
+        </motion.div>
+
+        <div className="space-y-12 md:space-y-20 lg:space-y-[80px]">
+          {performance.map((exp, index) => (
+            <motion.div
+              key={`performance-${index}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="min-w-0"
+            >
+              <h3 className="text-[1.45rem] sm:text-3xl md:text-[1.9rem] font-bold tracking-tight mb-2" style={{ color: 'var(--text-color)' }}>
+                {exp.title}
+              </h3>
+              <h4 className="text-lg sm:text-xl md:text-2xl mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
+                {exp.company}
+              </h4>
+              <p className="text-sm sm:text-base mb-6 font-normal" style={{ color: 'var(--text-secondary)' }}>
+                {exp.year}
+              </p>
+              <ul className="text-base sm:text-lg mb-8 max-w-2xl leading-relaxed space-y-3 ps-1" style={{ color: 'var(--text-secondary)' }}>
+                {exp.description.map((bullet, bulletIndex) => (
+                  <li key={bulletIndex} className="flex items-start">
+                    <span className="mr-3 mt-1 shrink-0" style={{ color: 'var(--text-secondary)' }}>
+                      •
+                    </span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-4">
+                {exp.skills.map((skill, skillIndex) => (
+                  <span key={skillIndex} style={{ color: 'var(--text-secondary)' }}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12 md:mb-[100px] mt-24 md:mt-[150px]"
+        >
           <h2 className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2">Education</h2>
           <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Academic foundation and continuous learning
+            Currently at Northeastern in New York, studying Business Administration.
           </p>
         </motion.div>
 
@@ -202,59 +232,6 @@ const Experience = () => {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 md:mb-[100px] mt-24 md:mt-[150px]"
-        >
-          <h2 className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 px-2">Additional experience</h2>
-          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-3 font-normal leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Other professional roles and experiences
-          </p>
-        </motion.div>
-
-        <div className="space-y-12 md:space-y-20 lg:space-y-[80px]">
-          {additionalExperience.map((exp, index) => (
-            <motion.div
-              key={`additional-${index}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="min-w-0"
-            >
-              <h3 className="text-[1.45rem] sm:text-3xl md:text-[1.9rem] font-bold tracking-tight mb-2" style={{ color: 'var(--text-color)' }}>
-                {exp.title}
-              </h3>
-              <h4 className="text-lg sm:text-xl md:text-2xl mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
-                {exp.company}
-              </h4>
-              <p className="text-sm sm:text-base mb-6 font-normal" style={{ color: 'var(--text-secondary)' }}>
-                {exp.year}
-              </p>
-              <ul className="text-base sm:text-lg mb-8 max-w-2xl leading-relaxed space-y-3 ps-1" style={{ color: 'var(--text-secondary)' }}>
-                {exp.description.map((bullet, bulletIndex) => (
-                  <li key={bulletIndex} className="flex items-start">
-                    <span className="mr-3 mt-1 shrink-0" style={{ color: 'var(--text-secondary)' }}>
-                      •
-                    </span>
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex flex-wrap gap-4">
-                {exp.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} style={{ color: 'var(--text-secondary)' }}>
-                    {skill}
-                  </span>
-                ))}
-              </div>
             </motion.div>
           ))}
         </div>
