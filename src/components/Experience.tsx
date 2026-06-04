@@ -25,7 +25,7 @@ const experiences = [
       'Designed the investor-facing pitch deck, one-pager, and product scorecard for a pre-FDA AI medical-imaging startup, translating the product and its clinical workflow into visuals for non-technical stakeholders.',
       'Led a full website redesign and produced the technical and clinical figures (architecture and risk-tier workflow diagrams) that communicate a complex model to investors and clinical partners.',
     ],
-    skills: ['Content Strategy', 'Web & UX', 'Social Media Marketing', 'Brand & Creative'],
+    skills: ['Web & UX', 'Brand & Creative', 'Information design', 'Data visualization', 'Investor materials'],
   },
 ];
 
