@@ -3,10 +3,14 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+
+type Category = 'data' | 'design' | 'other';
 
 type Project = {
   number: string;
   slug: string;
+  category: Category;
   title: string;
   role: string;
   description: string;
@@ -18,10 +22,17 @@ type Project = {
   links: { github: string; demo: string };
 };
 
+const categories: { key: Category; label: string }[] = [
+  { key: 'data', label: 'Data' },
+  { key: 'design', label: 'Design' },
+  { key: 'other', label: 'Other' },
+];
+
 const projects: Project[] = [
   {
     number: '(01)',
     slug: 'nyc-d2-enrollment',
+    category: 'data',
     title: 'NYC District 2 Elementary Enrollment Forecasting',
     role: 'Solo: data engineering, modeling, dashboard, and writeup',
     description:
@@ -44,6 +55,7 @@ const projects: Project[] = [
   {
     number: '(02)',
     slug: 'nyc-subway-events',
+    category: 'data',
     title: 'NYC Subway Events from Ridership Data',
     role: 'Solo: data engineering, modeling, and signature analysis',
     description:
@@ -70,6 +82,7 @@ const projects: Project[] = [
   {
     number: '(03)',
     slug: 'nyc-fare',
+    category: 'data',
     title: 'NYC Distance-Based Fare',
     role: 'Solo: research, modeling, and frontend',
     description:
@@ -92,6 +105,7 @@ const projects: Project[] = [
   {
     number: '(04)',
     slug: 'clearcore-protein',
+    category: 'design',
     title: 'ClearCore Protein',
     role: 'Solo build, end to end',
     description:
@@ -116,6 +130,7 @@ const projects: Project[] = [
   {
     number: '(05)',
     slug: 'speedreader',
+    category: 'other',
     title: 'SpeedReader',
     role: 'Solo build, end to end',
     description:
@@ -316,7 +331,10 @@ type ProjectsProps = {
 };
 
 const Projects = ({ showSeeAllLink = true, featuredOnly = false }: ProjectsProps) => {
-  const visible = featuredOnly ? projects.slice(0, 1) : projects;
+  const [activeCategory, setActiveCategory] = useState<Category>('data');
+  const visible = featuredOnly
+    ? projects.slice(0, 1)
+    : projects.filter((p) => p.category === activeCategory);
   const subhead = featuredOnly
     ? 'The piece I’d lead with is a three-year enrollment forecast I ran on 30 NYC public elementary schools, then back-tested when the real numbers came out. The rest of what I’ve worked on is on the projects page.'
     : 'Analyses I ran and things I built. Each one tries to leave a trail of why I made the calls I did. Source, demos, and the parts I cut are all linked.';
@@ -339,7 +357,42 @@ const Projects = ({ showSeeAllLink = true, featuredOnly = false }: ProjectsProps
           </p>
         </motion.div>
 
-        <div className="space-y-16 md:space-y-24 lg:space-y-[100px]">
+        {!featuredOnly && (
+          <div
+            role="tablist"
+            aria-label="Project categories"
+            className="flex justify-center flex-wrap gap-x-2 sm:gap-x-6 gap-y-2 mb-12 md:mb-20"
+          >
+            {categories.map((cat) => {
+              const isActive = activeCategory === cat.key;
+              return (
+                <button
+                  key={cat.key}
+                  id={`tab-${cat.key}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`panel-${cat.key}`}
+                  onClick={() => setActiveCategory(cat.key)}
+                  className="px-4 py-2 text-base sm:text-lg font-medium transition-colors duration-200 touch-manipulation min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded-t"
+                  style={{
+                    color: isActive ? 'var(--text-color)' : 'var(--text-secondary)',
+                    borderBottom: `2px solid ${isActive ? 'var(--text-color)' : 'transparent'}`,
+                  }}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        <div
+          role={featuredOnly ? undefined : 'tabpanel'}
+          id={featuredOnly ? undefined : `panel-${activeCategory}`}
+          aria-labelledby={featuredOnly ? undefined : `tab-${activeCategory}`}
+          className="space-y-16 md:space-y-24 lg:space-y-[100px]"
+        >
           {visible.map((project, index) => (
             <ProjectCard key={`${project.number}-${project.title}`} project={project} index={index} />
           ))}
