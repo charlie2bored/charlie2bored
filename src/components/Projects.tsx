@@ -11,6 +11,7 @@ type Project = {
   number: string;
   slug: string;
   category: Category;
+  featured?: boolean;
   title: string;
   role: string;
   description: string;
@@ -33,6 +34,7 @@ const projects: Project[] = [
     number: '(01)',
     slug: 'nyc-d2-enrollment',
     category: 'data',
+    featured: true,
     title: 'NYC District 2 Elementary Enrollment Forecasting',
     role: 'Solo: data engineering, modeling, dashboard, and writeup',
     description:
@@ -83,6 +85,7 @@ const projects: Project[] = [
     number: '(03)',
     slug: 'nyc-fare',
     category: 'data',
+    featured: true,
     title: 'NYC Distance-Based Fare',
     role: 'Solo: research, modeling, and frontend',
     description:
@@ -98,7 +101,7 @@ const projects: Project[] = [
       ],
     },
     image: '/projects/nyc-fare-systems.png',
-    hoverMetric: 'Uncovered $913M in MTA revenue gap and proposed a distance-based fix that recovers it without raising consumer fares',
+    hoverMetric: 'Surfaced $913M in MTA revenue gap from a ~1M-record dataset, with a distance-based fix that recovers it without raising consumer fares',
     tech: ['Python', 'pandas', 'NumPy', 'matplotlib', 'TypeScript', 'Vite', 'Tailwind', 'Data storytelling'],
     links: { github: 'https://github.com/charlie2bored/NYC-Fare-Systems', demo: 'https://nyc-fare-systems-website.vercel.app/' },
   },
@@ -333,10 +336,10 @@ type ProjectsProps = {
 const Projects = ({ showSeeAllLink = true, featuredOnly = false }: ProjectsProps) => {
   const [activeCategory, setActiveCategory] = useState<Category>('data');
   const visible = featuredOnly
-    ? projects.slice(0, 1)
+    ? projects.filter((p) => p.featured)
     : projects.filter((p) => p.category === activeCategory);
   const subhead = featuredOnly
-    ? 'The piece I’d lead with is a three-year enrollment forecast I ran on 30 NYC public elementary schools, then back-tested when the real numbers came out. The rest of what I’ve worked on is on the projects page.'
+    ? 'Two pieces I’d lead with: a three-year forecast of 30 NYC public elementary schools, back-tested when the real numbers came out, and a distance-based MTA fare analysis that surfaced a $913M revenue gap from a ~1M-record dataset. The rest of what I’ve worked on is on the projects page.'
     : 'Analyses I ran and things I built. Each one tries to leave a trail of why I made the calls I did. Source, demos, and the parts I cut are all linked.';
 
   return (

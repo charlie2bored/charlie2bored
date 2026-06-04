@@ -4,17 +4,6 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    year: 'March 2026 to Present',
-    title: 'Product Designer',
-    company: 'Medara',
-    description: [
-      'Manage and continuously optimize website content, structure, and user experience to improve clarity, engagement, and alignment with company objectives.',
-      'Develop and execute social media strategy, including content planning, creation, and performance tracking to build brand presence and audience engagement.',
-      'Design and refine marketing collateral and support UI/UX enhancements, translating company messaging into clear, visually compelling materials.',
-    ],
-    skills: ['Content Strategy', 'Web & UX', 'Social Media Marketing', 'Brand & Creative'],
-  },
-  {
     year: 'October 2023 to May 2026',
     title: 'Business Intelligence + Data Analytics Intern',
     company: 'Apple Montessori Schools',
@@ -27,6 +16,17 @@ const experiences = [
       'Streamlined the acquisition process across 150+ active targets, tightening pipeline review and go/no-go decisions for leadership.',
     ],
     skills: ['Power BI', 'SQL', 'Excel', 'Python', 'Tableau', 'PowerPoint', 'Word'],
+  },
+  {
+    year: 'March 2026 to Present',
+    title: 'Product Designer',
+    company: 'Medara',
+    description: [
+      'Manage and continuously optimize website content, structure, and user experience to improve clarity, engagement, and alignment with company objectives.',
+      'Develop and execute social media strategy, including content planning, creation, and performance tracking to build brand presence and audience engagement.',
+      'Design and refine marketing collateral and support UI/UX enhancements, translating company messaging into clear, visually compelling materials.',
+    ],
+    skills: ['Content Strategy', 'Web & UX', 'Social Media Marketing', 'Brand & Creative'],
   },
 ];
 
@@ -66,7 +66,7 @@ const performance = [
 const education = [
   {
     year: 'August 2024 to Present',
-    degree: 'B.A. in Business Administration',
+    degree: 'B.S. in Business Administration (BSBA)',
     institution: 'Northeastern University',
     location: 'New York, NY',
     description: [
