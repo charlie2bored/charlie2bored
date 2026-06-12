@@ -92,7 +92,7 @@ export const education = [
     institution: 'Northeastern University',
     location: 'New York, NY',
     description: [
-      'Relevant Coursework: Accounting, Business + Society, Microeconomics, Statistics.',
+      'Relevant Coursework: Business Statistics, Calculus, and Information Systems.',
       'Served as Treasurer for the Fashion Organization, efficiently managing fundraising and revenue, and creating informative and engaging digital media.',
     ],
   },
