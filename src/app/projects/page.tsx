@@ -20,7 +20,7 @@ export default function ProjectsPage() {
     }}>
       <Navigation />
       <main id="main-content" className="pt-[calc(7.5rem+env(safe-area-inset-top,0px))]">
-        <Projects showSeeAllLink={false} />
+        <Projects />
       </main>
       <Footer />
     </div>

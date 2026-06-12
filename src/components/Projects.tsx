@@ -181,19 +181,11 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   );
 };
 
-type ProjectsProps = {
-  showSeeAllLink?: boolean;
-  featuredOnly?: boolean;
-};
-
-const Projects = ({ showSeeAllLink = true, featuredOnly = false }: ProjectsProps) => {
+const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('data');
-  const visible = featuredOnly
-    ? projects.filter((p) => p.featured)
-    : projects.filter((p) => p.category === activeCategory);
-  const subhead = featuredOnly
-    ? 'Two pieces I’d lead with: a three-year forecast of 30 NYC public elementary schools, back-tested when the real numbers came out, and a distance-based MTA fare analysis that surfaced a $913M revenue gap from a ~1M-record dataset. The rest of what I’ve worked on is on the projects page.'
-    : 'Analyses I ran and things I built. Each one tries to leave a trail of why I made the calls I did. Source, demos, and the parts I cut are all linked.';
+  const visible = projects.filter((p) => p.category === activeCategory);
+  const subhead =
+    'Analyses I ran and things I built. Each one tries to leave a trail of why I made the calls I did. Source, demos, and the parts I cut are all linked.';
 
   return (
     <section className="py-16 md:py-28 lg:py-[150px]">
@@ -213,9 +205,8 @@ const Projects = ({ showSeeAllLink = true, featuredOnly = false }: ProjectsProps
           </p>
         </motion.div>
 
-        {!featuredOnly && (
-          <div
-            role="tablist"
+        <div
+          role="tablist"
             aria-label="Project categories"
             className="flex justify-center flex-wrap gap-x-2 sm:gap-x-6 gap-y-2 mb-12 md:mb-20"
           >
@@ -240,13 +231,12 @@ const Projects = ({ showSeeAllLink = true, featuredOnly = false }: ProjectsProps
                 </button>
               );
             })}
-          </div>
-        )}
+        </div>
 
         <div
-          role={featuredOnly ? undefined : 'tabpanel'}
-          id={featuredOnly ? undefined : `panel-${activeCategory}`}
-          aria-labelledby={featuredOnly ? undefined : `tab-${activeCategory}`}
+          role="tabpanel"
+          id={`panel-${activeCategory}`}
+          aria-labelledby={`tab-${activeCategory}`}
           className="space-y-16 md:space-y-24 lg:space-y-[100px]"
         >
           {visible.map((project, index) => (
@@ -254,23 +244,6 @@ const Projects = ({ showSeeAllLink = true, featuredOnly = false }: ProjectsProps
           ))}
         </div>
 
-        {showSeeAllLink ? (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mt-16 md:mt-[100px]"
-          >
-            <Link
-              href="/projects"
-              className="inline-block transition-colors duration-300 text-xl font-medium hover:opacity-70 touch-manipulation min-h-[44px] px-2 py-2"
-              style={{ color: 'var(--text-color)' }}
-            >
-              Browse all projects →
-            </Link>
-          </motion.div>
-        ) : null}
       </div>
     </section>
   );

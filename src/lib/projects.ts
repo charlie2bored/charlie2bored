@@ -4,7 +4,7 @@ export type Project = {
   number: string;
   slug: string;
   category: Category;
-  featured?: boolean;
+  href: string;
   title: string;
   role: string;
   description: string;
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     number: '(01)',
     slug: 'nyc-d2-enrollment',
     category: 'data',
-    featured: true,
+    href: '/projects/nyc-d2-enrollment',
     title: 'NYC District 2 Elementary Enrollment Forecasting',
     role: 'Solo: data engineering, modeling, dashboard, and writeup',
     description:
@@ -51,6 +51,7 @@ export const projects: Project[] = [
     number: '(02)',
     slug: 'nyc-subway-events',
     category: 'data',
+    href: '/projects/nyc-subway-events',
     title: 'NYC Subway Events from Ridership Data',
     role: 'Solo: data engineering, modeling, and signature analysis',
     description:
@@ -78,7 +79,7 @@ export const projects: Project[] = [
     number: '(03)',
     slug: 'nyc-fare',
     category: 'data',
-    featured: true,
+    href: '/projects#nyc-fare',
     title: 'NYC Distance-Based Fare',
     role: 'Solo: research, modeling, and frontend',
     description:
@@ -102,6 +103,7 @@ export const projects: Project[] = [
     number: '(04)',
     slug: 'clearcore-protein',
     category: 'design',
+    href: '/projects/clearcore',
     title: 'ClearCore Protein',
     role: 'Solo build, end to end',
     description:
@@ -127,6 +129,7 @@ export const projects: Project[] = [
     number: '(05)',
     slug: 'speedreader',
     category: 'other',
+    href: '/projects#speedreader',
     title: 'SpeedReader',
     role: 'Solo build, end to end',
     description:
