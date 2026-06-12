@@ -1,6 +1,6 @@
 # Charlie Vargas
 
-**[charlie2bored.com](https://charlie2bored.com)** — full portfolio with the writeups
+**[charlie2bored.com](https://www.charlie2bored.com)** — full portfolio with the writeups
 
 I’m a BI and operations analyst working mostly in Power BI, SQL, and Python. The last two years of my BI internship taught me what a working BI operation actually does: automating KPI dashboards across 20 schools, building enrollment forecasts, and turning messy data into something leadership can act on.
 
@@ -10,13 +10,13 @@ I’m a BI and operations analyst working mostly in Power BI, SQL, and Python. T
 
 Forecast K-5 enrollment for 30 NYC public elementary schools three years out, then back-tested when NYSED released the actuals. Three analyst-bounded scenarios beat a single Prophet default by more than 2x in MAPE — 8.71% vs 19.20%.
 
-[Code](https://github.com/charlie2bored/nyc-d2-enrollment-forecasting) · [Writeup](https://charlie2bored.com/projects#nyc-d2-enrollment)
+[Code](https://github.com/charlie2bored/nyc-d2-enrollment-forecasting) · [Writeup](https://www.charlie2bored.com/projects#nyc-d2-enrollment)
 
 ### NYC Subway Events from Ridership Data
 
 Can you tell when a major NYC event is happening (Knicks games, marathons, parades) without ever opening an event calendar? Built seasonal ridership baselines per station, scored the residuals against the 2024 calendar, and recovered 495 of 513 events (96.5%) using only MTA hourly ridership. The signatures cluster by venue.
 
-[Code](https://github.com/charlie2bored/nyc-subway-events-from-ridership-data) · [Writeup](https://charlie2bored.com/projects/nyc-subway-events)
+[Code](https://github.com/charlie2bored/nyc-subway-events-from-ridership-data) · [Writeup](https://www.charlie2bored.com/projects/nyc-subway-events)
 
 ### NYC Distance-Based Fare Analysis
 

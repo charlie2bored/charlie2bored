@@ -8,6 +8,18 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'charlie2bored.vercel.app' }],
+        destination: 'https://www.charlie2bored.com/:path*',
+        statusCode: 301,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'charlie2bored.com' }],
+        destination: 'https://www.charlie2bored.com/:path*',
+        statusCode: 301,
+      },
       { source: '/contact', destination: '/about', permanent: true },
       {
         source: '/writing/electoral-college',

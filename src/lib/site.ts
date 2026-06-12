@@ -8,7 +8,7 @@ export function getSiteUrl(): string {
       ? process.env.NEXT_PUBLIC_SITE_URL.trim()
       : '';
   if (raw) return raw.replace(/\/$/, '');
-  return 'https://charlie2bored.vercel.app';
+  return 'https://www.charlie2bored.com';
 }
 
 const DEFAULT_DATA_RESUME = '/Charles-Vargas-Data.pdf';
