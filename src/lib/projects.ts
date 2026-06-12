@@ -79,7 +79,7 @@ export const projects: Project[] = [
     number: '(03)',
     slug: 'nyc-fare',
     category: 'data',
-    href: '/projects#nyc-fare',
+    href: '/projects/nyc-fare',
     title: 'NYC Distance-Based Fare',
     role: 'Solo: research, modeling, and frontend',
     description:
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     number: '(05)',
     slug: 'speedreader',
     category: 'other',
-    href: '/projects#speedreader',
+    href: '/projects/speedreader',
     title: 'SpeedReader',
     role: 'Solo build, end to end',
     description:

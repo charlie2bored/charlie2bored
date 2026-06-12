@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Navigation from '@/components/Navigation';
-import Projects from '@/components/Projects';
-import Footer from '@/components/Footer';
+import DriveShell from '@/components/drive/DriveShell';
+import { projectItems } from '@/lib/drive';
+
 export const metadata: Metadata = {
   title: 'Projects',
   description:
@@ -14,15 +14,13 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-dvh transition-colors duration-300" style={{
-      backgroundColor: 'var(--bg-color)',
-      color: 'var(--text-color)',
-    }}>
-      <Navigation />
-      <main id="main-content" className="pt-[calc(7.5rem+env(safe-area-inset-top,0px))]">
-        <Projects />
-      </main>
-      <Footer />
-    </div>
+    <DriveShell
+      crumbs={[
+        { label: 'Shared with me' },
+        { label: 'Charlie Vargas', href: '/' },
+        { label: 'Projects' },
+      ]}
+      items={projectItems()}
+    />
   );
 }

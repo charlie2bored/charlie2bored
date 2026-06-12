@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { DM_Sans, Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { ThemeProvider } from '@/contexts/ThemeContext';
@@ -9,6 +9,12 @@ import { getSiteUrl } from '@/lib/site';
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-dm',
 });
 
 const siteUrl = getSiteUrl();
@@ -80,7 +86,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${dmSans.variable} font-sans antialiased`}>
         <PersonJsonLd />
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
