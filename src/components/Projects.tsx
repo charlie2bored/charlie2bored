@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { categories, projects, type Category, type Project } from '@/lib/projects';
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
@@ -184,6 +184,19 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('data');
   const visible = projects.filter((p) => p.category === activeCategory);
+
+  // Deep links like /projects#speedreader target cards in non-default tabs:
+  // switch to that project's tab before scrolling to it.
+  useEffect(() => {
+    const slug = window.location.hash.slice(1);
+    if (!slug) return;
+    const target = projects.find((p) => p.slug === slug);
+    if (!target) return;
+    setActiveCategory(target.category);
+    requestAnimationFrame(() => {
+      document.getElementById(slug)?.scrollIntoView();
+    });
+  }, []);
   const subhead =
     'Analyses I ran and things I built. Each one tries to leave a trail of why I made the calls I did. Source, demos, and the parts I cut are all linked.';
 
