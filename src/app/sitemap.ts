@@ -8,11 +8,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/projects',
     '/projects/clearcore',
     '/projects/nyc-d2-enrollment',
+    '/projects/nyc-fare',
     '/projects/nyc-subway-events',
+    '/projects/speedreader',
     '/writing',
     '/writing/electoral-college',
     '/writing/paper-schedule',
     '/experience',
+    '/experience/apple-montessori',
+    '/experience/medara',
+    '/experience/stage-and-performance',
+    '/education',
+    '/education/northeastern-university',
     '/about',
   ];
   const now = new Date();
