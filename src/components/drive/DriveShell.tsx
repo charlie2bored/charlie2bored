@@ -113,6 +113,14 @@ export default function DriveShell({
           <IconHelp size={19} stroke={1.75} aria-hidden="true" className="hidden sm:block" />
           <IconSettings size={19} stroke={1.75} aria-hidden="true" className="hidden sm:block" />
           <IconGridDots size={19} stroke={1.75} aria-hidden="true" className="hidden sm:block" />
+          <Link
+            href="/about"
+            title="Owner: Charlie Vargas — open README.md"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-medium text-white transition-opacity hover:opacity-90"
+            style={{ backgroundColor: '#0b57d0' }}
+          >
+            CV
+          </Link>
           <div
             className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-medium text-white"
             style={{ backgroundColor: '#5f6368' }}

@@ -55,13 +55,14 @@ export default async function PreviewPage({
         <h1 className="truncate text-[15px] font-medium" style={{ color: '#e3e3e3' }}>
           {project.title}
         </h1>
-        <span
-          title="Charlie Vargas"
-          className="ml-auto inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-medium text-white"
+        <Link
+          href="/about"
+          title="Owner: Charlie Vargas — open README.md"
+          className="ml-auto inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-medium text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: '#0b57d0' }}
         >
           CV
-        </span>
+        </Link>
       </header>
 
       <main id="main-content" className="flex flex-1 flex-col items-center justify-center gap-4 px-5 pb-16 text-center">

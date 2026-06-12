@@ -32,13 +32,14 @@ export default function DriveDoc({
         <span className="truncate text-[15px] font-medium" style={{ color: '#1f1f1f' }}>
           {fileName}
         </span>
-        <span
-          title="Charlie Vargas"
-          className="ml-auto inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-medium text-white"
+        <Link
+          href="/about"
+          title="Owner: Charlie Vargas — open README.md"
+          className="ml-auto inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-medium text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: '#0b57d0' }}
         >
           CV
-        </span>
+        </Link>
       </header>
 
       <main id="main-content" className="flex-1 px-4 pb-10">
