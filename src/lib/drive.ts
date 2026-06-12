@@ -87,7 +87,7 @@ export function rootItems(): DriveItem[] {
       icon: 'folder',
       color: GRAY,
       name: 'Education',
-      modified: 'Aug 2024 – present',
+      modified: 'Aug 2024 – May 2028',
       size: '1 item',
       info: 'BSBA at Northeastern University.',
       href: '/education',

@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
     root: path.join(__dirname),
   },
   async redirects() {
+    // TODO(charlie): the apex (charlie2bored.com) redirect happens at Vercel's edge
+    // and currently returns 307 (temporary). To make it a permanent 308/301, flip the
+    // domain redirect to "permanent" in Vercel > Project > Settings > Domains. The
+    // app-level rules below cover any request that reaches the app directly.
     return [
       {
         source: '/:path*',

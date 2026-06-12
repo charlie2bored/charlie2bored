@@ -7,7 +7,7 @@ const entry = education[0];
 export const metadata: Metadata = {
   title: 'Northeastern University',
   description:
-    'B.S. in Business Administration (BSBA) at Northeastern University, New York. August 2024 to present.',
+    'B.S. in Business Administration (BSBA) at Northeastern University, New York. August 2024 to May 2028.',
   alternates: { canonical: '/education/northeastern-university' },
 };
 
