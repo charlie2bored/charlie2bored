@@ -1,26 +1,10 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --bg-color: #ffffff;
-    --bg-color-rgb: 255, 255, 255;
-    --text-color: #0a0a0a;
-    --text-secondary: #525252;
-    --skills-color: #404040;
-    --nav-bg: #ffffff;
-  }
-
-  :root[data-theme="dark"] {
-    --bg-color: #000000;
-    --bg-color-rgb: 0, 0, 0;
-    --text-color: #ffffff;
-    --text-secondary: #a3a3a3;
-    --skills-color: #d4d4d4;
-    --nav-bg: #000000;
-  }
-
   body {
-    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-dm), Roboto, Arial, sans-serif;
+    background-color: #f8fafd;
+    color: #1f1f1f;
   }
 
   button, input, select, textarea {
@@ -37,13 +21,9 @@
   }
 
   *:focus-visible {
-    outline: 2px solid #4f46e5;
+    outline: 2px solid #0b57d0;
     outline-offset: 2px;
     border-radius: 4px;
-  }
-
-  :root[data-theme="dark"] *:focus-visible {
-    outline: 2px solid #60a5fa;
   }
 
   /*
@@ -78,7 +58,7 @@
     position: absolute;
     top: -40px;
     left: 6px;
-    background: #000;
+    background: #1f1f1f;
     color: #fff;
     padding: 8px;
     text-decoration: none;
@@ -97,37 +77,19 @@ html {
   text-size-adjust: 100%;
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-:root[data-theme="dark"] ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #000000;
-  border-radius: 3px;
-}
-
-:root[data-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: #ffffff;
+  background: #c4c7c5;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #000000;
-}
-
-:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+  background: #9aa0a6;
 }

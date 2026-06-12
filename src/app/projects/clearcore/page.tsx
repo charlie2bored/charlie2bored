@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import DriveDoc from '@/components/drive/DriveDoc';
 
 export const metadata: Metadata = {
   title: 'ClearCore Protein Case Study',
@@ -80,324 +79,269 @@ const differently: { title: string; body: string }[] = [
 
 export default function ClearCoreCaseStudyPage() {
   return (
-    <div
-      className="min-h-dvh transition-colors duration-300"
-      style={{
-        backgroundColor: 'var(--bg-color)',
-        color: 'var(--text-color)',
-      }}
-    >
-      <Navigation />
-      <main id="main-content">
-        <article className="pt-[140px] pb-[120px]">
-        <header className="max-w-3xl mx-auto px-5 mb-12">
-          <p
-            className="text-sm uppercase tracking-[0.22em] mb-3 font-semibold"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Case study · 2025
-          </p>
-          <h1
-            className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight"
-            style={{ color: 'var(--text-color)' }}
-          >
-            ClearCore Protein
-          </h1>
-          <p
-            className="text-xl leading-relaxed"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            This is a marketing site I built for a fictional gluten-free protein bar brand. I owned
-            the information architecture, the component system, and the frontend, end to end. Below
-            is how I made the calls I did, including the ones I cut and the ones I&apos;d do
-            differently next time.
-          </p>
-        </header>
+    <DriveDoc backHref="/projects" backLabel="Projects" fileName="ClearCore Protein">
+      <header className="mb-8">
+        <p
+          className="mb-2 text-xs font-medium uppercase tracking-[0.18em]"
+          style={{ color: '#444746' }}
+        >
+          Case study · 2025
+        </p>
+        <h1
+          className="mb-3 text-2xl font-medium sm:text-3xl"
+          style={{ color: '#1f1f1f' }}
+        >
+          ClearCore Protein
+        </h1>
+        <p className="text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+          This is a marketing site I built for a fictional gluten-free protein bar brand. I owned
+          the information architecture, the component system, and the frontend, end to end. Below
+          is how I made the calls I did, including the ones I cut and the ones I&apos;d do
+          differently next time.
+        </p>
+      </header>
 
-        <div className="max-w-3xl mx-auto px-5 mb-16">
-          <div className="rounded-2xl overflow-hidden border-2" style={{ borderColor: 'var(--text-secondary)' }}>
-            <div className="relative aspect-video w-full bg-neutral-900">
-              <Image
-                src="/projects/clearcore-protein.png"
-                alt="ClearCore Protein homepage hero"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 896px"
-                priority
-              />
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-3 mt-6">
-            <a
-              href="https://clearcore-tau.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center min-h-[44px] px-5 py-2 rounded-lg text-sm sm:text-base font-medium"
-              style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)' }}
-            >
-              Visit live site
-            </a>
-            <a
-              href="https://github.com/charlie2bored/clearcore"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center min-h-[44px] px-5 py-2 rounded-lg text-sm sm:text-base font-medium border-2"
-              style={{ borderColor: 'var(--text-color)', color: 'var(--text-color)' }}
-            >
-              View source
-            </a>
+      <div className="mb-10">
+        <div
+          className="overflow-hidden rounded-xl border"
+          style={{ borderColor: '#dadce0', borderWidth: '0.5px' }}
+        >
+          <div className="relative aspect-video w-full bg-neutral-100">
+            <Image
+              src="/projects/clearcore-protein.png"
+              alt="ClearCore Protein homepage hero"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 896px"
+              priority
+            />
           </div>
         </div>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a
+            href="https://clearcore-tau.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full px-6 py-2.5 text-[14px] font-medium text-white transition-opacity hover:opacity-90"
+            style={{ backgroundColor: '#0b57d0' }}
+          >
+            Visit live site
+          </a>
+          <a
+            href="https://github.com/charlie2bored/clearcore"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full border px-6 py-2.5 text-[14px] font-medium transition-colors hover:bg-[#f0f4f9]"
+            style={{ borderColor: '#c4c7c5', color: '#0b57d0' }}
+          >
+            View source
+          </a>
+        </div>
+      </div>
 
-        <section
-          className="max-w-3xl mx-auto px-5 mb-20 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 border-t border-b py-10"
-          style={{ borderColor: 'var(--text-secondary)' }}
-        >
-          {facts.map((fact) => (
-            <div key={fact.label}>
-              <p
-                className="text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold mb-1"
-                style={{ color: 'var(--text-secondary)' }}
+      <section
+        className="mb-10 grid grid-cols-1 gap-x-10 gap-y-6 border-t border-b py-8 sm:grid-cols-2"
+        style={{ borderColor: '#dadce0' }}
+      >
+        {facts.map((fact) => (
+          <div key={fact.label}>
+            <p
+              className="mb-1 text-xs font-medium uppercase tracking-[0.18em]"
+              style={{ color: '#444746' }}
+            >
+              {fact.label}
+            </p>
+            <p className="text-[15px]" style={{ color: '#1f1f1f' }}>
+              {fact.value}
+            </p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mb-10">
+        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+          The brief I gave myself
+        </h2>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+          <p>
+            The premise: a new CPG brand needs a site that feels confident and shoppable before
+            there&apos;s actually anything to ship. No inventory, no warehouse, no retail
+            partners. Just the kind of marketing surface a real brand uses to earn its first
+            wholesale meeting.
+          </p>
+          <p>
+            That framing is harder than it sounds. A real brand site can lean on real product
+            photography, real testimonials, and real store locations. A fictional one has to
+            build all of that scaffolding without crossing into make-believe. The real challenge
+            was making the site read as a serious early-stage brand without faking proof it
+            hadn&apos;t earned.
+          </p>
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+          Research, briefly
+        </h2>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+          <p>
+            I audited a dozen protein-bar and adjacent CPG sites. RXBAR, Aloha, David, Built,
+            Magic Spoon, Olipop, and a handful of indie brands. Three patterns kept showing up.
+          </p>
+          <p>
+            First, the homepage usually overstuffs the hero. Brands try to land a tagline, a
+            flavor lineup, social proof, and a primary CTA all in one viewport. The pages that
+            read best treat the hero as a single argument and trust the next scroll to do the
+            rest.
+          </p>
+          <p>
+            Second, ingredient transparency is a real differentiator and a real product problem.
+            Most brands list ingredients in a way that reads like legal copy. The ones that win
+            on trust make the ingredient panel feel like the front of the package, not the
+            back.
+          </p>
+          <p>
+            Third, store locators are almost always disappointing. They load slowly, return zero
+            results in obvious zip codes, and rarely tell you when the data was last updated.
+            There&apos;s a small but real opportunity to approach this honestly.
+          </p>
+          <p>
+            I also leaned on what I&apos;d picked up from my BI internship. Decisions stick when
+            they connect to a number the team can defend. So even on a fictional brand, every IA
+            call had to answer the question: what would a real founder measure to know this
+            worked?
+          </p>
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="mb-4 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+          Decisions
+        </h2>
+        <ol className="space-y-8">
+          {decisions.map((decision, index) => (
+            <li key={decision.title} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4">
+              <span
+                className="pt-0.5 text-[15px] font-medium"
+                style={{ color: '#444746' }}
+                aria-hidden="true"
               >
-                {fact.label}
-              </p>
-              <p className="text-base sm:text-lg" style={{ color: 'var(--text-color)' }}>
-                {fact.value}
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <h3
+                  className="mb-2 text-base font-medium leading-tight"
+                  style={{ color: '#1f1f1f' }}
+                >
+                  {decision.title}
+                </h3>
+                <p className="text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+                  {decision.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+          What got cut
+        </h2>
+        <p className="mb-6 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+          Cuts are part of the work. These are the 3 biggest, and the reasons hold up better
+          than the original scope did.
+        </p>
+        <div className="space-y-6">
+          {cuts.map((cut) => (
+            <div key={cut.title} className="border-l-2 ps-5" style={{ borderColor: '#dadce0' }}>
+              <h3
+                className="mb-2 text-base font-medium leading-tight"
+                style={{ color: '#1f1f1f' }}
+              >
+                {cut.title}
+              </h3>
+              <p className="text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+                {cut.body}
               </p>
             </div>
           ))}
-        </section>
+        </div>
+      </section>
 
-        <section className="max-w-2xl mx-auto px-5 mb-20">
-          <h2
-            className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
-            style={{ color: 'var(--text-color)' }}
-          >
-            The brief I gave myself
-          </h2>
-          <div
-            className="space-y-5 text-lg leading-relaxed"
-            style={{ color: 'var(--text-color)' }}
-          >
-            <p>
-              The premise: a new CPG brand needs a site that feels confident and shoppable before
-              there&apos;s actually anything to ship. No inventory, no warehouse, no retail
-              partners. Just the kind of marketing surface a real brand uses to earn its first
-              wholesale meeting.
-            </p>
-            <p>
-              That framing is harder than it sounds. A real brand site can lean on real product
-              photography, real testimonials, and real store locations. A fictional one has to
-              build all of that scaffolding without crossing into make-believe. The real challenge
-              was making the site read as a serious early-stage brand without faking proof it
-              hadn&apos;t earned.
-            </p>
-          </div>
-        </section>
-
-        <section className="max-w-2xl mx-auto px-5 mb-20">
-          <h2
-            className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
-            style={{ color: 'var(--text-color)' }}
-          >
-            Research, briefly
-          </h2>
-          <div
-            className="space-y-5 text-lg leading-relaxed"
-            style={{ color: 'var(--text-color)' }}
-          >
-            <p>
-              I audited a dozen protein-bar and adjacent CPG sites. RXBAR, Aloha, David, Built,
-              Magic Spoon, Olipop, and a handful of indie brands. Three patterns kept showing up.
-            </p>
-            <p>
-              First, the homepage usually overstuffs the hero. Brands try to land a tagline, a
-              flavor lineup, social proof, and a primary CTA all in one viewport. The pages that
-              read best treat the hero as a single argument and trust the next scroll to do the
-              rest.
-            </p>
-            <p>
-              Second, ingredient transparency is a real differentiator and a real product problem.
-              Most brands list ingredients in a way that reads like legal copy. The ones that win
-              on trust make the ingredient panel feel like the front of the package, not the
-              back.
-            </p>
-            <p>
-              Third, store locators are almost always disappointing. They load slowly, return zero
-              results in obvious zip codes, and rarely tell you when the data was last updated.
-              There&apos;s a small but real opportunity to approach this honestly.
-            </p>
-            <p>
-              I also leaned on what I&apos;d picked up from my BI internship. Decisions stick when
-              they connect to a number the team can defend. So even on a fictional brand, every IA
-              call had to answer the question: what would a real founder measure to know this
-              worked?
-            </p>
-          </div>
-        </section>
-
-        <section className="max-w-2xl mx-auto px-5 mb-20">
-          <h2
-            className="text-3xl md:text-4xl font-extrabold tracking-tight mb-8"
-            style={{ color: 'var(--text-color)' }}
-          >
-            Decisions
-          </h2>
-          <ol className="space-y-10">
-            {decisions.map((decision, index) => (
-              <li key={decision.title} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4">
-                <span
-                  className="text-base sm:text-lg font-semibold pt-1"
-                  style={{ color: 'var(--text-secondary)' }}
-                  aria-hidden="true"
-                >
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div>
-                  <h3
-                    className="text-xl sm:text-2xl font-bold mb-3 leading-tight"
-                    style={{ color: 'var(--text-color)' }}
-                  >
-                    {decision.title}
-                  </h3>
-                  <p
-                    className="text-base sm:text-lg leading-relaxed"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
-                    {decision.body}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="max-w-2xl mx-auto px-5 mb-20">
-          <h2
-            className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
-            style={{ color: 'var(--text-color)' }}
-          >
-            What got cut
-          </h2>
-          <p
-            className="text-base sm:text-lg leading-relaxed mb-8"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Cuts are part of the work. These are the 3 biggest, and the reasons hold up better
-            than the original scope did.
-          </p>
-          <div className="space-y-8">
-            {cuts.map((cut) => (
-              <div
-                key={cut.title}
-                className="border-l-2 ps-5"
-                style={{ borderColor: 'var(--text-secondary)' }}
+      <section className="mb-10">
+        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+          What I would do differently
+        </h2>
+        <p className="mb-6 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+          Four honest notes. The site shipped. These are the things I want to fix before the
+          next one starts.
+        </p>
+        <ol className="list-decimal space-y-6 pl-6">
+          {differently.map((item) => (
+            <li
+              key={item.title}
+              className="text-[15px] leading-relaxed"
+              style={{ color: '#444746' }}
+            >
+              <h3
+                className="mb-2 text-base font-medium leading-tight"
+                style={{ color: '#1f1f1f' }}
               >
-                <h3
-                  className="text-xl sm:text-2xl font-bold mb-2 leading-tight"
-                  style={{ color: 'var(--text-color)' }}
-                >
-                  {cut.title}
-                </h3>
-                <p
-                  className="text-base sm:text-lg leading-relaxed"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
-                  {cut.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+                {item.title}
+              </h3>
+              <p>{item.body}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-        <section className="max-w-2xl mx-auto px-5 mb-20">
-          <h2
-            className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
-            style={{ color: 'var(--text-color)' }}
-          >
-            What I would do differently
-          </h2>
-          <p
-            className="text-base sm:text-lg leading-relaxed mb-8"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Four honest notes. The site shipped. These are the things I want to fix before the
-            next one starts.
-          </p>
-          <ol className="space-y-8 list-decimal pl-6">
-            {differently.map((item) => (
-              <li
-                key={item.title}
-                className="text-base sm:text-lg leading-relaxed"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                <h3
-                  className="text-xl sm:text-2xl font-bold mb-2 leading-tight"
-                  style={{ color: 'var(--text-color)' }}
-                >
-                  {item.title}
-                </h3>
-                <p>{item.body}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
+      <section className="mb-10">
+        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+          What shipped
+        </h2>
+        <ul className="space-y-3 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+          <li>A multi-page React + TypeScript app on Vite, with real routes and code-split entry points.</li>
+          <li>A Tailwind v4 token system covering color, type, spacing, radius, and motion timing.</li>
+          <li>Dedicated flavor detail pages with ingredient breakdowns and pairing notes.</li>
+          <li>A store locator UI with deliberate empty, loading, and zero-result states.</li>
+          <li>A contact form built as a primary conversion, with real validation and success states.</li>
+          <li>Framer Motion entrance choreography and GSAP scroll moments, both with reduced-motion fallbacks.</li>
+        </ul>
+      </section>
 
-        <section className="max-w-2xl mx-auto px-5 mb-20">
-          <h2
-            className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6"
-            style={{ color: 'var(--text-color)' }}
-          >
-            What shipped
-          </h2>
-          <ul
-            className="space-y-3 text-base sm:text-lg leading-relaxed"
-            style={{ color: 'var(--text-color)' }}
-          >
-            <li>A multi-page React + TypeScript app on Vite, with real routes and code-split entry points.</li>
-            <li>A Tailwind v4 token system covering color, type, spacing, radius, and motion timing.</li>
-            <li>Dedicated flavor detail pages with ingredient breakdowns and pairing notes.</li>
-            <li>A store locator UI with deliberate empty, loading, and zero-result states.</li>
-            <li>A contact form built as a primary conversion, with real validation and success states.</li>
-            <li>Framer Motion entrance choreography and GSAP scroll moments, both with reduced-motion fallbacks.</li>
-          </ul>
-        </section>
-
-        <footer
-          className="max-w-2xl mx-auto px-5 pt-10 border-t flex flex-col sm:flex-row gap-6 sm:items-center sm:justify-between"
-          style={{ borderColor: 'var(--text-secondary)' }}
+      <footer
+        className="flex flex-col gap-6 border-t pt-8 sm:flex-row sm:items-center sm:justify-between"
+        style={{ borderColor: '#dadce0' }}
+      >
+        <Link
+          href="/projects"
+          className="text-[15px] font-medium hover:underline"
+          style={{ color: '#0b57d0' }}
         >
-          <Link
-            href="/projects"
-            className="text-base sm:text-lg font-medium hover:opacity-70 transition-opacity"
-            style={{ color: 'var(--text-color)' }}
+          ← All projects
+        </Link>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href="https://clearcore-tau.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full px-6 py-2.5 text-[14px] font-medium text-white transition-opacity hover:opacity-90"
+            style={{ backgroundColor: '#0b57d0' }}
           >
-            ← All projects
-          </Link>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="https://clearcore-tau.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center min-h-[44px] px-5 py-2 rounded-lg text-sm sm:text-base font-medium"
-              style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)' }}
-            >
-              Visit live site
-            </a>
-            <a
-              href="https://github.com/charlie2bored/clearcore"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center min-h-[44px] px-5 py-2 rounded-lg text-sm sm:text-base font-medium border-2"
-              style={{ borderColor: 'var(--text-color)', color: 'var(--text-color)' }}
-            >
-              View source
-            </a>
-          </div>
-        </footer>
-      </article>
-      </main>
-      <Footer />
-    </div>
+            Visit live site
+          </a>
+          <a
+            href="https://github.com/charlie2bored/clearcore"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full border px-6 py-2.5 text-[14px] font-medium transition-colors hover:bg-[#f0f4f9]"
+            style={{ borderColor: '#c4c7c5', color: '#0b57d0' }}
+          >
+            View source
+          </a>
+        </div>
+      </footer>
+    </DriveDoc>
   );
 }

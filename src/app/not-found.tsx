@@ -1,37 +1,26 @@
 import Link from 'next/link';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import { IconFileSad } from '@tabler/icons-react';
 
 export default function NotFound() {
   return (
     <div
-      className="min-h-dvh transition-colors duration-300"
-      style={{
-        backgroundColor: 'var(--bg-color)',
-        color: 'var(--text-color)',
-      }}
+      className="min-h-dvh flex flex-col items-center justify-center gap-4 px-5 text-center"
+      style={{ backgroundColor: '#f8fafd', fontFamily: "var(--font-dm), Roboto, Arial, sans-serif" }}
     >
-      <Navigation />
-      <main
-        id="main-content"
-        className="max-w-xl mx-auto px-5 pb-24 pt-[calc(10rem+env(safe-area-inset-top,0px))]"
+      <IconFileSad size={56} color="#9aa0a6" stroke={1.25} aria-hidden="true" />
+      <h1 className="text-[17px] font-medium" style={{ color: '#1f1f1f' }}>
+        File not found
+      </h1>
+      <p className="max-w-md text-[14px] leading-relaxed" style={{ color: '#444746' }}>
+        This file may have been moved or deleted, or you may not have permission to view it.
+      </p>
+      <Link
+        href="/"
+        className="mt-2 rounded-full px-6 py-2.5 text-[14px] font-medium text-white transition-opacity hover:opacity-90"
+        style={{ backgroundColor: '#0b57d0' }}
       >
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] mb-4" style={{ color: 'var(--text-secondary)' }}>
-          Error 404
-        </p>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 leading-tight">This page isn&apos;t here</h1>
-        <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: 'var(--text-secondary)' }}>
-          The link may be outdated, or something was typed wrong. Want to pick up back on the home page?
-        </p>
-        <Link
-          href="/"
-          className="inline-flex min-h-[48px] items-center justify-center rounded-lg px-8 py-4 font-semibold text-lg shadow-lg hover:opacity-90 transition-opacity"
-          style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)' }}
-        >
-          Back to home
-        </Link>
-      </main>
-      <Footer />
+        Back to Charlie Vargas
+      </Link>
     </div>
   );
 }

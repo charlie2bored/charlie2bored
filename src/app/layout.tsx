@@ -1,15 +1,9 @@
 import type { Metadata, Viewport } from 'next';
-import { DM_Sans, Inter } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
-import { ThemeProvider } from '@/contexts/ThemeContext';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
 import { getSiteUrl } from '@/lib/site';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -78,17 +72,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){}})();`,
-          }}
-        />
-      </head>
-      <body className={`${inter.variable} ${dmSans.variable} font-sans antialiased`}>
+    <html lang="en">
+      <body className={`${dmSans.variable} font-sans antialiased`}>
         <PersonJsonLd />
-        <ThemeProvider>{children}</ThemeProvider>
+        {children}
         <Analytics />
       </body>
     </html>
