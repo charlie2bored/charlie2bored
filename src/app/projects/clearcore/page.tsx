@@ -23,10 +23,10 @@ const facts: { label: string; value: string }[] = [
 const decisions: { title: string; body: string }[] = [
   {
     title: 'A token-driven system before any page',
-    body: 'I started in tokens, not in screens. Color, type ramp, spacing, and motion timing all live in Tailwind v4 theme tokens. The flavor pages, the locator, and the home page all share the same rhythm because of it. Building the system first felt slower for the first 2 days and saved me a week after that. Visual decisions stopped being one-offs.',
+    body: 'I started in tokens. Color, type ramp, spacing, and motion timing all live in Tailwind v4 theme tokens. The flavor pages, the locator, and the home page all share the same rhythm because of it. Building the system first felt slower for the first 2 days and saved me a week after that. Visual decisions stopped being one-offs.',
   },
   {
-    title: 'A real route for every flavor, not a single grid',
+    title: 'A real route for every flavor',
     body: 'The instinct was to put every SKU on one shop page. That collapses 3 different stories (ingredients, taste, and use case) into a row of cards. I gave each flavor its own URL, hero, ingredient breakdown, and pairing notes. The tradeoff is more pages to maintain. The win is that each flavor reads like a product instead of a thumbnail.',
   },
   {
@@ -38,7 +38,7 @@ const decisions: { title: string; body: string }[] = [
     body: "Framer Motion handles the entrance reveals to set hierarchy on first paint. GSAP handles the pinned scroll moments on the home page where the story benefits from a beat. Everywhere else, motion is opt-in to prefers-reduced-motion and stops at the fold. The rule I used: if the animation doesn't change what the reader understands, it shouldn't be there.",
   },
   {
-    title: 'Contact form built as a real conversion, not a placeholder',
+    title: 'Contact form built as a real conversion',
     body: "Even for a fictional brand, the contact form was treated as a primary path. Real labels, real validation states, error copy written in plain English, and a success state that closes the loop instead of dumping the user on a redirect wall. It's the cheapest page on the site to take seriously, and the one that signals everything about how the team behind it would treat a customer.",
   },
 ];
@@ -54,14 +54,14 @@ const cuts: { title: string; body: string }[] = [
   },
   {
     title: 'An on-site blog',
-    body: "I drafted an IA with a Journal section for recipes and ingredient deep-dives. It was a content commitment I couldn't honor solo, and an empty blog dated the site immediately. Cut. If the brand were real, I'd build the blog when there were 3 real posts ready, not before.",
+    body: "I drafted an IA with a Journal section for recipes and ingredient deep-dives. It was a content commitment I couldn't honor solo, and an empty blog dated the site immediately. Cut. If the brand were real, I'd build the blog when there were 3 real posts ready.",
   },
 ];
 
 const differently: { title: string; body: string }[] = [
   {
     title: 'Test the hero on a phone first',
-    body: "I built the desktop hero first and adapted down. The mobile version works, but it's a translation, not a native composition. Next time I want to compose the small-screen hero first and let it pressure-test the desktop layout.",
+    body: "I built the desktop hero first and adapted down. The mobile version works, but it reads as a translation of the desktop layout. Next time I want to compose the small-screen hero first and let it pressure-test the desktop layout.",
   },
   {
     title: 'Write the brand voice document before the headlines',
@@ -197,8 +197,7 @@ export default function ClearCoreCaseStudyPage() {
           <p>
             Second, ingredient transparency is a real differentiator and a real product problem.
             Most brands list ingredients in a way that reads like legal copy. The ones that win
-            on trust make the ingredient panel feel like the front of the package, not the
-            back.
+            on trust make the ingredient panel feel like the front of the package.
           </p>
           <p>
             Third, store locators are almost always disappointing. They load slowly, return zero

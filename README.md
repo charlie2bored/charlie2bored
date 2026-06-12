@@ -14,7 +14,7 @@ Forecast K-5 enrollment for 30 NYC public elementary schools three years out, th
 
 ### NYC Subway Events from Ridership Data
 
-Can you tell when a major NYC event is happening (Knicks games, marathons, parades) without ever opening an event calendar? Built seasonal ridership baselines per station, scored the residuals against the 2024 calendar, and recovered 495 of 513 events (96.5%) using only MTA hourly ridership. The signatures cluster by venue, not by sport.
+Can you tell when a major NYC event is happening (Knicks games, marathons, parades) without ever opening an event calendar? Built seasonal ridership baselines per station, scored the residuals against the 2024 calendar, and recovered 495 of 513 events (96.5%) using only MTA hourly ridership. The signatures cluster by venue.
 
 [Code](https://github.com/charlie2bored/nyc-subway-events-from-ridership-data) · [Writeup](https://charlie2bored.com/projects/nyc-subway-events)
 

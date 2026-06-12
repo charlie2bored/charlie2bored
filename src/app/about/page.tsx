@@ -64,7 +64,7 @@ export default function AboutPage() {
         Skills
       </h2>
       <p className={`${body} mb-4`} style={{ color: '#444746' }}>
-        Grouped by what I actually use each one for, not by where they end up on a resume.
+        Grouped by what I actually use each one for.
       </p>
       <ul className="space-y-2">
         {skillGroups.map((group) => (

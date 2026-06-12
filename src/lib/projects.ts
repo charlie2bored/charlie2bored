@@ -38,7 +38,7 @@ export const projects: Project[] = [
       decisions: [
         'Stitched 12 years of NYC DOE and NYSED enrollment data and fit a piecewise linear model with a known structural break at 2020. Bounded the future with three analyst scenarios (decline, stabilization, recovery) instead of a single point forecast.',
         'Back-tested when NYSED published the 2022–25 actuals. The Base scenario landed at 8.71% MAPE. Prophet on the same data landed at 19.20%. The analyst-bounded approach beat the ML default by more than 2x.',
-        'Tested the popular "wealthy catchments left first" story and refused to ship it. Pearson r = +0.14 between catchment income and enrollment decline. Lowest-income schools in Chinatown and the Lower East Side declined more than the high-income downtown catchments; the resilient outlier is Roosevelt Island (+13%), suggesting geographic friction of exit, not income, is what matters.',
+        'Tested the popular "wealthy catchments left first" story and refused to ship it. Pearson r = +0.14 between catchment income and enrollment decline. Lowest-income schools in Chinatown and the Lower East Side declined more than the high-income downtown catchments; the resilient outlier is Roosevelt Island (+13%), suggesting geographic friction of exit is what matters.',
         'Shipped a four-page Power BI dashboard: system-wide fan chart, scenario/model operational matrix, single-school drill-through, and a backtest validation page.',
       ],
     },
@@ -55,14 +55,14 @@ export const projects: Project[] = [
     title: 'NYC Subway Events from Ridership Data',
     role: 'Solo: data engineering, modeling, and signature analysis',
     description:
-      'Asked whether you can detect when a major NYC event happens (Knicks games, marathons, parades) without ever opening an event calendar, using only MTA hourly ridership. Built seasonal baselines per station, scored the residuals against known 2024 events, and recovered 495 of 513 (96.5%). The signatures cluster by venue, not by sport.',
+      'Asked whether you can detect when a major NYC event happens (Knicks games, marathons, parades) without ever opening an event calendar, using only MTA hourly ridership. Built seasonal baselines per station, scored the residuals against known 2024 events, and recovered 495 of 513 (96.5%). The signatures cluster by venue.',
     approach: {
       problem:
         'Event detection in cities usually leans on calendars and permits. That leaves out the events nobody publishes a permit for and biases the data toward the venues that are easy to list. I wanted to know how much of the signal lives in the ridership itself.',
       decisions: [
-        'Built day-of-week and season-aware ridership baselines per station-hour, so a sold-out Sunday MSG game gets scored against the right Sundays, not against a generic weekday median. Without that, the model flags every Friday night.',
+        'Built day-of-week and season-aware ridership baselines per station-hour, so a sold-out Sunday MSG game gets scored against the right Sundays. Without that, the model flags every Friday night.',
         'Quantified each event with five fingerprint dimensions (peak intensity, lead time, lag time, decay half-life, and pre/post asymmetry) instead of just an excess-ridership number. The shape is what tells you Knicks from Rangers from a U2 show.',
-        'Clustered the fingerprints and reported the result honestly: the venue dominates the signature, not the sport. Knicks, Rangers, and MSG concerts land in the same cluster. Yankees day games and night games sit ~3x apart in intensity. Parades stay asymmetric: people arrive early and exit fast.',
+        'Clustered the fingerprints and reported the result honestly: the venue dominates the signature. Knicks, Rangers, and MSG concerts land in the same cluster. Yankees day games and night games sit ~3x apart in intensity. Parades stay asymmetric: people arrive early and exit fast.',
         'Validated against a held-out 2024 calendar of 513 events: 96.5% recall, without ever giving the model the calendar.',
       ],
     },
@@ -91,7 +91,7 @@ export const projects: Project[] = [
         'Built the analysis in pandas and NumPy off the open MTA OD pairings, fare structures, and station metadata. The whole thing is reproducible, so the model can be re-run when the data changes.',
         'Uncovered roughly $913M in MTA revenue gap between current flat-fare receipts and a distance-based structure, then proposed a pricing optimization that recovers the gap without raising consumer fares.',
         'Reported the loss as well as the gain. About 15% of riders in the model pay less, and the rest pay more. Hiding that would have been a worse choice than reporting a worse number.',
-        'Framed the page around a single comparison, your trip today versus the proposed model, so the reader is the one driving the page and not the agency.',
+        'Framed the page around a single comparison, your trip today versus the proposed model, so the reader is the one driving the page.',
       ],
     },
     image: '/projects/nyc-fare-systems.png',
@@ -133,17 +133,17 @@ export const projects: Project[] = [
     title: 'SpeedReader',
     role: 'Solo build, end to end',
     description:
-      'A reading tool that uses Rapid Serial Visual Presentation with an Optimal Recognition Point cue so the eye stays anchored. The real question wasn’t about speed. It was about attention. How much of the UI can you strip away before the reader loses their place?',
+      'A reading tool that uses Rapid Serial Visual Presentation with an Optimal Recognition Point cue so the eye stays anchored. The real question was attention: how much of the UI can you strip away before the reader loses their place?',
     approach: {
       problem: 'Long-form reading on the web is hostile to focus. Most "speed reader" UIs end up adding controls until the controls become the distraction.',
       decisions: [
         'Stripped the interface down to one fixation point and the controls you need to recover from a misread. Everything else is keyboard.',
         'Tuned the ORP highlight contrast so the focal letter reads as the anchor and doesn’t flicker between words.',
-        'Sized the reading column for what’s actually readable at high WPM, not for what fills the screen.',
+        'Sized the reading column for what’s actually readable at high WPM.',
       ],
     },
     image: '/projects/speedreader.png',
-    hoverMetric: 'Built for focus, not for feature count',
+    hoverMetric: 'A reading interface stripped down to one fixation point',
     tech: ['React', 'Vite', 'JavaScript', 'Tailwind'],
     links: { github: 'https://github.com/charlie2bored/SpeedReader', demo: 'https://speed-reader-weld.vercel.app/' },
   },

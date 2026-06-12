@@ -41,7 +41,7 @@ export const experiences: Role[] = [
     company: 'Rossitech LTD',
     description: [
       'Designed and shipped first websites for clients who didn’t have one yet, in Figma and Framer.',
-      'Worked off shared token and component systems, not one-off mockups, so the same rhythm carried across mobile and desktop.',
+      'Worked off shared token and component systems, so the same rhythm carried across mobile and desktop.',
       'Iterated with clients across rounds before handoff, tightening the click path through each page.',
     ],
     skills: ['Figma', 'Framer', 'Sketch', 'Adobe Illustrator'],
