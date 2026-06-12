@@ -129,16 +129,20 @@ export function rootItems(): DriveItem[] {
 }
 
 export function projectItems(): DriveItem[] {
-  return projects.map((p) => ({
-    kind: 'file' as const,
-    ...projectIcon[p.category],
-    name: p.title,
-    modified: projectModified[p.slug] ?? '—',
-    size: '—',
-    info: p.hoverMetric,
-    href: p.href,
-    anchorId: p.slug,
-  }));
+  return projects.map((p) => {
+    const demo = p.links.demo;
+    return {
+      kind: 'file' as const,
+      ...projectIcon[p.category],
+      name: p.title,
+      modified: projectModified[p.slug] ?? '—',
+      size: '—',
+      info: p.hoverMetric,
+      href: demo || `/preview/${p.slug}`,
+      external: Boolean(demo),
+      anchorId: p.slug,
+    };
+  });
 }
 
 export function writingItems(): DriveItem[] {
