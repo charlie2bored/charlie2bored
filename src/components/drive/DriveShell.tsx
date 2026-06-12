@@ -344,6 +344,11 @@ export default function DriveShell({
             >
               <span style={{ color: '#0b57d0' }}>Open →</span>
             </ItemLink>
+            {selected.writeupHref && (
+              <Link href={selected.writeupHref} className="font-medium hover:underline">
+                <span style={{ color: '#0b57d0' }}>Writeup →</span>
+              </Link>
+            )}
           </div>
         )}
       </main>

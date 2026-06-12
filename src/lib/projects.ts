@@ -45,6 +45,7 @@ export const projects: Project[] = [
     image: '/projects/nyc-d2-enrollment.png',
     hoverMetric: 'Bounded scenarios beat a single ML default by 2x MAPE, measured against the actuals that came out later',
     tech: ['Python', 'pandas', 'NumPy', 'statsmodels', 'Prophet', 'Power BI', 'Census ACS', 'Census Geocoder API'],
+    caseStudy: '/projects/nyc-d2-enrollment',
     links: { github: 'https://github.com/charlie2bored/nyc-d2-enrollment-forecasting', demo: '' },
   },
   {

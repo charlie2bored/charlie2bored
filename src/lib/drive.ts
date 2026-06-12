@@ -27,6 +27,7 @@ export type DriveItem = {
   external?: boolean;
   download?: boolean;
   anchorId?: string;
+  writeupHref?: string;
 };
 
 const GRAY = '#444746';
@@ -141,6 +142,7 @@ export function projectItems(): DriveItem[] {
       href: demo || `/preview/${p.slug}`,
       external: Boolean(demo),
       anchorId: p.slug,
+      writeupHref: p.caseStudy,
     };
   });
 }
