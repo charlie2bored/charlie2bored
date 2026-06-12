@@ -192,10 +192,13 @@ const Projects = () => {
     if (!slug) return;
     const target = projects.find((p) => p.slug === slug);
     if (!target) return;
-    setActiveCategory(target.category);
-    requestAnimationFrame(() => {
-      document.getElementById(slug)?.scrollIntoView();
+    const raf = requestAnimationFrame(() => {
+      setActiveCategory(target.category);
+      requestAnimationFrame(() => {
+        document.getElementById(slug)?.scrollIntoView();
+      });
     });
+    return () => cancelAnimationFrame(raf);
   }, []);
   const subhead =
     'Analyses I ran and things I built. Each one tries to leave a trail of why I made the calls I did. Source, demos, and the parts I cut are all linked.';
