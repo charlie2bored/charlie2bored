@@ -61,7 +61,7 @@ const Collaboration = () => {
               View LinkedIn profile
             </Link>
             <Link
-              href="/contact"
+              href="/about#contact"
               className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-lg text-lg font-medium border-2 touch-manipulation w-full sm:w-auto text-center"
               style={{
                 borderColor: 'var(--text-color)',

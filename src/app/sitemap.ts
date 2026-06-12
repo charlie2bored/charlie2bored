@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/writing/electoral-college',
     '/writing/paper-schedule',
     '/experience',
-    '/contact',
+    '/about',
   ];
   const now = new Date();
   return paths.map((path) => ({

@@ -33,11 +33,9 @@ const Navigation = () => {
   }, [isOpen]);
 
   const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/experience', label: 'Experience' },
     { href: '/projects', label: 'Projects' },
     { href: '/writing', label: 'Writing' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/about', label: 'About' },
   ];
 
   return (
