@@ -83,17 +83,17 @@ export default function ClearCoreCaseStudyPage() {
       <header className="mb-8">
         <p
           className="mb-2 text-xs font-medium uppercase tracking-[0.18em]"
-          style={{ color: '#444746' }}
+          style={{ color: 'var(--gd-text-2)' }}
         >
           Case study · 2025
         </p>
         <h1
           className="mb-3 text-2xl font-medium sm:text-3xl"
-          style={{ color: '#1f1f1f' }}
+          style={{ color: 'var(--gd-text)' }}
         >
           ClearCore Protein
         </h1>
-        <p className="text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+        <p className="text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
           This is a marketing site I built for a fictional gluten-free protein bar brand. I owned
           the information architecture, the component system, and the frontend, end to end. Below
           is how I made the calls I did, including the ones I cut and the ones I&apos;d do
@@ -104,7 +104,7 @@ export default function ClearCoreCaseStudyPage() {
       <div className="mb-10">
         <div
           className="overflow-hidden rounded-xl border"
-          style={{ borderColor: '#dadce0', borderWidth: '0.5px' }}
+          style={{ borderColor: 'var(--gd-border)', borderWidth: '0.5px' }}
         >
           <div className="relative aspect-video w-full bg-neutral-100">
             <Image
@@ -132,7 +132,7 @@ export default function ClearCoreCaseStudyPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-full border px-6 py-2.5 text-[14px] font-medium transition-colors hover:bg-[#f0f4f9]"
-            style={{ borderColor: '#c4c7c5', color: '#0b57d0' }}
+            style={{ borderColor: 'var(--gd-chip-border)', color: 'var(--gd-link)' }}
           >
             View source
           </a>
@@ -141,17 +141,17 @@ export default function ClearCoreCaseStudyPage() {
 
       <section
         className="mb-10 grid grid-cols-1 gap-x-10 gap-y-6 border-t border-b py-8 sm:grid-cols-2"
-        style={{ borderColor: '#dadce0' }}
+        style={{ borderColor: 'var(--gd-border)' }}
       >
         {facts.map((fact) => (
           <div key={fact.label}>
             <p
               className="mb-1 text-xs font-medium uppercase tracking-[0.18em]"
-              style={{ color: '#444746' }}
+              style={{ color: 'var(--gd-text-2)' }}
             >
               {fact.label}
             </p>
-            <p className="text-[15px]" style={{ color: '#1f1f1f' }}>
+            <p className="text-[15px]" style={{ color: 'var(--gd-text)' }}>
               {fact.value}
             </p>
           </div>
@@ -159,10 +159,10 @@ export default function ClearCoreCaseStudyPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           The brief I gave myself
         </h2>
-        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
           <p>
             The premise: a new CPG brand needs a site that feels confident and shoppable before
             there&apos;s actually anything to ship. No inventory, no warehouse, no retail
@@ -180,10 +180,10 @@ export default function ClearCoreCaseStudyPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           Research, briefly
         </h2>
-        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
           <p>
             I audited a dozen protein-bar and adjacent CPG sites. RXBAR, Aloha, David, Built,
             Magic Spoon, Olipop, and a handful of indie brands. Three patterns kept showing up.
@@ -214,7 +214,7 @@ export default function ClearCoreCaseStudyPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="mb-4 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-4 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           Decisions
         </h2>
         <ol className="space-y-8">
@@ -222,7 +222,7 @@ export default function ClearCoreCaseStudyPage() {
             <li key={decision.title} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4">
               <span
                 className="pt-0.5 text-[15px] font-medium"
-                style={{ color: '#444746' }}
+                style={{ color: 'var(--gd-text-2)' }}
                 aria-hidden="true"
               >
                 {String(index + 1).padStart(2, '0')}
@@ -230,11 +230,11 @@ export default function ClearCoreCaseStudyPage() {
               <div>
                 <h3
                   className="mb-2 text-base font-medium leading-tight"
-                  style={{ color: '#1f1f1f' }}
+                  style={{ color: 'var(--gd-text)' }}
                 >
                   {decision.title}
                 </h3>
-                <p className="text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+                <p className="text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
                   {decision.body}
                 </p>
               </div>
@@ -244,23 +244,23 @@ export default function ClearCoreCaseStudyPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           What got cut
         </h2>
-        <p className="mb-6 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+        <p className="mb-6 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
           Cuts are part of the work. These are the 3 biggest, and the reasons hold up better
           than the original scope did.
         </p>
         <div className="space-y-6">
           {cuts.map((cut) => (
-            <div key={cut.title} className="border-l-2 ps-5" style={{ borderColor: '#dadce0' }}>
+            <div key={cut.title} className="border-l-2 ps-5" style={{ borderColor: 'var(--gd-border)' }}>
               <h3
                 className="mb-2 text-base font-medium leading-tight"
-                style={{ color: '#1f1f1f' }}
+                style={{ color: 'var(--gd-text)' }}
               >
                 {cut.title}
               </h3>
-              <p className="text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+              <p className="text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
                 {cut.body}
               </p>
             </div>
@@ -269,10 +269,10 @@ export default function ClearCoreCaseStudyPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           What I would do differently
         </h2>
-        <p className="mb-6 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+        <p className="mb-6 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
           Four honest notes. The site shipped. These are the things I want to fix before the
           next one starts.
         </p>
@@ -281,11 +281,11 @@ export default function ClearCoreCaseStudyPage() {
             <li
               key={item.title}
               className="text-[15px] leading-relaxed"
-              style={{ color: '#444746' }}
+              style={{ color: 'var(--gd-text-2)' }}
             >
               <h3
                 className="mb-2 text-base font-medium leading-tight"
-                style={{ color: '#1f1f1f' }}
+                style={{ color: 'var(--gd-text)' }}
               >
                 {item.title}
               </h3>
@@ -296,10 +296,10 @@ export default function ClearCoreCaseStudyPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           What shipped
         </h2>
-        <ul className="space-y-3 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+        <ul className="space-y-3 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
           <li>A multi-page React + TypeScript app on Vite, with real routes and code-split entry points.</li>
           <li>A Tailwind v4 token system covering color, type, spacing, radius, and motion timing.</li>
           <li>Dedicated flavor detail pages with ingredient breakdowns and pairing notes.</li>
@@ -311,12 +311,12 @@ export default function ClearCoreCaseStudyPage() {
 
       <footer
         className="flex flex-col gap-6 border-t pt-8 sm:flex-row sm:items-center sm:justify-between"
-        style={{ borderColor: '#dadce0' }}
+        style={{ borderColor: 'var(--gd-border)' }}
       >
         <Link
           href="/projects"
           className="text-[15px] font-medium hover:underline"
-          style={{ color: '#0b57d0' }}
+          style={{ color: 'var(--gd-link)' }}
         >
           ← All projects
         </Link>
@@ -335,7 +335,7 @@ export default function ClearCoreCaseStudyPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-full border px-6 py-2.5 text-[14px] font-medium transition-colors hover:bg-[#f0f4f9]"
-            style={{ borderColor: '#c4c7c5', color: '#0b57d0' }}
+            style={{ borderColor: 'var(--gd-chip-border)', color: 'var(--gd-link)' }}
           >
             View source
           </a>

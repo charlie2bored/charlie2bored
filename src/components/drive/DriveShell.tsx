@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   IconCheck,
   IconChevronDown,
@@ -17,6 +17,8 @@ import {
 import type { DriveItem } from '@/lib/drive';
 import { ICONS } from '@/components/drive/icons';
 import DriveSearch from '@/components/drive/DriveSearch';
+import { useEggs } from '@/components/drive/eggs/EggsProvider';
+import { offTheClockTagline } from '@/lib/eggs';
 
 export type Crumb = { label: string; href?: string };
 
@@ -75,12 +77,24 @@ export default function DriveShell({
   items: DriveItem[];
 }) {
   const router = useRouter();
+  const { openPanel, settings } = useEggs();
   const [view, setView] = useState<'list' | 'grid'>('list');
   const [selected, setSelected] = useState<DriveItem | null>(null);
 
   const current = crumbs[crumbs.length - 1];
+  const shownTagline = tagline && !settings.recruiterMode ? offTheClockTagline : tagline;
+
+  useEffect(() => {
+    const onToggle = () => setView((v) => (v === 'list' ? 'grid' : 'list'));
+    window.addEventListener('gd-toggle-view', onToggle);
+    return () => window.removeEventListener('gd-toggle-view', onToggle);
+  }, []);
 
   const activate = (item: DriveItem) => {
+    if (item.egg === 'stage') {
+      openPanel('stage');
+      return;
+    }
     if (item.kind === 'folder') {
       router.push(item.href);
       return;
@@ -91,7 +105,7 @@ export default function DriveShell({
   return (
     <div
       className="min-h-dvh flex flex-col"
-      style={{ backgroundColor: '#f8fafd', fontFamily: "var(--font-dm), Roboto, Arial, sans-serif" }}
+      style={{ backgroundColor: 'var(--gd-bg)', fontFamily: "var(--font-dm), Roboto, Arial, sans-serif" }}
     >
       <a href="#main-content" className="skip-link">
         Skip to main content
@@ -104,15 +118,21 @@ export default function DriveShell({
             <path d="M8.2 1L0.2 15l3.8 6.6 8-14z" fill="#11A861" />
             <path d="M4 21.6h16l3.8-6.6H7.8z" fill="#2684FC" />
           </svg>
-          <span className="text-[19px]" style={{ color: '#5f6368' }}>
+          <span className="text-[19px]" style={{ color: 'var(--gd-text-3)' }}>
             Drive
           </span>
         </Link>
         <DriveSearch />
-        <div className="ml-auto flex items-center gap-3.5" style={{ color: '#444746' }}>
-          <IconHelp size={19} stroke={1.75} aria-hidden="true" className="hidden sm:block" />
-          <IconSettings size={19} stroke={1.75} aria-hidden="true" className="hidden sm:block" />
-          <IconGridDots size={19} stroke={1.75} aria-hidden="true" className="hidden sm:block" />
+        <div className="ml-auto flex items-center gap-3.5" style={{ color: 'var(--gd-text-2)' }}>
+          <button type="button" onClick={() => openPanel('help')} aria-label="Help" className="hidden min-h-0 min-w-0 sm:block">
+            <IconHelp size={19} stroke={1.75} aria-hidden="true" />
+          </button>
+          <button type="button" onClick={() => openPanel('settings')} aria-label="Settings" className="hidden min-h-0 min-w-0 sm:block">
+            <IconSettings size={19} stroke={1.75} aria-hidden="true" />
+          </button>
+          <button type="button" onClick={() => openPanel('apps')} aria-label="Charlie apps" className="hidden min-h-0 min-w-0 sm:block">
+            <IconGridDots size={19} stroke={1.75} aria-hidden="true" />
+          </button>
           <Link
             href="/about"
             title="Owner: Charlie Vargas — open README.md"
@@ -123,7 +143,7 @@ export default function DriveShell({
           </Link>
           <div
             className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-medium text-white"
-            style={{ backgroundColor: '#5f6368' }}
+            style={{ backgroundColor: 'var(--gd-text-3)' }}
             title="Viewing as guest"
           >
             ?
@@ -133,7 +153,7 @@ export default function DriveShell({
 
       <main
         id="main-content"
-        className="mx-2 flex flex-1 flex-col rounded-t-2xl bg-white px-4 pb-5 pt-4 sm:px-5"
+        className="mx-2 flex flex-1 flex-col rounded-t-2xl bg-[var(--gd-surface)] px-4 pb-5 pt-4 sm:px-5"
       >
         <div className="flex flex-wrap items-center gap-1">
           {crumbs.slice(0, -1).map((crumb) => (
@@ -142,26 +162,26 @@ export default function DriveShell({
                 <Link
                   href={crumb.href}
                   className="text-[17px] hover:underline sm:text-[18px]"
-                  style={{ color: '#444746' }}
+                  style={{ color: 'var(--gd-text-2)' }}
                 >
                   {crumb.label}
                 </Link>
               ) : (
-                <span className="text-[17px] sm:text-[18px]" style={{ color: '#444746' }}>
+                <span className="text-[17px] sm:text-[18px]" style={{ color: 'var(--gd-text-2)' }}>
                   {crumb.label}
                 </span>
               )}
-              <IconChevronRight size={15} color="#444746" stroke={2} aria-hidden="true" />
+              <IconChevronRight size={15} color="var(--gd-text-2)" stroke={2} aria-hidden="true" />
             </span>
           ))}
-          <h1 className="text-[17px] font-medium sm:text-[18px]" style={{ color: '#1f1f1f' }}>
+          <h1 className="text-[17px] font-medium sm:text-[18px]" style={{ color: 'var(--gd-text)' }}>
             {current.label}
           </h1>
-          <IconChevronDown size={15} color="#444746" stroke={2} aria-hidden="true" className="ml-0.5" />
+          <IconChevronDown size={15} color="var(--gd-text-2)" stroke={2} aria-hidden="true" className="ml-0.5" />
 
           <span
             className="ml-auto inline-flex overflow-hidden rounded-2xl border"
-            style={{ borderColor: '#c4c7c5', borderWidth: '0.5px' }}
+            style={{ borderColor: 'var(--gd-chip-border)', borderWidth: '0.5px' }}
             role="group"
             aria-label="View options"
           >
@@ -171,10 +191,10 @@ export default function DriveShell({
               aria-pressed={view === 'list'}
               aria-label="List view"
               className="flex items-center gap-1 border-none px-3 py-1.5"
-              style={{ backgroundColor: view === 'list' ? '#c2e7ff' : '#fff' }}
+              style={{ backgroundColor: view === 'list' ? 'var(--gd-selection)' : 'var(--gd-surface)' }}
             >
-              {view === 'list' && <IconCheck size={13} color="#001d35" stroke={2.5} aria-hidden="true" />}
-              <IconList size={15} color={view === 'list' ? '#001d35' : '#444746'} stroke={2} aria-hidden="true" />
+              {view === 'list' && <IconCheck size={13} color="var(--gd-on-selection)" stroke={2.5} aria-hidden="true" />}
+              <IconList size={15} color={view === 'list' ? 'var(--gd-on-selection)' : 'var(--gd-text-2)'} stroke={2} aria-hidden="true" />
             </button>
             <button
               type="button"
@@ -183,21 +203,23 @@ export default function DriveShell({
               aria-label="Grid view"
               className="flex items-center gap-1 border-l px-3 py-1.5"
               style={{
-                backgroundColor: view === 'grid' ? '#c2e7ff' : '#fff',
-                borderColor: '#c4c7c5',
+                backgroundColor: view === 'grid' ? 'var(--gd-selection)' : 'var(--gd-surface)',
+                borderColor: 'var(--gd-chip-border)',
                 borderLeftWidth: '0.5px',
               }}
             >
-              {view === 'grid' && <IconCheck size={13} color="#001d35" stroke={2.5} aria-hidden="true" />}
-              <IconLayoutGrid size={15} color={view === 'grid' ? '#001d35' : '#444746'} stroke={2} aria-hidden="true" />
+              {view === 'grid' && <IconCheck size={13} color="var(--gd-on-selection)" stroke={2.5} aria-hidden="true" />}
+              <IconLayoutGrid size={15} color={view === 'grid' ? 'var(--gd-on-selection)' : 'var(--gd-text-2)'} stroke={2} aria-hidden="true" />
             </button>
           </span>
-          <IconInfoCircle size={17} color="#444746" stroke={1.75} aria-hidden="true" className="ml-2.5" />
+          <button type="button" onClick={() => openPanel('details')} aria-label="View details" className="ml-2.5 min-h-0 min-w-0">
+            <IconInfoCircle size={17} color="var(--gd-text-2)" stroke={1.75} aria-hidden="true" />
+          </button>
         </div>
 
-        {tagline ? (
-          <p className="mb-2.5 mt-1 text-xs" style={{ color: '#444746' }}>
-            {tagline}
+        {shownTagline ? (
+          <p className="mb-2.5 mt-1 text-xs" style={{ color: 'var(--gd-text-2)' }}>
+            {shownTagline}
           </p>
         ) : (
           <div className="mt-1.5" />
@@ -207,8 +229,8 @@ export default function DriveShell({
           {['Type', 'People', 'Modified', 'Source'].map((chip) => (
             <span
               key={chip}
-              className="inline-flex items-center gap-1.5 rounded-lg border bg-white px-3 py-1 text-[13px]"
-              style={{ borderColor: '#c4c7c5', borderWidth: '0.5px', color: '#444746' }}
+              className="inline-flex items-center gap-1.5 rounded-lg border bg-[var(--gd-surface)] px-3 py-1 text-[13px]"
+              style={{ borderColor: 'var(--gd-chip-border)', borderWidth: '0.5px', color: 'var(--gd-text-2)' }}
             >
               {chip}
               <IconChevronDown size={13} stroke={2} aria-hidden="true" />
@@ -219,28 +241,28 @@ export default function DriveShell({
         {view === 'list' ? (
           <table className="w-full table-fixed border-collapse text-[13px]">
             <thead>
-              <tr className="text-left" style={{ color: '#444746' }}>
+              <tr className="text-left" style={{ color: 'var(--gd-text-2)' }}>
                 <th
                   className="w-[60%] border-b py-2 pl-2 pr-2 font-medium sm:w-[50%]"
-                  style={{ borderColor: '#e0e3e1', borderBottomWidth: '0.5px' }}
+                  style={{ borderColor: 'var(--gd-border-2)', borderBottomWidth: '0.5px' }}
                 >
                   Name
                 </th>
                 <th
                   className="hidden w-[11%] border-b px-1.5 py-2 font-medium sm:table-cell"
-                  style={{ borderColor: '#e0e3e1', borderBottomWidth: '0.5px' }}
+                  style={{ borderColor: 'var(--gd-border-2)', borderBottomWidth: '0.5px' }}
                 >
                   Owner
                 </th>
                 <th
                   className="w-[40%] border-b px-1.5 py-2 font-medium sm:w-[26%]"
-                  style={{ borderColor: '#e0e3e1', borderBottomWidth: '0.5px' }}
+                  style={{ borderColor: 'var(--gd-border-2)', borderBottomWidth: '0.5px' }}
                 >
                   Last modified
                 </th>
                 <th
                   className="hidden w-[13%] border-b px-1.5 py-2 font-medium sm:table-cell"
-                  style={{ borderColor: '#e0e3e1', borderBottomWidth: '0.5px' }}
+                  style={{ borderColor: 'var(--gd-border-2)', borderBottomWidth: '0.5px' }}
                 >
                   Size
                 </th>
@@ -254,10 +276,10 @@ export default function DriveShell({
                     key={item.name}
                     id={item.anchorId}
                     onClick={() => activate(item)}
-                    className="cursor-pointer scroll-mt-24 transition-colors"
-                    style={{ backgroundColor: isSelected ? '#c2e7ff66' : undefined }}
+                    className="gd-row cursor-pointer scroll-mt-24 transition-colors"
+                    style={{ backgroundColor: isSelected ? 'var(--gd-selection-soft)' : undefined }}
                     onMouseEnter={(e) => {
-                      if (!isSelected) e.currentTarget.style.backgroundColor = '#f8fafd';
+                      if (!isSelected) e.currentTarget.style.backgroundColor = 'var(--gd-bg)';
                     }}
                     onMouseLeave={(e) => {
                       if (!isSelected) e.currentTarget.style.backgroundColor = '';
@@ -265,7 +287,7 @@ export default function DriveShell({
                   >
                     <td
                       className="border-b py-2 pl-2 pr-2"
-                      style={{ borderColor: '#f1f3f4', borderBottomWidth: '0.5px' }}
+                      style={{ borderColor: 'var(--gd-row-line)', borderBottomWidth: '0.5px' }}
                     >
                       <span className="flex items-center gap-2.5 overflow-hidden">
                         <ItemIcon item={item} size={17} />
@@ -273,25 +295,25 @@ export default function DriveShell({
                           item={item}
                           className="truncate font-medium hover:underline"
                         >
-                          <span style={{ color: '#1f1f1f' }}>{item.name}</span>
+                          <span style={{ color: 'var(--gd-text)' }}>{item.name}</span>
                         </ItemLink>
                       </span>
                     </td>
                     <td
                       className="hidden border-b px-1.5 py-1.5 sm:table-cell"
-                      style={{ borderColor: '#f1f3f4', borderBottomWidth: '0.5px' }}
+                      style={{ borderColor: 'var(--gd-row-line)', borderBottomWidth: '0.5px' }}
                     >
                       <OwnerBadge />
                     </td>
                     <td
                       className="truncate border-b px-1.5 py-2"
-                      style={{ borderColor: '#f1f3f4', borderBottomWidth: '0.5px', color: '#444746' }}
+                      style={{ borderColor: 'var(--gd-row-line)', borderBottomWidth: '0.5px', color: 'var(--gd-text-2)' }}
                     >
                       {item.modified}
                     </td>
                     <td
                       className="hidden border-b px-1.5 py-2 sm:table-cell"
-                      style={{ borderColor: '#f1f3f4', borderBottomWidth: '0.5px', color: '#444746' }}
+                      style={{ borderColor: 'var(--gd-row-line)', borderBottomWidth: '0.5px', color: 'var(--gd-text-2)' }}
                     >
                       {item.size}
                     </td>
@@ -307,19 +329,19 @@ export default function DriveShell({
                 <button
                   type="button"
                   onClick={() => activate(item)}
-                  className="w-full cursor-pointer rounded-xl border bg-white p-3 text-left transition-colors hover:bg-[#f8fafd]"
-                  style={{ borderColor: '#dadce0', borderWidth: '0.5px' }}
+                  className="w-full cursor-pointer rounded-xl border bg-[var(--gd-surface)] p-3 text-left transition-colors hover:bg-[var(--gd-bg)]"
+                  style={{ borderColor: 'var(--gd-border)', borderWidth: '0.5px' }}
                 >
                   <span
                     className="mb-2 flex h-14 items-center justify-center rounded-lg"
-                    style={{ backgroundColor: '#f8fafd' }}
+                    style={{ backgroundColor: 'var(--gd-bg)' }}
                   >
                     <ItemIcon item={item} size={28} />
                   </span>
-                  <span className="block truncate text-xs font-medium" style={{ color: '#1f1f1f' }}>
+                  <span className="block truncate text-xs font-medium" style={{ color: 'var(--gd-text)' }}>
                     {item.name}
                   </span>
-                  <span className="mt-0.5 block text-[11px]" style={{ color: '#444746' }}>
+                  <span className="mt-0.5 block text-[11px]" style={{ color: 'var(--gd-text-2)' }}>
                     {item.modified}
                   </span>
                 </button>
@@ -331,22 +353,22 @@ export default function DriveShell({
         {selected && (
           <div
             className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 border-t pt-2.5 text-[13px]"
-            style={{ borderColor: '#e0e3e1', borderTopWidth: '0.5px', color: '#1f1f1f' }}
+            style={{ borderColor: 'var(--gd-border-2)', borderTopWidth: '0.5px', color: 'var(--gd-text)' }}
           >
             <span className="flex items-center gap-1.5 font-medium">
               <ItemIcon item={selected} size={15} />
               {selected.name}
             </span>
-            <span style={{ color: '#444746' }}>— {selected.info}</span>
+            <span style={{ color: 'var(--gd-text-2)' }}>— {selected.info}</span>
             <ItemLink
               item={selected}
               className="font-medium hover:underline"
             >
-              <span style={{ color: '#0b57d0' }}>Open →</span>
+              <span style={{ color: 'var(--gd-link)' }}>Open →</span>
             </ItemLink>
             {selected.writeupHref && (
               <Link href={selected.writeupHref} className="font-medium hover:underline">
-                <span style={{ color: '#0b57d0' }}>Writeup →</span>
+                <span style={{ color: 'var(--gd-link)' }}>Writeup →</span>
               </Link>
             )}
           </div>

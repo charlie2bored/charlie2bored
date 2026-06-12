@@ -30,17 +30,17 @@ export default function NycSubwayEventsCaseStudyPage() {
       <header className="mb-8">
         <p
           className="mb-2 text-xs font-medium uppercase tracking-[0.18em]"
-          style={{ color: '#444746' }}
+          style={{ color: 'var(--gd-text-2)' }}
         >
           Case study · 2026
         </p>
         <h1
           className="mb-3 text-2xl font-medium sm:text-3xl"
-          style={{ color: '#1f1f1f' }}
+          style={{ color: 'var(--gd-text)' }}
         >
           NYC Subway Events from Ridership Data
         </h1>
-        <p className="text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+        <p className="text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
           A detector that recovers NYC’s 2024 event calendar (Knicks, Rangers, Mets and
           Yankees games, MSG and Barclays concerts, the US Open, parades, NYE) directly from
           MTA hourly subway ridership, with no event calendar. 96.5% recall against 513 known
@@ -51,7 +51,7 @@ export default function NycSubwayEventsCaseStudyPage() {
       <div className="mb-10">
         <div
           className="overflow-hidden rounded-xl border"
-          style={{ borderColor: '#dadce0', borderWidth: '0.5px' }}
+          style={{ borderColor: 'var(--gd-border)', borderWidth: '0.5px' }}
         >
           <div className="relative aspect-video w-full bg-neutral-100">
             <Image
@@ -79,17 +79,17 @@ export default function NycSubwayEventsCaseStudyPage() {
 
       <section
         className="mb-12 grid grid-cols-1 gap-x-10 gap-y-6 border-t border-b py-8 sm:grid-cols-2"
-        style={{ borderColor: '#dadce0' }}
+        style={{ borderColor: 'var(--gd-border)' }}
       >
         {facts.map((fact) => (
           <div key={fact.label}>
             <p
               className="mb-1 text-xs font-medium uppercase tracking-[0.18em]"
-              style={{ color: '#444746' }}
+              style={{ color: 'var(--gd-text-2)' }}
             >
               {fact.label}
             </p>
-            <p className="text-[15px] leading-relaxed" style={{ color: '#1f1f1f' }}>
+            <p className="text-[15px] leading-relaxed" style={{ color: 'var(--gd-text)' }}>
               {fact.value}
             </p>
           </div>
@@ -97,10 +97,10 @@ export default function NycSubwayEventsCaseStudyPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           Ingesting the data
         </h2>
-        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#1f1f1f' }}>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text)' }}>
           <p>
             The ingest stage downloads 2024 hourly ridership counts for five station complexes
             from the MTA’s Open Data. It downloads the ridership once and saves it locally as a
@@ -110,10 +110,10 @@ export default function NycSubwayEventsCaseStudyPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           Building the baseline
         </h2>
-        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#1f1f1f' }}>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text)' }}>
           <p>
             The baseline is a table of 168 cells, one per hour of the week (24 hours × 7 days),
             holding the median ridership for each slot. Monday 1pm is a cell; Friday 10pm is a
@@ -131,10 +131,10 @@ export default function NycSubwayEventsCaseStudyPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           Detecting anomalies
         </h2>
-        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#1f1f1f' }}>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text)' }}>
           <p>
             The program flags an unusual hour two ways. The ratio flag triggers when ridership
             is at least 1.5× the baseline. The z-score flag measures how many standard
@@ -146,10 +146,10 @@ export default function NycSubwayEventsCaseStudyPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           Validating against known events
         </h2>
-        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#1f1f1f' }}>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text)' }}>
           <p>
             The detector works only from ridership and never sees a calendar. A separate list
             of 513 known 2024 events is the answer key, used after detection to check whether
@@ -166,10 +166,10 @@ export default function NycSubwayEventsCaseStudyPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           Fingerprinting and clustering events
         </h2>
-        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#1f1f1f' }}>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text)' }}>
           <p>
             Each event is reduced to five features. Before clustering, the features are
             z-scored, putting all five on the same scale so a large-number feature doesn’t
@@ -194,10 +194,10 @@ export default function NycSubwayEventsCaseStudyPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           Testing the findings
         </h2>
-        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#1f1f1f' }}>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text)' }}>
           <p>
             Differences between event types were checked with p-values. A small p-value means
             a measured difference is unlikely to be luck; a large one means luck can’t be
@@ -209,10 +209,10 @@ export default function NycSubwayEventsCaseStudyPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+        <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
           What the refit actually did
         </h2>
-        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: '#1f1f1f' }}>
+        <div className="space-y-4 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text)' }}>
           <p>
             The event-aware refit moved baseline cells in both directions. At MSG, early-evening
             hours rose and late-evening hours fell. The late hours fell because v1 had treated
@@ -226,12 +226,12 @@ export default function NycSubwayEventsCaseStudyPage() {
 
       <footer
         className="flex flex-col gap-6 border-t pt-8 sm:flex-row sm:items-center sm:justify-between"
-        style={{ borderColor: '#dadce0' }}
+        style={{ borderColor: 'var(--gd-border)' }}
       >
         <Link
           href="/projects"
           className="text-[15px] font-medium hover:underline"
-          style={{ color: '#0b57d0' }}
+          style={{ color: 'var(--gd-link)' }}
         >
           ← All projects
         </Link>

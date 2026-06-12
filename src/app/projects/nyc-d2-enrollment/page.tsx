@@ -17,19 +17,19 @@ export const metadata: Metadata = {
 export default function NycD2EnrollmentPage() {
   return (
     <DriveDoc backHref="/projects" backLabel="Projects" fileName={project.title}>
-      <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em]" style={{ color: '#444746' }}>
+      <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em]" style={{ color: 'var(--gd-text-2)' }}>
         Data project · {project.role}
       </p>
-      <h1 className="mb-3 text-2xl font-medium sm:text-3xl" style={{ color: '#1f1f1f' }}>
+      <h1 className="mb-3 text-2xl font-medium sm:text-3xl" style={{ color: 'var(--gd-text)' }}>
         {project.title}
       </h1>
-      <p className="mb-6 text-[15px] font-medium leading-relaxed" style={{ color: '#1f1f1f' }}>
+      <p className="mb-6 text-[15px] font-medium leading-relaxed" style={{ color: 'var(--gd-text)' }}>
         {project.hoverMetric}.
       </p>
 
       <div
         className="mb-6 overflow-hidden rounded-xl border"
-        style={{ borderColor: '#dadce0', borderWidth: '0.5px' }}
+        style={{ borderColor: 'var(--gd-border)', borderWidth: '0.5px' }}
       >
         <div className="relative aspect-video w-full bg-neutral-100">
           <Image
@@ -43,17 +43,17 @@ export default function NycD2EnrollmentPage() {
         </div>
       </div>
 
-      <p className="mb-8 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+      <p className="mb-8 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
         {project.description}
       </p>
 
-      <h2 className="mb-3 text-xl font-medium" style={{ color: '#1f1f1f' }}>
+      <h2 className="mb-3 text-xl font-medium" style={{ color: 'var(--gd-text)' }}>
         Approach
       </h2>
-      <p className="mb-4 text-[15px] font-medium leading-relaxed" style={{ color: '#1f1f1f' }}>
+      <p className="mb-4 text-[15px] font-medium leading-relaxed" style={{ color: 'var(--gd-text)' }}>
         {project.approach.problem}
       </p>
-      <ul className="mb-8 space-y-3 text-[15px] leading-relaxed" style={{ color: '#444746' }}>
+      <ul className="mb-8 space-y-3 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
         {project.approach.decisions.map((decision) => (
           <li key={decision.slice(0, 40)} className="flex gap-3">
             <span aria-hidden="true">→</span>
@@ -67,7 +67,7 @@ export default function NycD2EnrollmentPage() {
           <span
             key={tech}
             className="rounded-lg border px-3 py-1 text-[13px]"
-            style={{ borderColor: '#c4c7c5', borderWidth: '0.5px', color: '#444746' }}
+            style={{ borderColor: 'var(--gd-chip-border)', borderWidth: '0.5px', color: 'var(--gd-text-2)' }}
           >
             {tech}
           </span>

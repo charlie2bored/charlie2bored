@@ -39,37 +39,37 @@ export default function AboutPage() {
 
   return (
     <DriveDoc backHref="/" backLabel="Charlie Vargas" fileName="README.md">
-      <h1 className="mb-4 text-2xl font-medium sm:text-3xl" style={{ color: '#1f1f1f' }}>
+      <h1 className="mb-4 text-2xl font-medium sm:text-3xl" style={{ color: 'var(--gd-text)' }}>
         Charlie Vargas
       </h1>
-      <p className={`${body} mb-3`} style={{ color: '#1f1f1f' }}>
+      <p className={`${body} mb-3`} style={{ color: 'var(--gd-text)' }}>
         I&apos;m a BI and operations analyst. I work mostly in Power BI, SQL, and Python. My
         multi-year BI internship taught me what a working BI operation actually does, automating
         KPI dashboards across 20+ schools, building enrollment forecasts, and turning messy data
         into something leadership can act on.
       </p>
-      <p className={body} style={{ color: '#444746' }}>
+      <p className={body} style={{ color: 'var(--gd-text-2)' }}>
         NYC, NJ &amp; CT · Hybrid local or remote ·{' '}
         <a
           href={dataResumeUrl}
           className="hover:underline"
-          style={{ color: '#0b57d0' }}
+          style={{ color: 'var(--gd-link)' }}
           {...(dataResumeUrl.startsWith('/') ? { download: true } : { target: '_blank', rel: 'noopener noreferrer' })}
         >
           Resume.pdf
         </a>
       </p>
 
-      <h2 className={h2} style={{ color: '#1f1f1f' }}>
+      <h2 className={h2} style={{ color: 'var(--gd-text)' }}>
         Skills
       </h2>
-      <p className={`${body} mb-4`} style={{ color: '#444746' }}>
+      <p className={`${body} mb-4`} style={{ color: 'var(--gd-text-2)' }}>
         Grouped by what I actually use each one for.
       </p>
       <ul className="space-y-2">
         {skillGroups.map((group) => (
-          <li key={group.title} className={body} style={{ color: '#444746' }}>
-            <span className="font-medium" style={{ color: '#1f1f1f' }}>
+          <li key={group.title} className={body} style={{ color: 'var(--gd-text-2)' }}>
+            <span className="font-medium" style={{ color: 'var(--gd-text)' }}>
               {group.title}:
             </span>{' '}
             {group.items.join(', ')}
@@ -77,17 +77,17 @@ export default function AboutPage() {
         ))}
       </ul>
 
-      <h2 className={h2} style={{ color: '#1f1f1f' }}>
+      <h2 className={h2} style={{ color: 'var(--gd-text)' }}>
         References
       </h2>
-      <p className={body} style={{ color: '#444746' }}>
+      <p className={body} style={{ color: 'var(--gd-text-2)' }}>
         The written recommendations are on{' '}
         <a
           href="https://www.linkedin.com/in/charlie2bored/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
-          style={{ color: '#0b57d0' }}
+          style={{ color: 'var(--gd-link)' }}
         >
           LinkedIn
         </a>
@@ -95,28 +95,28 @@ export default function AboutPage() {
         conversation.
       </p>
 
-      <h2 id="contact" className={h2} style={{ color: '#1f1f1f', scrollMarginTop: '80px' }}>
+      <h2 id="contact" className={h2} style={{ color: 'var(--gd-text)', scrollMarginTop: '80px' }}>
         Contact
       </h2>
-      <p className={`${body} mb-2`} style={{ color: '#444746' }}>
+      <p className={`${body} mb-2`} style={{ color: 'var(--gd-text-2)' }}>
         For hiring, collaborations, or anything else, email me. I usually get back within a few
         days.
       </p>
-      <ul className={`${body} space-y-1`} style={{ color: '#444746' }}>
+      <ul className={`${body} space-y-1`} style={{ color: 'var(--gd-text-2)' }}>
         <li>
-          <a href="mailto:iamcharlesvargas@gmail.com" className="hover:underline" style={{ color: '#0b57d0' }}>
+          <a href="mailto:iamcharlesvargas@gmail.com" className="hover:underline" style={{ color: 'var(--gd-link)' }}>
             iamcharlesvargas@gmail.com
           </a>
         </li>
         <li>New York City, NY</li>
         <li className="flex gap-4">
-          <a href="https://github.com/charlie2bored" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: '#0b57d0' }}>
+          <a href="https://github.com/charlie2bored" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: 'var(--gd-link)' }}>
             GitHub
           </a>
-          <a href="https://www.linkedin.com/in/charlie2bored/" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: '#0b57d0' }}>
+          <a href="https://www.linkedin.com/in/charlie2bored/" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: 'var(--gd-link)' }}>
             LinkedIn
           </a>
-          <a href="https://x.com/charlie2bored" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: '#0b57d0' }}>
+          <a href="https://x.com/charlie2bored" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: 'var(--gd-link)' }}>
             Twitter
           </a>
         </li>

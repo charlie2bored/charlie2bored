@@ -13,7 +13,8 @@ export type DriveIcon =
   | 'masks'
   | 'school'
   | 'code'
-  | 'palette';
+  | 'palette'
+  | 'video';
 
 export type DriveItem = {
   kind: 'folder' | 'file';
@@ -28,6 +29,7 @@ export type DriveItem = {
   download?: boolean;
   anchorId?: string;
   writeupHref?: string;
+  egg?: 'stage';
 };
 
 const GRAY = '#444746';
@@ -183,6 +185,17 @@ export function experienceItems(): DriveItem[] {
       size: `${performance.length} items`,
       info: 'Team Toro (NY Red Bulls), “WOO!” Crew (NJ Devils), and four years of conservatory training at the Academy for Performing Arts.',
       href: '/experience/stage-and-performance',
+    },
+    {
+      kind: 'file',
+      icon: 'video',
+      color: PDF_RED,
+      name: 'IMG_4821.MOV',
+      modified: '—',
+      size: '—',
+      info: 'Looks like a stray phone upload. Open it.',
+      href: '/experience',
+      egg: 'stage',
     },
   ];
 }

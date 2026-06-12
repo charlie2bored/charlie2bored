@@ -7,6 +7,7 @@ import {
   IconFileTypePdf,
   IconFolder,
   IconMasksTheater,
+  IconMovie,
   IconPalette,
   IconSchool,
 } from '@tabler/icons-react';
@@ -23,4 +24,5 @@ export const ICONS: Record<DriveIcon, typeof IconFolder> = {
   school: IconSchool,
   code: IconCode,
   palette: IconPalette,
+  video: IconMovie,
 };

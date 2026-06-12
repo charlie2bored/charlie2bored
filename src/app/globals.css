@@ -1,10 +1,61 @@
 @import "tailwindcss";
 
+:root {
+  --gd-bg: #f8fafd;
+  --gd-surface: #ffffff;
+  --gd-text: #1f1f1f;
+  --gd-text-2: #444746;
+  --gd-text-3: #5f6368;
+  --gd-border: #dadce0;
+  --gd-border-2: #e0e3e1;
+  --gd-row-line: #f1f3f4;
+  --gd-pill: #e9eef6;
+  --gd-selection: #c2e7ff;
+  --gd-selection-soft: #c2e7ff66;
+  --gd-on-selection: #001d35;
+  --gd-chip-border: #c4c7c5;
+  --gd-link: #0b57d0;
+}
+
+:root[data-theme="dark"] {
+  --gd-bg: #131314;
+  --gd-surface: #1e1f20;
+  --gd-text: #e3e3e3;
+  --gd-text-2: #9aa0a6;
+  --gd-text-3: #9aa0a6;
+  --gd-border: #444746;
+  --gd-border-2: #3c4043;
+  --gd-row-line: #2d2e30;
+  --gd-pill: #282a2c;
+  --gd-selection: #004a77;
+  --gd-selection-soft: #004a7766;
+  --gd-on-selection: #c2e7ff;
+  --gd-chip-border: #5f6368;
+  --gd-link: #a8c7fa;
+}
+
+:root[data-density="compact"] .gd-row td {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+:root[data-density="chaotic"] .gd-row:nth-child(odd) {
+  transform: rotate(-0.7deg);
+}
+
+:root[data-density="chaotic"] .gd-row:nth-child(even) {
+  transform: rotate(0.5deg) translateX(3px);
+}
+
+:root[data-density="chaotic"] .gd-row:nth-child(3n) {
+  font-style: italic;
+}
+
 @layer base {
   body {
     font-family: var(--font-dm), Roboto, Arial, sans-serif;
-    background-color: #f8fafd;
-    color: #1f1f1f;
+    background-color: var(--gd-bg);
+    color: var(--gd-text);
   }
 
   button, input, select, textarea {

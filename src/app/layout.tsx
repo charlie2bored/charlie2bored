@@ -3,6 +3,7 @@ import { DM_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
+import EggsProvider from '@/components/drive/eggs/EggsProvider';
 import { getSiteUrl } from '@/lib/site';
 
 const dmSans = DM_Sans({
@@ -72,10 +73,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=JSON.parse(localStorage.getItem('gd-settings')||'{}');var r=document.documentElement;r.dataset.theme=s.theme==='dark'?'dark':'light';r.dataset.density=s.density||'comfortable';}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className={`${dmSans.variable} font-sans antialiased`}>
         <PersonJsonLd />
-        {children}
+        <EggsProvider>{children}</EggsProvider>
         <Analytics />
       </body>
     </html>
