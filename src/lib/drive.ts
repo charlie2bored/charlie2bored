@@ -185,6 +185,33 @@ export function experienceItems(): DriveItem[] {
   ];
 }
 
+export type SearchEntry = {
+  name: string;
+  href: string;
+  external?: boolean;
+  icon: DriveIcon;
+  color: string;
+  location: string;
+};
+
+export function searchIndex(): SearchEntry[] {
+  const wrap = (items: DriveItem[], location: string): SearchEntry[] =>
+    items.map(({ name, href, external, icon, color }) => ({ name, href, external, icon, color, location }));
+  return [
+    ...wrap(rootItems(), 'Charlie Vargas'),
+    ...wrap(projectItems(), 'Projects'),
+    ...wrap(writingItems(), 'Writing'),
+    ...wrap(experienceItems(), 'Experience'),
+    ...wrap(educationItems(), 'Education'),
+  ];
+}
+
+export const recommendedSearches = [
+  'Apple Montessori Schools',
+  'NYC Distance-Based Fare Analysis',
+  'NYC District 2 Elementary Enrollment Forecasting',
+];
+
 export function educationItems(): DriveItem[] {
   return education.map((e) => ({
     kind: 'file' as const,

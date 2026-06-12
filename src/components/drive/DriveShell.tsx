@@ -4,41 +4,19 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import {
-  IconAddressBook,
-  IconBriefcase,
-  IconChartBar,
   IconCheck,
   IconChevronDown,
   IconChevronRight,
-  IconCode,
-  IconFileText,
-  IconFileTypePdf,
-  IconFolder,
   IconGridDots,
   IconHelp,
   IconInfoCircle,
   IconLayoutGrid,
   IconList,
-  IconMasksTheater,
-  IconPalette,
-  IconSchool,
-  IconSearch,
   IconSettings,
 } from '@tabler/icons-react';
-import type { DriveIcon, DriveItem } from '@/lib/drive';
-
-const ICONS: Record<DriveIcon, typeof IconFolder> = {
-  folder: IconFolder,
-  chart: IconChartBar,
-  doc: IconFileText,
-  pdf: IconFileTypePdf,
-  contact: IconAddressBook,
-  briefcase: IconBriefcase,
-  masks: IconMasksTheater,
-  school: IconSchool,
-  code: IconCode,
-  palette: IconPalette,
-};
+import type { DriveItem } from '@/lib/drive';
+import { ICONS } from '@/components/drive/icons';
+import DriveSearch from '@/components/drive/DriveSearch';
 
 export type Crumb = { label: string; href?: string };
 
@@ -130,15 +108,7 @@ export default function DriveShell({
             Drive
           </span>
         </Link>
-        <div
-          className="hidden sm:flex max-w-[430px] flex-1 items-center gap-2.5 rounded-3xl px-4 py-2"
-          style={{ backgroundColor: '#e9eef6' }}
-        >
-          <IconSearch size={16} color="#444746" stroke={2} aria-hidden="true" />
-          <span className="text-[13px]" style={{ color: '#444746' }}>
-            Search in Charlie&rsquo;s drive
-          </span>
-        </div>
+        <DriveSearch />
         <div className="ml-auto flex items-center gap-3.5" style={{ color: '#444746' }}>
           <IconHelp size={19} stroke={1.75} aria-hidden="true" className="hidden sm:block" />
           <IconSettings size={19} stroke={1.75} aria-hidden="true" className="hidden sm:block" />
