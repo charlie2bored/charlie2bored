@@ -39,18 +39,6 @@
   padding-bottom: 3px;
 }
 
-:root[data-density="chaotic"] .gd-row:nth-child(odd) {
-  transform: rotate(-0.7deg);
-}
-
-:root[data-density="chaotic"] .gd-row:nth-child(even) {
-  transform: rotate(0.5deg) translateX(3px);
-}
-
-:root[data-density="chaotic"] .gd-row:nth-child(3n) {
-  font-style: italic;
-}
-
 @layer base {
   body {
     font-family: var(--font-dm), Roboto, Arial, sans-serif;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { IconMoodSmile, IconX } from '@tabler/icons-react';
+import { IconCheck, IconMoodSmile, IconX } from '@tabler/icons-react';
 import { useEggs, type Density } from '@/components/drive/eggs/EggsProvider';
 import { detailsFile, feedbackMailto, helpArticles, shortcuts, stageReveal } from '@/lib/eggs';
 
@@ -75,13 +75,18 @@ function Toggle({ on, onChange, label }: { on: boolean; onChange: (v: boolean) =
       aria-checked={on}
       aria-label={label}
       onClick={() => onChange(!on)}
-      className="relative h-6 w-11 shrink-0 rounded-full transition-colors"
-      style={{ backgroundColor: on ? 'var(--gd-link)' : 'var(--gd-chip-border)' }}
+      className="flex shrink-0 items-center justify-center"
     >
       <span
-        className="absolute top-0.5 h-5 w-5 rounded-full bg-[var(--gd-surface)] transition-all"
-        style={{ left: on ? '22px' : '2px' }}
-      />
+        className="flex h-6 w-6 items-center justify-center rounded-full border transition-colors"
+        style={{
+          borderColor: on ? 'var(--gd-link)' : 'var(--gd-chip-border)',
+          borderWidth: '1.5px',
+          backgroundColor: on ? 'var(--gd-link)' : 'transparent',
+        }}
+      >
+        {on && <IconCheck size={14} color="var(--gd-surface)" stroke={3} aria-hidden="true" />}
+      </span>
     </button>
   );
 }
@@ -97,7 +102,7 @@ function SettingsPanel() {
       <div className="py-2.5 text-[14px]">
         <p className="mb-2">Density</p>
         <div className="flex gap-2" role="radiogroup" aria-label="Density">
-          {(['comfortable', 'compact', 'chaotic'] as Density[]).map((d) => (
+          {(['comfortable', 'compact'] as Density[]).map((d) => (
             <button
               key={d}
               type="button"
@@ -116,11 +121,6 @@ function SettingsPanel() {
             </button>
           ))}
         </div>
-        {settings.density === 'chaotic' && (
-          <p className={`${label2} mt-2`} style={{ color: 'var(--gd-text-2)' }}>
-            You did this to yourself.
-          </p>
-        )}
       </div>
       <div className={row}>
         <span>

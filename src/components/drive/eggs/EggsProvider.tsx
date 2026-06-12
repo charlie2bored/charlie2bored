@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 
 const EggPanels = dynamic(() => import('@/components/drive/eggs/EggPanels'), { ssr: false });
 
-export type Density = 'comfortable' | 'compact' | 'chaotic';
+export type Density = 'comfortable' | 'compact';
 export type Panel = 'settings' | 'help' | 'details' | 'apps' | 'shortcuts' | 'stage' | 'bored' | null;
 
 type Settings = {
@@ -52,7 +52,11 @@ function loadSettings(): Settings {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return DEFAULTS;
-    return { ...DEFAULTS, ...JSON.parse(raw) };
+    const parsed = { ...DEFAULTS, ...JSON.parse(raw) };
+    if (parsed.density !== 'comfortable' && parsed.density !== 'compact') {
+      parsed.density = 'comfortable';
+    }
+    return parsed;
   } catch {
     return DEFAULTS;
   }

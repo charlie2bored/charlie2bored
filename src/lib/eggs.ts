@@ -24,9 +24,8 @@ export const searchEggs: SearchEgg[] = [
     action: {
       kind: 'link-card',
       label: 'Fortnite stats',
-      // TODO(charlie): drop the stats link here and the card becomes a real link.
-      href: null,
-      note: 'Stats link pending. Victory royales unverified.',
+      href: 'https://fortnitetracker.com/profile/all/charlie2bored',
+      note: 'charlie2bored on Fortnite Tracker.',
     },
   },
   {
@@ -66,23 +65,23 @@ export const detailsFile = {
   ],
 };
 
-// Help center (question-mark button). Dry support-doc voice; facts from the repo.
+// Help center (question-mark button). Charlie's own copy.
 export const helpArticles = [
   {
     q: 'How do I hire Charlie?',
-    a: 'Email iamcharlesvargas@gmail.com with the role attached. A current resume is available as Resume.pdf in the root folder. Tickets that include a job description are processed in the order received; tickets that include an offer letter skip the queue.',
+    a: 'Email iamcharlesvargas@gmail.com with the role attached. Resume is available in resume.pdf. Emails that include a job description will be read as received, those with offer letters skip the queue!',
   },
   {
     q: 'Is he available?',
-    a: 'The owner’s README lists NYC, NJ & CT, hybrid local or remote, and invites hiring inquiries. Support cannot place a hold on the candidate. We recommend acting promptly.',
+    a: 'Yes! I’m available for remote-based in NJ, NYC, and CT, with on-site and hybrid availability in NYC!',
   },
   {
-    q: 'What does “2bored” mean?',
-    a: 'Our documentation does not define “2bored.” Support’s working theory: the owner gets bored, and then things like this website happen. Status: unresolved, by design.',
+    q: 'What does 2bored mean?',
+    a: 'I made a minecraft account called “charlie2poor” and then lost the account due to some malware when I was 13. Since then, I’ve used the “2bored” ending because I was bored of making new emails.',
   },
   {
     q: 'Why does this look like Google Drive?',
-    a: 'A portfolio is a folder of work someone shared with you, so the interface says exactly that. The layout is a tribute. The files, metrics, and writeups are real.',
+    a: 'Many of us use Google Drive everyday! It’s a friendly design format that is easily accessible and serves the same purpose of getting to know me!',
   },
 ];
 
