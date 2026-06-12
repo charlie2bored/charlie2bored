@@ -2,7 +2,7 @@
 
 **[charlie2bored.com](https://www.charlie2bored.com)** — full portfolio with the writeups
 
-I’m a BI and operations analyst working mostly in Power BI, SQL, and Python. The last two years of my BI internship taught me what a working BI operation actually does: automating KPI dashboards across 20 schools, building enrollment forecasts, and turning messy data into something leadership can act on.
+I’m a BI and operations analyst working mostly in Power BI, SQL, and Python. My multi-year BI internship taught me what a working BI operation actually does: automating KPI dashboards across 20+ schools, building enrollment forecasts, and turning messy data into something leadership can act on.
 
 ## Pinned work
 

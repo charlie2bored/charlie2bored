@@ -98,7 +98,7 @@ export function rootItems(): DriveItem[] {
       name: 'README.md',
       modified: 'Jun 2026',
       size: '2 KB',
-      info: 'I’m a BI and operations analyst. I work mostly in Power BI, SQL, and Python. The last 2 years of my BI internship taught me what a working BI operation actually does.',
+      info: 'I’m a BI and operations analyst. I work mostly in Power BI, SQL, and Python. My multi-year BI internship taught me what a working BI operation actually does.',
       href: '/about',
     },
     {

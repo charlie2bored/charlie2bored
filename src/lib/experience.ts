@@ -84,6 +84,9 @@ export const performance: Role[] = [
   },
 ];
 
+// TODO(charlie): the /goal "Correct values" for education arrived blank. The values
+// below are the ones you confirmed on 2026-06-11 (BSBA correction + resume alignment).
+// Re-confirm school, exact degree title, dates, and location, then delete this comment.
 export const education = [
   {
     slug: 'northeastern-university',

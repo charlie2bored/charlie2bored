@@ -43,9 +43,9 @@ export default function AboutPage() {
         Charlie Vargas
       </h1>
       <p className={`${body} mb-3`} style={{ color: '#1f1f1f' }}>
-        I&apos;m a BI and operations analyst. I work mostly in Power BI, SQL, and Python. The last
-        2 years of my BI internship taught me what a working BI operation actually does, automating
-        KPI dashboards across 20 schools, building enrollment forecasts, and turning messy data
+        I&apos;m a BI and operations analyst. I work mostly in Power BI, SQL, and Python. My
+        multi-year BI internship taught me what a working BI operation actually does, automating
+        KPI dashboards across 20+ schools, building enrollment forecasts, and turning messy data
         into something leadership can act on.
       </p>
       <p className={body} style={{ color: '#444746' }}>
