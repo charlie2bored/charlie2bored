@@ -77,7 +77,7 @@ export function rootItems(): DriveItem[] {
       color: GRAY,
       name: 'Experience',
       modified: 'Jun 2026',
-      size: '3 items',
+      size: `${experiences.length + 1} items`,
       info: 'BI internship, product design, and stage work.',
       href: '/experience',
     },
@@ -154,7 +154,8 @@ export function writingItems(): DriveItem[] {
     modified: e.date,
     size: e.readingTime,
     info: e.description,
-    href: e.href,
+    href: e.url,
+    external: true,
   }));
 }
 

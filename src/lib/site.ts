@@ -19,5 +19,4 @@ export function getDataResumeUrl(): string {
   return (typeof raw === 'string' ? raw.trim() : '') || DEFAULT_DATA_RESUME;
 }
 
-export const SUBSTACK_URL =
-  'https://open.substack.com/pub/charlie2bored/p/the-paper-schedule?r=6ajw00&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true';
+export const SUBSTACK_URL = 'https://charlie2bored.substack.com';

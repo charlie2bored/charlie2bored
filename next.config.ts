@@ -9,6 +9,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: '/contact', destination: '/about', permanent: true },
+      {
+        source: '/writing/electoral-college',
+        destination: 'https://charlie2bored.substack.com/p/i-tried-to-save-the-electoral-college',
+        permanent: false,
+      },
+      {
+        source: '/writing/paper-schedule',
+        destination: 'https://charlie2bored.substack.com/p/the-paper-schedule',
+        permanent: false,
+      },
     ];
   },
 };

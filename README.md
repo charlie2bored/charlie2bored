@@ -18,7 +18,7 @@ Can you tell when a major NYC event is happening (Knicks games, marathons, parad
 
 [Code](https://github.com/charlie2bored/nyc-subway-events-from-ridership-data) · [Writeup](https://charlie2bored.com/projects/nyc-subway-events)
 
-### NYC Distance-Based Fare
+### NYC Distance-Based Fare Analysis
 
 Treated MTA ridership as a policy question — would distance-based fares actually change who pays and who saves? Modeled the math on open OD pairings and built a small site so a non-technical reader could test the tradeoff for their own commute. About 15% of trips pay less; the rest pay more.
 

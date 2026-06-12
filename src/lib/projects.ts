@@ -80,7 +80,7 @@ export const projects: Project[] = [
     slug: 'nyc-fare',
     category: 'data',
     href: '/projects/nyc-fare',
-    title: 'NYC Distance-Based Fare',
+    title: 'NYC Distance-Based Fare Analysis',
     role: 'Solo: research, modeling, and frontend',
     description:
       'I treated MTA ridership data as a policy question. Would a distance-based fare actually change who pays and who saves? I modeled the math in Python off the open OD pairings, fare structures, and station metadata. Then I built a small site so a non-technical reader could test the tradeoff for their own commute.',

@@ -34,6 +34,18 @@ export const experiences: Role[] = [
     ],
     skills: ['Web & UX', 'Brand & Creative', 'Information design', 'Data visualization', 'Investor materials'],
   },
+  {
+    slug: 'rossitech',
+    year: 'August 2025 to October 2025',
+    title: 'Product Designer',
+    company: 'Rossitech LTD',
+    description: [
+      'Designed and shipped first websites for clients who didn’t have one yet, in Figma and Framer.',
+      'Worked off shared token and component systems, not one-off mockups, so the same rhythm carried across mobile and desktop.',
+      'Iterated with clients across rounds before handoff, tightening the click path through each page.',
+    ],
+    skills: ['Figma', 'Framer', 'Sketch', 'Adobe Illustrator'],
+  },
 ];
 
 export const performance: Role[] = [

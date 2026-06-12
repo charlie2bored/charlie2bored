@@ -8,11 +8,11 @@ import { projects } from '@/lib/projects';
 const project = projects.find((p) => p.slug === 'nyc-fare')!;
 
 export const metadata: Metadata = {
-  title: 'NYC Distance-Based Fare',
+  title: 'NYC Distance-Based Fare Analysis',
   description: project.hoverMetric,
   alternates: { canonical: '/projects/nyc-fare' },
   openGraph: {
-    title: 'NYC Distance-Based Fare | Charlie Vargas',
+    title: 'NYC Distance-Based Fare Analysis | Charlie Vargas',
   },
 };
 
