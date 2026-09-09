@@ -27,21 +27,23 @@ export default function NycD2EnrollmentPage() {
         {project.hoverMetric}.
       </p>
 
-      <div
-        className="mb-6 overflow-hidden rounded-xl border"
-        style={{ borderColor: 'var(--gd-border)', borderWidth: '0.5px' }}
-      >
-        <div className="relative aspect-video w-full bg-neutral-100">
-          <Image
-            src={project.image}
-            alt={`Preview image for ${project.title}`}
-            fill
-            priority
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 768px"
-          />
+      {project.image && (
+        <div
+          className="mb-6 overflow-hidden rounded-xl border"
+          style={{ borderColor: 'var(--gd-border)', borderWidth: '0.5px' }}
+        >
+          <div className="relative aspect-video w-full bg-neutral-100">
+            <Image
+              src={project.image}
+              alt={`Preview image for ${project.title}`}
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       <p className="mb-8 text-[15px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
         {project.description}

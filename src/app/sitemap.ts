@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/writing',
     '/experience',
     '/experience/apple-montessori',
-    '/experience/kindling',
     '/experience/medara',
     '/experience/rossitech',
     '/experience/stage-and-performance',

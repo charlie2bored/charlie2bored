@@ -37,19 +37,6 @@ export const experiences: Role[] = [
     skills: ['Web & UX', 'Brand & Creative', 'Information design', 'Investor materials', 'HubSpot', 'Short-form video'],
   },
   {
-    slug: 'kindling',
-    year: 'May 2026 to Present',
-    title: 'Web Design & Development (Contract)',
-    company: 'Kindling Education Partners',
-    description: [
-      'Scoped and built the corporate landing page, arguing for a custom-coded site over Squarespace so the design would not be held to template constraints.',
-      'Set the project up under client-owned GitHub and Vercel accounts so Kindling owns its own architecture rather than inheriting a dependency on me.',
-      'Aimed the site at acquisition targets, investors, and talent rather than parents, with the existing schools carried as proof of track record and enrollment linking out to where it belongs.',
-      'Built a contact form that routes acquisition, investment, careers, and general enquiries, plus a careers landing page for postings to aggregate into.',
-    ],
-    skills: ['Next.js', 'Tailwind CSS', 'Vercel', 'Client scoping', 'Information architecture'],
-  },
-  {
     slug: 'rossitech',
     year: 'August 2025 to October 2025',
     title: 'Product Designer',

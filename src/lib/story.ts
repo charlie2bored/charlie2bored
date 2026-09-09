@@ -110,8 +110,9 @@ export const categories: Category[] = [
         title: 'Kindling Education Partners',
         context: 'Corporate site for acquisition targets, investors, and talent',
         plate: { figure: 'CLIENT-OWNED', caption: 'Built on their GitHub and Vercel, not mine' },
-        href: '/experience/kindling',
-        meta: 'May 2026 — present',
+        href: 'https://kindlingep.com',
+        external: true,
+        meta: 'May 2026',
         detail:
           'Argued for a custom-coded site over Squarespace, then set it up under client-owned GitHub and Vercel accounts so Kindling owns the architecture. Aimed at acquisition targets, investors, and talent rather than parents.',
       },

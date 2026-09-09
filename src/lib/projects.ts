@@ -9,7 +9,7 @@ export type Project = {
   role: string;
   description: string;
   approach: { problem: string; decisions: string[] };
-  image: string;
+  image?: string;
   hoverMetric: string;
   tech: string[];
   caseStudy?: string;
@@ -129,6 +129,29 @@ export const projects: Project[] = [
   },
   {
     number: '(05)',
+    slug: 'kindling',
+    category: 'design',
+    href: 'https://kindlingep.com',
+    title: 'Kindling Education Partners',
+    role: 'Solo: scoping, information architecture, design, and build',
+    description:
+      'A corporate site for a Primrose Schools franchisee. The audience is not parents, it is acquisition targets, investors, and talent, so the whole page is built to make the operator look like a credible buyer rather than to enroll anyone.',
+    approach: {
+      problem:
+        'The brief arrived as "we need a website". The real question was who it was for, because a franchisee site aimed at parents and one aimed at sellers and investors are different products.',
+      decisions: [
+        'Argued for a custom-coded site over Squarespace so the design would not be bent to fit a template, and took on the update burden myself as the tradeoff.',
+        'Set the project up under client-owned GitHub and Vercel accounts. They own the architecture, and nothing about it is tied to my personal accounts if they ever want to move on.',
+        'Aimed the page at acquisition targets, investors, and talent. The existing schools sit on it as proof of track record, each linking out to its own Primrose page so enrollment stays where it belongs.',
+        'Split the contact form into acquisition, investment, careers, and general enquiries, and added a careers landing page for postings to aggregate into.',
+      ],
+    },
+    hoverMetric: 'Built on the client’s own GitHub and Vercel, so they own the architecture',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Information architecture'],
+    links: { github: '', demo: 'https://kindlingep.com' },
+  },
+  {
+    number: '(06)',
     slug: 'speedreader',
     category: 'other',
     href: 'https://speed-reader-weld.vercel.app/',
