@@ -55,12 +55,12 @@ export const experienceColumns: ExperienceColumn[] = [
 ];
 
 /**
- * Ground shared with the collage above, so the two light sections read as one
- * surface. The columns take the site's own near-black instead of a grey tint,
- * so the board belongs to the same palette as the rail and the dark sections
- * rather than being a third, unrelated value.
+ * One light ground for the collage and the board, so the middle of the page is
+ * a single continuous surface. The columns are not tinted panels — they are
+ * the same ground, and the dividers are what create them. Tinting them first
+ * would mean the bars only draw lines on blocks that already exist.
  */
 export const boardBg = '#ece9e4';
-export const boardColumn = '#0a0a0c';
-export const boardColumnText = '#f4f4f2';
-export const boardColumnTextDim = 'rgba(244,244,242,0.72)';
+export const boardText = '#000000';
+export const boardTextDim = 'rgba(0,0,0,0.68)';
+export const boardRule = '#000000';
