@@ -45,19 +45,30 @@
   --ink-raised: #121216;
   --paper: #f4f4f2;
   --paper-dim: #a1a1aa;
-  --paper-faint: #52525b;
+  --paper-faint: #82828b; /* 5.26:1 on --ink; the old #52525b was 2.59:1 */
   --rule: #26262c;
 }
 
 @layer base {
   body {
-    font-family: var(--font-text), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
     background-color: var(--gd-bg);
     color: var(--gd-text);
   }
 
   .font-display {
     font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Editorial voice: narrative headlines only, never UI chrome. */
+  .font-serif-display {
+    font-family: var(--font-serif), ui-serif, Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  .font-mono-label {
+    font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
   }
 
   /*

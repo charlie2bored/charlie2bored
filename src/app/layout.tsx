@@ -1,23 +1,31 @@
 import type { Metadata, Viewport } from 'next';
-import { Archivo, Space_Grotesk } from 'next/font/google';
+import { Archivo, Instrument_Serif, JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
 import EggsProvider from '@/components/drive/eggs/EggsProvider';
 import { getSiteUrl } from '@/lib/site';
 
-/** Display face: tight, heavy, built for the large statements in the scroll story. */
+/** Narrative display face: the editorial voice of the scroll story. */
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
+});
+
+/** Everything structural: body copy and the heavy poster labels. */
 const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-display',
 });
 
-/** Text face: everything that is not a headline. */
-const spaceGrotesk = Space_Grotesk({
+/** Small uppercase labels and crop marks. */
+const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-text',
+  weight: ['400', '500'],
+  variable: '--font-mono',
 });
 
 const siteUrl = getSiteUrl();
@@ -89,7 +97,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${archivo.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+      <body className={`${archivo.variable} ${instrumentSerif.variable} ${jetbrains.variable} font-sans antialiased`}>
         <PersonJsonLd />
         <EggsProvider>{children}</EggsProvider>
         <Analytics />

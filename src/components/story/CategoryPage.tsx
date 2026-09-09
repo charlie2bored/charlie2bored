@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Category, Work } from '@/lib/story';
 import { categories } from '@/lib/story';
+import CropLabel from '@/components/story/CropLabel';
 
 function WorkFigure({ work, accent }: { work: Work; accent: string }) {
   return (
@@ -70,7 +71,7 @@ function WorkRow({ work, accent }: { work: Work; accent: string }) {
     >
       <div className="order-2 md:order-1">
         {work.meta && (
-          <p className="mb-2 text-[11px] uppercase tracking-[0.18em]" style={{ color: 'var(--paper-faint)' }}>
+          <p className="font-mono-label mb-3 text-[10px] uppercase tracking-[0.16em]" style={{ color: 'var(--paper-faint)' }}>
             {work.meta}
           </p>
         )}
@@ -89,21 +90,21 @@ function WorkRow({ work, accent }: { work: Work; accent: string }) {
               href={work.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.16em] hover:underline"
+              className="font-mono-label mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] hover:underline"
               style={{ color: accent }}
             >
               Open
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true">&rarr;</span>
               <span className="sr-only">(opens in a new tab)</span>
             </a>
           ) : (
             <Link
               href={work.href}
-              className="mt-6 inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.16em] hover:underline"
+              className="font-mono-label mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] hover:underline"
               style={{ color: accent }}
             >
               Open
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true">&rarr;</span>
             </Link>
           ))}
       </div>
@@ -123,19 +124,17 @@ export default function CategoryPage({ category }: { category: Category }) {
         <nav aria-label="Breadcrumb" className="mb-16">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] hover:underline"
+            className="font-mono-label inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] hover:underline"
             style={{ color: 'var(--paper-faint)' }}
           >
-            <span aria-hidden="true">←</span> Charlie Vargas
+            <span aria-hidden="true">&larr;</span> Charlie Vargas
           </Link>
         </nav>
 
         <header className="max-w-3xl">
-          <p className="text-[11px] font-medium tracking-[0.2em]" style={{ color: category.accent }}>
-            {category.index}
-          </p>
+          <CropLabel color={category.accent}>{category.index}</CropLabel>
           <h1
-            className="font-display mt-3 text-[clamp(3rem,11vw,7rem)] font-extrabold leading-[0.88] tracking-[-0.04em]"
+            className="font-serif-display mt-4 text-[clamp(3.2rem,11vw,7.5rem)] leading-[0.9] tracking-[-0.03em]"
             style={{ color: 'var(--paper)' }}
           >
             {category.label}
@@ -152,9 +151,7 @@ export default function CategoryPage({ category }: { category: Category }) {
         </section>
 
         <nav aria-label="Other categories" className="mt-24 border-t pt-10" style={{ borderColor: 'var(--rule)' }}>
-          <p className="mb-6 text-[11px] uppercase tracking-[0.18em]" style={{ color: 'var(--paper-faint)' }}>
-            Elsewhere
-          </p>
+          <CropLabel className="mb-6">Elsewhere</CropLabel>
           <ul className="flex list-none flex-col gap-4 sm:flex-row sm:gap-10">
             {others.map((other) => (
               <li key={other.key}>
@@ -163,7 +160,7 @@ export default function CategoryPage({ category }: { category: Category }) {
                     {other.index}
                   </span>
                   <span
-                    className="font-display text-[clamp(1.6rem,4vw,2.4rem)] font-semibold tracking-[-0.02em]"
+                    className="font-serif-display text-[clamp(1.7rem,4vw,2.6rem)] tracking-[-0.02em]"
                     style={{ color: 'var(--paper)' }}
                   >
                     {other.label}

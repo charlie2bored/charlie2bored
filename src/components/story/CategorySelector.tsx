@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import type { Category, Work } from '@/lib/story';
+import CropLabel from '@/components/story/CropLabel';
 
 /**
  * Poster art rendered in the DOM. Used wherever a screenshot makes a weak
@@ -148,7 +149,7 @@ function Panel({
             {shown.plate.figure}
           </span>
           <span
-            className="mt-3 max-w-[24ch] text-[10px] font-semibold uppercase leading-snug tracking-[0.18em]"
+            className="font-mono-label mt-3 max-w-[24ch] text-[10px] uppercase leading-snug tracking-[0.16em]"
             style={{ color: 'rgba(255,255,255,0.85)' }}
           >
             {shown.plate.caption}
@@ -174,9 +175,7 @@ function Panel({
       />
 
       <div className="relative p-6 lg:p-8">
-        <p className="font-display text-[12px] font-bold tracking-[0.3em]" style={{ color: category.accent }}>
-          {category.index}
-        </p>
+        <CropLabel color={category.accent}>{category.index}</CropLabel>
 
         <h3
           className="font-display mt-2 text-[clamp(2.4rem,9vw,3.6rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.04em] lg:text-[clamp(2rem,4.4vw,4.5rem)]"
@@ -185,7 +184,10 @@ function Panel({
           {category.label}
         </h3>
 
-        <p className="mt-2 text-[13px] font-medium" style={{ color: 'rgba(255,255,255,0.78)' }}>
+        <p
+          className="font-mono-label mt-2.5 text-[10px] uppercase tracking-[0.16em]"
+          style={{ color: 'rgba(255,255,255,0.74)' }}
+        >
           {category.line}
         </p>
 
@@ -197,7 +199,7 @@ function Panel({
             &mdash; {shown.context}
           </p>
           <p
-            className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em]"
+            className="font-mono-label mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.16em]"
             style={{ color: category.accent }}
           >
             See all {category.label.toLowerCase()}
@@ -216,16 +218,22 @@ export default function CategorySelector({ categories }: { categories: Category[
 
   return (
     <section id="pick" className="px-4 pb-14 pt-20 sm:px-6 lg:px-8">
-      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3 px-2">
-        <h2
-          className="font-display text-[clamp(1.8rem,5vw,3rem)] font-extrabold uppercase tracking-[-0.03em]"
-          style={{ color: 'var(--paper)' }}
-        >
-          Pick a room.
-        </h2>
-        <p className="text-[13px]" style={{ color: 'var(--paper-faint)' }}>
-          Three categories. Everything in each one, one click away.
-        </p>
+      <div className="mb-7 px-2">
+        <CropLabel>Select</CropLabel>
+        <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3">
+          <h2
+            className="font-serif-display text-[clamp(2rem,5.5vw,3.4rem)] tracking-[-0.02em]"
+            style={{ color: 'var(--paper)' }}
+          >
+            Pick a room.
+          </h2>
+          <p
+            className="font-mono-label text-[10px] uppercase tracking-[0.16em]"
+            style={{ color: 'var(--paper-faint)' }}
+          >
+            Everything in each one, one click away
+          </p>
+        </div>
       </div>
 
       <div className="flex flex-col gap-2 lg:flex-row">
