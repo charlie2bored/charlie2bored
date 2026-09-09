@@ -87,5 +87,9 @@ export const statement = [
 /** Vertical placement as % of frame, matching the Figma text nodes. */
 export const textTop = { eyebrow: 21.089, statement: 29.406 };
 
-/** Ground colour of both Figma frames. */
-export const collageBg = '#bfbec2';
+/**
+ * Ground shared with the experience board. The Figma frames use #bfbec2, a
+ * cool grey that reads as unset placeholder; this is warmer and brighter so
+ * the two light sections form one continuous surface with no seam.
+ */
+export const collageBg = '#ece9e4';

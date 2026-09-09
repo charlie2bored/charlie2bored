@@ -145,7 +145,7 @@ export default function ExperienceBoard() {
               key={column.key}
               className="border-b border-black/0 px-6 pb-14 pt-8 last:border-b-0 sm:px-8 lg:border-b-0 lg:px-[3%] lg:pb-[6%] lg:pt-0"
               variants={{
-                hidden: { backgroundColor: 'rgba(217,217,217,0)' },
+                hidden: { backgroundColor: 'rgba(219,215,209,0)' },
                 show: {
                   backgroundColor: boardColumn,
                   transition: { duration: 0.5, delay: T.bars, ease },
