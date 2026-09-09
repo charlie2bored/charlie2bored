@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import SiteNav from '@/components/story/SiteNav';
 import ScrollStory from '@/components/story/ScrollStory';
+import AboutSection from '@/components/story/AboutSection';
 import CategorySelector from '@/components/story/CategorySelector';
 import { beats, categories } from '@/lib/story';
 
@@ -17,6 +18,7 @@ export default function Home() {
       <SiteNav />
       <main id="main-content">
         <ScrollStory beats={beats} />
+        <AboutSection />
         <CategorySelector categories={categories} />
       </main>
     </div>

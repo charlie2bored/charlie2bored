@@ -6,7 +6,7 @@ import { categories } from '@/lib/story';
 
 const secondary = [
   { label: 'Writing', href: '/writing' },
-  { label: 'About', href: '/about' },
+  { label: 'About', href: '/#about' },
 ];
 
 /**

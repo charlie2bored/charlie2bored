@@ -53,7 +53,7 @@ function EggResult({ egg, onDone }: { egg: SearchEgg; onDone: () => void }) {
         onClick={() => {
           fireConfetti();
           onDone();
-          router.push('/about#contact');
+          router.push('/#about');
         }}
       >
         🎉 {egg.label}
@@ -92,7 +92,7 @@ function EggResult({ egg, onDone }: { egg: SearchEgg; onDone: () => void }) {
             BI and operations analyst · New York City, NY · Owner of this drive
           </p>
           <span className="mt-1 flex gap-4">
-            <Link href="/about" className="font-medium hover:underline" style={{ color: 'var(--gd-link)' }} onClick={onDone}>
+            <Link href="/#about" className="font-medium hover:underline" style={{ color: 'var(--gd-link)' }} onClick={onDone}>
               README.md
             </Link>
             <a href="/Charles-Vargas-Data.pdf" download className="font-medium hover:underline" style={{ color: 'var(--gd-link)' }} onClick={onDone}>
@@ -157,7 +157,7 @@ export default function DriveSearch() {
     if (matched.action.kind === 'confetti-contact') {
       fireConfetti();
       close();
-      router.push('/about#contact');
+      router.push('/#about');
     } else if (matched.action.kind === 'bored-toy') {
       close();
       openPanel('bored');

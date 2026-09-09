@@ -17,7 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/experience/stage-and-performance',
     '/education',
     '/education/northeastern-university',
-    '/about',
+    '/dance',
+    '/design',
+    '/data',
   ];
   const now = new Date();
   return paths.map((path) => ({
