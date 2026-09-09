@@ -61,26 +61,91 @@
   }
 
   /*
-   * Category-selector reveal. Always visible on touch/narrow layouts; on wide
-   * screens it fades in only for the active (hovered or focused) panel.
+   * Category selector, loading-screen style. At rest the artwork sits far back,
+   * desaturated; the active panel takes full colour, widens, and lifts its
+   * caption. Everything here is driven by data-active so mouse and keyboard
+   * behave identically.
    */
-  .story-reveal {
-    opacity: 1;
-    transition: opacity 500ms ease-out;
+  .gta-panel {
+    flex: 1 1 0%;
+    min-width: 0;
+    transition: flex-grow 600ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease-out;
   }
 
-  @media (min-width: 1024px) {
-    .story-reveal {
-      opacity: 0;
+  .gta-art {
+    filter: grayscale(1) brightness(0.3) contrast(1.1);
+    transform: scale(1.04);
+    transition: filter 600ms ease-out, transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gta-tint {
+    opacity: 0;
+    mix-blend-mode: color;
+    transition: opacity 600ms ease-out;
+  }
+
+  .gta-panel[data-active='true'] .gta-tint {
+    opacity: 0.34;
+  }
+
+  .gta-rule {
+    transform: scaleX(0);
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gta-caption {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 450ms ease-out, transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gta-panel[data-active='true'] .gta-art {
+    filter: grayscale(0) brightness(0.92) contrast(1.02) saturate(1.12);
+    transform: scale(1);
+  }
+
+  .gta-panel[data-active='true'] .gta-rule {
+    transform: scaleX(1);
+  }
+
+  .gta-panel[data-active='true'] .gta-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gta-panel[data-dimmed='true'] {
+    opacity: 0.55;
+  }
+
+  /* Touch and narrow layouts get the art and caption outright - there is no hover. */
+  @media (max-width: 1023px) {
+    .gta-art {
+      filter: grayscale(0) brightness(0.8) contrast(1.02);
+      transform: none;
     }
 
-    .story-reveal[data-active='true'] {
+    .gta-caption {
+      opacity: 1;
+      transform: none;
+    }
+
+    .gta-tint {
+      opacity: 0.3;
+    }
+
+    .gta-rule {
+      transform: scaleX(1);
+    }
+
+    .gta-panel[data-dimmed='true'] {
       opacity: 1;
     }
   }
 
-  button, input, select, textarea {
-    font: inherit;
+  @media (min-width: 1024px) {
+    .gta-panel[data-active='true'] {
+      flex-grow: 1.9;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

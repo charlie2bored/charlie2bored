@@ -2,59 +2,67 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Category, Work } from '@/lib/story';
 
 /**
- * Stand-in frame for work we do not have imagery for yet (all of Dance,
- * two thirds of Design). Sized to match a real thumbnail so dropping the
- * photograph in later changes nothing about the layout.
+ * Full-bleed art plate for work with no photograph yet. Reads as a designed
+ * colour panel rather than a missing image: accent wash, diagonal hatch, and a
+ * huge ghosted numeral sunk into the corner.
  */
-function PendingFrame({ work, accent }: { work: Work; accent: string }) {
+function PendingPlate({ accent, index }: { accent: string; index: string }) {
   return (
-    <span
-      className="flex h-full w-full flex-col justify-end p-2.5"
-      style={{
-        backgroundImage: `repeating-linear-gradient(135deg, ${accent}14 0px, ${accent}14 1px, transparent 1px, transparent 7px)`,
-        backgroundColor: 'var(--ink-raised)',
-      }}
-    >
-      <span className="text-[9px] font-medium uppercase tracking-[0.16em]" style={{ color: accent }}>
-        Photo pending
-      </span>
-      <span className="mt-0.5 line-clamp-2 text-[11px] leading-tight" style={{ color: 'var(--paper-dim)' }}>
-        {work.title}
+    <span aria-hidden="true" className="absolute inset-0 overflow-hidden">
+      <span
+        className="absolute inset-0"
+        style={{ background: `linear-gradient(150deg, ${accent}cc 0%, ${accent}55 45%, var(--ink) 100%)` }}
+      />
+      <span
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(135deg, #00000033 0px, #00000033 2px, transparent 2px, transparent 10px)',
+        }}
+      />
+      <span
+        className="font-display absolute -bottom-[0.24em] -right-[0.06em] text-[13rem] font-extrabold leading-none tracking-tighter"
+        style={{ color: '#00000026' }}
+      >
+        {index}
       </span>
     </span>
   );
 }
 
-function WorkThumb({ work, accent }: { work: Work; accent: string }) {
+/** One frame of the panel background. Stacked and cross-faded while active. */
+function Frame({
+  work,
+  accent,
+  index,
+  visible,
+  priority,
+}: {
+  work: Work;
+  accent: string;
+  index: string;
+  visible: boolean;
+  priority: boolean;
+}) {
   return (
-    <figure className="m-0 min-w-0 flex-1">
-      <span
-        className="block h-[76px] overflow-hidden rounded-sm border sm:h-[92px]"
-        style={{ borderColor: 'var(--rule)' }}
-      >
-        {work.image ? (
-          <Image
-            src={work.image}
-            alt=""
-            width={480}
-            height={270}
-            className="h-full w-full object-cover object-top"
-          />
-        ) : (
-          <PendingFrame work={work} accent={accent} />
-        )}
-      </span>
-      <figcaption className="mt-2 text-[11px] leading-tight" style={{ color: 'var(--paper-faint)' }}>
-        <span className="block font-medium" style={{ color: 'var(--paper-dim)' }}>
-          {work.title}
-        </span>
-        {work.context}
-      </figcaption>
-    </figure>
+    <span className="absolute inset-0 transition-opacity duration-700 ease-out" style={{ opacity: visible ? 1 : 0 }}>
+      {work.image ? (
+        <Image
+          src={work.image}
+          alt=""
+          fill
+          sizes="(max-width: 1023px) 100vw, 50vw"
+          priority={priority}
+          className="object-cover object-center"
+        />
+      ) : (
+        <PendingPlate accent={accent} index={index} />
+      )}
+    </span>
   );
 }
 
@@ -71,6 +79,29 @@ function Panel({
   onActivate: () => void;
   onRelease: () => void;
 }) {
+  const [frame, setFrame] = useState(0);
+  const frames = category.works;
+  const reduceRef = useRef(false);
+
+  useEffect(() => {
+    reduceRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
+
+  /*
+   * Cycle the artwork while the panel is active - the loading-screen feel.
+   * Starts only on interaction, so there is no server/client render to
+   * disagree about, and it holds on one frame under reduced motion.
+   */
+  useEffect(() => {
+    if (!active || reduceRef.current || frames.length < 2) return;
+    const id = window.setInterval(() => setFrame((f) => f + 1), 1600);
+    return () => window.clearInterval(id);
+  }, [active, frames.length]);
+
+  // Derived rather than reset in an effect, so leaving a panel returns to frame 0
+  // without an extra setState pass.
+  const shown = frames[active ? frame % frames.length : 0] ?? frames[0];
+
   return (
     <Link
       href={category.href}
@@ -78,68 +109,82 @@ function Panel({
       onMouseLeave={onRelease}
       onFocus={onActivate}
       onBlur={onRelease}
-      className="group relative flex cursor-pointer flex-col justify-between border-t px-5 py-7 transition-[flex-grow,opacity] duration-500 ease-out lg:border-l lg:border-t-0 lg:px-7 lg:py-10"
-      style={{
-        borderColor: 'var(--rule)',
-        // flex-basis: 0 so flex-grow drives the whole width, not just leftover space.
-        flexGrow: active ? 1.75 : 1,
-        flexBasis: 0,
-        minWidth: 0,
-        opacity: dimmed ? 0.45 : 1,
-      }}
-      aria-label={`${category.label} — ${category.line}`}
+      aria-label={`${category.label} - ${category.line}`}
+      className="gta-panel group relative isolate flex min-h-[46vh] cursor-pointer flex-col justify-end overflow-hidden lg:min-h-[74vh]"
+      data-active={active}
+      data-dimmed={dimmed}
     >
-      {/*
-        Accent rule. Scales in on activation; the global prefers-reduced-motion rule
-        zeroes the transition so it simply appears.
-      */}
+      {/* Art layer: desaturated and held back at rest, full colour when active. */}
+      <span aria-hidden="true" className="gta-art absolute inset-0 -z-10">
+        {frames.map((work, i) => (
+          <Frame
+            key={work.title}
+            work={work}
+            accent={category.accent}
+            index={category.index}
+            visible={active ? i === frame : i === 0}
+            priority={i === 0}
+          />
+        ))}
+      </span>
+
+      {/* Accent grade: pulls screenshots and colour plates into one look. */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[2px] origin-left transition-transform duration-500 ease-out lg:inset-y-0 lg:left-0 lg:h-auto lg:w-[2px] lg:origin-top"
+        className="gta-tint absolute inset-0 -z-10"
+        style={{ backgroundColor: category.accent }}
+      />
+
+      {/* Scrim keeps the type legible over any photograph. */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 -z-10"
         style={{
-          backgroundColor: category.accent,
-          transform: active ? 'none' : 'scaleX(0)',
+          background:
+            'linear-gradient(to top, rgba(6,6,8,0.94) 0%, rgba(6,6,8,0.72) 34%, rgba(6,6,8,0.30) 70%, rgba(6,6,8,0.14) 100%)',
         }}
       />
 
-      <div>
-        <p className="text-[11px] font-medium tracking-[0.2em]" style={{ color: category.accent }}>
+      {/* Accent bar along the bottom edge; wipes in on activation. */}
+      <span
+        aria-hidden="true"
+        className="gta-rule absolute inset-x-0 bottom-0 h-[3px] origin-left"
+        style={{ backgroundColor: category.accent }}
+      />
+
+      <div className="relative p-6 lg:p-8">
+        <p className="font-display text-[12px] font-bold tracking-[0.3em]" style={{ color: category.accent }}>
           {category.index}
         </p>
+
         <h3
-          className="font-display mt-3 text-[clamp(2.2rem,7vw,4rem)] font-bold leading-[0.95] tracking-[-0.03em]"
-          style={{ color: 'var(--paper)' }}
+          className="font-display mt-2 text-[clamp(2.4rem,9vw,3.6rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.04em] lg:text-[clamp(2rem,4.4vw,4.5rem)]"
+          style={{ color: '#fff', textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}
         >
           {category.label}
         </h3>
-        <p className="mt-2 text-[13px]" style={{ color: 'var(--paper-dim)' }}>
+
+        <p className="mt-2 text-[13px] font-medium" style={{ color: 'rgba(255,255,255,0.78)' }}>
           {category.line}
         </p>
-      </div>
 
-      {/*
-        Thumbnails are always rendered so touch and keyboard users get them too;
-        on large screens they fade up as the panel becomes active.
-      */}
-      <div className="story-reveal mt-8 lg:mt-10" data-active={active}>
-        <p className="mb-5 max-w-sm text-[13px] leading-relaxed" style={{ color: 'var(--paper-faint)' }}>
-          {category.blurb}
-        </p>
-        {/* Three at most here; the category page carries the full list. */}
-        <div className="flex gap-2.5">
-          {category.works.slice(0, 3).map((work) => (
-            <WorkThumb key={work.title} work={work} accent={category.accent} />
-          ))}
+        <div className="gta-caption mt-5">
+          <p className="min-h-[2.6em] max-w-sm text-[12px] leading-snug" style={{ color: 'rgba(255,255,255,0.72)' }}>
+            <span className="font-semibold" style={{ color: '#fff' }}>
+              {shown.title}
+            </span>{' '}
+            &mdash; {shown.context}
+          </p>
+          <p
+            className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em]"
+            style={{ color: category.accent }}
+          >
+            See all {category.label.toLowerCase()}
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+              &rarr;
+            </span>
+          </p>
         </div>
-        <p
-          className="mt-6 inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.16em]"
-          style={{ color: category.accent }}
-        >
-          See all {category.label.toLowerCase()}
-          <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
-        </p>
       </div>
     </Link>
   );
@@ -149,10 +194,10 @@ export default function CategorySelector({ categories }: { categories: Category[
   const [active, setActive] = useState<string | null>(null);
 
   return (
-    <section id="pick" className="min-h-dvh px-6 pb-16 pt-24 sm:px-10 lg:px-16">
-      <div className="mb-10 flex flex-wrap items-baseline justify-between gap-4">
+    <section id="pick" className="px-4 pb-14 pt-20 sm:px-6 lg:px-8">
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3 px-2">
         <h2
-          className="font-display text-[clamp(1.8rem,5vw,3rem)] font-semibold tracking-[-0.03em]"
+          className="font-display text-[clamp(1.8rem,5vw,3rem)] font-extrabold uppercase tracking-[-0.03em]"
           style={{ color: 'var(--paper)' }}
         >
           Pick a room.
@@ -162,7 +207,7 @@ export default function CategorySelector({ categories }: { categories: Category[
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:min-h-[62vh]">
+      <div className="flex flex-col gap-2 lg:flex-row">
         {categories.map((category) => (
           <Panel
             key={category.key}
