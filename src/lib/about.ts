@@ -2,11 +2,43 @@
  * Every claim here traces to lib/experience.ts or lib/projects.ts. Keep it
  * that way — this is the page a hiring manager reads most closely.
  */
-export const intro = [
-  'Analyst, designer, performer. Most portfolios pick a lane. I never have, and at this point I have stopped treating that as a problem to explain away.',
-  'The data work runs deepest: a multi-year BI internship automating KPI dashboards across 20+ school sites, enrollment forecasting, and pricing analysis. The design work is where I make complicated things legible — investor materials and clinical workflow figures for a pre-FDA medical-imaging startup, and shipped sites for clients who had none. The performing is the oldest of the three: four years of conservatory ballet and modern, now arena floors for the New York Red Bulls and the NJ Devils.',
-  'They feed each other more than they compete. A dashboard nobody reads and a routine nobody watches fail for the same reason.',
+export const intro =
+  'I have to scroll through different resumes every time I apply for a job in different fields. I’ve made my portfolio so it’s all in the same place.';
+
+/** The pushback, quoted so the rebuttal has something to land on. */
+export const objections = [
+  'It shows you’re uncommitted to your discipline charlie!',
+  'It makes you look like a kid who doesn’t know what he’s doing',
 ];
+
+export const rebuttal =
+  'No it doesn’t. All the things I do are part of me, and I’d be a fool if I didn’t show them all off.';
+
+/**
+ * The show metaphor, in Charlie's order: backend, marketing, frontend. That
+ * builds to the thing he most enjoys, so it does not follow the 01/02/03
+ * order the selector uses.
+ */
+export const stack: { key: 'dance' | 'design' | 'data'; role: string; body: string }[] = [
+  {
+    key: 'data',
+    role: 'Data work is the backend of my show',
+    body: 'Why things work, looking into the future, finding discrepancies, and analyzing situations are all critical to the performance.',
+  },
+  {
+    key: 'design',
+    role: 'Design work is the marketing',
+    body: 'Making memorable, fun, good-looking. It’s no fun if nobody bought tickets.',
+  },
+  {
+    key: 'dance',
+    role: 'Dance is the frontend',
+    body: 'It’s what people come to see! Getting the crowd engaged, running promotions, and dancing until I pass out is what I enjoy most.',
+  },
+];
+
+export const closing =
+  'These things aren’t restrictive of one another. All 3 work together to make me complete in every stage, canvas, and dashboard.';
 
 export const availability = 'NYC, NJ & CT · Hybrid local or remote';
 

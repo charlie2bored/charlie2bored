@@ -1,11 +1,15 @@
 import CropLabel from '@/components/story/CropLabel';
 import {
   availability,
+  closing,
   email,
   intro,
   linkedin,
+  objections,
+  rebuttal,
   skillsByCategory,
   socials,
+  stack,
   supporting,
 } from '@/lib/about';
 import { getCategory } from '@/lib/story';
@@ -30,18 +34,60 @@ export default function AboutSection() {
           className="mt-6 max-w-3xl text-[clamp(1.25rem,3vw,1.9rem)] font-medium leading-[1.3] tracking-[-0.015em]"
           style={{ color: 'var(--paper)' }}
         >
-          {intro[0]}
+          {intro}
         </p>
 
-        {intro.slice(1).map((para) => (
-          <p
-            key={para.slice(0, 24)}
-            className="mt-6 max-w-2xl text-[15px] leading-relaxed sm:text-[16px]"
-            style={{ color: 'var(--paper-dim)' }}
-          >
-            {para}
-          </p>
-        ))}
+        {/* The objections sit visually lower than the answer that follows them. */}
+        <div className="mt-12 max-w-2xl border-l pl-5" style={{ borderColor: 'var(--rule)' }}>
+          {objections.map((line) => (
+            <p
+              key={line.slice(0, 20)}
+              className="text-[15px] italic leading-relaxed sm:text-[16px]"
+              style={{ color: 'var(--paper-faint)' }}
+            >
+              &ldquo;{line}&rdquo;
+            </p>
+          ))}
+        </div>
+
+        <p
+          className="mt-6 max-w-2xl text-[clamp(1.05rem,2.2vw,1.35rem)] font-medium leading-[1.4]"
+          style={{ color: 'var(--paper)' }}
+        >
+          {rebuttal}
+        </p>
+
+        {/* Backend, marketing, frontend - Charlie's order, not the selector's. */}
+        <ul className="mt-14 grid list-none gap-6 md:grid-cols-3">
+          {stack.map((part) => {
+            const category = getCategory(part.key);
+            if (!category) return null;
+            return (
+              <li
+                key={part.key}
+                className="border-t pt-4"
+                style={{ borderColor: category.accent }}
+              >
+                <p
+                  className="font-display text-[13px] font-bold uppercase tracking-[0.12em]"
+                  style={{ color: category.accent }}
+                >
+                  {part.role}
+                </p>
+                <p className="mt-3 text-[14px] leading-relaxed" style={{ color: 'var(--paper-dim)' }}>
+                  {part.body}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+
+        <p
+          className="mt-12 max-w-2xl text-[15px] leading-relaxed sm:text-[16px]"
+          style={{ color: 'var(--paper)' }}
+        >
+          {closing}
+        </p>
 
         <p
           className="font-mono-label mt-8 text-[10px] uppercase tracking-[0.16em]"
