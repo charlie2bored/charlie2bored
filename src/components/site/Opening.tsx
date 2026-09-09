@@ -3,9 +3,11 @@
 import Image from 'next/image';
 import {
   MotionValue,
+  cubicBezier,
   motion,
   useMotionTemplate,
   useScroll,
+  useSpring,
   useTransform,
 } from 'framer-motion';
 import { useRef } from 'react';
@@ -140,11 +142,33 @@ export default function Opening() {
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
 
-  // 0 → 0.45: the panels part. 0.5 → 1: the pile bursts.
-  const partPct = useTransform(scrollYProgress, [0, 0.45], [0, 100]);
+  /*
+   * A spring on the raw progress is what makes this read as playback rather
+   * than a scrub: a wheel tick is a discrete jump, and mapping transforms
+   * straight off it lands as a step. The spring carries through and settles,
+   * so a short flick breaks the panels away and they finish on their own.
+   */
+  const smooth = useSpring(scrollYProgress, {
+    // Critically damped (zeta ~1.0). The first pass was overdamped at ~1.95,
+    // which crawled behind the scroll and read as the choppiness: the panels
+    // sat still for a few hundred pixels, then snapped.
+    stiffness: 200,
+    damping: 18,
+    mass: 0.4,
+    restDelta: 0.0004,
+  });
+
+  /*
+   * Ease-out cubic, not expo. Expo over a short range finished the parting
+   * inside 60px of scroll — less than one wheel tick, which reads as a jump
+   * rather than a break-away. This responds on the first flick and completes
+   * in roughly two, then holds while the pin runs out.
+   */
+  const ease = cubicBezier(0.33, 1, 0.68, 1);
+  const partPct = useTransform(smooth, [0, 0.3], [0, 100], { ease });
   const railPct = useTransform(partPct, (v) => -v);
-  const heroPct = useTransform(scrollYProgress, [0, 0.25, 0.45], [0, 76, 100]);
-  const burst = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
+  const heroPct = useTransform(smooth, [0, 0.14, 0.3], [0, 76, 100], { ease });
+  const burst = useTransform(smooth, [0.38, 0.85], [0, 1], { ease });
 
   const railX = useTransform(railPct, (v) => (stacked ? '0%' : `${v}%`));
   const railY = useTransform(railPct, (v) => (stacked ? `${v}%` : '0%'));
@@ -174,7 +198,7 @@ export default function Opening() {
   }
 
   return (
-    <div ref={ref} className="relative h-[320vh]" aria-label="Introduction">
+    <div ref={ref} className="relative h-[200vh]" aria-label="Introduction">
       <div className="sticky top-0 z-40 h-dvh overflow-hidden">
         {/* Underneath: the pile the panels part to reveal. */}
         <div className="absolute inset-0 overflow-hidden" style={{ backgroundColor: collageBg }}>
