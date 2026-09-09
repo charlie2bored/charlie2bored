@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Category, Work } from '@/lib/story';
 import CropLabel from '@/components/story/CropLabel';
 
@@ -88,7 +88,16 @@ function Panel({
   onRelease: () => void;
 }) {
   const [frame, setFrame] = useState(0);
-  const frames = category.works;
+  /*
+   * Real photography leads. The panel shows frame 0 at rest, so a category
+   * whose only image sits further down the list would never show a picture
+   * at all - and never at any point for a viewer with reduced motion, since
+   * cycling is disabled for them.
+   */
+  const frames = useMemo(
+    () => [...category.works].sort((a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image))),
+    [category.works],
+  );
   const reduceRef = useRef(false);
 
   useEffect(() => {
