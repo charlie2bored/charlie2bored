@@ -30,9 +30,9 @@ import {
  */
 const T = {
   headline: 0.4,
-  bars: 2.35,
-  headings: 2.75,
-  entries: 3.1,
+  bars: 2.62,
+  headings: 3.02,
+  entries: 3.38,
 } as const;
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -101,18 +101,32 @@ export default function ExperienceBoard() {
           hidden: { scale: 1, y: '0vh', opacity: 0 },
           show: {
             /*
-             * Appears small in place, swoops out at the viewer, then settles
-             * back. 5.5x fills the width at a 1440 viewport without the ends
-             * being clipped by the section's overflow.
+             * Appears small in place, accelerates out at the viewer, slams
+             * past the mark and snaps back, holds on the hit, then retraces
+             * its path home.
+             *
+             * The slam is in the easing, not the distance: the outbound
+             * segment eases IN so it is still gaining speed at impact. An
+             * ease-out there reads as a glide no matter how far it travels.
+             *
+             * 5.5x fills the width at 1440 without the ends being clipped by
+             * the section's overflow; 5.9 is the overshoot, not the resting
+             * size.
              */
-            scale: [1, 1, 5.5, 1],
-            y: ['0vh', '0vh', '26vh', '0vh'],
-            opacity: [0, 1, 1, 1],
+            scale: [1, 1, 5.9, 5.5, 5.5, 1],
+            y: ['0vh', '0vh', '27.5vh', '26vh', '26vh', '0vh'],
+            opacity: [0, 1, 1, 1, 1, 1],
             transition: {
-              duration: 1.85,
+              duration: 2.1,
               delay: T.headline,
-              times: [0, 0.07, 0.55, 1],
-              ease: ['linear', [0.33, 0, 0.2, 1], [0.5, 0, 0.15, 1]],
+              times: [0, 0.06, 0.42, 0.48, 0.62, 1],
+              ease: [
+                'linear',
+                [0.7, 0, 0.84, 0],
+                [0.2, 0, 0, 1],
+                'linear',
+                [0.5, 0, 0.15, 1],
+              ],
             },
           },
         }}
