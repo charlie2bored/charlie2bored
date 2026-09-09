@@ -182,7 +182,38 @@
     transform: scale(1);
   }
 
+  /* Marquee: two identical tracks sliding one full width for a seamless loop. */
+  .marquee-track {
+    animation: marquee-slide 38s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    /*
+     * Word reveals must never be able to strand text off-screen when the
+     * animation that would bring it back is suppressed.
+     */
+    [data-reveal-word] {
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    .marquee-track {
+      animation: none;
+    }
+
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;

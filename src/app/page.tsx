@@ -3,6 +3,7 @@ import SiteNav from '@/components/story/SiteNav';
 import ScrollStory from '@/components/story/ScrollStory';
 import AboutSection from '@/components/story/AboutSection';
 import CategorySelector from '@/components/story/CategorySelector';
+import Marquee from '@/components/story/Marquee';
 import { categories } from '@/lib/story';
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function Home() {
       <main id="main-content">
         <ScrollStory />
         <AboutSection />
+        <Marquee />
         <CategorySelector categories={categories} />
       </main>
     </div>

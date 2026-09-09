@@ -3,6 +3,9 @@ import { Archivo, JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
+import SmoothScroll from '@/components/story/SmoothScroll';
+import Grain from '@/components/story/Grain';
+import Cursor from '@/components/story/Cursor';
 import EggsProvider from '@/components/drive/eggs/EggsProvider';
 import { getSiteUrl } from '@/lib/site';
 
@@ -95,6 +98,9 @@ export default function RootLayout({
       </head>
       <body className={`${archivo.variable} ${jetbrains.variable} font-sans antialiased`}>
         <PersonJsonLd />
+        <SmoothScroll />
+        <Grain />
+        <Cursor />
         <EggsProvider>{children}</EggsProvider>
         <Analytics />
       </body>

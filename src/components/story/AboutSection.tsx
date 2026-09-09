@@ -1,4 +1,5 @@
 import CropLabel from '@/components/story/CropLabel';
+import { RevealText, RevealBlock } from '@/components/story/Reveal';
 import {
   availability,
   closing,
@@ -30,12 +31,13 @@ export default function AboutSection() {
       <div className="max-w-5xl">
         <CropLabel>About</CropLabel>
 
-        <p
-          className="mt-6 max-w-3xl text-[clamp(1.25rem,3vw,1.9rem)] font-medium leading-[1.3] tracking-[-0.015em]"
+        <RevealText
+          as="p"
+          text={intro}
+          className="mt-6 block max-w-3xl text-[clamp(1.25rem,3vw,1.9rem)] font-medium leading-[1.3] tracking-[-0.015em]"
           style={{ color: 'var(--paper)' }}
-        >
-          {intro}
-        </p>
+          stagger={0.018}
+        />
 
         {/* The objections sit visually lower than the answer that follows them. */}
         <div className="mt-12 max-w-2xl border-l pl-5" style={{ borderColor: 'var(--rule)' }}>
@@ -50,14 +52,16 @@ export default function AboutSection() {
           ))}
         </div>
 
-        <p
-          className="mt-6 max-w-2xl text-[clamp(1.05rem,2.2vw,1.35rem)] font-medium leading-[1.4]"
+        <RevealText
+          as="p"
+          text={rebuttal}
+          className="mt-6 block max-w-2xl text-[clamp(1.05rem,2.2vw,1.35rem)] font-medium leading-[1.4]"
           style={{ color: 'var(--paper)' }}
-        >
-          {rebuttal}
-        </p>
+          stagger={0.02}
+        />
 
         {/* Backend, marketing, frontend - Charlie's order, not the selector's. */}
+        <RevealBlock delay={0.1}>
         <ul className="mt-14 grid list-none gap-6 md:grid-cols-3">
           {stack.map((part) => {
             const category = getCategory(part.key);
@@ -81,6 +85,7 @@ export default function AboutSection() {
             );
           })}
         </ul>
+        </RevealBlock>
 
         <p
           className="mt-12 max-w-2xl text-[15px] leading-relaxed sm:text-[16px]"

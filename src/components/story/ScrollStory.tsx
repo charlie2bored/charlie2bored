@@ -1,6 +1,7 @@
 'use client';
 
 import { MotionConfig, motion, useScroll, useSpring } from 'framer-motion';
+import { RevealText } from '@/components/story/Reveal';
 
 /*
  * Motion note: reduced-motion is handled once, by <MotionConfig reducedMotion="user">.
@@ -25,17 +26,16 @@ function Hero() {
   return (
     <section className="relative flex min-h-dvh flex-col justify-center px-6 py-10 sm:px-10 lg:px-16">
       <div>
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        <h1
           className="font-display text-[clamp(3rem,13vw,11rem)] font-extrabold leading-[0.85] tracking-[-0.04em]"
           style={{ color: 'var(--paper)' }}
         >
-          Charlie
-          <br />
-          Vargas
-        </motion.h1>
+          <span className="sr-only">Charlie Vargas</span>
+          <span aria-hidden="true" className="block">
+            <RevealText text="Charlie" as="span" className="block" stagger={0} />
+            <RevealText text="Vargas" as="span" className="block" delay={0.09} stagger={0} />
+          </span>
+        </h1>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
