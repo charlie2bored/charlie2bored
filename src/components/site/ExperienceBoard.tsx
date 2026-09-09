@@ -25,6 +25,21 @@ import {
  * viewport changes. Type scales off the frame's own ratios: headings
  * 256/3572 = 7.17vw, entries 32/3572 = 0.9vw.
  *
+ * One exception to scaling off width: the vertical rhythm. The Figma frame was
+ * drawn with no descriptor copy, so its width-derived spacing happened to fill
+ * the screen exactly. Real copy adds ~56px of fixed height per entry, and on a
+ * wide-but-short viewport the width-derived gaps grow while the screen they
+ * have to fit inside does not — so the five-deep DANCE column overflowed the
+ * pin. Every gap here is therefore a vh clamp, and the headings are capped at
+ * 11vh as well as 7.17vw, so a short screen tightens instead of clipping.
+ * DANCE sets the budget; the other two columns simply have room to spare.
+ *
+ * That budget only balances while the three columns are side by side. Below
+ * lg they stack, which is several screens of content and cannot be pinned to
+ * one, so the pin, the clipping and the scrubbed reveal are all lg-and-up. On
+ * narrow screens the board is simply a tall section you scroll, with the
+ * motion neutralised in CSS (see globals.css) since there is no pin to scrub.
+ *
  * Each entry reserves vertical room for its descriptor line whether or not one
  * is written yet, so filling them in later cannot reflow the board.
  */
@@ -44,17 +59,19 @@ function Entry({
   const y = useTransform(p, [start, start + 0.06], [18, 0]);
 
   return (
-    <motion.li style={{ opacity, y }}>
-      <p className="text-[clamp(0.85rem,0.9vw,1.4rem)] font-bold leading-snug"
+    <motion.li data-board-motion style={{ opacity, y }}>
+      <p className="text-[clamp(0.85rem,min(0.9vw,2vh),1.4rem)] font-bold leading-snug"
         style={{ color: boardText }}>
         {entry.title}
       </p>
       {/*
-        Reserved slot. Renders empty until the descriptor copy is confirmed;
-        min-height keeps the rhythm identical either way.
+        The descriptor slot reserves three lines (3 x 1.625em leading = 4.875em)
+        at a 44ch measure, which is the tallest any of the written lines wraps
+        to. Every entry therefore occupies the same block whether its line runs
+        two lines or three, so the columns stay level across the board.
       */}
       <p
-        className="mt-2 min-h-[3.2em] max-w-[34ch] text-[clamp(0.72rem,0.72vw,1.05rem)] font-normal leading-relaxed sm:min-h-[2.6em]"
+        className="mt-2 min-h-[4.875em] max-w-[44ch] text-[clamp(0.72rem,min(0.72vw,1.6vh),1.05rem)] font-normal leading-relaxed"
         style={{ color: boardTextDim }}
         data-slot="descriptor"
       >
@@ -69,6 +86,7 @@ function Divider({ left, p }: { left: string; p: MotionValue<number> }) {
   return (
     <motion.span
       aria-hidden="true"
+      data-board-motion
       className="absolute top-0 z-10 hidden h-full w-px lg:block"
       style={{ left, scaleY, originY: 0.5, backgroundColor: boardRule }}
     />
@@ -97,20 +115,21 @@ export default function ExperienceBoard() {
   const headingY = useTransform(p, [0.62, 0.76], [24, 0]);
 
   return (
-    <div ref={ref} className="relative h-[260vh]" id="experience">
+    <div ref={ref} className="relative lg:h-[260vh]" id="experience">
       <section
         aria-label="Experience"
-        className="sticky top-0 flex h-dvh flex-col justify-center overflow-hidden"
+        className="flex flex-col justify-center py-20 lg:sticky lg:top-0 lg:h-dvh lg:overflow-hidden lg:py-0"
         style={{ backgroundColor: boardBg }}
       >
         <motion.p
-          className="origin-center text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold text-black lg:pt-[3.9%]"
+          data-board-motion
+          className="origin-center text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold text-black lg:pt-[clamp(0.5rem,2vh,3rem)]"
           style={{ scale: headlineScale, opacity: headlineOpacity }}
         >
           {experienceHeading}
         </motion.p>
 
-        <div className="relative mt-8 lg:mt-[2%]">
+        <div className="relative mt-8 lg:mt-[clamp(0.5rem,1.5vh,2.5rem)]">
           <Divider left="33.333%" p={p} />
           <Divider left="66.666%" p={p} />
 
@@ -118,16 +137,17 @@ export default function ExperienceBoard() {
             {experienceColumns.map((column, ci) => (
               <div
                 key={column.key}
-                className="relative px-6 pb-14 pt-8 sm:px-8 lg:px-[3%] lg:pb-[6%] lg:pt-0"
+                className="relative px-6 pb-14 pt-8 sm:px-8 lg:px-[3%] lg:pb-[clamp(1rem,2.5vh,4rem)] lg:pt-0"
               >
                 <motion.h2
-                  className="relative text-center text-[clamp(3rem,7.17vw,10rem)] font-bold leading-none tracking-[-0.02em] lg:pt-[7%]"
+                  data-board-motion
+                  className="relative text-center text-[clamp(3rem,min(7.17vw,11vh),10rem)] font-bold leading-none tracking-[-0.02em] lg:pt-[clamp(0.5rem,2vh,3.5rem)]"
                   style={{ color: boardText, opacity: headingOpacity, y: headingY }}
                 >
                   {column.heading}
                 </motion.h2>
 
-                <ul className="relative mt-10 list-none space-y-10 lg:mt-[14%] lg:space-y-[12%]">
+                <ul className="relative mt-10 list-none space-y-10 lg:mt-[clamp(1rem,3vh,4rem)] lg:space-y-[clamp(0.75rem,2.2vh,3rem)]">
                   {column.entries.map((entry, i) => (
                     <Entry key={entry.title} entry={entry} index={ci * 0.6 + i} p={p} />
                   ))}

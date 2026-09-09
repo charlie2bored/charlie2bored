@@ -25,31 +25,70 @@ export const experienceColumns: ExperienceColumn[] = [
     key: 'dance',
     heading: 'DANCE',
     entries: [
-      { title: 'Gen X Crew Member - Brickhouse NYC (Sept. ’26 - Present)' },
-      { title: 'Team Toro - New York Red Bulls (Feb. ’26 - Present)' },
-      { title: 'WOO! Crew - New Jersey Devils (Sept. ’25 - Present)' },
-      { title: 'Head Martial Arts Instructor - Cesar-Kai Academy (’21 - ’22)' },
-      { title: 'Company Dancer - UCVTS APA (Sept. ’20 - June ’24)' },
+      {
+        title: 'Gen X Crew Member - Brickhouse NYC (Sept. ’26 - Present)',
+        line: 'Auditioned for 26-27 crew, participating in 28 hours of dance training a month.',
+      },
+      {
+        title: 'Team Toro - New York Red Bulls (Feb. ’26 - Present)',
+        line: 'Pre-game and halftime activations at Sports Illustrated Stadium, plus community appearances.',
+      },
+      {
+        title: 'WOO! Crew - New Jersey Devils (Sept. ’25 - Present)',
+        line: 'On-ice activations and arena-floor engagement across all three periods at Prudential Center.',
+      },
+      {
+        title: 'Head Martial Arts Instructor - Cesar-Kai Academy (’21 - ’22)',
+        line: 'Taught forms and sparring; coached students in discipline, focus, and body control.',
+      },
+      {
+        title: 'Company Dancer - UCVTS APA (Sept. ’20 - June ’24)',
+        line: 'Four years of conservatory training; 8+ showcases and mainstage productions.',
+      },
     ],
   },
   {
     key: 'design',
     heading: 'DESIGN',
     entries: [
-      { title: 'Product Designer - Medara (Mar. ’26 - Present)' },
-      { title: 'Web Designer - Kindling Education Partners (May ’26 - Present)' },
-      { title: 'Web Designer - Rossitech LTD (Aug. ’25 - Dec. ’25)' },
-      { title: 'Selected Projects / Practice - (Ongoing)' },
+      {
+        title: 'Product Designer - Medara (Mar. ’26 - Present)',
+        line: 'Branding, web, marketing and investor materials, clinical figures, and the site for a pre-FDA imaging startup.',
+      },
+      {
+        title: 'Web Designer - Kindling Education Partners (May ’26 - Present)',
+        line: 'Scoped and shipped their corporate site, built on the client’s own GitHub and Vercel.',
+      },
+      {
+        title: 'Web Designer - Rossitech LTD (Aug. ’25 - Dec. ’25)',
+        line: 'First websites for clients who had none, in Figma and Framer.',
+      },
+      {
+        title: 'Selected Projects / Practice - (Ongoing)',
+        line: 'ClearCore Protein, SpeedReader, and this site — self-directed, start to finish.',
+      },
     ],
   },
   {
     key: 'data',
     heading: 'DATA',
     entries: [
-      { title: 'BI + Data Analytics Intern - Apple Montessori Schools (Oct. ’23 - May ’26)' },
-      { title: 'Operations - Kindling Education Partners (May ’26 - Present)' },
-      { title: 'McKinsey Forward Program (2026)' },
-      { title: 'Selected Projects / Practice - (Ongoing)' },
+      {
+        title: 'BI + Data Analytics Intern - Apple Montessori Schools (Oct. ’23 - May ’26)',
+        line: 'Automated KPI dashboards across 20+ schools; reporting time down 50%.',
+      },
+      {
+        title: 'Operations - Kindling Education Partners (May ’26 - Present)',
+        line: 'Payroll and vendor tracking, ownership filings, and monthly expense reconciliation.',
+      },
+      {
+        title: 'McKinsey Forward Program (2026)',
+        line: 'Strategy and execution frameworks, structured problem solving, communication.',
+      },
+      {
+        title: 'Selected Projects / Practice - (Ongoing)',
+        line: 'A distance-based fare analysis, NYC enrollment forecasting and subway event detection.',
+      },
     ],
   },
 ];

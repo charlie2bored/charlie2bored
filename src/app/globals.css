@@ -222,6 +222,19 @@
     }
   }
 
+  /*
+   * The experience board is scroll-scrubbed against its own sticky pin, and
+   * that pin only exists at lg and up (see ExperienceBoard.tsx). Below it the
+   * columns stack into a section taller than any screen, so there is nothing
+   * to scrub and the start states would strand the board invisible.
+   */
+  @media (max-width: 1023.98px) {
+    [data-board-motion] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   *:focus-visible {
     outline: 2px solid var(--paper);
     outline-offset: 3px;
@@ -295,3 +308,4 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #9aa0a6;
 }
+
