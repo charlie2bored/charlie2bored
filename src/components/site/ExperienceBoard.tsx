@@ -5,6 +5,8 @@ import { useRef } from 'react';
 import {
   boardBg,
   boardColumn,
+  boardColumnText,
+  boardColumnTextDim,
   experienceColumns,
   experienceHeading,
   type ExperienceEntry,
@@ -43,7 +45,8 @@ function Entry({
 
   return (
     <motion.li style={{ opacity, y }}>
-      <p className="text-[clamp(0.85rem,0.9vw,1.4rem)] font-bold leading-snug text-black">
+      <p className="text-[clamp(0.85rem,0.9vw,1.4rem)] font-bold leading-snug"
+        style={{ color: boardColumnText }}>
         {entry.title}
       </p>
       {/*
@@ -51,7 +54,8 @@ function Entry({
         min-height keeps the rhythm identical either way.
       */}
       <p
-        className="mt-2 min-h-[3.2em] max-w-[34ch] text-[clamp(0.72rem,0.72vw,1.05rem)] font-normal leading-relaxed text-black/70 sm:min-h-[2.6em]"
+        className="mt-2 min-h-[3.2em] max-w-[34ch] text-[clamp(0.72rem,0.72vw,1.05rem)] font-normal leading-relaxed sm:min-h-[2.6em]"
+        style={{ color: boardColumnTextDim }}
         data-slot="descriptor"
       >
         {entry.line ?? ''}
@@ -61,12 +65,12 @@ function Entry({
 }
 
 function Divider({ left, p }: { left: string; p: MotionValue<number> }) {
-  const scaleY = useTransform(p, [0.54, 0.66], [0, 1]);
+  const scaleY = useTransform(p, [0.6, 0.72], [0, 1]);
   return (
     <motion.span
       aria-hidden="true"
-      className="absolute top-0 hidden h-full w-px bg-black lg:block"
-      style={{ left, scaleY, originY: 0.5 }}
+      className="absolute top-0 z-10 hidden h-full w-[2px] lg:block"
+      style={{ left, scaleY, originY: 0.5, backgroundColor: boardBg }}
     />
   );
 }
@@ -89,7 +93,7 @@ export default function ExperienceBoard() {
   const headlineScale = useTransform(p, [0.02, 0.3, 0.4, 0.52], [1, 5.5, 5.5, 1]);
   const headlineOpacity = useTransform(p, [0, 0.03], [0, 1]);
 
-  const columnOpacity = useTransform(p, [0.56, 0.68], [0, 1]);
+  const columnOpacity = useTransform(p, [0.52, 0.62], [0, 1]);
   const headingOpacity = useTransform(p, [0.62, 0.76], [0, 1]);
   const headingY = useTransform(p, [0.62, 0.76], [24, 0]);
 
@@ -125,8 +129,8 @@ export default function ExperienceBoard() {
                 />
 
                 <motion.h2
-                  className="relative text-center text-[clamp(3rem,7.17vw,10rem)] font-bold leading-none tracking-[-0.02em] text-black lg:pt-[7%]"
-                  style={{ opacity: headingOpacity, y: headingY }}
+                  className="relative text-center text-[clamp(3rem,7.17vw,10rem)] font-bold leading-none tracking-[-0.02em] lg:pt-[7%]"
+                  style={{ color: boardColumnText, opacity: headingOpacity, y: headingY }}
                 >
                   {column.heading}
                 </motion.h2>

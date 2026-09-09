@@ -56,8 +56,11 @@ export const experienceColumns: ExperienceColumn[] = [
 
 /**
  * Ground shared with the collage above, so the two light sections read as one
- * surface. Columns stay a step darker than the ground, preserving the
- * relationship in the Figma frame (panels tinted against a lighter page).
+ * surface. The columns take the site's own near-black instead of a grey tint,
+ * so the board belongs to the same palette as the rail and the dark sections
+ * rather than being a third, unrelated value.
  */
 export const boardBg = '#ece9e4';
-export const boardColumn = '#dbd7d1';
+export const boardColumn = '#0a0a0c';
+export const boardColumnText = '#f4f4f2';
+export const boardColumnTextDim = 'rgba(244,244,242,0.72)';
