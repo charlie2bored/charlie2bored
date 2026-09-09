@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import SplitHero from '@/components/site/SplitHero';
+import Opening from '@/components/site/Opening';
 import AboutSection from '@/components/story/AboutSection';
 import CategorySelector from '@/components/story/CategorySelector';
 import Marquee from '@/components/story/Marquee';
@@ -16,7 +16,7 @@ export default function Home() {
         Skip to categories
       </a>
       <main id="main-content">
-        <SplitHero />
+        <Opening />
         <AboutSection />
         <Marquee />
         <CategorySelector categories={categories} />
