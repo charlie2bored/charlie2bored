@@ -6,30 +6,32 @@ import { useEffect, useRef, useState } from 'react';
 import type { Category, Work } from '@/lib/story';
 
 /**
- * Full-bleed art plate for work with no photograph yet. Reads as a designed
- * colour panel rather than a missing image: accent wash, diagonal hatch, and a
- * huge ghosted numeral sunk into the corner.
+ * Poster art rendered in the DOM. Used wherever a screenshot makes a weak
+ * full-bleed background — a bare data table, or a screenshot of someone
+ * else's chrome — and as the stand-in until real photography exists.
+ * The figure sits high so it never collides with the category label below.
  */
-function PendingPlate({ accent, index }: { accent: string; index: string }) {
+function TypePlate({ accent, index }: { accent: string; index: string }) {
   return (
     <span aria-hidden="true" className="absolute inset-0 overflow-hidden">
       <span
         className="absolute inset-0"
-        style={{ background: `linear-gradient(150deg, ${accent}cc 0%, ${accent}55 45%, var(--ink) 100%)` }}
+        style={{ background: `linear-gradient(158deg, ${accent}e6 0%, ${accent}70 38%, var(--ink) 88%)` }}
       />
       <span
         className="absolute inset-0"
         style={{
           backgroundImage:
-            'repeating-linear-gradient(135deg, #00000033 0px, #00000033 2px, transparent 2px, transparent 10px)',
+            'repeating-linear-gradient(135deg, #00000030 0px, #00000030 2px, transparent 2px, transparent 11px)',
         }}
       />
       <span
-        className="font-display absolute -bottom-[0.24em] -right-[0.06em] text-[13rem] font-extrabold leading-none tracking-tighter"
-        style={{ color: '#00000026' }}
+        className="font-display absolute -right-[0.06em] top-[38%] text-[11rem] font-extrabold leading-none tracking-tighter"
+        style={{ color: '#00000024' }}
       >
         {index}
       </span>
+
     </span>
   );
 }
@@ -51,16 +53,21 @@ function Frame({
   return (
     <span className="absolute inset-0 transition-opacity duration-700 ease-out" style={{ opacity: visible ? 1 : 0 }}>
       {work.image ? (
-        <Image
-          src={work.image}
-          alt=""
-          fill
-          sizes="(max-width: 1023px) 100vw, 50vw"
-          priority={priority}
-          className="object-cover object-center"
-        />
+        <>
+          <Image
+            src={work.image}
+            alt=""
+            fill
+            sizes="(max-width: 1023px) 100vw, 50vw"
+            priority={priority}
+            className="object-cover"
+            style={{ objectPosition: work.focus ?? '50% 50%' }}
+          />
+          {/* Grade photographs toward the accent; plates are already in it. */}
+          <span className="gta-tint absolute inset-0" style={{ backgroundColor: accent }} />
+        </>
       ) : (
-        <PendingPlate accent={accent} index={index} />
+        <TypePlate accent={accent} index={index} />
       )}
     </span>
   );
@@ -128,12 +135,26 @@ function Panel({
         ))}
       </span>
 
-      {/* Accent grade: pulls screenshots and colour plates into one look. */}
-      <span
-        aria-hidden="true"
-        className="gta-tint absolute inset-0 -z-10"
-        style={{ backgroundColor: category.accent }}
-      />
+      {/*
+        Poster figure for whichever frame is showing. Deliberately outside
+        .gta-art so the art layer's filter does not grey it down.
+      */}
+      {!shown.image && shown.plate && (
+        <span className="gta-figure pointer-events-none absolute inset-x-0 top-0 flex flex-col items-start p-6 lg:p-8">
+          <span
+            className="font-display block max-w-full break-words text-[clamp(2.2rem,6.4vw,3.9rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.045em]"
+            style={{ color: '#fff', textShadow: '0 2px 22px rgba(0,0,0,0.45)' }}
+          >
+            {shown.plate.figure}
+          </span>
+          <span
+            className="mt-3 max-w-[24ch] text-[10px] font-semibold uppercase leading-snug tracking-[0.18em]"
+            style={{ color: 'rgba(255,255,255,0.85)' }}
+          >
+            {shown.plate.caption}
+          </span>
+        </span>
+      )}
 
       {/* Scrim keeps the type legible over any photograph. */}
       <span

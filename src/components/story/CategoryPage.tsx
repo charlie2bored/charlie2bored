@@ -16,18 +16,36 @@ function WorkFigure({ work, accent }: { work: Work; accent: string }) {
             alt={`${work.title} — preview`}
             fill
             sizes="(max-width: 768px) 100vw, 45vw"
-            className="object-cover object-top"
+            className="object-cover"
+            style={{ objectPosition: work.focus ?? '50% 50%' }}
           />
         ) : (
           <div
-            className="flex h-full w-full items-end p-4"
-            style={{
-              backgroundImage: `repeating-linear-gradient(135deg, ${accent}14 0px, ${accent}14 1px, transparent 1px, transparent 8px)`,
-            }}
+            className="relative flex h-full w-full flex-col justify-center overflow-hidden p-5"
+            style={{ background: `linear-gradient(158deg, ${accent}e6 0%, ${accent}70 40%, var(--ink) 92%)` }}
           >
-            <p className="text-[10px] font-medium uppercase tracking-[0.18em]" style={{ color: accent }}>
-              Photo pending
+            <span
+              aria-hidden="true"
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  'repeating-linear-gradient(135deg, #00000030 0px, #00000030 2px, transparent 2px, transparent 11px)',
+              }}
+            />
+            <p
+              className="font-display relative text-[clamp(1.8rem,5vw,3rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.045em]"
+              style={{ color: '#fff', textShadow: '0 2px 18px rgba(0,0,0,0.4)' }}
+            >
+              {work.plate?.figure ?? work.title}
             </p>
+            {work.plate?.caption && (
+              <p
+                className="relative mt-2.5 max-w-[26ch] text-[10px] font-semibold uppercase leading-snug tracking-[0.18em]"
+                style={{ color: 'rgba(255,255,255,0.82)' }}
+              >
+                {work.plate.caption}
+              </p>
+            )}
           </div>
         )}
       </div>

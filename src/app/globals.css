@@ -99,6 +99,18 @@
     transition: opacity 450ms ease-out, transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  /* The poster figure belongs to the active panel; at rest the plate is a plain field. */
+  .gta-figure {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 500ms ease-out, transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gta-panel[data-active='true'] .gta-figure {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .gta-panel[data-active='true'] .gta-art {
     filter: grayscale(0) brightness(0.92) contrast(1.02) saturate(1.12);
     transform: scale(1);
@@ -125,6 +137,11 @@
     }
 
     .gta-caption {
+      opacity: 1;
+      transform: none;
+    }
+
+    .gta-figure {
       opacity: 1;
       transform: none;
     }
