@@ -54,6 +54,11 @@ export const experienceColumns: ExperienceColumn[] = [
   },
 ];
 
-/** Frame colours from the Figma board. */
-export const boardBg = '#ffffff';
+/**
+ * Frame colours. The Figma board sits on white, but on the page it follows the
+ * collage, and a white band between two grey sections reads as a seam. The
+ * ground matches the collage instead; the columns stay lighter so they still
+ * read as panels.
+ */
+export const boardBg = '#bfbec2';
 export const boardColumn = '#d9d9d9';
