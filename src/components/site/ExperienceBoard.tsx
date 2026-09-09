@@ -29,11 +29,10 @@ import {
  * the rest builds under it.
  */
 const T = {
-  blank: 0.4,
   headline: 0.4,
-  bars: 1.25,
-  headings: 1.7,
-  entries: 2.1,
+  bars: 2.35,
+  headings: 2.75,
+  entries: 3.1,
 } as const;
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -99,12 +98,22 @@ export default function ExperienceBoard() {
       <motion.p
         className="origin-center text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold text-black lg:pt-[3.9%]"
         variants={{
-          hidden: { scale: 9, y: '30vh', opacity: 0 },
+          hidden: { scale: 1, y: '0vh', opacity: 0 },
           show: {
-            scale: 1,
-            y: 0,
-            opacity: 1,
-            transition: { duration: 0.85, delay: T.headline, ease },
+            /*
+             * Appears small in place, swoops out at the viewer, then settles
+             * back. 5.5x fills the width at a 1440 viewport without the ends
+             * being clipped by the section's overflow.
+             */
+            scale: [1, 1, 5.5, 1],
+            y: ['0vh', '0vh', '26vh', '0vh'],
+            opacity: [0, 1, 1, 1],
+            transition: {
+              duration: 1.85,
+              delay: T.headline,
+              times: [0, 0.07, 0.55, 1],
+              ease: ['linear', [0.33, 0, 0.2, 1], [0.5, 0, 0.15, 1]],
+            },
           },
         }}
       >
