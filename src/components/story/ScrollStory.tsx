@@ -2,6 +2,7 @@
 
 import { MotionConfig, motion, useScroll, useSpring } from 'framer-motion';
 import { RevealText } from '@/components/story/Reveal';
+import FlowField from '@/components/story/FlowField';
 
 /*
  * Motion note: reduced-motion is handled once, by <MotionConfig reducedMotion="user">.
@@ -24,8 +25,20 @@ function ScrollProgress() {
 
 function Hero() {
   return (
-    <section className="relative flex min-h-dvh flex-col justify-center px-6 py-10 sm:px-10 lg:px-16">
-      <div>
+    <section className="relative flex min-h-dvh flex-col justify-center overflow-hidden px-6 py-10 sm:px-10 lg:px-16">
+      <FlowField />
+
+      {/* Keeps the headline legible wherever the field happens to be dense. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(115% 75% at 26% 55%, rgba(8,8,10,0.82) 0%, rgba(8,8,10,0.42) 42%, rgba(8,8,10,0) 100%)',
+        }}
+      />
+
+      <div className="relative">
         <h1
           className="font-display text-[clamp(3rem,13vw,11rem)] font-extrabold leading-[0.85] tracking-[-0.04em]"
           style={{ color: 'var(--paper)' }}
