@@ -1,6 +1,7 @@
 /**
- * Every claim here traces to lib/experience.ts or lib/projects.ts. Keep it
- * that way — this is the page a hiring manager reads most closely.
+ * Every claim here traces to lib/experienceSection.ts. Keep it that way —
+ * this is the section a hiring manager reads most closely. (It used to cite
+ * lib/experience.ts and lib/projects.ts; both went with the retired routes.)
  */
 export const intro =
   'I have to scroll through different resumes every time I apply for a job in different fields. I’ve made my portfolio so it’s all in the same place.';

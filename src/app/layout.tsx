@@ -7,7 +7,6 @@ import SmoothScroll from '@/components/story/SmoothScroll';
 import TopBar from '@/components/site/TopBar';
 import Grain from '@/components/story/Grain';
 import Cursor from '@/components/story/Cursor';
-import EggsProvider from '@/components/drive/eggs/EggsProvider';
 import { getSiteUrl } from '@/lib/site';
 
 /** Everything structural: body copy and the heavy poster labels. */
@@ -110,7 +109,7 @@ export default function RootLayout({
         <Grain />
         <Cursor />
         <TopBar />
-        <EggsProvider>{children}</EggsProvider>
+        {children}
         <Analytics />
       </body>
     </html>

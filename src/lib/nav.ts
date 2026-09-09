@@ -9,14 +9,13 @@ export const owner = {
  *  date would disagree between server and client. */
 export const dateline = 'NEW YORK, NY / SEPT. 9, 2026 / UPDATE';
 
-export const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'Education', href: '/education' },
-  { label: 'Dance', href: '/dance' },
-  { label: 'Design', href: '/design' },
-  { label: 'Data', href: '/data' },
-];
+/**
+ * The rail is a map of the site, so it lists only what exists. The old
+ * Experience / Education / Dance / Design / Data routes were the retired
+ * design and have been removed; each label comes back here as its page is
+ * built, rather than sitting in the rail pointing at a 404.
+ */
+export const navItems = [{ label: 'Home', href: '/' }];
 
 export const contact = {
   email: 'iamcharlesvargas@gmail.com',
