@@ -3,7 +3,7 @@ import SiteNav from '@/components/story/SiteNav';
 import ScrollStory from '@/components/story/ScrollStory';
 import AboutSection from '@/components/story/AboutSection';
 import CategorySelector from '@/components/story/CategorySelector';
-import { beats, categories } from '@/lib/story';
+import { categories } from '@/lib/story';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -17,7 +17,7 @@ export default function Home() {
       </a>
       <SiteNav />
       <main id="main-content">
-        <ScrollStory beats={beats} />
+        <ScrollStory />
         <AboutSection />
         <CategorySelector categories={categories} />
       </main>
