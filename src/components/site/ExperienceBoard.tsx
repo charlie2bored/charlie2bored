@@ -94,50 +94,46 @@ export default function ExperienceBoard() {
       whileInView="show"
       viewport={{ once: true, amount: 0.55 }}
     >
-      {/* Beat 1: shout, then shrink into position. */}
-      <motion.p
-        className="origin-center text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold text-black lg:pt-[3.9%]"
-        variants={{
-          hidden: { scale: 1, y: '0vh', opacity: 0 },
-          show: {
-            /*
-             * Appears small in place, tears out at the viewer, overshoots,
-             * snaps back and holds, then retraces its path home.
-             *
-             * The acceleration lives in the keyframe VALUES, not the easing.
-             * Perceived size is roughly logarithmic, so a scale that
-             * accelerates in absolute terms - which is all an ease-in curve
-             * gives you - reads as constant-speed growth. These steps compound
-             * (each ratio larger than the last), which is what actually feels
-             * like acceleration. Segments between them are linear so the
-             * values alone control the feel.
-             *
-             * y tracks scale proportionally, so it travels toward you along
-             * one path rather than drifting on a separate curve.
-             */
-            scale: [1, 1, 1.08, 1.22, 1.48, 2.05, 3.3, 5.9, 5.5, 5.5, 1],
-            y: [
-              '0vh', '0vh', '0.5vh', '1.3vh', '2.8vh', '6.2vh',
-              '13.6vh', '29vh', '26vh', '26vh', '0vh',
-            ],
-            opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            transition: {
-              duration: 2.2,
-              delay: T.headline,
-              times: [0, 0.06, 0.13, 0.2, 0.27, 0.33, 0.39, 0.45, 0.5, 0.63, 1],
-              ease: [
-                'linear', 'linear', 'linear', 'linear', 'linear',
-                'linear', 'linear',
-                [0.2, 0, 0, 1],
-                'linear',
-                [0.5, 0, 0.15, 1],
-              ],
+      {/*
+        Beat 1: the headline comes at the viewer.
+
+        Real perspective rather than scale + translate. Scaling up while
+        sliding down reads as two separate 2D moves - a zoom and a slide -
+        which is what made this feel like it was sliding rather than
+        approaching. translateZ under a perspective grows it out of its own
+        position with foreshortening, so there is no travel across the screen
+        at all.
+
+        Depths are derived from the apparent scales we want:
+        z = P(1 - 1/s) with P = 800. They still compound, so the approach
+        accelerates rather than reading as constant speed.
+      */}
+      <div style={{ perspective: '800px', perspectiveOrigin: '50% 50%' }}>
+        <motion.p
+          className="origin-center text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold text-black lg:pt-[3.9%]"
+          variants={{
+            hidden: { z: 0, opacity: 0 },
+            show: {
+              z: [0, 0, 59, 144, 260, 410, 558, 664, 655, 655, 0],
+              opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              transition: {
+                duration: 2.2,
+                delay: T.headline,
+                times: [0, 0.06, 0.13, 0.2, 0.27, 0.33, 0.39, 0.45, 0.5, 0.63, 1],
+                ease: [
+                  'linear', 'linear', 'linear', 'linear', 'linear',
+                  'linear', 'linear',
+                  [0.2, 0, 0, 1],
+                  'linear',
+                  [0.5, 0, 0.15, 1],
+                ],
+              },
             },
-          },
-        }}
-      >
-        {experienceHeading}
-      </motion.p>
+          }}
+        >
+          {experienceHeading}
+        </motion.p>
+      </div>
 
       <div className="relative mt-8 lg:mt-[2%]">
         {/* Beat 2 */}
