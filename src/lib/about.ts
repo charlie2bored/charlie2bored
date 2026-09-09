@@ -1,50 +1,67 @@
-export const bio =
-  'I’m a BI and operations analyst. I work mostly in Power BI, SQL, and Python. My multi-year BI internship taught me what a working BI operation actually does, automating KPI dashboards across 20+ schools, building enrollment forecasts, and turning messy data into something leadership can act on.';
+/**
+ * Every claim here traces to lib/experience.ts or lib/projects.ts. Keep it
+ * that way — this is the page a hiring manager reads most closely.
+ */
+export const intro = [
+  'Analyst, designer, performer. Most portfolios pick a lane. I never have, and at this point I have stopped treating that as a problem to explain away.',
+  'The data work runs deepest: a multi-year BI internship automating KPI dashboards across 20+ school sites, enrollment forecasting, and pricing analysis. The design work is where I make complicated things legible — investor materials and clinical workflow figures for a pre-FDA medical-imaging startup, and shipped sites for clients who had none. The performing is the oldest of the three: four years of conservatory ballet and modern, now arena floors for the New York Red Bulls and the NJ Devils.',
+  'They feed each other more than they compete. A dashboard nobody reads and a routine nobody watches fail for the same reason.',
+];
 
 export const availability = 'NYC, NJ & CT · Hybrid local or remote';
 
-/** Grouped by what each one actually gets used for, not by tool category. */
-export const skillGroups = [
+/**
+ * Skills grouped by the three categories the site is built around, so the
+ * About reinforces the selector instead of contradicting it.
+ */
+export const skillsByCategory: { key: 'dance' | 'design' | 'data'; items: string[] }[] = [
   {
-    title: 'Data & analytics',
+    key: 'dance',
+    items: [
+      'Classical ballet',
+      'Modern (Graham / Horton)',
+      'Contemporary',
+      'Live performance',
+      'Stagecraft',
+      'Crowd engagement',
+      'Brand representation',
+    ],
+  },
+  {
+    key: 'design',
+    items: [
+      'Figma',
+      'Framer',
+      'Sketch',
+      'Adobe Illustrator',
+      'Information design',
+      'Data visualization',
+      'Investor materials',
+      'Web & UX',
+    ],
+  },
+  {
+    key: 'data',
     items: [
       'SQL',
       'Python',
       'pandas',
       'NumPy',
       'matplotlib',
-      'Excel (advanced)',
-      'Data cleaning & ETL',
-      'Statistical analysis',
-    ],
-  },
-  {
-    title: 'BI & dashboards',
-    items: [
       'Power BI',
       'Tableau',
+      'Excel (advanced)',
       'KPI design',
-      'Executive reporting',
-      'Dashboard automation',
-      'Predictive / forecasting models',
-    ],
-  },
-  {
-    title: 'Operations & analysis',
-    items: [
+      'Forecasting models',
+      'Data cleaning & ETL',
+      'Statistical analysis',
       'Pricing analysis',
-      'Pipeline & go/no-go review',
-      'Multi-source data integration',
-      'Process automation',
       'Stakeholder communication',
-      'Data storytelling',
     ],
-  },
-  {
-    title: 'Engineering (supporting)',
-    items: ['React', 'TypeScript', 'Next.js', 'Vite', 'Tailwind CSS', 'Git / GitHub', 'Vercel'],
   },
 ];
+
+export const supporting = 'React, TypeScript, Next.js, Vite, Tailwind CSS, Git / GitHub, Vercel — enough to build and ship this site myself.';
 
 export const linkedin = 'https://www.linkedin.com/in/charlie2bored/';
 export const email = 'iamcharlesvargas@gmail.com';
