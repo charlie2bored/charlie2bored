@@ -60,13 +60,6 @@
     font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   }
 
-  /* Editorial voice: narrative headlines only, never UI chrome. */
-  .font-serif-display {
-    font-family: var(--font-serif), ui-serif, Georgia, serif;
-    font-weight: 400;
-    letter-spacing: -0.015em;
-  }
-
   .font-mono-label {
     font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
   }
@@ -174,6 +167,19 @@
     .gta-panel[data-active='true'] {
       flex-grow: 1.9;
     }
+  }
+
+  /* "Next -" bands: art lifts and colours as the row is hovered or focused. */
+  .nextup-art {
+    filter: grayscale(1) brightness(0.24) contrast(0.92);
+    transform: scale(1.03);
+    transition: filter 600ms ease-out, transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nextup:hover .nextup-art,
+  .nextup:focus-visible .nextup-art {
+    filter: grayscale(0) brightness(0.62) contrast(1);
+    transform: scale(1);
   }
 
   @media (prefers-reduced-motion: reduce) {

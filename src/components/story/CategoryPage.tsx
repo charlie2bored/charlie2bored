@@ -3,6 +3,8 @@ import Link from 'next/link';
 import type { Category, Work } from '@/lib/story';
 import { categories } from '@/lib/story';
 import CropLabel from '@/components/story/CropLabel';
+import SiteNav from '@/components/story/SiteNav';
+import NextUp from '@/components/story/NextUp';
 
 function WorkFigure({ work, accent }: { work: Work; accent: string }) {
   return (
@@ -120,6 +122,7 @@ export default function CategoryPage({ category }: { category: Category }) {
 
   return (
     <div className="min-h-dvh" style={{ backgroundColor: 'var(--ink)', color: 'var(--paper)' }}>
+      <SiteNav />
       <main id="main-content" className="px-6 pb-24 pt-10 sm:px-10 lg:px-16">
         <nav aria-label="Breadcrumb" className="mb-16">
           <Link
@@ -134,7 +137,7 @@ export default function CategoryPage({ category }: { category: Category }) {
         <header className="max-w-3xl">
           <CropLabel color={category.accent}>{category.index}</CropLabel>
           <h1
-            className="font-serif-display mt-4 text-[clamp(3.2rem,11vw,7.5rem)] leading-[0.9] tracking-[-0.03em]"
+            className="font-display mt-4 text-[clamp(3rem,11vw,7rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.04em]"
             style={{ color: 'var(--paper)' }}
           >
             {category.label}
@@ -150,27 +153,9 @@ export default function CategoryPage({ category }: { category: Category }) {
           ))}
         </section>
 
-        <nav aria-label="Other categories" className="mt-24 border-t pt-10" style={{ borderColor: 'var(--rule)' }}>
-          <CropLabel className="mb-6">Elsewhere</CropLabel>
-          <ul className="flex list-none flex-col gap-4 sm:flex-row sm:gap-10">
-            {others.map((other) => (
-              <li key={other.key}>
-                <Link href={other.href} className="group inline-flex items-baseline gap-3 hover:underline">
-                  <span className="text-[11px] tracking-[0.2em]" style={{ color: other.accent }}>
-                    {other.index}
-                  </span>
-                  <span
-                    className="font-serif-display text-[clamp(1.7rem,4vw,2.6rem)] tracking-[-0.02em]"
-                    style={{ color: 'var(--paper)' }}
-                  >
-                    {other.label}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
       </main>
+
+      <NextUp categories={others} />
     </div>
   );
 }

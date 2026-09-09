@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import SiteNav from '@/components/story/SiteNav';
 import ScrollStory from '@/components/story/ScrollStory';
 import CategorySelector from '@/components/story/CategorySelector';
 import { beats, categories } from '@/lib/story';
@@ -13,6 +14,7 @@ export default function Home() {
       <a href="#pick" className="skip-link">
         Skip to categories
       </a>
+      <SiteNav />
       <main id="main-content">
         <ScrollStory beats={beats} />
         <CategorySelector categories={categories} />

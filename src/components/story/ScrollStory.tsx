@@ -2,7 +2,6 @@
 
 import { MotionConfig, motion, useScroll, useSpring } from 'framer-motion';
 import type { Beat } from '@/lib/story';
-import CropLabel from '@/components/story/CropLabel';
 
 /*
  * Motion note: reduced-motion is handled once, by <MotionConfig reducedMotion="user">.
@@ -29,29 +28,18 @@ function ScrollProgress() {
 
 function Hero() {
   return (
-    <section className="relative flex min-h-dvh flex-col justify-between px-6 py-10 sm:px-10 lg:px-16">
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="text-[11px]"
-      >
-        <CropLabel boxed color="var(--paper-dim)">
-          Dance / Design / Data
-        </CropLabel>
-      </motion.p>
-
+    <section className="relative flex min-h-dvh flex-col justify-center px-6 py-10 sm:px-10 lg:px-16">
       <div>
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="font-serif-display text-[clamp(3.4rem,14vw,12rem)] leading-[0.82] tracking-[-0.03em]"
+          className="font-display text-[clamp(3rem,13vw,11rem)] font-extrabold leading-[0.85] tracking-[-0.04em]"
           style={{ color: 'var(--paper)' }}
         >
           Charlie
           <br />
-          <span className="italic">Vargas</span>
+          Vargas
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -68,7 +56,7 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}
-        className="font-mono-label flex items-center gap-3 text-[10px] uppercase tracking-[0.2em]"
+        className="font-mono-label absolute bottom-10 left-6 flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] sm:left-10 lg:left-16"
         style={{ color: 'var(--paper-faint)' }}
       >
         <span>Scroll</span>
@@ -96,7 +84,7 @@ function BeatSection({ beat }: { beat: Beat }) {
       <div className="max-w-4xl">
         <motion.h2
           {...inView}
-          className="font-serif-display text-[clamp(2.3rem,7vw,5.5rem)] leading-[1.0] tracking-[-0.025em]"
+          className="font-display text-[clamp(2rem,6.5vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.03em]"
           style={{ color: 'var(--paper)' }}
         >
           {beat.line}

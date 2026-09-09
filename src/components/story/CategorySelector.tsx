@@ -222,7 +222,7 @@ export default function CategorySelector({ categories }: { categories: Category[
         <CropLabel>Select</CropLabel>
         <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3">
           <h2
-            className="font-serif-display text-[clamp(2rem,5.5vw,3.4rem)] tracking-[-0.02em]"
+            className="font-display text-[clamp(1.8rem,5vw,3rem)] font-extrabold uppercase tracking-[-0.03em]"
             style={{ color: 'var(--paper)' }}
           >
             Pick a room.

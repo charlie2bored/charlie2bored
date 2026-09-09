@@ -1,18 +1,10 @@
 import type { Metadata, Viewport } from 'next';
-import { Archivo, Instrument_Serif, JetBrains_Mono } from 'next/font/google';
+import { Archivo, JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
 import EggsProvider from '@/components/drive/eggs/EggsProvider';
 import { getSiteUrl } from '@/lib/site';
-
-/** Narrative display face: the editorial voice of the scroll story. */
-const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: ['400'],
-  style: ['normal', 'italic'],
-  variable: '--font-serif',
-});
 
 /** Everything structural: body copy and the heavy poster labels. */
 const archivo = Archivo({
@@ -97,7 +89,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${archivo.variable} ${instrumentSerif.variable} ${jetbrains.variable} font-sans antialiased`}>
+      <body className={`${archivo.variable} ${jetbrains.variable} font-sans antialiased`}>
         <PersonJsonLd />
         <EggsProvider>{children}</EggsProvider>
         <Analytics />
