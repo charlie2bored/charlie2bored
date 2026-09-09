@@ -207,25 +207,18 @@
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    /*
-     * Word reveals must never be able to strand text off-screen when the
-     * animation that would bring it back is suppressed.
-     */
+  /*
+   * prefers-reduced-motion is deliberately not honoured: motion is core to
+   * this design and the owner chose to run it for everyone.
+   *
+   * The one guard that stays is for JavaScript being unavailable, where the
+   * reveal animations would never run and their start state would leave
+   * content invisible.
+   */
+  @media (scripting: none) {
     [data-reveal-word] {
-      transform: none !important;
       opacity: 1 !important;
-    }
-
-    .marquee-track {
-      animation: none;
-    }
-
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+      transform: none !important;
     }
   }
 

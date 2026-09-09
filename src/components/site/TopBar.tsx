@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import RailPanel from '@/components/site/RailPanel';
 import { owner } from '@/lib/nav';
-import { usePrefersReducedMotion } from '@/hooks/useMediaQuery';
 
 /**
  * Slim persistent bar plus the summoned rail overlay.
@@ -15,7 +14,6 @@ import { usePrefersReducedMotion } from '@/hooks/useMediaQuery';
  */
 export default function TopBar() {
   const [open, setOpen] = useState(false);
-  const reduce = usePrefersReducedMotion();
 
   // Escape closes, and the page must not scroll behind the overlay.
   useEffect(() => {
@@ -63,9 +61,9 @@ export default function TopBar() {
           <motion.div
             key="rail-overlay"
             className="fixed inset-0 z-50"
-            initial={reduce ? false : { x: '-100%' }}
+            initial={{ x: '-100%' }}
             animate={{ x: '0%' }}
-            exit={reduce ? { opacity: 0 } : { x: '-100%' }}
+            exit={{ x: '-100%' }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             role="dialog"
             aria-modal="true"

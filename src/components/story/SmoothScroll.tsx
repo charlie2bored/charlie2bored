@@ -6,13 +6,12 @@ import Lenis from 'lenis';
 /**
  * Weighted, eased scrolling — the single biggest "this was designed" tell,
  * and the one most people feel without being able to name it.
- * Disabled outright under reduced motion: hijacking the scroll wheel is
- * exactly what that preference exists to prevent.
+ *
+ * Runs for everyone by product decision, including visitors who have asked
+ * for reduced motion.
  */
 export default function SmoothScroll() {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
     const lenis = new Lenis({
       duration: 0.85,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

@@ -21,7 +21,7 @@ import {
   statement,
   textTop,
 } from '@/lib/collage';
-import { useMediaQuery, usePrefersReducedMotion } from '@/hooks/useMediaQuery';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const STATEMENT_CLASS =
   'font-bold leading-[1.06] tracking-[-0.02em] text-[clamp(1.35rem,5.15vw,6.5rem)]';
@@ -84,31 +84,6 @@ function Photo({ photo, burst }: { photo: CollagePhoto; burst: MotionValue<numbe
   );
 }
 
-/** Static end state, used under reduced motion and as the burst's target. */
-function CollageStatic() {
-  return (
-    <div className="relative h-full w-full overflow-hidden" style={{ backgroundColor: collageBg }}>
-      {photos.map((p) => (
-        <div
-          key={p.id}
-          className="absolute -translate-x-1/2 -translate-y-1/2"
-          style={{ left: `${p.to.x}%`, top: `${p.to.y}%`, width: `${p.w}%`, height: `${p.h}%` }}
-        >
-          <Image
-            src={p.src}
-            alt={p.alt}
-            fill
-            sizes="30vw"
-            className="object-cover grayscale"
-            style={{ objectPosition: `50% ${p.focusY}%` }}
-          />
-        </div>
-      ))}
-      <CollageText />
-    </div>
-  );
-}
-
 function CollageText() {
   return (
     <>
@@ -137,7 +112,6 @@ function CollageText() {
 
 export default function Opening() {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = usePrefersReducedMotion();
   const stacked = useMediaQuery('(max-width: 767px)', false);
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
@@ -177,25 +151,6 @@ export default function Opening() {
 
   const textScale = useTransform(burst, [0.15, 0.8], [0.72, 1]);
   const textOpacity = useTransform(burst, [0.2, 0.7], [0, 1]);
-
-  // Reduced motion: two plain screens, no pinning and no parting.
-  if (reduce) {
-    return (
-      <>
-        <section className="h-dvh" aria-label="Introduction">
-          <div className="grid h-full grid-rows-[auto_1fr] md:grid-cols-2 md:grid-rows-1 xl:grid-cols-[19.4%_1fr]">
-            <div style={{ backgroundColor: 'var(--rail-bg)' }}>
-              <RailPanel />
-            </div>
-            <HeroImage />
-          </div>
-        </section>
-        <section className="h-dvh" aria-label="Introduction, continued">
-          <CollageStatic />
-        </section>
-      </>
-    );
-  }
 
   return (
     <div ref={ref} className="relative h-[200vh]" aria-label="Introduction">

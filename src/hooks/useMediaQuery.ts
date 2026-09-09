@@ -22,8 +22,3 @@ export function useMediaQuery(query: string, serverSnapshot = false): boolean {
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
-
-/** True when the visitor has asked for less motion. */
-export function usePrefersReducedMotion(): boolean {
-  return useMediaQuery('(prefers-reduced-motion: reduce)', false);
-}

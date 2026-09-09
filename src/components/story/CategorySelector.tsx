@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { Category, Work } from '@/lib/story';
 import CropLabel from '@/components/story/CropLabel';
 
@@ -98,19 +98,13 @@ function Panel({
     () => [...category.works].sort((a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image))),
     [category.works],
   );
-  const reduceRef = useRef(false);
-
-  useEffect(() => {
-    reduceRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }, []);
-
   /*
    * Cycle the artwork while the panel is active - the loading-screen feel.
    * Starts only on interaction, so there is no server/client render to
-   * disagree about, and it holds on one frame under reduced motion.
+   * disagree about.
    */
   useEffect(() => {
-    if (!active || reduceRef.current || frames.length < 2) return;
+    if (!active || frames.length < 2) return;
     const id = window.setInterval(() => setFrame((f) => f + 1), 1600);
     return () => window.clearInterval(id);
   }, [active, frames.length]);

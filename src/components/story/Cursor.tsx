@@ -11,9 +11,8 @@ export default function Cursor() {
   const ring = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const fine = window.matchMedia('(pointer: fine)').matches;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!fine || reduce) return;
+    // Fine pointers only; motion preference is deliberately not consulted.
+    if (!window.matchMedia('(pointer: fine)').matches) return;
 
     // Shown by the effect rather than by state, so the server and client
     // agree on the initial markup and no setState runs inside the effect.
