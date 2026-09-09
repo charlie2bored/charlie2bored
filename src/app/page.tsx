@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Opening from '@/components/site/Opening';
+import ExperienceBoard from '@/components/site/ExperienceBoard';
 import AboutSection from '@/components/story/AboutSection';
 import CategorySelector from '@/components/story/CategorySelector';
 import Marquee from '@/components/story/Marquee';
@@ -17,6 +18,7 @@ export default function Home() {
       </a>
       <main id="main-content">
         <Opening />
+        <ExperienceBoard />
         <AboutSection />
         <Marquee />
         <CategorySelector categories={categories} />
