@@ -107,6 +107,15 @@ export const categories: Category[] = [
           'Split the flavor pages out of the catalog so each SKU has its own URL, image set, and ingredient story, instead of one overloaded grid.',
       },
       {
+        title: 'Kindling Education Partners',
+        context: 'Corporate site for acquisition targets, investors, and talent',
+        plate: { figure: 'CLIENT-OWNED', caption: 'Built on their GitHub and Vercel, not mine' },
+        href: '/experience/kindling',
+        meta: 'May 2026 — present',
+        detail:
+          'Argued for a custom-coded site over Squarespace, then set it up under client-owned GitHub and Vercel accounts so Kindling owns the architecture. Aimed at acquisition targets, investors, and talent rather than parents.',
+      },
+      {
         title: 'Rossitech LTD',
         context: 'First websites for clients who had none · Figma and Framer',
         plate: { figure: '0 → 1', caption: 'First websites, Figma and Framer' },
@@ -124,7 +133,7 @@ export const categories: Category[] = [
     href: '/data',
     line: 'Forecasts, signals, and dashboards',
     blurb:
-      'A multi-year BI internship, then three analyses on real public data — each one back-tested or validated against something that came out later.',
+      'Two and a half years inside a working BI operation, then three analyses on real public data — each one back-tested or validated against something that came out later.',
     accent: '#38BDF8',
     works: [
       {
@@ -148,22 +157,22 @@ export const categories: Category[] = [
       },
       {
         title: 'NYC Distance-Based Fare',
-        context: '$913M revenue gap surfaced, with a fix that spares riders',
-        plate: { figure: '$913M', caption: 'Revenue gap surfaced' },
+        context: '$277M → $913M after I caught my own distance error',
+        plate: { figure: '$913M', caption: 'Up from $277M after the correction' },
         href: 'https://nyc-fare-systems-website.vercel.app/',
         external: true,
         meta: 'May 2026',
         detail:
-          'Modelled a distance-based fare off open MTA OD pairings and fare structures, then built a small site so a non-technical reader could test the tradeoff for their own commute.',
+          'Modelled a distance-based fare off open MTA OD pairings and fare structures. The first version measured distance as the crow flies and underpriced every long trip; re-routing along the actual subway network tripled the result, from $277M to $913M. I published the correction.',
       },
       {
         title: 'Apple Montessori Schools',
-        context: 'Multi-year BI internship · KPI dashboards across 20+ sites',
-        plate: { figure: '20+', caption: 'Sites on automated KPI dashboards' },
+        context: '2.5 years · reporting time halved across 20+ sites',
+        plate: { figure: '−50%', caption: 'Reporting time · 20+ school sites' },
         href: '/experience/apple-montessori',
-        meta: 'Multi-year',
+        meta: 'Oct 2023 — May 2026',
         detail:
-          'Automated KPI dashboards and delivered real-time performance analytics that informed pricing, staffing, and market expansion. Integrated 3+ years of CRM and billing data across the customer journey.',
+          'Two and a half years automating KPI dashboards in Power BI across 20+ schools: manual reporting time down 50%, forecasting accuracy up about 50%, and a contribution to initiatives that cut student attrition by about 10%.',
       },
     ],
   },

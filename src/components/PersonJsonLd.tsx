@@ -17,7 +17,7 @@ export function PersonJsonLd() {
     url: siteUrl,
     sameAs,
     description:
-      'BI, data, and operations analyst. I work in Power BI, SQL, and Python, mostly from a multi-year BI internship. I’ve automated KPI dashboards, built predictive enrollment models, and done pricing analysis across 20+ sites.',
+      'Analyst, designer, and performer. A 2.5-year BI internship automating KPI dashboards across 20+ school sites, investor and clinical design work for a pre-FDA medical-imaging startup, and arena performance for the New York Red Bulls and NJ Devils.',
     knowsAbout: [
       'Data Analytics',
       'Business Intelligence',

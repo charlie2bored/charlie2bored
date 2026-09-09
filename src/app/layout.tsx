@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      'Charlie Vargas | BI, Data & Operations Analyst',
+      'Charlie Vargas | Dance, Design & Data',
     template: '%s | Charlie Vargas',
   },
   description:
-    'Charlie Vargas ("2bored"): BI, data, and operations analyst. I work mostly in Power BI, SQL, and Python, most of it from a multi-year BI internship. I’ve automated KPI dashboards, built predictive enrollment models, and done pricing analysis across 20+ sites. NYC, NJ, or CT; hybrid or remote.',
+    'Charlie Vargas ("2bored"): analyst, designer, and performer in New York. A 2.5-year BI internship that cut reporting time 50% across 20+ school sites, investor and clinical design for a pre-FDA medical-imaging startup, and arena floors for the Red Bulls and the Devils.',
   keywords: [
     'Charlie Vargas',
     'data analyst',
@@ -45,6 +45,10 @@ export const metadata: Metadata = {
     'KPI dashboards',
     'predictive modeling',
     'data storytelling',
+    'product designer',
+    'Figma',
+    'dancer',
+    'arena performer',
     'NYC fare analysis',
     'portfolio',
   ],
@@ -57,15 +61,15 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Charlie Vargas',
-    title: 'Charlie Vargas | BI, Data & Operations Analyst',
+    title: 'Charlie Vargas | Dance, Design & Data',
     description:
-      'BI, data, and operations analyst. I work in Power BI, SQL, and Python. KPI dashboards, predictive models, and an NYC fare-policy analysis on real MTA data.',
+      'Analyst, designer, performer. KPI dashboards across 20+ school sites, investor and clinical design for a pre-FDA medical-imaging startup, and arena floors for the Red Bulls and the Devils.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Charlie Vargas | BI, Data & Operations Analyst',
+    title: 'Charlie Vargas | Dance, Design & Data',
     description:
-      'Portfolio: BI dashboards, operational analytics, and an NYC fare-policy model on real MTA data. NYC, NJ, or CT; hybrid or remote.',
+      'Portfolio: BI dashboards and forecasting, investor and clinical design, and arena performance. NYC, NJ, or CT; hybrid or remote.',
   },
 };
 

@@ -31,8 +31,23 @@ export const experiences: Role[] = [
     description: [
       'Designed the investor-facing pitch deck, one-pager, and product scorecard for a pre-FDA AI medical-imaging startup, translating the product and its clinical workflow into visuals for non-technical stakeholders.',
       'Led a full website redesign and produced the technical and clinical figures (architecture and risk-tier workflow diagrams) that communicate a complex model to investors and clinical partners.',
+      'Run the site as a HubSpot super admin: publishing news and award announcements, managing marketing email, and keeping team and product pages current.',
+      'Cut short-form clips from company webinars and build social carousels, turning long recorded sessions into material the team can actually post.',
     ],
-    skills: ['Web & UX', 'Brand & Creative', 'Information design', 'Data visualization', 'Investor materials'],
+    skills: ['Web & UX', 'Brand & Creative', 'Information design', 'Investor materials', 'HubSpot', 'Short-form video'],
+  },
+  {
+    slug: 'kindling',
+    year: 'May 2026 to Present',
+    title: 'Web Design & Development (Contract)',
+    company: 'Kindling Education Partners',
+    description: [
+      'Scoped and built the corporate landing page, arguing for a custom-coded site over Squarespace so the design would not be held to template constraints.',
+      'Set the project up under client-owned GitHub and Vercel accounts so Kindling owns its own architecture rather than inheriting a dependency on me.',
+      'Aimed the site at acquisition targets, investors, and talent rather than parents, with the existing schools carried as proof of track record and enrollment linking out to where it belongs.',
+      'Built a contact form that routes acquisition, investment, careers, and general enquiries, plus a careers landing page for postings to aggregate into.',
+    ],
+    skills: ['Next.js', 'Tailwind CSS', 'Vercel', 'Client scoping', 'Information architecture'],
   },
   {
     slug: 'rossitech',
@@ -94,6 +109,7 @@ export const education = [
     description: [
       'Relevant Coursework: Business Statistics, Calculus, and Information Systems.',
       'Served as Treasurer for the Fashion Organization, efficiently managing fundraising and revenue, and creating informative and engaging digital media.',
+      'Completed the McKinsey Forward Program (2026), covering strategy and execution frameworks, structured problem solving, and communication.',
     ],
   },
 ];

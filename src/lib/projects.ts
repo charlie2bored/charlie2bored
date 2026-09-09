@@ -84,13 +84,14 @@ export const projects: Project[] = [
     title: 'NYC Distance-Based Fare Analysis',
     role: 'Solo: research, modeling, and frontend',
     description:
-      'I treated MTA ridership data as a policy question. Would a distance-based fare actually change who pays and who saves? I modeled the math in Python off the open OD pairings, fare structures, and station metadata. Then I built a small site so a non-technical reader could test the tradeoff for their own commute.',
+      'I treated MTA ridership data as a policy question. Would a distance-based fare actually change who pays and who saves? I modeled the math in Python off the open OD pairings, fare structures, and station metadata. Then I built a small site so a non-technical reader could test the tradeoff for their own commute. The first version of this analysis reported $277M. It was wrong, and the correction is the part worth reading.',
     approach: {
       problem:
         'Fare debates usually live in spreadsheets and op-eds. Riders can’t see how a policy change would actually affect their own trip.',
       decisions: [
         'Built the analysis in pandas and NumPy off the open MTA OD pairings, fare structures, and station metadata. The whole thing is reproducible, so the model can be re-run when the data changes.',
-        'Uncovered roughly $913M in MTA revenue gap between current flat-fare receipts and a distance-based structure, then proposed a pricing optimization that recovers the gap without raising consumer fares.',
+        'Shipped a first version that measured distance as the crow flies, which quietly underpriced every long trip. Re-ran it routing along the actual subway network instead. The correction tripled the result, from $277M to roughly $913M, and I published the revision rather than leaving the original number standing.',
+        'Proposed a pricing optimization that recovers that gap without raising consumer fares.',
         'Reported the loss as well as the gain. About 15% of riders in the model pay less, and the rest pay more. Hiding that would have been a worse choice than reporting a worse number.',
         'Framed the page around a single comparison, your trip today versus the proposed model, so the reader is the one driving the page.',
       ],
