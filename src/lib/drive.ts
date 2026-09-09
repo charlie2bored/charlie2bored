@@ -239,3 +239,38 @@ export function educationItems(): DriveItem[] {
     href: `/education/${e.slug}`,
   }));
 }
+
+export type SuggestedCard = {
+  name: string;
+  href: string;
+  external?: boolean;
+  image: string;
+  reason: string;
+  icon: DriveIcon;
+  color: string;
+};
+
+const suggestedReason: Record<string, string> = {
+  'nyc-d2-enrollment': '8.71% MAPE against the actuals — Prophet got 19.20%',
+  'nyc-subway-events': '96.5% recall on 513 known events, from ridership alone',
+  'nyc-fare': '$913M revenue gap surfaced, with a fix that spares riders',
+};
+
+/** The three analyses worth opening first, surfaced the way Drive surfaces recent files. */
+export function suggestedItems(): SuggestedCard[] {
+  return ['nyc-d2-enrollment', 'nyc-subway-events', 'nyc-fare'].flatMap((slug) => {
+    const p = projects.find((x) => x.slug === slug);
+    if (!p) return [];
+    const href = p.caseStudy ?? p.links.demo;
+    return [
+      {
+        name: p.title,
+        href,
+        external: !p.caseStudy && Boolean(p.links.demo),
+        image: p.image,
+        reason: suggestedReason[slug],
+        ...projectIcon[p.category],
+      },
+    ];
+  });
+}

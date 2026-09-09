@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import DriveShell from '@/components/drive/DriveShell';
-import { rootItems } from '@/lib/drive';
+import ScrollStory from '@/components/story/ScrollStory';
+import CategorySelector from '@/components/story/CategorySelector';
+import { beats, categories } from '@/lib/story';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -8,10 +9,14 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <DriveShell
-      crumbs={[{ label: 'Shared with me' }, { label: 'Charlie Vargas' }]}
-      tagline="BI and operations analyst · Power BI, SQL, Python · NYC, NJ & CT"
-      items={rootItems()}
-    />
+    <div style={{ backgroundColor: 'var(--ink)', color: 'var(--paper)' }}>
+      <a href="#pick" className="skip-link">
+        Skip to categories
+      </a>
+      <main id="main-content">
+        <ScrollStory beats={beats} />
+        <CategorySelector categories={categories} />
+      </main>
+    </div>
   );
 }

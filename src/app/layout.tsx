@@ -1,15 +1,23 @@
 import type { Metadata, Viewport } from 'next';
-import { DM_Sans } from 'next/font/google';
+import { Archivo, Space_Grotesk } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
 import EggsProvider from '@/components/drive/eggs/EggsProvider';
 import { getSiteUrl } from '@/lib/site';
 
-const dmSans = DM_Sans({
+/** Display face: tight, heavy, built for the large statements in the scroll story. */
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-dm',
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-display',
+});
+
+/** Text face: everything that is not a headline. */
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-text',
 });
 
 const siteUrl = getSiteUrl();
@@ -81,7 +89,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${dmSans.variable} font-sans antialiased`}>
+      <body className={`${archivo.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <PersonJsonLd />
         <EggsProvider>{children}</EggsProvider>
         <Analytics />

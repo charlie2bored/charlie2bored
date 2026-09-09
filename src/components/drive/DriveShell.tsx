@@ -14,9 +14,10 @@ import {
   IconList,
   IconSettings,
 } from '@tabler/icons-react';
-import type { DriveItem } from '@/lib/drive';
+import type { DriveItem, SuggestedCard } from '@/lib/drive';
 import { ICONS } from '@/components/drive/icons';
 import DriveSearch from '@/components/drive/DriveSearch';
+import DriveSuggested from '@/components/drive/DriveSuggested';
 import { useEggs } from '@/components/drive/eggs/EggsProvider';
 import { offTheClockTagline } from '@/lib/eggs';
 
@@ -71,10 +72,12 @@ export default function DriveShell({
   crumbs,
   tagline,
   items,
+  suggested,
 }: {
   crumbs: Crumb[];
   tagline?: string;
   items: DriveItem[];
+  suggested?: SuggestedCard[];
 }) {
   const router = useRouter();
   const { openPanel, settings } = useEggs();
@@ -237,6 +240,8 @@ export default function DriveShell({
             </span>
           ))}
         </div>
+
+        {suggested && suggested.length > 0 && <DriveSuggested cards={suggested} />}
 
         {view === 'list' ? (
           <table className="w-full table-fixed border-collapse text-[13px]">
