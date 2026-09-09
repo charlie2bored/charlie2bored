@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from 'next';
-import { Archivo, JetBrains_Mono } from 'next/font/google';
+import { Archivo, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
 import SmoothScroll from '@/components/story/SmoothScroll';
+import TopBar from '@/components/site/TopBar';
 import Grain from '@/components/story/Grain';
 import Cursor from '@/components/story/Cursor';
 import EggsProvider from '@/components/drive/eggs/EggsProvider';
@@ -14,6 +15,13 @@ const archivo = Archivo({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-display',
+});
+
+/** The face from the $913M plate; now the site's voice. */
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-grotesk',
 });
 
 /** Small uppercase labels and crop marks. */
@@ -96,11 +104,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${archivo.variable} ${jetbrains.variable} font-sans antialiased`}>
+      <body className={`${archivo.variable} ${spaceGrotesk.variable} ${jetbrains.variable} font-sans antialiased`}>
         <PersonJsonLd />
         <SmoothScroll />
         <Grain />
         <Cursor />
+        <TopBar />
         <EggsProvider>{children}</EggsProvider>
         <Analytics />
       </body>

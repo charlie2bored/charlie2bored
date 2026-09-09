@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import SiteNav from '@/components/story/SiteNav';
-import ScrollStory from '@/components/story/ScrollStory';
+import SplitHero from '@/components/site/SplitHero';
 import AboutSection from '@/components/story/AboutSection';
 import CategorySelector from '@/components/story/CategorySelector';
 import Marquee from '@/components/story/Marquee';
@@ -16,9 +15,8 @@ export default function Home() {
       <a href="#pick" className="skip-link">
         Skip to categories
       </a>
-      <SiteNav />
       <main id="main-content">
-        <ScrollStory />
+        <SplitHero />
         <AboutSection />
         <Marquee />
         <CategorySelector categories={categories} />
