@@ -10,12 +10,16 @@ export const owner = {
 export const dateline = 'NEW YORK, NY / SEPT. 9, 2026 / UPDATE';
 
 /**
- * The rail is a map of the site, so it lists only what exists. The old
- * Experience / Education / Dance / Design / Data routes were the retired
- * design and have been removed; each label comes back here as its page is
- * built, rather than sitting in the rail pointing at a 404.
+ * The rail is a map of the site, so it lists only what exists. The retired
+ * routes are gone; Experience and Education came back as homepage sections,
+ * so they are anchors rather than pages. Dance, Design and Data return here
+ * when they are built, rather than sitting in the rail pointing at a 404.
  */
-export const navItems = [{ label: 'Home', href: '/' }];
+export const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Education', href: '#education' },
+];
 
 export const contact = {
   email: 'iamcharlesvargas@gmail.com',
