@@ -91,7 +91,8 @@ const SPAN = LAST - FIRST;
 export const fraction = (d: [number, number]) => (months(d) - FIRST) / SPAN;
 
 /** Clustered marks are ~447/3572 of the frame; on the axis they are badges. */
-export const markSize = { from: 12.514, to: 6.4 };
+const markSizeFrom = 12.514;
+export const markSize = { from: markSizeFrom, to: 6.4 };
 
 /** The axis inset, leaving room for a mark centred on each bar's start. */
 export const axis = { left: 12, right: 88 };
@@ -100,8 +101,25 @@ export const axisX = (f: number) => axis.left + f * (axis.right - axis.left);
 /** Row centres as % of the pinned viewport. */
 export const rowY = [36, 57, 78] as const;
 
-/** Headline travel: over the pile in Figma, then up out of the axis's way. */
-export const headlineTop = { from: 48.23, to: 11 };
+/**
+ * Headline travel. In the frame the text node sits under the marks in z-order
+ * at 48.23%, which buries it — the pile is painted straight over it. It reads
+ * instead as a caption below the pile, then rises out of the axis's way.
+ *
+ * "Below the pile" cannot be a fixed percentage: the marks are sized off the
+ * viewport's WIDTH, so on a wide, short screen they grow while the height they
+ * sit in does not. The clearance is therefore measured the way the pile is —
+ * half the tallest mark's rotated bounding box (12.514% x sqrt(2) / 2) in vw,
+ * plus a little air in vh — so the caption sits just under it at any shape.
+ */
+export const headlineTop = {
+  /** % of viewport height: the pile's centre, then the settled position. */
+  base: { from: 44.507, to: 11 },
+  /** vw: clearance below the pile's lowest corner, gone once it has burst. */
+  clearVw: { from: (markSizeFrom * Math.SQRT2) / 2, to: 0 },
+  /** vh: the gap between pile and caption. */
+  gapVh: { from: 3.2, to: 0 },
+};
 
 /** Ticks worth naming. The middle one is the handover year. */
 export const ticks: { label: string; at: [number, number] }[] = [

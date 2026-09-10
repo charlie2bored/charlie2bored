@@ -166,9 +166,16 @@ export default function EducationBand() {
   const headlineOpacity = useTransform(p, [0.02, 0.1], [0, 1]);
   const burst = useTransform(p, [0.2, 0.62], [0, 1], { ease });
 
-  // The headline sits over the pile, then clears out as the axis assembles.
-  const hTop = useTransform(burst, [0, 1], [headlineTop.from, headlineTop.to]);
-  const headlineTopPct = useMotionTemplate`${hTop}%`;
+  /*
+   * The headline reads under the pile, then clears out as the axis assembles.
+   * Three interpolations rather than one because the clearance below the pile
+   * is a width measurement while the position is a height one — see the note
+   * on headlineTop.
+   */
+  const hBase = useTransform(burst, [0, 1], [headlineTop.base.from, headlineTop.base.to]);
+  const hClear = useTransform(burst, [0, 1], [headlineTop.clearVw.from, headlineTop.clearVw.to]);
+  const hGap = useTransform(burst, [0, 1], [headlineTop.gapVh.from, headlineTop.gapVh.to]);
+  const headlineTopPct = useMotionTemplate`calc(${hBase}% + ${hClear}vw + ${hGap}vh)`;
 
   const axisOpacity = useTransform(p, [0.6, 0.7], [0, 1]);
 
