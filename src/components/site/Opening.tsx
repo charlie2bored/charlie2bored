@@ -15,9 +15,12 @@ import RailPanel from '@/components/site/RailPanel';
 import { dateline } from '@/lib/nav';
 import {
   type CollagePhoto,
+  clusterCentre,
+  clusterUnit,
   collageBg,
   eyebrow,
   photos,
+  placement,
   statement,
   textTop,
 } from '@/lib/collage';
@@ -49,15 +52,37 @@ function HeroImage() {
   );
 }
 
-/** One photo, interpolating from the clustered state to the scattered one. */
+/**
+ * One photo, interpolating from the clustered state to the scattered one.
+ *
+ * The box comes from `placement`, so the photo keeps its designed shape at any
+ * viewport rather than stretching with the window (see the note in collage.ts).
+ * Position is built as `calc(anchor + share x size)`: the anchor slides from
+ * the clustered centre to the scattered one while the share slides from 0 to
+ * half a box, which lands a bleeding photo hard against its edge no matter
+ * what size the box resolved to. Both halves are plain numbers, so framer can
+ * drive them and CSS does the arithmetic at paint time.
+ */
 function Photo({ photo, burst }: { photo: CollagePhoto; burst: MotionValue<number> }) {
+  const place = placement(photo);
+
   // A little overshoot before settling — a linear scatter reads cheap.
   const over = (from: number, to: number) => to + (to - from) * 0.05;
-  const x = useTransform(burst, [0, 0.78, 1], [photo.from.x, over(photo.from.x, photo.to.x), photo.to.x]);
-  const y = useTransform(burst, [0, 0.78, 1], [photo.from.y, over(photo.from.y, photo.to.y), photo.to.y]);
+
+  // Three terms per axis, each a plain number CSS multiplies at paint time:
+  // the anchor, the photo's offset within the pile, and its share of its own
+  // box. At rest only the pile term is live, so the cluster scales as one
+  // object; once burst the box term takes over and pins it to its edge.
+  const ax = useTransform(burst, [0, 0.78, 1], [clusterCentre.x, over(clusterCentre.x, place.x.at), place.x.at]);
+  const ay = useTransform(burst, [0, 0.78, 1], [clusterCentre.y, over(clusterCentre.y, place.y.at), place.y.at]);
+  const px = useTransform(burst, [0, 1], [photo.from.x - clusterCentre.x, 0]);
+  const py = useTransform(burst, [0, 1], [photo.from.y - clusterCentre.y, 0]);
+  const bx = useTransform(burst, [0, 1], [0, place.x.half]);
+  const by = useTransform(burst, [0, 1], [0, place.y.half]);
   const rotate = useTransform(burst, [0, 1], [photo.from.rotate, 0]);
-  const left = useMotionTemplate`${x}%`;
-  const top = useMotionTemplate`${y}%`;
+
+  const left = useMotionTemplate`calc(${ax}vw + ${px} * ${clusterUnit.x} + ${bx} * ${place.width})`;
+  const top = useMotionTemplate`calc(${ay}vh + ${py} * ${clusterUnit.y} + ${by} * ${place.height})`;
 
   return (
     <motion.div
@@ -66,8 +91,8 @@ function Photo({ photo, burst }: { photo: CollagePhoto; burst: MotionValue<numbe
         left,
         top,
         rotate,
-        width: `${photo.w}%`,
-        height: `${photo.h}%`,
+        width: place.width,
+        height: place.height,
         x: '-50%',
         y: '-50%',
       }}

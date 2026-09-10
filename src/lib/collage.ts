@@ -5,7 +5,17 @@
  *
  * The photos are identically sized in both states — only their centre and
  * rotation change, which is exactly what the burst animates.
+ *
+ * One subtlety about `w` and `h`. They are percentages of DIFFERENT axes —
+ * width of the frame's width, height of its height — so reading them straight
+ * into CSS only preserves a photo's shape at the frame's own 3572:2020 (1.768)
+ * aspect. Away from it every photo stretches by viewportAspect / 1.768: barely
+ * anything at 16:9, but +65% on a 2.9-wide window, which squashes the pictures
+ * and shoves the edge ones further off screen. `placement` below resolves each
+ * photo to a real box instead, and Opening.tsx sizes from that.
  */
+
+export const frame = { w: 3572, h: 2020 };
 
 export type CollagePhoto = {
   id: string;
@@ -75,6 +85,87 @@ export const photos: CollagePhoto[] = [
     focusY: 49.18,
   },
 ];
+
+/**
+ * How a photo resolves against a viewport of any shape.
+ *
+ * Size: the photo takes its designed width, but never more height than it was
+ * designed to occupy — `min()` picks whichever budget binds first, and the
+ * aspect ratio is carried explicitly so it can never stretch. On a short
+ * window the collage gets smaller rather than wider.
+ *
+ * Position: four of the five photos are drawn hanging off an edge of the
+ * frame, and that bleed is the composition. Centring them would pull those
+ * edges back on screen as soon as the photo resized, so each is anchored to
+ * the edge it bleeds past and only the free axis stays centred.
+ */
+export type Placement = {
+  aspect: number;
+  /** CSS lengths, both derived from the same min() so the shape is fixed. */
+  width: string;
+  height: string;
+  /** Anchor and the frame-percentage it pins to. */
+  x: { edge: 'left' | 'right' | 'center'; at: number; half: number };
+  y: { edge: 'top' | 'bottom' | 'center'; at: number; half: number };
+};
+
+const EDGE = 0.5;
+
+export function placement(p: CollagePhoto): Placement {
+  const aspect = ((p.w / 100) * frame.w) / ((p.h / 100) * frame.h);
+
+  // vw is a percentage of viewport width and vh of its height, which is
+  // exactly what w and h already mean — so the units convert one for one.
+  const width = `min(${p.w}vw, ${(p.h * aspect).toFixed(4)}vh)`;
+  const height = `min(${(p.w / aspect).toFixed(4)}vw, ${p.h}vh)`;
+
+  const left = p.to.x - p.w / 2;
+  const right = p.to.x + p.w / 2;
+  const top = p.to.y - p.h / 2;
+  const bottom = p.to.y + p.h / 2;
+
+  const x: Placement['x'] =
+    left < EDGE
+      ? { edge: 'left', at: left, half: 0.5 }
+      : right > 100 - EDGE
+        ? { edge: 'right', at: right, half: -0.5 }
+        : { edge: 'center', at: p.to.x, half: 0 };
+
+  const y: Placement['y'] =
+    top < EDGE
+      ? { edge: 'top', at: top, half: 0.5 }
+      : bottom > 100 - EDGE
+        ? { edge: 'bottom', at: bottom, half: -0.5 }
+        : { edge: 'center', at: p.to.y, half: 0 };
+
+  return { aspect, width, height, x, y };
+}
+
+/**
+ * The clustered state is a rigid composition: the photos overlap into a pile,
+ * and that overlap is the whole picture. The scattered state is the opposite —
+ * it is pinned to the edges of whatever screen it is on.
+ *
+ * So the two states scale by different rules. Scattered stays in viewport
+ * percentages with the edge anchors above. Clustered scales as one object
+ * around its own centroid, by exactly the factor the boxes resized by, or the
+ * pile comes apart as soon as the window stops being 1.768 wide.
+ *
+ * That factor is min(1, frameAspect / viewportAspect) horizontally, which is
+ * not something CSS can divide out — but multiplied through by 1vw it is just
+ * `min(1vw, 1.768vh)`, a length CSS is happy to resolve. Same trick as the
+ * photo boxes: one unit that answers to whichever axis binds first.
+ */
+export const clusterUnit = {
+  x: `min(1vw, ${(frame.w / frame.h).toFixed(4)}vh)`,
+  y: `min(1vh, ${(frame.h / frame.w).toFixed(4)}vw)`,
+};
+
+/** Centre of the pile, the point it contracts toward. */
+export const clusterCentre = {
+  x: photos.reduce((t, p) => t + p.from.x, 0) / photos.length,
+  y: photos.reduce((t, p) => t + p.from.y, 0) / photos.length,
+};
 
 export const eyebrow = ['HELLO!', 'I’M CHARLIE'];
 
