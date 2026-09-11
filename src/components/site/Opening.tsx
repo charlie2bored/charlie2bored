@@ -68,7 +68,7 @@ function HeroImage() {
  * what size the box resolved to. Both halves are plain numbers, so framer can
  * drive them and CSS does the arithmetic at paint time.
  */
-function Photo({ photo, burst, portrait }: { photo: CollagePhoto; burst: MotionValue<number>; portrait: boolean }) {
+export function Photo({ photo, burst, portrait }: { photo: CollagePhoto; burst: MotionValue<number>; portrait: boolean }) {
   const place = placement(photo);
 
   // A little overshoot before settling — a linear scatter reads cheap.
