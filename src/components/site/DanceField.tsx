@@ -138,11 +138,30 @@ export default function DanceField() {
       className="relative overflow-x-clip pb-[14vh]"
       style={{ backgroundColor: danceBg, color: danceText }}
     >
-      <p className="pb-[12vh] pt-[16vh] text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold">
-        {danceHeading}
-      </p>
+      {/*
+        The headline's own beat. The board's and education's headlines are held
+        on screen by their sections' pins; this section has none, so set small
+        in the flow it was simply scrolled past. Here it rises to the middle of
+        the screen and holds while the first cards come up over it — the field
+        buries "sitting still?", which is the line acted out. Only the headline
+        holds; the grid itself still never pins.
 
-      <div className="mx-auto max-w-[1600px] px-[3vw]">
+        The stage is 180vh, so the headline is held for 80vh of scroll, and the
+        grid is pulled up 90vh into it so the first row arrives mid-hold.
+      */}
+      <div className="relative h-[180vh]">
+        <div className="sticky top-0 flex h-dvh items-center justify-center px-[4vw]">
+          <p className="text-center text-[clamp(2.4rem,6.4vw,8rem)] font-bold leading-[0.95] tracking-[-0.035em]">
+            {danceHeading.split(/(?<=\?)\s+/).map((part) => (
+              <span key={part} className="block">
+                {part}
+              </span>
+            ))}
+          </p>
+        </div>
+      </div>
+
+      <div className="relative z-10 mx-auto -mt-[90vh] max-w-[1600px] px-[3vw]">
         <div className="flex gap-[1.6vw]">
           {columns.map((col, ci) => (
             <div key={ci} className="flex flex-1 flex-col gap-[1.6vw]">
