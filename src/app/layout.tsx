@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: '%s | Charlie Vargas',
   },
   description:
-    'Charlie Vargas ("2bored"): analyst, designer, and performer in New York. A 2.5-year BI internship that cut reporting time 50% across 20+ school sites, investor and clinical design for a pre-FDA medical-imaging startup, and arena floors for the Red Bulls and the Devils.',
+    'Charlie Vargas ("2bored"): analyst, designer, and performer in New York. A 2.5-year BI internship building KPI dashboards and enrollment projections across 20+ schools, investor and clinical design for a pre-FDA medical-imaging startup, and arena floors for the Red Bulls and the Devils.',
   keywords: [
     'Charlie Vargas',
     'data analyst',

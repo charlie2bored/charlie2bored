@@ -75,7 +75,7 @@ export const experienceColumns: ExperienceColumn[] = [
     entries: [
       {
         title: 'BI + Data Analytics Intern - Apple Montessori Schools (Oct. ’23 - May ’26)',
-        line: 'Automated KPI dashboards across 20+ schools; reporting time down 50%.',
+        line: 'KPI dashboards for 20+ schools, and a verified student count behind the enrollment projections.',
       },
       {
         title: 'Operations - Kindling Education Partners (May ’26 - Present)',
