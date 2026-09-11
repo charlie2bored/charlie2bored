@@ -30,7 +30,6 @@ import {
   textTop,
 } from '@/lib/collage';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { useToday } from '@/hooks/useToday';
 
 const STATEMENT_CLASS =
   'font-title font-bold leading-[1.06] tracking-[-0.02em] text-[clamp(1.35rem,5.15vw,6.5rem)] [@media(max-aspect-ratio:1/1)]:text-[min(6.8vw,4vh)]';
@@ -38,7 +37,6 @@ const EYEBROW_CLASS =
   'font-title font-bold leading-[1.25] tracking-[0.01em] text-[clamp(0.6rem,1.12vw,1.4rem)] [@media(max-aspect-ratio:1/1)]:text-[min(3.2vw,1.9vh)]';
 
 function HeroImage() {
-  const today = useToday();
   return (
     <div className="relative h-full" style={{ backgroundColor: 'var(--hero-bg)' }}>
       <Image
@@ -53,7 +51,7 @@ function HeroImage() {
         className="absolute left-5 top-5 text-[11px] font-medium uppercase tracking-[0.1em] sm:left-8 sm:top-8"
         style={{ color: 'var(--hero-fg)' }}
       >
-        {dateline.place} / {today} / {dateline.tag}
+        {dateline}
       </p>
     </div>
   );

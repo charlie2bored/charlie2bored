@@ -76,9 +76,8 @@ export const schools: School[] = [
 export const educationHeading = 'learning? yeah that too.';
 
 /**
- * Where the band has got to: the month of the last deploy, like the hero's
- * dateline (see built.ts). The only thing it moves is where the Northeastern
- * bar stops being solid.
+ * Where the band has got to: the month of the last deploy (see built.ts).
+ * The only thing it moves is where the Northeastern bar stops being solid.
  */
 export const asOf: [number, number] = [built.year, built.month];
 
