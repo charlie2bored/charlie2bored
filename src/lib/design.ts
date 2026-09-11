@@ -24,7 +24,8 @@ export type DesignPage =
   | { kind: 'drawing'; id: string; ratio: number; title: string; note: string }
   | { kind: 'site'; id: string; url: string; img: string; imgW: number; imgH: number; title: string; note: string }
   | { kind: 'series'; id: string; imgs: string[]; title: string; note: string }
-  | { kind: 'image'; id: string; img: string; w: number; h: number; title: string; note: string };
+  /** `href`: the live project. The picture links out to it so people can use the real thing. */
+  | { kind: 'image'; id: string; img: string; w: number; h: number; title: string; note: string; href?: string };
 
 export type DesignSite = Extract<DesignPage, { kind: 'site' }>;
 
@@ -53,8 +54,8 @@ export const designPages: DesignPage[] = [
     title: 'medara', note: 'Designed the site, and run it day to day — news posts and their covers, copy updates, deploys.',
   },
   { kind: 'series', id: 'medara-covers', imgs: COVERS, title: 'medara — news covers', note: 'Sixteen covers, one system.' },
-  { kind: 'image', id: 'clearcore', img: '/projects/clearcore-protein.png', w: 1024, h: 552, title: 'ClearCore Protein', note: 'Self-directed, start to finish.' },
-  { kind: 'image', id: 'speedreader', img: '/projects/speedreader.png', w: 2880, h: 1556, title: 'SpeedReader', note: 'Self-directed, start to finish.' },
+  { kind: 'image', id: 'clearcore', img: '/projects/clearcore-protein.png', w: 1024, h: 552, title: 'ClearCore Protein', note: 'Self-directed, start to finish.', href: 'https://clearcore-tau.vercel.app/' },
+  { kind: 'image', id: 'speedreader', img: '/projects/speedreader.png', w: 2880, h: 1556, title: 'SpeedReader', note: 'Self-directed, start to finish.', href: 'https://speed-reader-weld.vercel.app/' },
   // One frame stands for the whole site: the first thing anyone sees of it.
   { kind: 'image', id: 'this-site', img: '/design/this-site-hero.jpg', w: 1600, h: 905, title: 'This site — hero and navbar', note: 'Designed in Figma first, then built to move.' },
 ];

@@ -216,15 +216,35 @@ function Page({ p, onOpen }: { p: DesignPage; onOpen: (s: DesignSite) => void })
           <Caption title={p.title} note={p.note} />
         </div>
       );
-    case 'image':
+    case 'image': {
+      const picture = <Image src={p.img} alt={p.title} fill sizes="(min-width: 768px) 80vw, 84vw" className="object-cover" />;
       return (
         <div className="shrink-0">
-          <div style={box(p.w / p.h)} className="relative overflow-hidden shadow-[0_14px_40px_-18px_rgba(0,0,0,0.3)]">
-            <Image src={p.img} alt={p.title} fill sizes="(min-width: 768px) 80vw, 84vw" className="object-cover" />
-          </div>
+          {p.href ? (
+            // A live project: the picture opens the real thing in a new tab,
+            // with the same affordance and lift as the sites that open in place.
+            <a
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${p.title}, live, in a new tab`}
+              style={box(p.w / p.h)}
+              className="group relative block overflow-hidden shadow-[0_14px_40px_-18px_rgba(0,0,0,0.3)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_26px_60px_-20px_rgba(0,0,0,0.45)]"
+            >
+              {picture}
+              <span className="absolute bottom-4 right-4 bg-black px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white opacity-75 transition-opacity group-hover:opacity-100">
+                open the live site ↗
+              </span>
+            </a>
+          ) : (
+            <div style={box(p.w / p.h)} className="relative overflow-hidden shadow-[0_14px_40px_-18px_rgba(0,0,0,0.3)]">
+              {picture}
+            </div>
+          )}
           <Caption title={p.title} note={p.note} />
         </div>
       );
+    }
   }
 }
 
