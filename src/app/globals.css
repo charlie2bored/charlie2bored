@@ -197,24 +197,6 @@
     transform: scale(1);
   }
 
-  /* Marquee: two identical tracks sliding one full width for a seamless loop. */
-  .marquee-track {
-    animation: marquee-slide 38s linear infinite;
-  }
-
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
-
-  @keyframes marquee-slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-
   /*
    * prefers-reduced-motion is deliberately not honoured: motion is core to
    * this design and the owner chose to run it for everyone.

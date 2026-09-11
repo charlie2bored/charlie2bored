@@ -25,9 +25,9 @@ const nextConfig: NextConfig = {
         destination: 'https://www.charlie2bored.com/:path*',
         statusCode: 301,
       },
-      // The README now lives inside the home scroll story, ahead of the selector.
-      { source: '/about', destination: '/#about', permanent: true },
-      { source: '/contact', destination: '/#about', permanent: true },
+      // Old pages whose content now lives in the homepage's closing section.
+      { source: '/about', destination: '/#contact', permanent: true },
+      { source: '/contact', destination: '/#contact', permanent: true },
       {
         source: '/writing/electoral-college',
         destination: 'https://charlie2bored.substack.com/p/i-tried-to-save-the-electoral-college',

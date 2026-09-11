@@ -13,8 +13,8 @@ export const dateline = `NEW YORK, NY / ${builtDateline} / UPDATE`;
 /**
  * The rail is a map of the site, so it lists only what exists. The retired
  * routes are gone; Experience and Education came back as homepage sections,
- * so they are anchors rather than pages, and Dance, Design and Data joined
- * them the same way.
+ * so they are anchors rather than pages, and Dance, Design, Data and Contact
+ * joined them the same way.
  */
 export const navItems = [
   { label: 'Home', href: '/' },
@@ -23,6 +23,7 @@ export const navItems = [
   { label: 'Dance', href: '#dance' },
   { label: 'Design', href: '#design' },
   { label: 'Data', href: '#data' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export const contact = {

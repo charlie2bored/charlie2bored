@@ -5,8 +5,7 @@ import EducationBand from '@/components/site/EducationBand';
 import DanceField from '@/components/site/DanceField';
 import DesignSequence from '@/components/site/DesignSequence';
 import DataSection from '@/components/site/DataSection';
-import AboutSection from '@/components/story/AboutSection';
-import Marquee from '@/components/story/Marquee';
+import ContactSection from '@/components/site/ContactSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -25,8 +24,7 @@ export default function Home() {
         <DanceField />
         <DesignSequence />
         <DataSection />
-        <AboutSection />
-        <Marquee />
+        <ContactSection />
       </main>
     </div>
   );
