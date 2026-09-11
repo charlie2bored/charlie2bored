@@ -53,30 +53,30 @@ const p = (id: string, w: number, h: number, mat: string, line: string): DanceTi
 
 /** Display order. Studio, arena and photos interleave so no two of a kind sit together. */
 export const danceTiles: DanceTile[] = [
-  v('studio-8967', 720, 1280, '#426b29', 'Green room'),
+  v('studio-8967', 720, 1280, '#426b29', 'BELIEVE : RECEIVE - Juwaan Walker'),
   p('photo-stage', 900, 1301, '#2a2826', 'Red Bulls, on the stage'),
   v('arena-tunnel', 720, 1080, '#6b1b28', 'Team Toro tunnel'),
-  v('studio-9166', 720, 1280, '#342c6b', 'Violet room'),
+  v('studio-9166', 720, 1280, '#342c6b', 'Worst Behavior - Juwaan Walker'),
   p('photo-sirens', 900, 1160, '#6b5230', 'Sirens tunnel'),
-  v('studio-0075', 720, 1280, '#6b4d30', 'Solo, bright studio'),
+  v('studio-0075', 720, 1280, '#6b4d30', 'Drinking and Driving - Juwaan Walker'),
   v('arena-hotdog', 720, 1080, '#6b2f2f', 'Hot Dog Toss, Prudential Center'),
   p('photo-defender', 900, 1108, '#6b4130', 'Red Bulls, 26 Defender'),
-  v('studio-8179', 720, 1280, '#6b155c', 'Magenta room'),
-  p('photo-hotdogs', 900, 711, '#6b3c26', 'Hot dogs, Seton Hall'),
-  v('battle', 960, 540, '#6b3053', 'Battle circle'),
-  v('studio-9437', 720, 1280, '#6b1533', 'Red room'),
+  v('studio-8179', 720, 1280, '#6b155c', 'Looking Dumb - Deshawn Da Prince'),
+  p('photo-hotdogs', 900, 711, '#6b3c26', 'Hot Dog Toss, Devils'),
+  v('battle', 960, 540, '#6b3053', 'Pop Smoke - Juwaan Walker'),
+  v('studio-9437', 720, 1280, '#6b1533', 'Worst Behavior - Deshawn Da Prince'),
   p('photo-rbny', 900, 1080, '#6b3730', 'RBNY'),
   v('arena-bigscreen', 720, 1080, '#6b3037', 'On the big screen'),
-  v('studio-7653', 720, 1280, '#2a2826', 'Haze and light beams'),
-  p('photo-mascot', 900, 1123, '#6b3a2f', 'Mascot hat'),
+  v('studio-7653', 720, 1280, '#2a2826', 'Clear - Juwaan Walker'),
+  p('photo-mascot', 900, 1123, '#6b3a2f', 'Vanessa + I'),
   p('photo-crew-ice', 631, 411, '#6b342c', 'WOO! Crew on the ice'),
-  v('studio-0560', 720, 1280, '#6b5e30', 'Yellow-green room'),
+  v('studio-0560', 720, 1280, '#6b5e30', 'Attention - Juwaan Walker'),
   p('photo-maclean', 900, 1278, '#6b1c22', 'A night honoring John MacLean'),
   p('photo-ice-selfie', 584, 587, '#6b3830', 'Devils ice selfie'),
 ];
 
 /** The one 4K widescreen clip, saved for the end and run full width. */
-export const danceFinale: DanceTile = v('finale-deshawn', 1920, 1080, '#6b3325', 'Broadway Dance Center');
+export const danceFinale: DanceTile = v('finale-deshawn', 1920, 1080, '#6b3325', 'Too Many Women - Deshawn Da Prince');
 
 /**
  * The entry, exactly as measured on shopify.design. Pixels, not viewport

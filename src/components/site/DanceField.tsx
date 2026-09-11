@@ -65,10 +65,14 @@ function Card({
     return () => io.disconnect();
   }, []);
 
+  // "Song - Choreographer" sets as a credit: the song, then who made it. On its
+  // own line the name can never be the part a narrow card cuts off.
+  const [title, credit] = tile.line.split(' - ');
+
   return (
     <div ref={ref}>
-      <motion.figure style={{ scale, x, y }} className="relative will-change-transform" >
-        <div style={{ backgroundColor: tile.mat, padding: '7% 7% 11%' }}>
+      <motion.figure style={{ scale, x, y, backgroundColor: tile.mat }} className="will-change-transform px-[7%] pt-[7%]">
+        <div>
           <div className="relative w-full overflow-hidden" style={{ aspectRatio: `${tile.w} / ${tile.h}` }}>
             {tile.kind === 'video' ? (
               <video
@@ -87,8 +91,9 @@ function Card({
             )}
           </div>
         </div>
-        <figcaption className="absolute bottom-[3.2%] left-[7%] right-[7%] truncate font-mono text-[10px] uppercase tracking-[0.14em] text-white/80">
-          {tile.line}
+        <figcaption className="py-[0.9em] font-mono text-[10px] uppercase leading-[1.4] tracking-[0.14em] text-white/80">
+          {title}
+          {credit && <span className="block text-white/55">{credit}</span>}
         </figcaption>
       </motion.figure>
     </div>
@@ -102,7 +107,9 @@ function distribute(tiles: DanceTile[], cols: number) {
   for (const t of tiles) {
     const i = heights.indexOf(Math.min(...heights));
     out[i].push(t);
-    heights[i] += t.h / t.w + 0.24; // + mat and gap, as a share of column width
+    // Media is 86% of the column after the mat's side padding; the rest is the
+    // mat's top, the caption and the gap, as a share of column width.
+    heights[i] += 0.86 * (t.h / t.w) + 0.22;
   }
   return out;
 }
