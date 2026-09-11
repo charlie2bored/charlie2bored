@@ -47,3 +47,10 @@ next-env.d.ts
 # Raw source media (camera originals). Too big for git; only the web encodes
 # generated from these are committed.
 /media-src/
+
+# The design lab is local-only: it shows Medara work that is not cleared for
+# publication yet (pending approval). The whole lab, code and assets, stays out
+# of git so nothing can push it by accident. When the section is promoted, the
+# real component and its cleared assets live elsewhere and the lab is deleted.
+/src/app/design-lab/
+/public/design-lab/
