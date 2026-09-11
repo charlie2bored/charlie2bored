@@ -53,7 +53,7 @@ export const experienceColumns: ExperienceColumn[] = [
     entries: [
       {
         title: 'Product Designer - Medara (Mar. ’26 - Present)',
-        line: 'Branding, web, marketing and investor materials, clinical figures, and the site for a pre-FDA imaging startup.',
+        line: 'The site, moved off a WordPress template to custom code; pitch decks, research figures and marketing for a pre-FDA imaging startup.',
       },
       {
         title: 'Web Designer - Kindling Education Partners (May ’26 - Present)',

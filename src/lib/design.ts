@@ -59,7 +59,7 @@ export const designPages: DesignPage[] = [
   // Web — client work first.
   {
     kind: 'site', id: 'medara', category: 'Web', url: 'medara.co', img: '/design/medara.jpg', imgW: 1600, imgH: 4754,
-    title: 'medara', note: 'Designed the site, and run it day to day — news posts and their covers, copy updates, deploys.',
+    title: 'medara', note: 'Took them off a WordPress template onto custom code, updated weekly since. The latest push: calmer hero images, and copy rewritten to sound like people. Every news story gets its cover from me.',
   },
   {
     kind: 'site', id: 'kindling', category: 'Web', url: 'kindlingep.com', img: '/design/kindling.jpg', imgW: 1600, imgH: 3921,
