@@ -69,9 +69,9 @@ export const designPages: DesignPage[] = [
   { kind: 'series', id: 'medara-covers', category: 'Graphics', imgs: COVERS, title: 'medara — news covers', note: 'Sixteen covers, one system.' },
 
   // Illustration. Placeholders until the flatbed scans; each is a letter-size sheet.
-  { kind: 'drawing', id: 'vol1', category: 'Illustration', ratio: 8.5 / 11, title: 'CHARLIE2BORED Vol. 1 — cover', note: 'Charcoal and colored pencil. Scan pending.' },
-  { kind: 'drawing', id: 'stussy', category: 'Illustration', ratio: 8.5 / 11, title: 'Stüssy — 8-Cube Drop (spec)', note: 'Colored pencil. Scan pending.' },
-  { kind: 'drawing', id: 'figure', category: 'Illustration', ratio: 8.5 / 11, title: 'Figure in red', note: 'Colored pencil. Scan pending.' },
+  { kind: 'drawing', id: 'vol1', category: 'Illustration', ratio: 8.5 / 11, title: 'CHARLIE2BORED Vol. 1 — cover', note: 'Charcoal and colored pencil.' },
+  { kind: 'drawing', id: 'stussy', category: 'Illustration', ratio: 8.5 / 11, title: 'Stüssy — 8-Cube Drop (spec)', note: 'Colored pencil.' },
+  { kind: 'drawing', id: 'figure', category: 'Illustration', ratio: 8.5 / 11, title: 'Figure in red', note: 'Colored pencil.' },
 ];
 
 /** Vertical scroll per pixel of sideways travel. Settled in the lab. */
