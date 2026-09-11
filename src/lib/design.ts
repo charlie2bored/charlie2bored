@@ -72,9 +72,9 @@ export const designPages: DesignPage[] = [
   // Illustration. Letter-size sheets, photographed flat, then straightened and
   // cropped to the paper's edge; colours left exactly as drawn.
   {
-    kind: 'drawing', id: 'vol1', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/vol1.jpg',
-    title: 'CHARLIE2BORED Vol. 1 — cover', note: 'Charcoal and colored pencil.',
-    alt: 'A figure mid-stride casting a long shadow, with lettering set into purple perspective rays that meet at him; signed CHARLIE2BORED Vol. 1.',
+    kind: 'drawing', id: 'run-for-cover', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/run-for-cover.jpg',
+    title: 'RUN FOR COVER', note: 'Charcoal and colored pencil.',
+    alt: 'A figure mid-stride casting a long shadow, with the words RUN FOR COVER set into purple perspective rays that meet at him; signed CHARLIE2BORED Vol. 1.',
   },
   {
     kind: 'drawing', id: 'stussy', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/stussy.jpg',
@@ -82,14 +82,14 @@ export const designPages: DesignPage[] = [
     alt: 'A poster on green: STÜSSY in heavy block letters, a hand lining up a pool cue at an 8-ball cube and a die, headed “HUH? 8-Cube Drop”.',
   },
   {
-    kind: 'drawing', id: 'figure', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/figure.jpg',
-    title: 'Figure in red', note: 'Colored pencil.',
-    alt: 'A winged figure in black, red and white, reaching forward against a dark pencil ground.',
+    kind: 'drawing', id: 'akashi-seijuurou', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/akashi-seijuurou.jpg',
+    title: 'Akashi Seijuurou', note: 'Colored pencil.',
+    alt: 'Akashi Seijuurou, red-haired, drawn as a winged figure in black, red and white, reaching forward against a dark pencil ground.',
   },
   {
-    kind: 'drawing', id: 'red-grey', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/red-grey.jpg',
-    title: 'Untitled', note: 'Colored pencil.',
-    alt: 'An abstract: a jagged red form spreading down through a grey ground.',
+    kind: 'drawing', id: 'red-sky-forest', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/red-sky-forest.jpg',
+    title: 'red sky forest', note: 'Colored pencil.',
+    alt: 'A jagged red sky spreading down through grey masses of forest.',
   },
 ];
 
