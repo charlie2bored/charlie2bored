@@ -26,6 +26,8 @@ export type DanceTile = {
   h: number;
   mat: string;
   line: string;
+  /** The whole clip, with sound, for the player a click opens. Videos only. */
+  full?: string;
 };
 
 /**
@@ -41,6 +43,7 @@ const v = (id: string, w: number, h: number, mat: string, line: string): DanceTi
   kind: 'video',
   src: `/dance/${id}.mp4`,
   poster: `/dance/${id}.jpg`,
+  full: `/dance/full/${id}.mp4`,
   w,
   h,
   mat,

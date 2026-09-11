@@ -38,7 +38,13 @@ export type Category = 'Web' | 'Graphics' | 'Illustration';
 
 export type DesignSite = Extract<DesignPage, { kind: 'site' }>;
 
-export const designHeading = '[design headline]';
+/**
+ * Fourth in the run: "qualified? hell yeah." / "learning? yeah that too." /
+ * "sitting still? never that." — and, like the third, it answers no. Drawing
+ * is the illustrations; a blank is every designer's fear, and the page that
+ * was, briefly, three scan-pending sheets.
+ */
+export const designHeading = 'drawing a blank? not once.';
 
 const COVERS = [
   'cover-01-rsna-2026', 'cover-02-auntminnie-nci', 'cover-03-nci-grant', 'cover-04-startup-prize',

@@ -179,7 +179,11 @@ function Page({ p, onOpen }: { p: DesignPage; onOpen: (s: DesignSite) => void })
         <div className="flex w-[max(58vw,19rem)] shrink-0 flex-col justify-center" style={{ height: PANEL_H }}>
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-black/50">04 — design</p>
           <h2 className="mt-6 text-[clamp(2.4rem,6.4vw,8rem)] font-bold leading-[0.95] tracking-[-0.035em]">
-            {designHeading}
+            {designHeading.split(/(?<=\?)\s+/).map((part) => (
+              <span key={part} className="block">
+                {part}
+              </span>
+            ))}
           </h2>
           <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-black/50">
             keep scrolling — it goes sideways →
