@@ -19,17 +19,22 @@ import {
   clusterUnit,
   collageBg,
   eyebrow,
+  frame,
   photos,
   placement,
+  portraitGrow,
+  portraitPile,
+  portraitTextTop,
+  portraitUnit,
   statement,
   textTop,
 } from '@/lib/collage';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const STATEMENT_CLASS =
-  'font-title font-bold leading-[1.06] tracking-[-0.02em] text-[clamp(1.35rem,5.15vw,6.5rem)]';
+  'font-title font-bold leading-[1.06] tracking-[-0.02em] text-[clamp(1.35rem,5.15vw,6.5rem)] [@media(max-aspect-ratio:1/1)]:text-[min(6.8vw,4vh)]';
 const EYEBROW_CLASS =
-  'font-title font-bold leading-[1.25] tracking-[0.01em] text-[clamp(0.6rem,1.12vw,1.4rem)]';
+  'font-title font-bold leading-[1.25] tracking-[0.01em] text-[clamp(0.6rem,1.12vw,1.4rem)] [@media(max-aspect-ratio:1/1)]:text-[min(3.2vw,1.9vh)]';
 
 function HeroImage() {
   return (
@@ -63,26 +68,47 @@ function HeroImage() {
  * what size the box resolved to. Both halves are plain numbers, so framer can
  * drive them and CSS does the arithmetic at paint time.
  */
-function Photo({ photo, burst }: { photo: CollagePhoto; burst: MotionValue<number> }) {
+function Photo({ photo, burst, portrait }: { photo: CollagePhoto; burst: MotionValue<number>; portrait: boolean }) {
   const place = placement(photo);
 
   // A little overshoot before settling — a linear scatter reads cheap.
   const over = (from: number, to: number) => to + (to - from) * 0.05;
 
+  // Where the burst lands, and in what units the pile and the boxes are
+  // measured. Landscape: the Figma edge anchors, the pile in clusterUnit.
+  // Portrait: plain centres, everything in the larger portrait unit (see
+  // collage.ts). Opening remounts the photos when the mode flips.
+  const end = portrait
+    ? { x: photo.portrait.x, y: photo.portrait.y, bx: 0, by: 0 }
+    : { x: place.x.at, y: place.y.at, bx: place.x.half, by: place.y.half };
+  const unit = portrait
+    ? {
+        x: `(${portraitPile} * ${portraitUnit})`,
+        y: `(${(portraitPile * (frame.h / frame.w)).toFixed(4)} * ${portraitUnit})`,
+      }
+    : clusterUnit;
+  const box = portrait
+    ? {
+        width: `calc(${(photo.w * portraitPile).toFixed(3)} * ${portraitUnit})`,
+        height: `calc(${((photo.w * portraitPile) / place.aspect).toFixed(3)} * ${portraitUnit})`,
+      }
+    : { width: place.width, height: place.height };
+
   // Three terms per axis, each a plain number CSS multiplies at paint time:
   // the anchor, the photo's offset within the pile, and its share of its own
   // box. At rest only the pile term is live, so the cluster scales as one
   // object; once burst the box term takes over and pins it to its edge.
-  const ax = useTransform(burst, [0, 0.78, 1], [clusterCentre.x, over(clusterCentre.x, place.x.at), place.x.at]);
-  const ay = useTransform(burst, [0, 0.78, 1], [clusterCentre.y, over(clusterCentre.y, place.y.at), place.y.at]);
+  const ax = useTransform(burst, [0, 0.78, 1], [clusterCentre.x, over(clusterCentre.x, end.x), end.x]);
+  const ay = useTransform(burst, [0, 0.78, 1], [clusterCentre.y, over(clusterCentre.y, end.y), end.y]);
   const px = useTransform(burst, [0, 1], [photo.from.x - clusterCentre.x, 0]);
   const py = useTransform(burst, [0, 1], [photo.from.y - clusterCentre.y, 0]);
-  const bx = useTransform(burst, [0, 1], [0, place.x.half]);
-  const by = useTransform(burst, [0, 1], [0, place.y.half]);
+  const bx = useTransform(burst, [0, 1], [0, end.bx]);
+  const by = useTransform(burst, [0, 1], [0, end.by]);
   const rotate = useTransform(burst, [0, 1], [photo.from.rotate, 0]);
+  const scale = useTransform(burst, [0, 1], [1, portrait ? portraitGrow : 1]);
 
-  const left = useMotionTemplate`calc(${ax}vw + ${px} * ${clusterUnit.x} + ${bx} * ${place.width})`;
-  const top = useMotionTemplate`calc(${ay}vh + ${py} * ${clusterUnit.y} + ${by} * ${place.height})`;
+  const left = useMotionTemplate`calc(${ax}vw + ${px} * ${unit.x} + ${bx} * ${box.width})`;
+  const top = useMotionTemplate`calc(${ay}vh + ${py} * ${unit.y} + ${by} * ${box.height})`;
 
   return (
     <motion.div
@@ -91,8 +117,9 @@ function Photo({ photo, burst }: { photo: CollagePhoto; burst: MotionValue<numbe
         left,
         top,
         rotate,
-        width: place.width,
-        height: place.height,
+        scale,
+        width: box.width,
+        height: box.height,
         x: '-50%',
         y: '-50%',
       }}
@@ -101,7 +128,7 @@ function Photo({ photo, burst }: { photo: CollagePhoto; burst: MotionValue<numbe
         src={photo.src}
         alt={photo.alt}
         fill
-        sizes="30vw"
+        sizes={portrait ? '70vw' : '30vw'}
         className="object-cover grayscale"
         style={{ objectPosition: `50% ${photo.focusY}%` }}
       />
@@ -109,12 +136,12 @@ function Photo({ photo, burst }: { photo: CollagePhoto; burst: MotionValue<numbe
   );
 }
 
-function CollageText() {
+function CollageText({ portrait }: { portrait: boolean }) {
   return (
     <>
       <p
         className={`${EYEBROW_CLASS} absolute left-1/2 w-full -translate-x-1/2 text-center text-black`}
-        style={{ top: `${textTop.eyebrow}%` }}
+        style={{ top: `${(portrait ? portraitTextTop : textTop).eyebrow}%` }}
       >
         {eyebrow[0]}
         <br />
@@ -122,7 +149,7 @@ function CollageText() {
       </p>
       <h1
         className={`${STATEMENT_CLASS} absolute left-1/2 w-full -translate-x-1/2 px-4 text-center text-black`}
-        style={{ top: `${textTop.statement}%` }}
+        style={{ top: `${(portrait ? portraitTextTop : textTop).statement}%` }}
       >
         {statement.map((line, i) => (
           <span key={line} className="block">
@@ -138,6 +165,7 @@ function CollageText() {
 export default function Opening() {
   const ref = useRef<HTMLDivElement>(null);
   const stacked = useMediaQuery('(max-width: 767px)', false);
+  const portrait = useMediaQuery('(max-aspect-ratio: 1/1)', false);
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
 
@@ -183,13 +211,13 @@ export default function Opening() {
         {/* Underneath: the pile the panels part to reveal. */}
         <div className="absolute inset-0 overflow-hidden" style={{ backgroundColor: collageBg }}>
           {photos.map((p) => (
-            <Photo key={p.id} photo={p} burst={burst} />
+            <Photo key={`${p.id}-${portrait}`} photo={p} burst={burst} portrait={portrait} />
           ))}
           <motion.div
             className="absolute inset-0"
             style={{ scale: textScale, opacity: textOpacity }}
           >
-            <CollageText />
+            <CollageText portrait={portrait} />
           </motion.div>
         </div>
 

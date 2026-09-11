@@ -28,6 +28,8 @@ export type CollagePhoto = {
   from: { x: number; y: number; rotate: number };
   /** Scattered state. Rotation always resolves to 0 — chaos into order. */
   to: { x: number; y: number };
+  /** Scattered state on a portrait screen: centre in vw / vh. See `portrait` below. */
+  portrait: { x: number; y: number };
   /** object-position Y, preserving the crop set on the Figma image fill. */
   focusY: number;
 };
@@ -41,6 +43,7 @@ export const photos: CollagePhoto[] = [
     h: 41.683,
     from: { x: 37.941, y: 38.366, rotate: -35 },
     to: { x: 6.586, y: 32.624 },
+    portrait: { x: 21, y: 22 },
     focusY: 50,
   },
   {
@@ -51,6 +54,7 @@ export const photos: CollagePhoto[] = [
     h: 28.713,
     from: { x: 66.693, y: 35.643, rotate: 37 },
     to: { x: 89.174, y: 11.782 },
+    portrait: { x: 76, y: 16 },
     focusY: 50,
   },
   {
@@ -61,6 +65,7 @@ export const photos: CollagePhoto[] = [
     h: 34.059,
     from: { x: 73.481, y: 53.612, rotate: 55 },
     to: { x: 93.564, y: 58.317 },
+    portrait: { x: 79, y: 67 },
     focusY: 50.77,
   },
   {
@@ -71,6 +76,7 @@ export const photos: CollagePhoto[] = [
     h: 26.892,
     from: { x: 30.09, y: 60.897, rotate: -35 },
     to: { x: 17.157, y: 86.554 },
+    portrait: { x: 24, y: 65 },
     focusY: 56.27,
   },
   {
@@ -82,6 +88,7 @@ export const photos: CollagePhoto[] = [
     // The only photo that never rotates: it anchors the cluster.
     from: { x: 53.15, y: 53.612, rotate: 0 },
     to: { x: 65.334, y: 89.575 },
+    portrait: { x: 52, y: 86 },
     focusY: 49.18,
   },
 ];
@@ -177,6 +184,25 @@ export const statement = [
 
 /** Vertical placement as % of frame, matching the Figma text nodes. */
 export const textTop = { eyebrow: 21.089, statement: 29.406 };
+
+/**
+ * Portrait screens (phones, tall tablets) get their own scattered state.
+ *
+ * The Figma composition is 1.768 wide and pins its photos to the edges of the
+ * screen; on a 0.46-wide phone that leaves five thumbnails hanging off the
+ * edges and the statement floating over an empty middle. So on portrait:
+ *
+ * - the pile is the same pile, drawn 1.4x larger in `portraitUnit` (1vw, or
+ *   0.5vh on a short phone, so an SE does not crowd), offsets and boxes in
+ *   the same unit so it holds together exactly as on desktop;
+ * - bursting, each photo grows another `portraitGrow` and settles on its
+ *   `portrait` centre: two above the statement, three below;
+ * - the statement sits in the middle, larger (see Opening.tsx).
+ */
+export const portraitUnit = 'min(1vw, 0.5vh)';
+export const portraitPile = 1.4;
+export const portraitGrow = 1.45;
+export const portraitTextTop = { eyebrow: 35.5, statement: 40 };
 
 /**
  * Ground shared with the experience board. The Figma frames use #bfbec2, a
