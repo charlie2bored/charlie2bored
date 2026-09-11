@@ -38,6 +38,9 @@ function PileBeat() {
 
   return (
     <div ref={outer} className="relative h-[240vh]">
+      {/* The nav's target: the pile formed and the headline in (85% of the
+          140vh pin), not the photos still out at the edges. */}
+      <span id="contact" aria-hidden="true" className="pointer-events-none absolute left-0 top-[119vh]" />
       <div className="sticky top-0 h-dvh overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: lift, scale: shrink }}>
           {photos.map((ph) => (
@@ -191,7 +194,7 @@ function DotName({ text }: { text: string }) {
 
 export default function ContactSection() {
   return (
-    <section id="contact" aria-label="Contact" style={{ backgroundColor: contactBg }} className="text-black">
+    <section aria-label="Contact" style={{ backgroundColor: contactBg }} className="text-black">
       <PileBeat />
       <ContactBlock />
       <footer className="px-5 pb-5 pt-[6vh] sm:px-[4vw]">

@@ -271,6 +271,9 @@ function DotHeadline({ text }: { text: string }) {
 
   return (
     <div ref={outer} className="relative h-[190vh]">
+      {/* The nav's target: the headline already formed (62% of the 90vh
+          pin), not a screen of scattered dots. */}
+      <span id="data" aria-hidden="true" className="pointer-events-none absolute left-0 top-[56vh]" />
       <div className="sticky top-0 h-dvh">
         <h2 className="sr-only">{text}</h2>
         <canvas ref={canvas} aria-hidden="true" className="absolute inset-0 h-full w-full" />
@@ -339,7 +342,7 @@ export default function DataSection() {
   }, []);
 
   return (
-    <section id="data" aria-label="Data" style={{ backgroundColor: dataBg }} className="text-black">
+    <section aria-label="Data" style={{ backgroundColor: dataBg }} className="text-black">
       {/* The headline, spelled in dots — the one place the field survives. */}
       <DotHeadline text={dataHeadline} />
 

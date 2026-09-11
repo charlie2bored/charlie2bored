@@ -180,7 +180,10 @@ export default function EducationBand() {
   const axisOpacity = useTransform(p, [0.6, 0.7], [0, 1]);
 
   return (
-    <div ref={ref} className="relative lg:h-[240vh]" id="education">
+    <div ref={ref} className="relative lg:h-[240vh]">
+      {/* The nav's target: where the pinned sequence has played out, not its
+          blank first frame. Below lg the section is not pinned, so its top. */}
+      <span id="education" aria-hidden="true" className="pointer-events-none absolute left-0 top-0 lg:bottom-0 lg:top-auto lg:h-[100vh]" />
       <section
         aria-label="Education"
         className="py-20 lg:sticky lg:top-0 lg:h-dvh lg:overflow-hidden lg:py-0"

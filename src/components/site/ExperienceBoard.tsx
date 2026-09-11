@@ -117,7 +117,10 @@ export default function ExperienceBoard() {
   const headingY = useTransform(p, [0.62, 0.76], [24, 0]);
 
   return (
-    <div ref={ref} className="relative lg:h-[260vh]" id="experience">
+    <div ref={ref} className="relative lg:h-[260vh]">
+      {/* The nav's target: where the pinned sequence has played out, not its
+          blank first frame. Below lg the section is not pinned, so its top. */}
+      <span id="experience" aria-hidden="true" className="pointer-events-none absolute left-0 top-0 lg:bottom-0 lg:top-auto lg:h-[100vh]" />
       <section
         aria-label="Experience"
         className="flex flex-col justify-center py-20 lg:sticky lg:top-0 lg:h-dvh lg:overflow-hidden lg:py-0"
