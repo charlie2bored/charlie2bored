@@ -18,6 +18,8 @@
  * bar visibly has not arrived yet.
  */
 
+import { built } from '@/lib/built';
+
 export type School = {
   id: string;
   src: string;
@@ -74,12 +76,11 @@ export const schools: School[] = [
 export const educationHeading = 'learning? yeah that too.';
 
 /**
- * Where the band has got to. Static, like the rail's dateline: a date rendered
- * from the clock disagrees between server and client and trips hydration.
- * Bump it when it drifts far enough to matter — the only thing it moves is
- * where the Northeastern bar stops being solid.
+ * Where the band has got to: the month of the last deploy, like the hero's
+ * dateline (see built.ts). The only thing it moves is where the Northeastern
+ * bar stops being solid.
  */
-export const asOf: [number, number] = [2026, 8];
+export const asOf: [number, number] = [built.year, built.month];
 
 const months = ([y, m]: [number, number]) => y * 12 + m;
 

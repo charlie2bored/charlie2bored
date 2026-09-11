@@ -2,6 +2,8 @@ import type { NextConfig } from 'next';
 import path from 'path';
 
 const nextConfig: NextConfig = {
+  /** The hero's dateline and the education band read this; see src/lib/built.ts. */
+  env: { NEXT_PUBLIC_BUILT_AT: new Date().toISOString() },
   turbopack: {
     /** Pin workspace root when a parent folder has another package-lock.json (avoids mis-inferred Turbopack root). */
     root: path.join(__dirname),

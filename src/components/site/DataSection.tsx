@@ -20,6 +20,7 @@
 import Image from 'next/image';
 import { useScroll, useSpring } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { type Dot, halftone, seeded } from '@/lib/halftone';
 import { dataBg, dataChapters, dataHeadline, dataIntro, type DataChapter, type DataFigure } from '@/lib/data';
 
 /* ---------- the full-size viewer ---------- */
@@ -185,64 +186,7 @@ function Stats({ c }: { c: DataChapter }) {
 
 /* ---------- the headline, spelled in dots ---------- */
 
-/**
- * The one place the dot field survives: the headline. It has its own held
- * beat, like the dance headline — the stage pins, and scrolling pulls a field
- * of scattered dots into the words, each dot leaving at its own moment so it
- * reads as a swarm. Dense enough to read as a halftone headline; the real text
- * sits behind it for screen readers.
- */
 const HEAD_SPRING = { stiffness: 200, damping: 18, mass: 0.4, restDelta: 0.0005 };
-type Dot = { x: number; y: number };
-
-function seeded(seed: number) {
-  let s = seed >>> 0;
-  return () => {
-    s = (s + 0x6d2b79f5) >>> 0;
-    let t = s;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-/**
- * Set the headline in the canvas and read it back as a hex halftone: one dot
- * per grid point that lands on ink. The grid spacing follows the type size, so
- * a phone gets the same halftone texture as a desktop, just fewer dots.
- */
-function spellDots(text: string, W: number, H: number, font: string) {
-  const off = document.createElement('canvas');
-  off.width = Math.round(W);
-  off.height = Math.round(H);
-  const g = off.getContext('2d')!;
-  const lines = text.split(/(?<=\?)\s+/);
-  let size = Math.min(H * 0.17, W * 0.14);
-  const fit = () => {
-    g.font = `700 ${size}px ${font}`;
-    return Math.max(...lines.map((l) => g.measureText(l).width));
-  };
-  // Grow to fill the width on narrow screens, shrink if a line runs over.
-  while (fit() < W * 0.84 && size < H * 0.17) size *= 1.04;
-  while (fit() > W * 0.86 && size > 12) size *= 0.96;
-  g.fillStyle = '#000';
-  g.textAlign = 'center';
-  g.textBaseline = 'middle';
-  lines.forEach((l, i) => g.fillText(l, W / 2, H / 2 + (i - (lines.length - 1) / 2) * size));
-  const img = g.getImageData(0, 0, off.width, off.height).data;
-  const gap = Math.min(6.5, Math.max(3.6, size / 26));
-  const rowH = gap * 0.866;
-  const dots: Dot[] = [];
-  let top = H, bottom = 0;
-  for (let r = 0, y = rowH / 2; y < off.height; r++, y += rowH)
-    for (let x = (r % 2 ? gap / 2 : 0) + gap / 4; x < off.width; x += gap)
-      if (img[(Math.round(y) * off.width + Math.round(x)) * 4 + 3] > 140) {
-        dots.push({ x, y });
-        top = Math.min(top, y);
-        bottom = Math.max(bottom, y);
-      }
-  return { dots: dots.slice(0, 6000), gap, top, bottom };
-}
 
 /**
  * The one place the dot field survives: the headline. It has its own held
@@ -298,7 +242,7 @@ function DotHeadline({ text }: { text: string }) {
       cv.width = Math.round(W * dpr);
       cv.height = Math.round(H * dpr);
       cv.getContext('2d')!.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const { dots, gap, top, bottom } = spellDots(text, W, H, getComputedStyle(document.body).fontFamily);
+      const { dots, gap, top, bottom } = halftone(text, { W, H, font: getComputedStyle(document.body).fontFamily, maxSize: H * 0.17, maxWidth: W * 0.86 });
       const rand = seeded(42);
       for (let i = dots.length - 1; i > 0; i--) {
         const j = Math.floor(rand() * (i + 1));

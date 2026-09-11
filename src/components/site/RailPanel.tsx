@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { contact, copyright, downloads, navItems, owner } from '@/lib/nav';
 
 function BracketLabel({ children }: { children: string }) {
@@ -18,6 +21,9 @@ function BracketLabel({ children }: { children: string }) {
  * animation of its own.
  */
 export default function RailPanel({ onNavigate }: { onNavigate?: () => void }) {
+  // The sections are anchors on the homepage; from anywhere else (a 404, say)
+  // they need the page in front of them.
+  const home = usePathname() === '/';
   return (
     <div className="flex h-full flex-col justify-between p-6 sm:p-8">
       <div>
@@ -43,7 +49,7 @@ export default function RailPanel({ onNavigate }: { onNavigate?: () => void }) {
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
-                  href={item.href}
+                  href={home || !item.href.startsWith('#') ? item.href : `/${item.href}`}
                   onClick={onNavigate}
                   className="inline-block text-[clamp(1.5rem,2.4vw,2rem)] font-light leading-[1.35] transition-opacity hover:opacity-60"
                   style={{ color: 'var(--rail-fg)' }}

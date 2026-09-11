@@ -1,26 +1,25 @@
 import Link from 'next/link';
-import { IconFileSad } from '@tabler/icons-react';
+import ErrorFrame, { lineButton, solidButton } from '@/components/site/ErrorFrame';
+import { navItems } from '@/lib/nav';
 
 export default function NotFound() {
   return (
-    <div
-      className="min-h-dvh flex flex-col items-center justify-center gap-4 px-5 text-center"
-      style={{ backgroundColor: 'var(--gd-bg)', fontFamily: "var(--font-dm), Roboto, Arial, sans-serif" }}
+    <ErrorFrame
+      word="404"
+      eyebrow="404 — page not found"
+      headline="lost? it happens."
+      body="This page doesn’t exist, or it moved when the site was rebuilt. Everything lives on one page now."
     >
-      <IconFileSad size={56} color="#9aa0a6" stroke={1.25} aria-hidden="true" />
-      <h1 className="text-[17px] font-medium" style={{ color: 'var(--gd-text)' }}>
-        File not found
-      </h1>
-      <p className="max-w-md text-[14px] leading-relaxed" style={{ color: 'var(--gd-text-2)' }}>
-        This file may have been moved or deleted, or you may not have permission to view it.
-      </p>
-      <Link
-        href="/"
-        className="mt-2 rounded-full px-6 py-2.5 text-[14px] font-medium text-white transition-opacity hover:opacity-90"
-        style={{ backgroundColor: '#0b57d0' }}
-      >
-        Back to Charlie Vargas
+      <Link href="/" className={solidButton}>
+        ← back home
       </Link>
-    </div>
+      {navItems
+        .filter((n) => n.href.startsWith('#'))
+        .map((n) => (
+          <Link key={n.href} href={`/${n.href}`} className={lineButton}>
+            {n.label}
+          </Link>
+        ))}
+    </ErrorFrame>
   );
 }

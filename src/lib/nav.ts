@@ -1,13 +1,14 @@
 /** Rail content, transcribed from the Figma frame (NAVBAR + HERO, 2001:2). */
 
+import { builtDateline } from '@/lib/built';
+
 export const owner = {
   name: 'CHARLIE “2bored” VARGAS',
   role: 'ANALYST. DESIGNER. PERFORMER.',
 };
 
-/** Shown in the hero's top strip. Static text, not a live clock — a rendered
- *  date would disagree between server and client. */
-export const dateline = 'NEW YORK, NY / SEPT. 9, 2026 / UPDATE';
+/** Shown in the hero's top strip: the date of the last deploy. */
+export const dateline = `NEW YORK, NY / ${builtDateline} / UPDATE`;
 
 /**
  * The rail is a map of the site, so it lists only what exists. The retired
