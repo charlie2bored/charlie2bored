@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, type ReactNode } from 'react';
-import { halftone, seeded } from '@/lib/halftone';
+import { halftone, seeded, titleFont } from '@/lib/halftone';
 
 const PAPER = '#ece9e4';
 
@@ -16,7 +16,7 @@ function StrayWord({ word, strays }: { word: string; strays: number }) {
   useEffect(() => {
     let cancelled = false;
     const draw = async () => {
-      await document.fonts.ready;
+      const font = await titleFont();
       const cv = canvas.current;
       if (!cv || cancelled) return;
       const W = cv.clientWidth, H = cv.clientHeight;
@@ -29,7 +29,7 @@ function StrayWord({ word, strays }: { word: string; strays: number }) {
       const { dots, gap } = halftone(word, {
         W,
         H,
-        font: getComputedStyle(document.body).fontFamily,
+        font,
         maxSize: H * 0.36,
         maxWidth: W * 0.8,
         cy: H * 0.34,
@@ -89,7 +89,7 @@ export default function ErrorFrame({
       <StrayWord word={word} strays={0.08} />
       <div className="relative flex min-h-dvh flex-col items-center justify-end px-5 pb-[9vh] text-center">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-black/50">{eyebrow}</p>
-        <h1 className="mt-4 text-[clamp(2.2rem,5.4vw,5.75rem)] font-bold leading-[0.95] tracking-[-0.035em]">
+        <h1 className="font-title mt-4 text-[clamp(2.2rem,5.4vw,5.75rem)] font-bold leading-[0.95] tracking-[-0.035em]">
           {headline.split(/(?<=\?)\s+/).map((part) => (
             <span key={part} className="block">
               {part}

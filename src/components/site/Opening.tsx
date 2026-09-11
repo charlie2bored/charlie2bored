@@ -27,9 +27,9 @@ import {
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const STATEMENT_CLASS =
-  'font-bold leading-[1.06] tracking-[-0.02em] text-[clamp(1.35rem,5.15vw,6.5rem)]';
+  'font-title font-bold leading-[1.06] tracking-[-0.02em] text-[clamp(1.35rem,5.15vw,6.5rem)]';
 const EYEBROW_CLASS =
-  'font-bold leading-[1.25] tracking-[0.01em] text-[clamp(0.6rem,1.12vw,1.4rem)]';
+  'font-title font-bold leading-[1.25] tracking-[0.01em] text-[clamp(0.6rem,1.12vw,1.4rem)]';
 
 function HeroImage() {
   return (

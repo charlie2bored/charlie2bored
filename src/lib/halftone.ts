@@ -60,3 +60,18 @@ export function halftone(
       }
   return { dots: dots.slice(0, 6000), gap, top, bottom };
 }
+
+/**
+ * The title face (Space Grotesk, via next/font's --font-grotesk on body),
+ * loaded before it is drawn: a canvas cannot wait for a font the way text
+ * can, so a face nothing has used yet would otherwise draw as the fallback.
+ */
+export async function titleFont() {
+  const family = getComputedStyle(document.body).getPropertyValue('--font-grotesk').trim();
+  const stack = `${family ? `${family}, ` : ''}ui-sans-serif, system-ui, sans-serif`;
+  try {
+    await document.fonts.load(`700 100px ${stack}`);
+  } catch {}
+  await document.fonts.ready;
+  return stack;
+}

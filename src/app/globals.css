@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/*
+ * Two voices: Space Grotesk for titles, headlines and subheads (`font-title`),
+ * the system face for body copy (Tailwind's font-sans, set on body).
+ */
+@theme inline {
+  --font-title: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+}
+
 :root {
   --gd-bg: #f8fafd;
   --gd-surface: #ffffff;

@@ -20,7 +20,7 @@
 import Image from 'next/image';
 import { useScroll, useSpring } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { type Dot, halftone, seeded } from '@/lib/halftone';
+import { type Dot, halftone, seeded, titleFont } from '@/lib/halftone';
 import { dataBg, dataChapters, dataHeadline, dataIntro, type DataChapter, type DataFigure } from '@/lib/data';
 
 /* ---------- the full-size viewer ---------- */
@@ -130,7 +130,7 @@ function Brief({ c }: { c: DataChapter }) {
   return (
     <div className="max-w-[62ch]">
       <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-black/50">{c.type}</p>
-      <h3 className="mt-2 text-[clamp(1.6rem,2.6vw,2.8rem)] font-bold leading-[1.02] tracking-[-0.02em]">{c.title}</h3>
+      <h3 className="font-title mt-2 text-[clamp(1.6rem,2.6vw,2.8rem)] font-bold leading-[1.02] tracking-[-0.02em]">{c.title}</h3>
       <p className="mt-1 text-sm text-black/60 lg:text-[13px]">{c.meta}</p>
       <dl className="mt-6 space-y-5 text-base leading-snug lg:space-y-4 lg:text-[clamp(0.9rem,1vw,1.05rem)]">
         {(
@@ -174,7 +174,7 @@ function Stats({ c }: { c: DataChapter }) {
       <div className="grid grid-cols-2 gap-px bg-black/15">
         {c.stats!.map((s) => (
           <div key={s.label} className="bg-[#ece9e4] p-[clamp(1rem,2vw,2rem)]">
-            <p className="text-[clamp(1.8rem,3.4vw,3.6rem)] font-bold leading-none tracking-[-0.03em]">{s.value}</p>
+            <p className="font-title text-[clamp(1.8rem,3.4vw,3.6rem)] font-bold leading-none tracking-[-0.03em]">{s.value}</p>
             <p className="mt-2 font-mono text-[10px] uppercase leading-[1.5] tracking-[0.12em] text-black/55">{s.label}</p>
           </div>
         ))}
@@ -233,7 +233,7 @@ function DotHeadline({ text }: { text: string }) {
   useEffect(() => {
     let cancelled = false;
     const build = async () => {
-      await document.fonts.ready;
+      const font = await titleFont();
       const cv = canvas.current;
       if (!cv || cancelled) return;
       const W = cv.clientWidth, H = cv.clientHeight;
@@ -242,7 +242,7 @@ function DotHeadline({ text }: { text: string }) {
       cv.width = Math.round(W * dpr);
       cv.height = Math.round(H * dpr);
       cv.getContext('2d')!.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const { dots, gap, top, bottom } = halftone(text, { W, H, font: getComputedStyle(document.body).fontFamily, maxSize: H * 0.17, maxWidth: W * 0.86 });
+      const { dots, gap, top, bottom } = halftone(text, { W, H, font, maxSize: H * 0.17, maxWidth: W * 0.86 });
       const rand = seeded(42);
       for (let i = dots.length - 1; i > 0; i--) {
         const j = Math.floor(rand() * (i + 1));
@@ -393,7 +393,7 @@ export default function DataSection() {
         <article key={c.num} id={`data-${c.num}`} data-chapter={n} className="scroll-mt-32 border-t border-black/10 px-5 py-16 first-of-type:border-t-0 sm:px-[8vw] lg:scroll-mt-14 lg:px-[5vw] lg:py-[12vh]">
           <div className="grid gap-10 lg:grid-cols-[38%_1fr] lg:gap-[4vw]">
             <div className="lg:sticky lg:top-[14vh] lg:self-start">
-              <p className="text-[clamp(3rem,6vw,6.5rem)] font-bold leading-none tracking-[-0.04em] text-black/10">{c.num}</p>
+              <p className="font-title text-[clamp(3rem,6vw,6.5rem)] font-bold leading-none tracking-[-0.04em] text-black/10">{c.num}</p>
               <div className="mt-1 lg:-mt-[0.6em]">
                 <Brief c={c} />
               </div>

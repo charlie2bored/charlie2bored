@@ -135,7 +135,7 @@ function Label({ school, p }: { school: School; p: MotionValue<number> }) {
       }}
     >
       <p
-        className="absolute bottom-[0.45rem] left-0 whitespace-nowrap text-[clamp(1.2rem,min(3.4vw,7vh),5rem)] font-bold leading-none tracking-[-0.03em]"
+        className="font-title absolute bottom-[0.45rem] left-0 whitespace-nowrap text-[clamp(1.2rem,min(3.4vw,7vh),5rem)] font-bold leading-none tracking-[-0.03em]"
         style={{ color: educationText }}
       >
         {school.name}
@@ -190,7 +190,7 @@ export default function EducationBand() {
         <div className="relative hidden h-full lg:block">
           <motion.p
             data-band-motion
-            className="absolute left-1/2 w-full -translate-x-1/2 text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold"
+            className="font-title absolute left-1/2 w-full -translate-x-1/2 text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold"
             style={{ top: headlineTopPct, opacity: headlineOpacity, color: educationText }}
           >
             {educationHeading}
@@ -232,7 +232,7 @@ export default function EducationBand() {
         {/* Narrow screens: no pin to scrub, so the same facts stack. */}
         <div className="px-6 sm:px-8 lg:hidden">
           <p
-            className="text-center text-[clamp(0.9rem,3.5vw,1.4rem)] font-bold"
+            className="font-title text-center text-[clamp(0.9rem,3.5vw,1.4rem)] font-bold"
             style={{ color: educationText }}
           >
             {educationHeading}
@@ -245,7 +245,7 @@ export default function EducationBand() {
                 </div>
                 <div>
                   <p
-                    className="text-[1.05rem] font-bold leading-none tracking-[-0.02em]"
+                    className="font-title text-[1.05rem] font-bold leading-none tracking-[-0.02em]"
                     style={{ color: educationText }}
                   >
                     {s.name}

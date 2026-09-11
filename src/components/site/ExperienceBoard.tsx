@@ -60,7 +60,7 @@ function Entry({
 
   return (
     <motion.li data-board-motion style={{ opacity, y }}>
-      <p className="text-[clamp(0.85rem,min(0.9vw,2vh),1.4rem)] font-bold leading-snug"
+      <p className="font-title text-[clamp(0.85rem,min(0.9vw,2vh),1.4rem)] font-bold leading-snug"
         style={{ color: boardText }}>
         {entry.title}
       </p>
@@ -125,7 +125,7 @@ export default function ExperienceBoard() {
       >
         <motion.p
           data-board-motion
-          className="origin-center text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold text-black lg:pt-[clamp(0.5rem,2vh,3rem)]"
+          className="font-title origin-center text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold text-black lg:pt-[clamp(0.5rem,2vh,3rem)]"
           style={{ scale: headlineScale, opacity: headlineOpacity }}
         >
           {experienceHeading}
@@ -143,7 +143,7 @@ export default function ExperienceBoard() {
               >
                 <motion.h2
                   data-board-motion
-                  className="relative text-center text-[clamp(3rem,min(7.17vw,11vh),10rem)] font-bold leading-none tracking-[-0.02em] lg:pt-[clamp(0.5rem,2vh,3.5rem)]"
+                  className="font-title relative text-center text-[clamp(3rem,min(7.17vw,11vh),10rem)] font-bold leading-none tracking-[-0.02em] lg:pt-[clamp(0.5rem,2vh,3.5rem)]"
                   style={{ color: boardText, opacity: headingOpacity, y: headingY }}
                 >
                   {column.heading}

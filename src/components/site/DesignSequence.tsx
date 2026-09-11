@@ -44,7 +44,7 @@ function Caption({ category, title, note }: { category: string; title: string; n
   return (
     <div className="mt-4 max-w-[46ch]">
       <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-black/50">{category}</p>
-      <p className="text-[13px] font-bold">{title}</p>
+      <p className="font-title text-[13px] font-bold">{title}</p>
       <p className="mt-1 text-[12px] text-black/60">{note}</p>
     </div>
   );
@@ -178,7 +178,7 @@ function Page({ p, onOpen }: { p: DesignPage; onOpen: (s: DesignSite) => void })
       return (
         <div className="flex w-[max(58vw,19rem)] shrink-0 flex-col justify-center" style={{ height: PANEL_H }}>
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-black/50">04 — design</p>
-          <h2 className="mt-6 text-[clamp(2.4rem,6.4vw,8rem)] font-bold leading-[0.95] tracking-[-0.035em]">
+          <h2 className="font-title mt-6 text-[clamp(2.4rem,6.4vw,8rem)] font-bold leading-[0.95] tracking-[-0.035em]">
             {designHeading.split(/(?<=\?)\s+/).map((part) => (
               <span key={part} className="block">
                 {part}

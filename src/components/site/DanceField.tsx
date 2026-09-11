@@ -255,7 +255,7 @@ export default function DanceField() {
       */}
       <div className="relative h-[180vh]">
         <div className="sticky top-0 flex h-dvh items-center justify-center px-[4vw]">
-          <p className="text-center text-[clamp(2.4rem,6.4vw,8rem)] font-bold leading-[0.95] tracking-[-0.035em]">
+          <p className="font-title text-center text-[clamp(2.4rem,6.4vw,8rem)] font-bold leading-[0.95] tracking-[-0.035em]">
             {danceHeading.split(/(?<=\?)\s+/).map((part) => (
               <span key={part} className="block">
                 {part}
