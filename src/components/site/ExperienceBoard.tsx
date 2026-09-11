@@ -107,8 +107,10 @@ export default function ExperienceBoard() {
     restDelta: 0.0004,
   });
 
-  // Out, hold, back — driven entirely by how far you have scrolled.
-  const headlineScale = useTransform(p, [0.02, 0.3, 0.4, 0.52], [1, 5.5, 5.5, 1]);
+  // Out, hold, back — driven entirely by how far you have scrolled. The peak
+  // puts the words at about 45% of the screen's width; 5.5x filled 69% and read
+  // as too big rather than loud.
+  const headlineScale = useTransform(p, [0.02, 0.3, 0.4, 0.52], [1, 3.6, 3.6, 1]);
   const headlineOpacity = useTransform(p, [0, 0.03], [0, 1]);
 
   const headingOpacity = useTransform(p, [0.62, 0.76], [0, 1]);
