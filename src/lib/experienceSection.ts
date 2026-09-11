@@ -57,7 +57,7 @@ export const experienceColumns: ExperienceColumn[] = [
       },
       {
         title: 'Web Designer - Kindling Education Partners (May ’26 - Present)',
-        line: 'Scoped and shipped their corporate site, built on the client’s own GitHub and Vercel.',
+        line: 'Their first website, start to finish — built custom instead of on Squarespace, kept current as they add schools.',
       },
       {
         title: 'Web Designer - Rossitech LTD (Aug. ’25 - Dec. ’25)',
@@ -76,10 +76,6 @@ export const experienceColumns: ExperienceColumn[] = [
       {
         title: 'BI + Data Analytics Intern - Apple Montessori Schools (Oct. ’23 - May ’26)',
         line: 'KPI dashboards for 20+ schools, and a verified student count behind the enrollment projections.',
-      },
-      {
-        title: 'Operations - Kindling Education Partners (May ’26 - Present)',
-        line: 'Payroll and vendor tracking, ownership filings, and monthly expense reconciliation.',
       },
       {
         title: 'McKinsey Forward Program (2026)',

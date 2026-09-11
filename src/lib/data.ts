@@ -1,5 +1,5 @@
 /**
- * The data section: two jobs, then three personal projects, each told as
+ * The data section: an internship, then three personal projects, each told as
  * problem, what I did, result. Projects carry their real artifacts (the live
  * site, the actual Power BI pages, the actual figures); internal work cannot
  * be shown, so it carries its numbers instead, and says why.
@@ -9,7 +9,7 @@ export const dataBg = '#ece9e4';
 
 /** Spelled in dots by the section's opening beat. */
 export const dataHeadline = 'guessing? not here.';
-export const dataIntro = 'Two jobs and three projects. The dashboards and figures below are the real ones.';
+export const dataIntro = 'A two-and-a-half-year internship and three projects. The dashboards and figures below are the real ones.';
 
 export type DataFigure = { src: string; w: number; h: number; caption: string; site?: string };
 export type DataChapter = {
@@ -49,22 +49,7 @@ export const dataChapters: DataChapter[] = [
     note: 'The dashboards are internal to Apple Montessori, so the numbers stand in for them.',
   },
   {
-    num: '02', group: 'Work', short: 'Kindling', type: 'Job · current',
-    title: 'Operations', meta: 'Kindling Education Partners · May 2026 – present',
-    problem: 'A growing school operator needs its payroll, vendors and filings handled accurately, every month.',
-    did: 'Run payroll and vendor tracking, ownership filings, and the monthly expense reconciliation.',
-    result: 'Every month reconciled since I started in May.',
-    tools: [],
-    stats: [
-      { value: 'Payroll', label: 'tracked every cycle' },
-      { value: 'Vendors', label: 'tracked and paid' },
-      { value: 'Filings', label: 'ownership paperwork kept current' },
-      { value: 'Monthly', label: 'expense reconciliation, closed' },
-    ],
-    note: 'Internal operations; there is nothing public to show, so this is the job as it runs.',
-  },
-  {
-    num: '03', group: 'Projects', short: 'NYC fares', type: 'Personal project · solo',
+    num: '02', group: 'Projects', short: 'NYC fares', type: 'Personal project · solo',
     title: 'NYC distance-based fare analysis', meta: 'Research, modeling and the site',
     problem: 'Would a distance-based subway fare change who pays and who saves? Fare debates live in spreadsheets riders can’t use.',
     did: 'Modeled ~1M MTA origin–destination records in Python, routed every trip along the real subway network, and built a site where readers test their own commute.',
@@ -79,7 +64,7 @@ export const dataChapters: DataChapter[] = [
     ],
   },
   {
-    num: '04', group: 'Projects', short: 'District 2', type: 'Personal project · solo',
+    num: '03', group: 'Projects', short: 'District 2', type: 'Personal project · solo',
     title: 'NYC District 2 enrollment forecasting', meta: '30 elementary schools, three years out',
     problem: 'COVID broke a six-year plateau (~15,800 → ~12,400 K–5 students). Two data points can’t support one confident ML forecast.',
     did: 'Stitched 12 years of DOE and NYSED data, fit a piecewise model with a 2020 break, bounded the future with three scenarios, and shipped a Power BI dashboard.',
@@ -92,7 +77,7 @@ export const dataChapters: DataChapter[] = [
     ],
   },
   {
-    num: '05', group: 'Projects', short: 'Subway events', type: 'Personal project · solo',
+    num: '04', group: 'Projects', short: 'Subway events', type: 'Personal project · solo',
     title: 'NYC subway events from ridership data', meta: 'Hourly MTA ridership, 2024',
     problem: 'Can you tell when a big NYC event happens — a game, a parade, a concert — from subway ridership alone, with no calendar?',
     did: 'Built seasonal baselines per station and hour, scored the residuals, fingerprinted each event on five dimensions and clustered them.',

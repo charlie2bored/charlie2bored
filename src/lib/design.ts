@@ -64,7 +64,7 @@ export const designPages: DesignPage[] = [
   {
     kind: 'site', id: 'kindling', category: 'Web', url: 'kindlingep.com', img: '/design/kindling.jpg', imgW: 1600, imgH: 3921,
     title: 'Kindling Education Partners',
-    note: 'Scoped and shipped their corporate site, built on the client’s own GitHub and Vercel.',
+    note: 'Their first website, start to finish. They asked for Squarespace; I built it custom so they got the site they actually wanted, and I keep it current — a new page each time they add a school.',
   },
   // Web — then Charlie's own projects.
   { kind: 'image', id: 'clearcore', category: 'Web', img: '/projects/clearcore-protein.png', w: 1024, h: 552, title: 'ClearCore Protein', note: 'Self-directed, start to finish.', href: 'https://clearcore-tau.vercel.app/' },

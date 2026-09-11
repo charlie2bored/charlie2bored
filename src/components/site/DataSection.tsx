@@ -9,8 +9,8 @@
  * each chapter holds its brief on the left while the real artifacts scroll
  * past on the right, captioned, and any of them opens full-size.
  *
- * Internal work (Apple Montessori, Kindling) cannot be shown, so its right side
- * is a typeset panel of the real numbers and responsibilities, and says why.
+ * Internal work (Apple Montessori) cannot be shown, so its right side is a
+ * typeset panel of the real numbers and responsibilities, and says why.
  *
  * Not pinned. Design already took the pinned sideways move; data is the
  * section you read. An index bar follows you down it, Work then Projects, the
@@ -359,7 +359,7 @@ export default function DataSection() {
         <div className="flex items-center gap-3 lg:hidden">
           <ol className="flex gap-1">
             {dataChapters.map((c, n) => (
-              <li key={c.num} className={n === 2 ? 'ml-2' : ''}>
+              <li key={c.num} className={n > 0 && c.group !== dataChapters[n - 1].group ? 'ml-2' : ''}>
                 <a
                   href={`#data-${c.num}`}
                   aria-label={`${c.num} ${c.short}`}
