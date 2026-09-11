@@ -31,11 +31,11 @@ export const experienceColumns: ExperienceColumn[] = [
       },
       {
         title: 'Team Toro - New York Red Bulls (Feb. ’26 - Present)',
-        line: 'Pre-game and halftime activations at Sports Illustrated Stadium, plus community appearances.',
+        line: 'Made the team at tryouts; pre-game and halftime activations at Sports Illustrated Stadium, plus community appearances.',
       },
       {
         title: 'WOO! Crew - New Jersey Devils (Sept. ’25 - Present)',
-        line: 'On-ice activations and arena-floor engagement across all three periods at Prudential Center.',
+        line: 'Re-auditioned and made it two seasons running (~80, then ~50 trying out). Shirt tosses, Zamboni rides, fan moments all game.',
       },
       {
         title: 'Head Martial Arts Instructor - Cesar-Kai Academy (’21 - ’22)',
@@ -61,7 +61,7 @@ export const experienceColumns: ExperienceColumn[] = [
       },
       {
         title: 'Web Designer - Rossitech LTD (Aug. ’25 - Dec. ’25)',
-        line: 'First websites for clients who had none, in Figma and Framer.',
+        line: 'Contract designer for a UK web agency: Figma designs for a venison supplier and a soccer coach.',
       },
       {
         title: 'Selected Projects / Practice - (Ongoing)',
