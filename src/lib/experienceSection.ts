@@ -27,7 +27,7 @@ export const experienceColumns: ExperienceColumn[] = [
     entries: [
       {
         title: 'Gen X Crew Member - Brickhouse NYC (Sept. ’26 - Present)',
-        line: 'Auditioned for 26-27 crew, participating in 28 hours of dance training a month.',
+        line: 'Made the 26–27 competition and performance crew (40+ at my audition date alone); 28 hours of training a month.',
       },
       {
         title: 'Team Toro - New York Red Bulls (Feb. ’26 - Present)',
@@ -39,11 +39,11 @@ export const experienceColumns: ExperienceColumn[] = [
       },
       {
         title: 'Head Martial Arts Instructor - Cesar-Kai Academy (’21 - ’22)',
-        line: 'Taught forms and sparring; coached students in discipline, focus, and body control.',
+        line: 'Second-degree black belt. Taught classes of 3 to 25, ages 4 to 17: forms, sparring and discipline.',
       },
       {
         title: 'Company Dancer - UCVTS APA (Sept. ’20 - June ’24)',
-        line: 'Four years of conservatory training; 8+ showcases and mainstage productions.',
+        line: 'Four years of conservatory training: the Cat in the Hat in Seussical, and host of the 2022–23 Art of Creation concert.',
       },
     ],
   },
@@ -79,7 +79,7 @@ export const experienceColumns: ExperienceColumn[] = [
       },
       {
         title: 'McKinsey Forward Program (2026)',
-        line: 'Strategy and execution frameworks, structured problem solving, communication.',
+        line: 'Completed, with certificate: structured problem solving, strategy and execution, and communication.',
       },
       {
         title: 'Selected Projects / Practice - (Ongoing)',
