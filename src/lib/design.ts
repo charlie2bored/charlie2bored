@@ -50,7 +50,7 @@ export const designPages: DesignPage[] = [
   },
   {
     kind: 'site', id: 'medara', url: 'medara.co', img: '/design/medara.jpg', imgW: 1600, imgH: 4754,
-    title: 'medara', note: 'The site for a pre-FDA imaging startup.',
+    title: 'medara', note: 'Designed the site, and run it day to day — news posts and their covers, copy updates, deploys.',
   },
   { kind: 'series', id: 'medara-covers', imgs: COVERS, title: 'medara — news covers', note: 'Sixteen covers, one system.' },
   { kind: 'image', id: 'clearcore', img: '/projects/clearcore-protein.png', w: 1024, h: 552, title: 'ClearCore Protein', note: 'Self-directed, start to finish.' },
