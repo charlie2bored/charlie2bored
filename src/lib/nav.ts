@@ -12,8 +12,8 @@ export const dateline = 'NEW YORK, NY / SEPT. 9, 2026 / UPDATE';
 /**
  * The rail is a map of the site, so it lists only what exists. The retired
  * routes are gone; Experience and Education came back as homepage sections,
- * so they are anchors rather than pages, and Dance joined them the same way.
- * Design and Data return here when they are built, rather than sitting in the
+ * so they are anchors rather than pages, and Dance and Design joined them the
+ * same way. Data returns here when it is built, rather than sitting in the
  * rail pointing at a 404.
  */
 export const navItems = [
@@ -21,6 +21,7 @@ export const navItems = [
   { label: 'Experience', href: '#experience' },
   { label: 'Education', href: '#education' },
   { label: 'Dance', href: '#dance' },
+  { label: 'Design', href: '#design' },
 ];
 
 export const contact = {

@@ -1,13 +1,5 @@
 @import "tailwindcss";
 
-/*
- * Tailwind skips gitignored files when it looks for class names, and the
- * local-only labs (see .gitignore) are gitignored on purpose. This registers
- * them explicitly so their classes still generate. Where the folder does not
- * exist — every other checkout, and Vercel — it simply matches nothing.
- */
-@source "./design-lab";
-
 :root {
   --gd-bg: #f8fafd;
   --gd-surface: #ffffff;

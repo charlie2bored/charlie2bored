@@ -3,6 +3,7 @@ import Opening from '@/components/site/Opening';
 import ExperienceBoard from '@/components/site/ExperienceBoard';
 import EducationBand from '@/components/site/EducationBand';
 import DanceField from '@/components/site/DanceField';
+import DesignSequence from '@/components/site/DesignSequence';
 import AboutSection from '@/components/story/AboutSection';
 import Marquee from '@/components/story/Marquee';
 
@@ -21,6 +22,7 @@ export default function Home() {
         <ExperienceBoard />
         <EducationBand />
         <DanceField />
+        <DesignSequence />
         <AboutSection />
         <Marquee />
       </main>
