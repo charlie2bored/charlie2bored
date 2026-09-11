@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
-import DriveShell from '@/components/drive/DriveShell';
-import { rootItems } from '@/lib/drive';
+import Opening from '@/components/site/Opening';
+import ExperienceBoard from '@/components/site/ExperienceBoard';
+import EducationBand from '@/components/site/EducationBand';
+import DanceField from '@/components/site/DanceField';
+import DesignSequence from '@/components/site/DesignSequence';
+import DataSection from '@/components/site/DataSection';
+import ContactSection from '@/components/site/ContactSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -8,10 +13,19 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <DriveShell
-      crumbs={[{ label: 'Shared with me' }, { label: 'Charlie Vargas' }]}
-      tagline="BI and operations analyst · Power BI, SQL, Python · NYC, NJ & CT"
-      items={rootItems()}
-    />
+    <div style={{ backgroundColor: 'var(--ink)', color: 'var(--paper)' }}>
+      <a href="#experience" className="skip-link">
+        Skip to experience
+      </a>
+      <main id="main-content">
+        <Opening />
+        <ExperienceBoard />
+        <EducationBand />
+        <DanceField />
+        <DesignSequence />
+        <DataSection />
+        <ContactSection />
+      </main>
+    </div>
   );
 }

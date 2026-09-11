@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/*
+ * Two voices: Space Grotesk for titles, headlines and subheads (`font-title`),
+ * the system face for body copy (Tailwind's font-sans, set on body).
+ */
+@theme inline {
+  --font-title: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+}
+
 :root {
   --gd-bg: #f8fafd;
   --gd-surface: #ffffff;
@@ -39,30 +47,189 @@
   padding-bottom: 3px;
 }
 
+/* Scroll-story surface: monochrome ground, one accent per category. */
+:root {
+  --ink: #08080a;
+  --ink-raised: #121216;
+  --paper: #f4f4f2;
+  --paper-dim: #a1a1aa;
+  --paper-faint: #82828b; /* 5.26:1 on --ink; the old #52525b was 2.59:1 */
+  --rule: #26262c;
+
+  /* Split hero, from the Figma frame. */
+  --rail-bg: #0a0a0c;
+  --rail-fg: #f2f2f0;
+  --rail-dim: #8f8f97;
+  --hero-bg: #d6d6d6;
+  --hero-fg: #16161a;
+}
+
 @layer base {
   body {
-    font-family: var(--font-dm), Roboto, Arial, sans-serif;
+    font-family: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
     background-color: var(--gd-bg);
     color: var(--gd-text);
   }
 
-  button, input, select, textarea {
-    font: inherit;
+  .font-display {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+  .font-mono-label {
+    font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+  }
+
+  /*
+   * Category selector, loading-screen style. At rest the artwork sits far back,
+   * desaturated; the active panel takes full colour, widens, and lifts its
+   * caption. Everything here is driven by data-active so mouse and keyboard
+   * behave identically.
+   */
+  .gta-panel {
+    flex: 1 1 0%;
+    min-width: 0;
+    transition: flex-grow 600ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease-out;
+  }
+
+  .gta-art {
+    filter: grayscale(1) brightness(0.3) contrast(1.1);
+    transform: scale(1.04);
+    transition: filter 600ms ease-out, transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gta-tint {
+    opacity: 0;
+    mix-blend-mode: color;
+    transition: opacity 600ms ease-out;
+  }
+
+  .gta-panel[data-active='true'] .gta-tint {
+    opacity: 0.34;
+  }
+
+  .gta-rule {
+    transform: scaleX(0);
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gta-caption {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 450ms ease-out, transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* The poster figure belongs to the active panel; at rest the plate is a plain field. */
+  .gta-figure {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 500ms ease-out, transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gta-panel[data-active='true'] .gta-figure {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gta-panel[data-active='true'] .gta-art {
+    filter: grayscale(0) brightness(0.92) contrast(1.02) saturate(1.12);
+    transform: scale(1);
+  }
+
+  .gta-panel[data-active='true'] .gta-rule {
+    transform: scaleX(1);
+  }
+
+  .gta-panel[data-active='true'] .gta-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gta-panel[data-dimmed='true'] {
+    opacity: 0.55;
+  }
+
+  /* Touch and narrow layouts get the art and caption outright - there is no hover. */
+  @media (max-width: 1023px) {
+    .gta-art {
+      filter: grayscale(0) brightness(0.8) contrast(1.02);
+      transform: none;
+    }
+
+    .gta-caption {
+      opacity: 1;
+      transform: none;
+    }
+
+    .gta-figure {
+      opacity: 1;
+      transform: none;
+    }
+
+    .gta-tint {
+      opacity: 0.3;
+    }
+
+    .gta-rule {
+      transform: scaleX(1);
+    }
+
+    .gta-panel[data-dimmed='true'] {
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gta-panel[data-active='true'] {
+      flex-grow: 1.9;
+    }
+  }
+
+  /* "Next -" bands: art lifts and colours as the row is hovered or focused. */
+  .nextup-art {
+    filter: grayscale(1) brightness(0.24) contrast(0.92);
+    transform: scale(1.03);
+    transition: filter 600ms ease-out, transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nextup:hover .nextup-art,
+  .nextup:focus-visible .nextup-art {
+    filter: grayscale(0) brightness(0.62) contrast(1);
+    transform: scale(1);
+  }
+
+  /*
+   * prefers-reduced-motion is deliberately not honoured: motion is core to
+   * this design and the owner chose to run it for everyone.
+   *
+   * The one guard that stays is for JavaScript being unavailable, where the
+   * reveal animations would never run and their start state would leave
+   * content invisible.
+   */
+  @media (scripting: none) {
+    [data-reveal-word] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  /*
+   * The experience board and the education band are scroll-scrubbed against
+   * their own sticky pins, and those pins only exist at lg and up. Below that
+   * each stacks into a section taller than any screen, so there is nothing to
+   * scrub and the start states would strand the content invisible.
+   */
+  @media (max-width: 1023.98px) {
+    [data-board-motion],
+    [data-band-motion] {
+      opacity: 1 !important;
+      transform: none !important;
     }
   }
 
   *:focus-visible {
-    outline: 2px solid #0b57d0;
-    outline-offset: 2px;
-    border-radius: 4px;
+    outline: 2px solid var(--paper);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 
   /*
@@ -132,3 +299,4 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #9aa0a6;
 }
+

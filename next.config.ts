@@ -2,6 +2,8 @@ import type { NextConfig } from 'next';
 import path from 'path';
 
 const nextConfig: NextConfig = {
+  /** The hero's dateline and the education band read this; see src/lib/built.ts. */
+  env: { NEXT_PUBLIC_BUILT_AT: new Date().toISOString() },
   turbopack: {
     /** Pin workspace root when a parent folder has another package-lock.json (avoids mis-inferred Turbopack root). */
     root: path.join(__dirname),
@@ -23,7 +25,9 @@ const nextConfig: NextConfig = {
         destination: 'https://www.charlie2bored.com/:path*',
         statusCode: 301,
       },
-      { source: '/contact', destination: '/about', permanent: true },
+      // Old pages whose content now lives in the homepage's closing section.
+      { source: '/about', destination: '/#contact', permanent: true },
+      { source: '/contact', destination: '/#contact', permanent: true },
       {
         source: '/writing/electoral-college',
         destination: 'https://charlie2bored.substack.com/p/i-tried-to-save-the-electoral-college',

@@ -43,3 +43,8 @@ next-env.d.ts
 # local tooling
 .claude/
 .cursor/
+
+# Raw source media (camera originals). Too big for git; only the web encodes
+# generated from these are committed.
+/media-src/
+

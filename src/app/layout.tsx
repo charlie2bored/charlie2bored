@@ -1,15 +1,33 @@
 import type { Metadata, Viewport } from 'next';
-import { DM_Sans } from 'next/font/google';
+import { Archivo, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
-import EggsProvider from '@/components/drive/eggs/EggsProvider';
+import SmoothScroll from '@/components/story/SmoothScroll';
+import TopBar from '@/components/site/TopBar';
+import Grain from '@/components/story/Grain';
+import Cursor from '@/components/story/Cursor';
 import { getSiteUrl } from '@/lib/site';
 
-const dmSans = DM_Sans({
+/** Everything structural: body copy and the heavy poster labels. */
+const archivo = Archivo({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-display',
+});
+
+/** The face from the $913M plate; now the site's voice. */
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-grotesk',
+});
+
+/** Small uppercase labels and crop marks. */
+const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
-  variable: '--font-dm',
+  variable: '--font-mono',
 });
 
 const siteUrl = getSiteUrl();
@@ -18,11 +36,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      'Charlie Vargas | BI, Data & Operations Analyst',
+      'Charlie Vargas | Dance, Design & Data',
     template: '%s | Charlie Vargas',
   },
   description:
-    'Charlie Vargas ("2bored"): BI, data, and operations analyst. I work mostly in Power BI, SQL, and Python, most of it from a multi-year BI internship. I’ve automated KPI dashboards, built predictive enrollment models, and done pricing analysis across 20+ sites. NYC, NJ, or CT; hybrid or remote.',
+    'Charlie Vargas ("2bored"): analyst, designer, and performer in New York. A 2.5-year BI internship that cut reporting time 50% across 20+ school sites, investor and clinical design for a pre-FDA medical-imaging startup, and arena floors for the Red Bulls and the Devils.',
   keywords: [
     'Charlie Vargas',
     'data analyst',
@@ -37,6 +55,10 @@ export const metadata: Metadata = {
     'KPI dashboards',
     'predictive modeling',
     'data storytelling',
+    'product designer',
+    'Figma',
+    'dancer',
+    'arena performer',
     'NYC fare analysis',
     'portfolio',
   ],
@@ -49,15 +71,15 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Charlie Vargas',
-    title: 'Charlie Vargas | BI, Data & Operations Analyst',
+    title: 'Charlie Vargas | Dance, Design & Data',
     description:
-      'BI, data, and operations analyst. I work in Power BI, SQL, and Python. KPI dashboards, predictive models, and an NYC fare-policy analysis on real MTA data.',
+      'Analyst, designer, performer. KPI dashboards across 20+ school sites, investor and clinical design for a pre-FDA medical-imaging startup, and arena floors for the Red Bulls and the Devils.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Charlie Vargas | BI, Data & Operations Analyst',
+    title: 'Charlie Vargas | Dance, Design & Data',
     description:
-      'Portfolio: BI dashboards, operational analytics, and an NYC fare-policy model on real MTA data. NYC, NJ, or CT; hybrid or remote.',
+      'Portfolio: BI dashboards and forecasting, investor and clinical design, and arena performance. NYC, NJ, or CT; hybrid or remote.',
   },
 };
 
@@ -81,9 +103,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${dmSans.variable} font-sans antialiased`}>
+      <body className={`${archivo.variable} ${spaceGrotesk.variable} ${jetbrains.variable} font-sans antialiased`}>
         <PersonJsonLd />
-        <EggsProvider>{children}</EggsProvider>
+        <SmoothScroll />
+        <Grain />
+        <Cursor />
+        <TopBar />
+        {children}
         <Analytics />
       </body>
     </html>
