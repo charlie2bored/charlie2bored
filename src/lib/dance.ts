@@ -28,7 +28,13 @@ export type DanceTile = {
   line: string;
 };
 
-export const danceHeading = '[dance headline]';
+/**
+ * Third in the run after "qualified? hell yeah." and "learning? yeah that
+ * too." — and the one that breaks it: the first two answer yes, this asks the
+ * opposite and answers no. A section of nothing but movement, headed by the
+ * one thing Charlie won't do.
+ */
+export const danceHeading = 'sitting still? never that.';
 
 const v = (id: string, w: number, h: number, mat: string, line: string): DanceTile => ({
   id,
