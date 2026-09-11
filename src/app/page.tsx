@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Opening from '@/components/site/Opening';
 import ExperienceBoard from '@/components/site/ExperienceBoard';
 import EducationBand from '@/components/site/EducationBand';
+import DanceField from '@/components/site/DanceField';
 import AboutSection from '@/components/story/AboutSection';
 import Marquee from '@/components/story/Marquee';
 
@@ -19,6 +20,7 @@ export default function Home() {
         <Opening />
         <ExperienceBoard />
         <EducationBand />
+        <DanceField />
         <AboutSection />
         <Marquee />
       </main>
