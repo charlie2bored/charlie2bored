@@ -59,12 +59,12 @@ export const designPages: DesignPage[] = [
   // Web — client work first.
   {
     kind: 'site', id: 'medara', category: 'Web', url: 'medara.co', img: '/design/medara.jpg', imgW: 1600, imgH: 4754,
-    title: 'medara', note: 'Designed the site, and run it day to day — news posts and their covers, copy updates, deploys.',
+    title: 'medara', note: 'Took them off a WordPress template onto custom code, updated weekly since. The latest push: calmer hero images, and copy rewritten to sound like people. Every news story gets its cover from me.',
   },
   {
     kind: 'site', id: 'kindling', category: 'Web', url: 'kindlingep.com', img: '/design/kindling.jpg', imgW: 1600, imgH: 3921,
     title: 'Kindling Education Partners',
-    note: 'Scoped and shipped their corporate site, built on the client’s own GitHub and Vercel.',
+    note: 'Their first website, start to finish. They asked for Squarespace; I built it custom so they got the site they actually wanted, and I keep it current — a new page each time they add a school.',
   },
   // Web — then Charlie's own projects.
   { kind: 'image', id: 'clearcore', category: 'Web', img: '/projects/clearcore-protein.png', w: 1024, h: 552, title: 'ClearCore Protein', note: 'Self-directed, start to finish.', href: 'https://clearcore-tau.vercel.app/' },

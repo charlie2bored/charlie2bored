@@ -1,14 +1,16 @@
 /** Rail content, transcribed from the Figma frame (NAVBAR + HERO, 2001:2). */
 
-import { builtDateline } from '@/lib/built';
-
 export const owner = {
   name: 'CHARLIE “2bored” VARGAS',
   role: 'ANALYST. DESIGNER. PERFORMER.',
 };
 
-/** Shown in the hero's top strip: the date of the last deploy. */
-export const dateline = `NEW YORK, NY / ${builtDateline} / UPDATE`;
+/**
+ * The hero's top strip. No date: over a figure in free fall, "New York" plus
+ * a date reads as a 9/11 reference on the wrong day, so the strip names the
+ * place and what this is, as the link-preview card does.
+ */
+export const dateline = 'NEW YORK, NY / PORTFOLIO';
 
 /**
  * The rail is a map of the site, so it lists only what exists. The retired
