@@ -189,13 +189,20 @@ function Page({ p, onOpen }: { p: DesignPage; onOpen: (s: DesignSite) => void })
     case 'drawing':
       return (
         <div className="shrink-0">
-          {/* A blank sheet until the scan arrives; the caption below names it. */}
-          <div
-            style={box(p.ratio)}
-            className="flex items-center justify-center bg-[#f7f5f1] shadow-[0_14px_40px_-18px_rgba(0,0,0,0.35)]"
-          >
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-black/35">scan pending</p>
-          </div>
+          {p.img ? (
+            // The sheet itself, edge to edge, sitting on the paper with a soft shadow.
+            <div style={box(p.ratio)} className="relative overflow-hidden shadow-[0_14px_40px_-18px_rgba(0,0,0,0.4)]">
+              <Image src={p.img} alt={p.alt ?? p.title} fill sizes="(min-width: 768px) 40vw, 84vw" className="object-cover" />
+            </div>
+          ) : (
+            // A blank sheet until a photo arrives; the caption below names it.
+            <div
+              style={box(p.ratio)}
+              className="flex items-center justify-center bg-[#f7f5f1] shadow-[0_14px_40px_-18px_rgba(0,0,0,0.35)]"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-black/35">scan pending</p>
+            </div>
+          )}
           <Caption category={p.category} title={p.title} note={p.note} />
         </div>
       );

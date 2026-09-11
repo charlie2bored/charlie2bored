@@ -27,7 +27,8 @@
 
 export type DesignPage =
   | { kind: 'title'; id: string }
-  | { kind: 'drawing'; id: string; category: Category; ratio: number; title: string; note: string }
+  /** `img` is the flattened photo; without one the page shows a blank sheet. */
+  | { kind: 'drawing'; id: string; category: Category; ratio: number; title: string; note: string; img?: string; alt?: string }
   | { kind: 'site'; id: string; category: Category; url: string; img: string; imgW: number; imgH: number; title: string; note: string }
   | { kind: 'series'; id: string; category: Category; imgs: string[]; title: string; note: string }
   /** `href`: the live project. The picture links out to it so people can use the real thing. */
@@ -68,10 +69,28 @@ export const designPages: DesignPage[] = [
   // Graphics. The medara logo joins these once it is in.
   { kind: 'series', id: 'medara-covers', category: 'Graphics', imgs: COVERS, title: 'medara — news covers', note: 'Sixteen covers, one system.' },
 
-  // Illustration. Placeholders until the flatbed scans; each is a letter-size sheet.
-  { kind: 'drawing', id: 'vol1', category: 'Illustration', ratio: 8.5 / 11, title: 'CHARLIE2BORED Vol. 1 — cover', note: 'Charcoal and colored pencil.' },
-  { kind: 'drawing', id: 'stussy', category: 'Illustration', ratio: 8.5 / 11, title: 'Stüssy — 8-Cube Drop (spec)', note: 'Colored pencil.' },
-  { kind: 'drawing', id: 'figure', category: 'Illustration', ratio: 8.5 / 11, title: 'Figure in red', note: 'Colored pencil.' },
+  // Illustration. Letter-size sheets, photographed flat, then straightened and
+  // cropped to the paper's edge; colours left exactly as drawn.
+  {
+    kind: 'drawing', id: 'vol1', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/vol1.jpg',
+    title: 'CHARLIE2BORED Vol. 1 — cover', note: 'Charcoal and colored pencil.',
+    alt: 'A figure mid-stride casting a long shadow, with lettering set into purple perspective rays that meet at him; signed CHARLIE2BORED Vol. 1.',
+  },
+  {
+    kind: 'drawing', id: 'stussy', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/stussy.jpg',
+    title: 'Stüssy — 8-Cube Drop (spec)', note: 'Colored pencil.',
+    alt: 'A poster on green: STÜSSY in heavy block letters, a hand lining up a pool cue at an 8-ball cube and a die, headed “HUH? 8-Cube Drop”.',
+  },
+  {
+    kind: 'drawing', id: 'figure', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/figure.jpg',
+    title: 'Figure in red', note: 'Colored pencil.',
+    alt: 'A winged figure in black, red and white, reaching forward against a dark pencil ground.',
+  },
+  {
+    kind: 'drawing', id: 'red-grey', category: 'Illustration', ratio: 8.5 / 11, img: '/design/illustrations/red-grey.jpg',
+    title: 'Untitled', note: 'Colored pencil.',
+    alt: 'An abstract: a jagged red form spreading down through a grey ground.',
+  },
 ];
 
 /** Vertical scroll per pixel of sideways travel. Settled in the lab. */
