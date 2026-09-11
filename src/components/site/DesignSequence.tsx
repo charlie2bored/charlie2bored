@@ -39,9 +39,11 @@ const box = (ratio: number): CSSProperties => ({
 
 const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1);
 
-function Caption({ title, note }: { title: string; note: string }) {
+/** Category in the same mono label as the title card's, then title and note. */
+function Caption({ category, title, note }: { category: string; title: string; note: string }) {
   return (
     <div className="mt-4 max-w-[46ch]">
+      <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-black/50">{category}</p>
       <p className="text-[13px] font-bold">{title}</p>
       <p className="mt-1 text-[12px] text-black/60">{note}</p>
     </div>
@@ -86,7 +88,7 @@ function SitePage({ p, onOpen }: { p: DesignSite; onOpen: (s: DesignSite) => voi
           </span>
         </div>
       </button>
-      <Caption title={p.title} note={p.note} />
+      <Caption category={p.category} title={p.title} note={p.note} />
     </>
   );
 }
@@ -194,7 +196,7 @@ function Page({ p, onOpen }: { p: DesignPage; onOpen: (s: DesignSite) => void })
             <p className="px-6 text-[15px] font-bold">{p.title}</p>
             <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-black/45">scan pending</p>
           </div>
-          <Caption title={p.title} note={p.note} />
+          <Caption category={p.category} title={p.title} note={p.note} />
         </div>
       );
     case 'site':
@@ -213,7 +215,7 @@ function Page({ p, onOpen }: { p: DesignPage; onOpen: (s: DesignSite) => void })
               </div>
             ))}
           </div>
-          <Caption title={p.title} note={p.note} />
+          <Caption category={p.category} title={p.title} note={p.note} />
         </div>
       );
     case 'image': {
@@ -241,7 +243,7 @@ function Page({ p, onOpen }: { p: DesignPage; onOpen: (s: DesignSite) => void })
               {picture}
             </div>
           )}
-          <Caption title={p.title} note={p.note} />
+          <Caption category={p.category} title={p.title} note={p.note} />
         </div>
       );
     }
