@@ -1,7 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
-
 /** Apple recommends 180×180 for home-screen icons */
 export const size = { width: 180, height: 180 };
 export const contentType = 'image/png';
