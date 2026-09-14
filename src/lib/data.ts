@@ -53,7 +53,7 @@ export const dataChapters: DataChapter[] = [
     title: 'NYC distance-based fare analysis', meta: 'Research, modeling and the site',
     problem: 'Would a distance-based subway fare change who pays and who saves? Fare debates live in spreadsheets riders can’t use.',
     did: 'Modeled ~1M MTA origin–destination records in Python, routed every trip along the real subway network, and built a site where readers test their own commute.',
-    result: 'Surfaced a $913M revenue gap — after catching my own crow-flies error ($277M) and publishing the correction. 14.8% of riders would pay less.',
+    result: 'Surfaced a $913M revenue gap — after catching my own crow-flies error ($280.5M) and publishing the correction. 14.8% of trips would cost less.',
     tools: ['Python', 'pandas', 'NumPy', 'matplotlib', 'TypeScript'],
     links: [
       { href: 'https://nyc-fare-systems-website.vercel.app/', label: 'the site ↗' },

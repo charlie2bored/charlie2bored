@@ -120,7 +120,7 @@ function DanceViewer({ tile, onClose }: { tile: DanceTile | null; onClose: () =>
       </div>
       <p onClick={(e) => e.stopPropagation()} className="mt-4 text-center font-mono text-[11px] uppercase leading-[1.5] tracking-[0.14em] text-white/85">
         {title}
-        {credit && <span className="block text-white/55">{credit}</span>}
+        {credit && <>{' '}<span className="block text-white/55">{credit}</span></>}
       </p>
     </div>
   );
@@ -194,7 +194,7 @@ function Card({
         </MediaFrame>
         <figcaption className="py-[0.9em] font-mono text-[10px] uppercase leading-[1.4] tracking-[0.14em] text-white/80">
           {title}
-          {credit && <span className="block text-white/55">{credit}</span>}
+          {credit && <>{' '}<span className="block text-white/55">{credit}</span></>}
         </figcaption>
       </motion.figure>
     </div>
