@@ -5,8 +5,6 @@ import './globals.css';
 import { PersonJsonLd } from '@/components/PersonJsonLd';
 import SmoothScroll from '@/components/story/SmoothScroll';
 import TopBar from '@/components/site/TopBar';
-import Grain from '@/components/story/Grain';
-import Cursor from '@/components/story/Cursor';
 import { getSiteUrl } from '@/lib/site';
 
 /** Everything structural: body copy and the heavy poster labels. */
@@ -85,8 +83,6 @@ export default function RootLayout({
       <body className={`${archivo.variable} ${spaceGrotesk.variable} ${jetbrains.variable} font-sans antialiased`}>
         <PersonJsonLd />
         <SmoothScroll />
-        <Grain />
-        <Cursor />
         <TopBar />
         {children}
         <Analytics />

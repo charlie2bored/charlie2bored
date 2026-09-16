@@ -1,7 +1,8 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import RailPanel from '@/components/site/RailPanel';
 import { owner } from '@/lib/nav';
 
@@ -11,9 +12,26 @@ import { owner } from '@/lib/nav';
  * Scrolling back to the top rejoins the split hero on its own, so this exists
  * for the case that actually matters: reaching another part of the site from
  * deep in the page without scrolling all the way back up.
+ *
+ * On a phone the hero's rail drops its nav list, so the bar sits above the
+ * hero there and the menu button is how you reach the sections. The name pill
+ * waits until the hero has parted, since the rail already shows the name.
  */
+const onScroll = (cb: () => void) => {
+  window.addEventListener('scroll', cb, { passive: true });
+  window.addEventListener('resize', cb);
+  return () => {
+    window.removeEventListener('scroll', cb);
+    window.removeEventListener('resize', cb);
+  };
+};
+/** The opening's panels finish parting at 30% of its 200vh pin. */
+const heroParted = () => window.scrollY > window.innerHeight * 0.3;
+
 export default function TopBar() {
   const [open, setOpen] = useState(false);
+  const parted = useSyncExternalStore(onScroll, heroParted, () => false);
+  const showPill = usePathname() !== '/' || parted;
 
   // Escape closes, and the page must not scroll behind the overlay.
   useEffect(() => {
@@ -32,7 +50,7 @@ export default function TopBar() {
 
   return (
     <>
-      <div className="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-4 py-3 sm:px-6">
+      <div className="fixed inset-x-0 top-0 z-[45] flex md:z-30 items-center justify-between px-4 py-3 sm:px-6">
         <button
           type="button"
           onClick={() => setOpen(true)}
@@ -49,7 +67,9 @@ export default function TopBar() {
         </button>
 
         <span
-          className="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.14em] backdrop-blur-md"
+          className={`rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.14em] backdrop-blur-md transition-opacity duration-300 ${
+            showPill ? 'opacity-100' : 'pointer-events-none opacity-0'
+          }`}
           style={{ backgroundColor: 'rgba(10,10,12,0.55)', color: 'var(--rail-dim)' }}
         >
           {owner.name}

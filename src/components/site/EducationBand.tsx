@@ -191,13 +191,18 @@ export default function EducationBand() {
       >
         {/* Desktop: the pile, the burst and the axis. */}
         <div className="relative hidden h-full lg:block">
-          <motion.p
+          <motion.div
             data-band-motion
-            className="font-title absolute left-1/2 w-full -translate-x-1/2 text-center text-[clamp(0.9rem,1.35vw,2rem)] font-bold"
-            style={{ top: headlineTopPct, opacity: headlineOpacity, color: educationText }}
+            className="absolute left-1/2 w-full -translate-x-1/2 text-center"
+            style={{ top: headlineTopPct, opacity: headlineOpacity }}
           >
-            {educationHeading}
-          </motion.p>
+            <p className="absolute bottom-full left-0 mb-3 w-full font-mono text-[11px] uppercase tracking-[0.18em] text-black/50">
+              02 — education
+            </p>
+            <p className="font-title text-[clamp(0.9rem,1.35vw,2rem)] font-bold" style={{ color: educationText }}>
+              {educationHeading}
+            </p>
+          </motion.div>
 
           <motion.div data-band-motion className="absolute inset-0" style={{ opacity: axisOpacity }}>
             {ticks.map((t) => (
@@ -234,6 +239,7 @@ export default function EducationBand() {
 
         {/* Narrow screens: no pin to scrub, so the same facts stack. */}
         <div className="px-6 sm:px-8 lg:hidden">
+          <p className="mb-3 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-black/50">02 — education</p>
           <p
             className="font-title text-center text-[clamp(0.9rem,3.5vw,1.4rem)] font-bold"
             style={{ color: educationText }}

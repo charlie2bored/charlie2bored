@@ -19,15 +19,19 @@ function BracketLabel({ children }: { children: string }) {
  * The dark navigation rail. Rendered inside the split hero and again inside
  * the summoned overlay, so it is a plain presentational component with no
  * animation of its own.
+ *
+ * `inHero`: the copy in the split hero. On a phone that hero is a 50/50 split,
+ * so the rail there keeps the name, contact and résumé and drops the nav list;
+ * the menu button (TopBar) opens the full rail, list and all.
  */
-export default function RailPanel({ onNavigate }: { onNavigate?: () => void }) {
+export default function RailPanel({ onNavigate, inHero = false }: { onNavigate?: () => void; inHero?: boolean }) {
   // The sections are anchors on the homepage; from anywhere else (a 404, say)
   // they need the page in front of them.
   const home = usePathname() === '/';
   return (
     <div className="flex h-full flex-col justify-between p-6 sm:p-8">
       <div>
-        <div className="flex items-center gap-2.5">
+        <div className={`flex items-center gap-2.5 ${inHero ? 'max-md:pl-10' : ''}`}>
           <Image
             src="/hero/avatar.png"
             alt=""
@@ -44,7 +48,7 @@ export default function RailPanel({ onNavigate }: { onNavigate?: () => void }) {
           {owner.role}
         </p>
 
-        <nav aria-label="Primary" className="mt-10 sm:mt-14">
+        <nav aria-label="Primary" className={`mt-10 sm:mt-14 ${inHero ? 'max-md:hidden' : ''}`}>
           <ul className="list-none space-y-1.5">
             {navItems.map((item) => (
               <li key={item.href}>
@@ -62,7 +66,7 @@ export default function RailPanel({ onNavigate }: { onNavigate?: () => void }) {
         </nav>
       </div>
 
-      <div className="mt-10">
+      <div className={`mt-10 ${inHero ? 'max-md:mt-0' : ''}`}>
         <BracketLabel>Contact info</BracketLabel>
         <ul className="mt-2.5 list-none space-y-0.5 text-[12px]" style={{ color: 'var(--rail-fg)' }}>
           <li>
@@ -87,7 +91,7 @@ export default function RailPanel({ onNavigate }: { onNavigate?: () => void }) {
           </ul>
         </div>
 
-        <p className="mt-10 text-[10px] uppercase tracking-[0.1em]" style={{ color: 'var(--rail-dim)' }}>
+        <p className={`${inHero ? 'mt-10 max-md:mt-5' : 'mt-10'} text-[10px] uppercase tracking-[0.1em]`} style={{ color: 'var(--rail-dim)' }}>
           {copyright}
         </p>
       </div>

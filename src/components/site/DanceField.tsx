@@ -254,7 +254,8 @@ export default function DanceField() {
         grid is pulled up 90vh into it so the first row arrives mid-hold.
       */}
       <div className="relative h-[180vh]">
-        <div className="sticky top-0 flex h-dvh items-center justify-center px-[4vw]">
+        <div className="sticky top-0 flex h-dvh flex-col items-center justify-center px-[4vw]">
+          <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.18em] text-black/50">03 — dance</p>
           <p className="font-title text-center text-[clamp(2.4rem,6.4vw,8rem)] font-bold leading-[0.95] tracking-[-0.035em]">
             {danceHeading.split(/(?<=\?)\s+/).map((part) => (
               <span key={part} className="block">

@@ -53,6 +53,12 @@ function HeroImage() {
       >
         {dateline}
       </p>
+      <p
+        className="absolute bottom-5 left-5 text-[11px] font-medium uppercase tracking-[0.1em] sm:bottom-8 sm:left-8"
+        style={{ color: 'var(--hero-fg)' }}
+      >
+        Keep scrolling <span aria-hidden="true" className="nudge inline-block">↓</span>
+      </p>
     </div>
   );
 }
@@ -222,14 +228,14 @@ export default function Opening() {
         </div>
 
         {/* On top: the two panels that slide away. */}
-        <div className="relative grid h-full grid-rows-[auto_1fr] md:grid-cols-2 md:grid-rows-1 xl:grid-cols-[19.4%_1fr]">
+        <div className="relative grid h-full grid-rows-2 md:grid-cols-2 md:grid-rows-1 xl:grid-cols-[19.4%_1fr]">
           <motion.div
             style={{ x: railX, y: railY }}
             className="relative z-20 row-start-1 overflow-hidden md:col-start-1"
             data-panel="rail"
           >
             <div className="h-full" style={{ backgroundColor: 'var(--rail-bg)' }}>
-              <RailPanel />
+              <RailPanel inHero />
             </div>
           </motion.div>
 
