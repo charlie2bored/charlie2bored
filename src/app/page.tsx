@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { markdownAlternates } from '@/lib/llms';
 import Opening from '@/components/site/Opening';
 import ExperienceBoard from '@/components/site/ExperienceBoard';
 import EducationBand from '@/components/site/EducationBand';
@@ -8,7 +9,7 @@ import DataSection from '@/components/site/DataSection';
 import ContactSection from '@/components/site/ContactSection';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/' },
+  alternates: { canonical: '/', types: markdownAlternates },
 };
 
 export default function Home() {

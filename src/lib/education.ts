@@ -26,6 +26,8 @@ export type School = {
   alt: string;
   /** Big label, in the board's voice. */
   name: string;
+  /** The institution's real name, for structured data and /llms.txt. */
+  fullName: string;
   /** The one line under it, same rule as the board's descriptors. */
   line: string;
   /** Inclusive start and exclusive end as [year, monthIndex], Jan = 0. */
@@ -43,6 +45,7 @@ export const schools: School[] = [
     src: '/education/ucvts.png',
     alt: 'Union County Vocational-Technical Schools seal',
     name: 'UCVTS',
+    fullName: 'Union County Vocational-Technical Schools, Academy for Performing Arts',
     line: 'Academy for Performing Arts — four years of conservatory dance training.',
     start: [2020, 8],
     end: [2024, 5],
@@ -54,6 +57,7 @@ export const schools: School[] = [
     src: '/education/kean.png',
     alt: 'Kean University Cougar mark',
     name: 'KEAN',
+    fullName: 'Kean University',
     line: 'Dual enrollment through senior year — college credit while still at APA.',
     start: [2023, 8],
     end: [2024, 5],
@@ -65,6 +69,7 @@ export const schools: School[] = [
     src: '/education/northeastern.png',
     alt: 'Northeastern University Husky mark',
     name: 'NORTHEASTERN',
+    fullName: 'Northeastern University',
     line: 'B.S. Business Administration, New York. Treasurer, Fashion Organization.',
     start: [2024, 7],
     end: [2028, 4],

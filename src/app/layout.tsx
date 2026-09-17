@@ -6,6 +6,7 @@ import { PersonJsonLd } from '@/components/PersonJsonLd';
 import SmoothScroll from '@/components/story/SmoothScroll';
 import TopBar from '@/components/site/TopBar';
 import { getSiteUrl } from '@/lib/site';
+import { markdownAlternates } from '@/lib/llms';
 
 /** Everything structural: body copy and the heavy poster labels. */
 const archivo = Archivo({
@@ -42,7 +43,12 @@ export const metadata: Metadata = {
   authors: [{ name: 'Charlie Vargas', url: 'https://www.linkedin.com/in/charlie2bored/' }],
   creator: 'Charlie Vargas',
   formatDetection: { email: false, telephone: false },
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, 'max-snippet': -1, 'max-image-preview': 'large' },
+  /**
+   * The Markdown transcripts, advertised in the head so a crawler that fetches
+   * the page finds them without having to guess the path. See src/lib/llms.ts.
+   */
+  alternates: { types: markdownAlternates },
   openGraph: {
     type: 'website',
     locale: 'en_US',
