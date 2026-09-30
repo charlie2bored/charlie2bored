@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { type CSSProperties, type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import {
+  type CaseStudy,
   type DesignPage,
   type DesignSite,
   designBg,
@@ -94,6 +95,47 @@ function SitePage({ p, onOpen }: { p: DesignSite; onOpen: (s: DesignSite) => voi
 }
 
 /**
+ * The writeup beside an opened site. It scrolls on its own so a long study
+ * never pushes the browser frame out of the dialog, and it stacks above the
+ * frame below `lg`, where there is no room for two columns.
+ */
+function StudyColumn({ study, title }: { study: CaseStudy; title: string }) {
+  return (
+    <aside
+      data-lenis-prevent
+      className="max-h-[38vh] shrink-0 overflow-y-auto overscroll-contain border-b border-black/10 bg-[#f3f2f0] px-6 py-6 lg:max-h-none lg:w-[340px] lg:border-b-0 lg:border-r lg:px-7 lg:py-8"
+    >
+      <p className="font-title text-[15px] font-bold">{title}</p>
+      <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-black/50">{study.when}</p>
+
+      {([
+        ['Problem', study.problem],
+        ['What I did', study.did],
+        ['Result', study.result],
+      ] as const).map(([heading, body]) => (
+        <section key={heading} className="mt-6">
+          <h3 className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/50">{heading}</h3>
+          <p className="mt-1.5 text-[12.5px] leading-[1.55] text-black/75">{body}</p>
+        </section>
+      ))}
+
+      <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-black/45">
+        {study.stack.join(' · ')}
+      </p>
+
+      <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-black/10 pt-4">
+        {study.stats.map((stat) => (
+          <div key={stat.label}>
+            <dt className="font-title text-[17px] font-bold leading-none">{stat.value}</dt>
+            <dd className="mt-1 text-[10px] leading-[1.3] text-black/55">{stat.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </aside>
+  );
+}
+
+/**
  * The opened site: the whole page in a large browser frame, scrolled by hand.
  * data-lenis-prevent hands wheel and touch back to the browser inside it, and
  * wheel or touch over the dim backdrop is swallowed so it cannot drive the
@@ -137,8 +179,12 @@ function SiteViewer({ site, onClose }: { site: DesignSite | null; onClose: () =>
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="flex h-full max-h-[92vh] w-full max-w-[1280px] flex-col overflow-hidden rounded-[8px] bg-white shadow-2xl"
+        className={`flex h-full max-h-[92vh] w-full flex-col overflow-hidden rounded-[8px] bg-white shadow-2xl ${
+          site.study ? 'max-w-[1480px] lg:flex-row' : 'max-w-[1280px]'
+        }`}
       >
+        {site.study && <StudyColumn study={site.study} title={site.title} />}
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <BrowserBar url={site.url}>
           <a
             href={`https://${site.url}`}
@@ -166,6 +212,7 @@ function SiteViewer({ site, onClose }: { site: DesignSite | null; onClose: () =>
             sizes="(min-width: 1280px) 1280px, 94vw"
             style={{ width: '100%', height: 'auto' }}
           />
+        </div>
         </div>
       </div>
     </div>

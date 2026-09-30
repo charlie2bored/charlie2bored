@@ -25,11 +25,29 @@
  * deployed.
  */
 
+/**
+ * The writeup shown beside a site when it is opened. Optional: a site without
+ * one opens exactly as it did before, the capture on its own.
+ *
+ * Scope note for medara: Kendra Batchelder approved the medara material on
+ * 2026-09-11, covering what is already public — the website, the news cards,
+ * the logo, and a short description of the role. This stays inside that: what
+ * was built and why, with nothing about the client's own copy decisions.
+ */
+export type CaseStudy = {
+  when: string;
+  problem: string;
+  did: string;
+  result: string;
+  stack: string[];
+  stats: { value: string; label: string }[];
+};
+
 export type DesignPage =
   | { kind: 'title'; id: string }
   /** `img` is the flattened photo; without one the page shows a blank sheet. */
   | { kind: 'drawing'; id: string; category: Category; ratio: number; title: string; note: string; img?: string; alt?: string }
-  | { kind: 'site'; id: string; category: Category; url: string; img: string; imgW: number; imgH: number; title: string; note: string }
+  | { kind: 'site'; id: string; category: Category; url: string; img: string; imgW: number; imgH: number; title: string; note: string; study?: CaseStudy }
   | { kind: 'series'; id: string; category: Category; imgs: string[]; title: string; note: string }
   /** `href`: the live project. The picture links out to it so people can use the real thing. */
   | { kind: 'image'; id: string; category: Category; img: string; w: number; h: number; title: string; note: string; href?: string };
@@ -60,6 +78,21 @@ export const designPages: DesignPage[] = [
   {
     kind: 'site', id: 'medara', category: 'Web', url: 'medara.co', img: '/design/medara.jpg', imgW: 1600, imgH: 4754,
     title: 'medara', note: 'Took them off a WordPress template onto custom code, updated weekly since. The latest push: calmer hero images, and copy rewritten to sound like people. Every news story gets its cover from me.',
+    study: {
+      when: 'Product design · Mar 2026 to present',
+      problem:
+        'A medical imaging startup stuck on a WordPress template. Hard to update, and hard to make look like anything other than a template.',
+      did:
+        'Rebuilt it from scratch in React + Vite, then built a visual system on top: brand type system, editorial icon set, square buttons, section dividers, dark navy palette, and a reworked logo color. Set up a template system for news covers, so every story gets a branded cover without designing each one by hand. Handled performance, accessibility, SEO, and security patches along the way.',
+      result:
+        "A custom site that's updated weekly and owned end to end, from design to build to upkeep.",
+      stack: ['React', 'Vite', 'Tailwind', 'Framer Motion', 'Figma'],
+      stats: [
+        { value: '~50', label: 'commits since the rebuild' },
+        { value: '16', label: 'news covers, one system' },
+        { value: '18', label: 'pages in the system' },
+      ],
+    },
   },
   {
     kind: 'site', id: 'kindling', category: 'Web', url: 'kindlingep.com', img: '/design/kindling.jpg', imgW: 1600, imgH: 3921,
