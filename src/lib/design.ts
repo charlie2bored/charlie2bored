@@ -49,10 +49,16 @@ export type DesignPage =
   | { kind: 'drawing'; id: string; category: Category; ratio: number; title: string; note: string; img?: string; alt?: string }
   | { kind: 'site'; id: string; category: Category; url: string; img: string; imgW: number; imgH: number; title: string; note: string; study?: CaseStudy }
   | { kind: 'series'; id: string; category: Category; imgs: string[]; title: string; note: string }
+  /**
+   * A motion piece. The poster sits still on the paper like every other page;
+   * a click plays it with sound, the way the dance clips open. `spec` marks
+   * work made with a team's marks that the team did not commission.
+   */
+  | { kind: 'video'; id: string; category: Category; src: string; poster: string; w: number; h: number; title: string; note: string; spec?: boolean }
   /** `href`: the live project. The picture links out to it so people can use the real thing. */
   | { kind: 'image'; id: string; category: Category; img: string; w: number; h: number; title: string; note: string; href?: string };
 
-export type Category = 'Web' | 'Graphics' | 'Illustration';
+export type Category = 'Web' | 'Graphics' | 'Illustration' | 'Motion';
 
 export type DesignSite = Extract<DesignPage, { kind: 'site' }>;
 
@@ -107,6 +113,19 @@ export const designPages: DesignPage[] = [
 
   // Graphics. The medara logo joins these once it is in.
   { kind: 'series', id: 'medara-covers', category: 'Graphics', imgs: COVERS, title: 'medara — news covers', note: 'Sixteen covers, one system.' },
+
+  // Motion. Spec work: official club marks, no club commission — labelled as
+  // such here and burned into the sting itself.
+  {
+    kind: 'video', id: 'devils-goal', category: 'Motion', src: '/motion/devils-goal.mp4', poster: '/motion/devils-goal.jpg',
+    w: 1600, h: 900, spec: true, title: 'New Jersey Devils — goal graphic',
+    note: 'A 7.6s goal graphic for Dougie Hamilton, built to the beat of the arena horn. Five passes; the fifth is the one that lands.',
+  },
+  {
+    kind: 'video', id: 'devils-logo', category: 'Motion', src: '/motion/devils-logo.mp4', poster: '/motion/devils-logo.jpg',
+    w: 1600, h: 900, spec: true, title: 'New Jersey Devils — logo sting',
+    note: 'A 4.5s sting: the mark arrives, holds, and burns off.',
+  },
 
   // Illustration. Letter-size sheets, photographed flat, then straightened and
   // cropped to the paper's edge; colours left exactly as drawn.

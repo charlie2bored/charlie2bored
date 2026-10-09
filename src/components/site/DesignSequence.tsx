@@ -41,10 +41,13 @@ const box = (ratio: number): CSSProperties => ({
 const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1);
 
 /** Category in the same mono label as the title card's, then title and note. */
-function Caption({ category, title, note }: { category: string; title: string; note: string }) {
+function Caption({ category, title, note, spec }: { category: string; title: string; note: string; spec?: boolean }) {
   return (
     <div className="mt-4 max-w-[46ch]">
-      <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-black/50">{category}</p>
+      <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-black/50">
+        {category}
+        {spec && <span className="ml-2 text-black/40">· spec, not commissioned by the club</span>}
+      </p>
       <p className="font-title text-[13px] font-bold">{title}</p>
       <p className="mt-1 text-[12px] text-black/60">{note}</p>
     </div>
@@ -219,6 +222,45 @@ function SiteViewer({ site, onClose }: { site: DesignSite | null; onClose: () =>
   );
 }
 
+/**
+ * A motion piece. It holds its poster until clicked, then plays with sound and
+ * controls — the same bargain as the dance clips: nothing moves or makes noise
+ * in the sideways track until someone asks for it.
+ */
+function VideoPage({ p }: { p: Extract<DesignPage, { kind: 'video' }> }) {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <>
+      <div style={box(p.w / p.h)} className="relative overflow-hidden bg-black shadow-[0_14px_40px_-18px_rgba(0,0,0,0.4)]">
+        {playing ? (
+          <video
+            src={p.src}
+            poster={p.poster}
+            autoPlay
+            controls
+            playsInline
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setPlaying(true)}
+            aria-label={`Play ${p.title}, with sound`}
+            className="group absolute inset-0 block cursor-pointer"
+          >
+            <Image src={p.poster} alt="" fill sizes="(min-width: 768px) 80vw, 84vw" className="object-cover" />
+            <span className="absolute bottom-4 right-4 bg-black px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white opacity-75 transition-opacity group-hover:opacity-100">
+              ▶ play with sound
+            </span>
+          </button>
+        )}
+      </div>
+      <Caption category={p.category} title={p.title} note={p.note} spec={p.spec} />
+    </>
+  );
+}
+
 function Page({ p, onOpen }: { p: DesignPage; onOpen: (s: DesignSite) => void }) {
   switch (p.kind) {
     case 'title':
@@ -274,6 +316,12 @@ function Page({ p, onOpen }: { p: DesignPage; onOpen: (s: DesignSite) => void })
             ))}
           </div>
           <Caption category={p.category} title={p.title} note={p.note} />
+        </div>
+      );
+    case 'video':
+      return (
+        <div className="shrink-0">
+          <VideoPage p={p} />
         </div>
       );
     case 'image': {
